@@ -3152,10 +3152,70 @@ export const MUTATIONS_DATA: Record<string, MutationDetail> = {
  * Verified Ground-Truth Presets from Keith's Snips
  */
 export const PRESETS_DATA: Record<string, BuildPreset> = {
+  max_toxicity_manticore: {
+    name: "Max Toxicity Manticore (Chemist Tank)",
+    subtitle: "234 Max Toxicity | 15,902 HP | 4 Decoctions + Metamorphosis (9 Total)",
+    mutation: "metamorphosis",
+    mutagenSockets: ["green", "green", "green", "green"],
+    combatAllocations: {},
+    signsAllocations: {},
+    alchemyAllocations: {
+      refreshment: 3,
+      efficiency: 3,
+      fast_metabolism: 3,
+      adaptability: 3,
+      frenzy: 3,
+      pyrotechnics: 3,
+      hunter_instinct: 3,
+      poisoned_blades: 3,
+      endure_pain: 3,
+      toxic_shock: 3,
+      protective_coating: 3,
+      tissue_transmutation: 3,
+      acquired_tolerance: 3,
+      high_tolerance: 3,
+      volatile_compound: 3,
+      side_effects: 3,
+      debilitating_poison: 3,
+      cluster_bombs: 3,
+      delayed_recovery: 3,
+      potent_sting: 3
+    },
+    generalAllocations: {
+      cat_school_techniques: 3,
+      wolf_school_techniques: 3,
+      bear_school_techniques: 3,
+      griffin_school_techniques: 3,
+      manticore_school_techniques: 3,
+      viper_school_techniques: 3,
+      battle_frenzy: 3,
+      attack_is_the_best_defense: 3,
+      strong_back: 3,
+      gourmand: 3,
+      elemental_attunement: 3,
+      advanced_pyrotechnics: 3,
+      element_of_surprise: 3,
+      adrenaline_burst: 3,
+      sun_and_stars: 3,
+      survival_instinct: 3,
+      anger_management: 3,
+      synergy: 3,
+      metabolic_control: 3,
+      metabolic_boost: 3
+    },
+    slottedSkills: [
+      "protective_coating", "pyrotechnics", "acquired_tolerance",          // Quad 1 (Top Left) -> +780 Vitality
+      "refreshment", "high_tolerance", "side_effects",                     // Quad 2 (Top Right) -> +780 Vitality
+      "battle_frenzy", "attack_is_the_best_defense", "metabolic_control",  // Quad 3 (Bottom Left) -> +195 Vitality
+      "toxic_shock", "cluster_bombs", "fast_metabolism",                   // Quad 4 (Bottom Right) -> +780 Vitality
+      "tissue_transmutation", "poisoned_blades", "hunter_instinct", "efficiency" // Mutation bonus slots
+    ]
+  },
   euphoria_toxic: {
     name: "Euphoria Glass Cannon (Toxic Alchemy)",
     subtitle: "Max Toxicity Scaling +75% Swords & Signs Intensity",
     mutation: "euphoria",
+    mutagenSockets: ["red", "green", "green", "green"],
     combatAllocations: {
       muscle_memory: 3,
       crushing_blows: 3,

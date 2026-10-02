@@ -42,6 +42,7 @@ export interface BuildPreset {
   name: string;
   subtitle: string;
   mutation: string;
+  mutagenSockets?: ('red' | 'blue' | 'green')[];
   combatAllocations: Record<string, number>;
   signsAllocations?: Record<string, number>;
   alchemyAllocations?: Record<string, number>;

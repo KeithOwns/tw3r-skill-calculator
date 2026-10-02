@@ -65,11 +65,19 @@ export const BottomActionBar: React.FC = () => {
         </button>
 
         <button
+          className={`btn-preset-pill ${activePresetKey === 'max_toxicity_manticore' ? 'active' : ''}`}
+          onClick={() => loadPreset('max_toxicity_manticore')}
+          title="Load Max Toxicity Manticore Chemist (234 Max Toxicity | 15,902 HP | 4 Decoctions + Metamorphosis)"
+        >
+          🧪 Manticore Chemist (234 Tox)
+        </button>
+
+        <button
           className={`btn-preset-pill ${activePresetKey === 'euphoria_toxic' ? 'active' : ''}`}
           onClick={() => loadPreset('euphoria_toxic')}
           title="Load Euphoria Toxic Chemist (Euphoria Mutation + Maxed Alchemy & Toxicity)"
         >
-          🧪 Euphoria Chemist (+Toxic)
+          ☣️ Euphoria Chemist (+Toxic)
         </button>
 
         <button

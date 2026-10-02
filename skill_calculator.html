@@ -1662,8 +1662,11 @@
       <button class="btn-preset-pill" id="btnPresetArchmage" onclick="loadGroundTruthPreset('archmage_pyromancer')">
         ❄️ Piercing Cold (+160% Signs)
       </button>
+      <button class="btn-preset-pill" id="btnPresetManticore" onclick="loadGroundTruthPreset('max_toxicity_manticore')">
+        🧪 Manticore Chemist (234 Tox)
+      </button>
       <button class="btn-preset-pill" id="btnPresetEuphoria" onclick="loadGroundTruthPreset('euphoria_toxic')">
-        🧪 Euphoria Chemist (+Toxic)
+        ☣️ Euphoria Chemist (+Toxic)
       </button>
       <button class="btn-preset-pill gold-glow" id="btnPresetTitan" onclick="loadGroundTruthPreset('snips_titan')">
         👑 Level 100 Titan (Maxed)
@@ -1713,9 +1716,18 @@
       activeMutationId: "cat_eyes",
       skillAllocations: {}, // skillId -> rank
       slottedAbilities: new Array(16).fill(null), // 16 slots (0-11 regular, 12-15 mutation)
+      mutagenSockets: ["red", "red", "red", "red"],
       activeSlotPickerIndex: null,
       inspectedSkillId: "muscle_memory"
     };
+
+    function cycleMutagenSocket(quadIndex) {
+      if (!appState.mutagenSockets) appState.mutagenSockets = ["red", "red", "red", "red"];
+      const current = appState.mutagenSockets[quadIndex];
+      const cycle = { red: "green", green: "blue", blue: "red" };
+      appState.mutagenSockets[quadIndex] = cycle[current] || "red";
+      updateAllUI();
+    }
 
     // Initialize all skill allocations to 0
     function initAllocations() {
@@ -2074,36 +2086,39 @@
         }
 
         // Calculate Quadrant Mutagen Bonus (Combat red AP, Signs blue SI, Alchemy green Vitality)
-        const isAlchemyQuad = greenAlchemyCount > blueSignsCount && greenAlchemyCount > redCombatCount;
-        const isSignQuad = !isAlchemyQuad && (blueSignsCount > redCombatCount);
+        const socketColor = (appState.mutagenSockets && appState.mutagenSockets[q - 1]) || "red";
+        const isAlchemyQuad = socketColor === "green";
+        const isSignQuad = socketColor === "blue";
+        const synergyRank = appState.skillAllocations["synergy"] || 0;
+        const synergyMult = 1 + (synergyRank * 0.10);
         
         let quadBonusText = "";
         let ribbonIcon = "⚔️";
         let ribbonTitle = "ATTACK POWER";
-        let socketClass = "mutagen-orb-socket";
-        let swirlClass = "mutagen-swirl-core";
+        let socketClass = "mutagen-orb-socket socket-red";
+        let swirlClass = "mutagen-swirl-core swirl-red";
 
         if (isAlchemyQuad) {
-          const val = 150 + (greenAlchemyCount * 150);
+          const val = Math.round((150 + (greenAlchemyCount * 150)) * synergyMult);
           quadBonusText = `+${val}`;
           ribbonIcon = "🧪";
           ribbonTitle = "VITALITY";
           socketClass = "mutagen-orb-socket socket-green";
           swirlClass = "mutagen-swirl-core swirl-green";
         } else if (isSignQuad) {
-          const val = 10 + (blueSignsCount * 10);
+          const val = Math.round((10 + (blueSignsCount * 10)) * synergyMult);
           quadBonusText = `+${val}%`;
           ribbonIcon = "👁️";
           ribbonTitle = "SIGN INTENSITY";
           socketClass = "mutagen-orb-socket socket-blue";
           swirlClass = "mutagen-swirl-core swirl-blue";
         } else {
-          const val = 10 + (redCombatCount * 10);
+          const val = Math.round((10 + (redCombatCount * 10)) * synergyMult);
           quadBonusText = `+${val}%`;
           ribbonIcon = "⚔️";
           ribbonTitle = "ATTACK POWER";
-          socketClass = "mutagen-orb-socket";
-          swirlClass = "mutagen-swirl-core";
+          socketClass = "mutagen-orb-socket socket-red";
+          swirlClass = "mutagen-swirl-core swirl-red";
         }
 
         const quadBlock = document.getElementById(`quad${q}ApVal`)?.closest('.matrix-quadrant-block');
@@ -2111,7 +2126,12 @@
           quadBlock.classList.toggle('quad-signs', isSignQuad);
           quadBlock.classList.toggle('quad-alchemy', isAlchemyQuad);
           const orb = quadBlock.querySelector('.mutagen-orb-socket');
-          if (orb) orb.className = socketClass;
+          if (orb) {
+            orb.className = socketClass;
+            orb.style.cursor = "pointer";
+            orb.setAttribute("onclick", `cycleMutagenSocket(${q - 1})`);
+            orb.setAttribute("title", `Click to cycle Mutagen color (Red / Green / Blue)`);
+          }
           const swirl = quadBlock.querySelector('.mutagen-swirl-core');
           if (swirl) swirl.className = swirlClass;
           const icon = quadBlock.querySelector('.ribbon-swords-icon');
@@ -2331,12 +2351,20 @@
         });
       }
 
+      // Mutagen sockets
+      if (preset.mutagenSockets) {
+        appState.mutagenSockets = [...preset.mutagenSockets];
+      } else {
+        appState.mutagenSockets = ["red", "red", "red", "red"];
+      }
+
       // Update button active state
       document.querySelectorAll(".btn-preset-pill").forEach(b => b.classList.remove("active"));
       if (presetKey === "cat_eyes_sniper") document.getElementById("btnPresetCatEyes")?.classList.add("active");
       if (presetKey === "bloodbath_melee") document.getElementById("btnPresetBloodbath")?.classList.add("active");
       if (presetKey === "swords_tank") document.getElementById("btnPresetTank")?.classList.add("active");
       if (presetKey === "archmage_pyromancer") document.getElementById("btnPresetArchmage")?.classList.add("active");
+      if (presetKey === "max_toxicity_manticore") document.getElementById("btnPresetManticore")?.classList.add("active");
       if (presetKey === "euphoria_toxic") document.getElementById("btnPresetEuphoria")?.classList.add("active");
       if (presetKey === "snips_titan") document.getElementById("btnPresetTitan")?.classList.add("active");
 
@@ -2346,6 +2374,7 @@
     function resetEntireTree() {
       initAllocations();
       appState.slottedAbilities.fill(null);
+      appState.mutagenSockets = ["red", "red", "red", "red"];
       document.querySelectorAll(".btn-preset-pill").forEach(b => b.classList.remove("active"));
       updateAllUI();
     }

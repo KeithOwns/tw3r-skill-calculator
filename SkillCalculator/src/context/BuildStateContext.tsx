@@ -48,6 +48,8 @@ export interface BuildContextType {
   unslotSkill: (slotIndex: number) => void;
   loadPreset: (presetKey: string) => void;
   resetEntireTree: () => void;
+  mutagenSockets: ('red' | 'blue' | 'green')[];
+  cycleMutagenSocket: (quadIndex: number) => void;
   getQuadrantAttackPower: (quadIndex: number) => number;
   getQuadrantBonus: (quadIndex: number) => QuadrantBonus;
 }
@@ -67,6 +69,21 @@ export const BuildProvider = ({ children }: { children: ReactNode }) => {
   const [hoveredSkillId, setHoveredSkillId] = useState<string | null>(null);
   const [hoverPos, setHoverPos] = useState<{ x: number; y: number } | null>(null);
   const [isMutationsModalOpen, setIsMutationsModalOpen] = useState<boolean>(false);
+  const [mutagenSockets, setMutagenSockets] = useState<('red' | 'blue' | 'green')[]>(['red', 'red', 'red', 'red']);
+
+  const cycleMutagenSocket = (quadIndex: number) => {
+    setMutagenSockets(prev => {
+      const next = [...prev];
+      const curr = next[quadIndex] || 'red';
+      const cycleMap: Record<'red' | 'blue' | 'green', 'red' | 'blue' | 'green'> = {
+        red: 'green',
+        green: 'blue',
+        blue: 'red'
+      };
+      next[quadIndex] = cycleMap[curr];
+      return next;
+    });
+  };
 
   // Compute spent points
   const { spentCombat, spentSigns, spentAlchemy, spentGeneral, totalPointsSpent } = useMemo(() => {
@@ -227,19 +244,24 @@ export const BuildProvider = ({ children }: { children: ReactNode }) => {
     if (preset.mutation && MUTATIONS_DATA[preset.mutation]) {
       setActiveMutationId(preset.mutation);
     }
+    if (preset.mutagenSockets) {
+      setMutagenSockets(preset.mutagenSockets);
+    }
     setActivePresetKey(presetKey);
   };
 
   const resetEntireTree = () => {
     setAllocatedSkills({});
     setSlottedAbilities(Array(16).fill(null));
+    setMutagenSockets(['red', 'red', 'red', 'red']);
     setActivePresetKey(null);
   };
 
-  // Quadrant Bonus calculation
-  // Greater Red Mutagen (+10% base + 10% per Combat skill)
-  // Greater Blue Mutagen (+10% base + 10% per Signs skill)
-  // Greater Green Mutagen (+150 base + 150 per Alchemy skill)
+  // Quadrant Bonus calculation with in-game Remastered ground truth:
+  // Greater Red Mutagen (+10% base + 10% per Combat skill, scaled by Synergy)
+  // Greater Blue Mutagen (+10% base + 10% per Signs skill, scaled by Synergy)
+  // Greater Green Mutagen (+150 base + 150 per Alchemy skill, scaled by Synergy)
+  // Synergy Rank 3 provides +30% mutagen bonuses (e.g. 150 -> 195, 600 -> 780, 10% -> 13%, 40% -> 52%)
   const getQuadrantBonus = (quadIndex: number): QuadrantBonus => {
     const startIdx = quadIndex * 3;
     const quadSkills = [
@@ -258,22 +280,26 @@ export const BuildProvider = ({ children }: { children: ReactNode }) => {
       }
     });
 
-    if (alchemyCount > signsCount && alchemyCount > combatCount) {
-      const val = 150 + (alchemyCount * 150);
+    const socketColor = mutagenSockets[quadIndex] || 'red';
+    const synergyRank = allocatedSkills['synergy'] || 0;
+    const synergyMult = 1 + (synergyRank * 0.10);
+
+    if (socketColor === 'green') {
+      const val = Math.round((150 + (alchemyCount * 150)) * synergyMult);
       return {
         value: val,
         type: 'vitality',
         label: 'Vitality'
       };
-    } else if (signsCount > combatCount) {
-      const val = 10 + (signsCount * 10);
+    } else if (socketColor === 'blue') {
+      const val = Math.round((10 + (signsCount * 10)) * synergyMult);
       return {
         value: val,
         type: 'sign_intensity',
         label: 'Sign intensity'
       };
     } else {
-      const val = 10 + (combatCount * 10);
+      const val = Math.round((10 + (combatCount * 10)) * synergyMult);
       return {
         value: val,
         type: 'attack_power',
@@ -318,6 +344,8 @@ export const BuildProvider = ({ children }: { children: ReactNode }) => {
         unslotSkill,
         loadPreset,
         resetEntireTree,
+        mutagenSockets,
+        cycleMutagenSocket,
         getQuadrantAttackPower,
         getQuadrantBonus
       }}

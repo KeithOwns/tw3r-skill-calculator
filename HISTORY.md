@@ -8,6 +8,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- Added first-class "Max Toxicity Manticore (Chemist Tank)" preset derived directly from Level 100 in-game ground truth screenshots (234 Max Toxicity, 15,902 Vitality, 4 Greater Green Mutagens, and 4 concurrent 50-cost decoctions + Metamorphosis procs for up to 9 active decoctions).
+- Added full support for Green, Blue, and Red Greater Mutagen sockets in each quadrant with interactive cycling and ground-truth Synergy (+30%) scaling (+780 / +195 Vitality; +52% / +13% Sign Intensity; +52% / +13% Attack Power).
 - Authentic 20-node Alchemy skill tree extracted directly from game snips across 4 branches (Brewing, Oil Preparation, Bomb Creation, Mutation) and 5 tiers.
 - Complete 28-conduit network for Alchemy matching in-game topology and unlock progression.
 - 12 Blood and Wine Mutation Orbs with authentic descriptions, color requirements, skill point costs, and mutagens needed.

@@ -14,7 +14,9 @@ export const SlottedMatrixPanel: React.FC = () => {
     unslotSkill,
     activeMutationId,
     setIsMutationsModalOpen,
-    getQuadrantBonus
+    getQuadrantBonus,
+    mutagenSockets,
+    cycleMutagenSocket
   } = useBuild();
 
   const activeMutation = MUTATIONS_DATA[activeMutationId] || MUTATIONS_DATA.cat_eyes;
@@ -73,16 +75,17 @@ export const SlottedMatrixPanel: React.FC = () => {
 
   const renderQuadrant = (quadIdx: number, startSlot: number) => {
     const bonus = getQuadrantBonus(quadIdx);
-    const isSignBonus = bonus.type === 'sign_intensity';
-    const isAlchemyBonus = bonus.type === 'vitality';
+    const socketColor = mutagenSockets[quadIdx] || 'red';
+    const isSignBonus = socketColor === 'blue';
+    const isAlchemyBonus = socketColor === 'green';
 
     let quadClass = 'quad-combat';
     let ribbonIcon = '⚔️';
-    let socketClass = '';
-    let swirlClass = '';
+    let socketClass = 'socket-red';
+    let swirlClass = 'swirl-red';
     let valClass = '';
     let valueDisplay = `+${bonus.value}%`;
-    let socketTitle = `Greater Red Mutagen (+10% base + 10% per Combat skill = +${bonus.value}%)`;
+    let socketTitle = `Greater Red Mutagen (+${bonus.value}% Attack power)`;
 
     if (isAlchemyBonus) {
       quadClass = 'quad-alchemy';
@@ -91,7 +94,7 @@ export const SlottedMatrixPanel: React.FC = () => {
       swirlClass = 'swirl-green';
       valClass = 'alchemy-val';
       valueDisplay = `+${bonus.value}`;
-      socketTitle = `Greater Green Mutagen (+150 base + 150 per Alchemy skill = +${bonus.value} Vitality)`;
+      socketTitle = `Greater Green Mutagen (+${bonus.value} Vitality)`;
     } else if (isSignBonus) {
       quadClass = 'quad-signs';
       ribbonIcon = '👁️';
@@ -99,7 +102,7 @@ export const SlottedMatrixPanel: React.FC = () => {
       swirlClass = 'swirl-blue';
       valClass = 'signs-val';
       valueDisplay = `+${bonus.value}%`;
-      socketTitle = `Greater Blue Mutagen (+10% base + 10% per Signs skill = +${bonus.value}%)`;
+      socketTitle = `Greater Blue Mutagen (+${bonus.value}% Sign intensity)`;
     }
 
     return (
@@ -114,7 +117,9 @@ export const SlottedMatrixPanel: React.FC = () => {
         <div className="quad-socket-row">
           <div
             className={`mutagen-orb-socket ${socketClass}`}
-            title={socketTitle}
+            style={{ cursor: 'pointer' }}
+            onClick={() => cycleMutagenSocket(quadIdx)}
+            title={`${socketTitle} — Click to cycle Mutagen (Red / Green / Blue)`}
           >
             <div className={`mutagen-swirl-core ${swirlClass}`} />
           </div>
