@@ -4,6 +4,7 @@ import { DisciplineTabBar } from './components/DisciplineTabBar';
 import { SkillTreeCanvas } from './components/SkillTreeCanvas';
 import { SlottedMatrixPanel } from './components/SlottedMatrixPanel';
 import { MutationsModal } from './components/MutationsModal';
+import { EquipAbilityModal } from './components/EquipAbilityModal';
 import { SkillTooltip } from './components/SkillTooltip';
 import { BottomActionBar } from './components/BottomActionBar';
 import './App.css';
@@ -39,6 +40,9 @@ export function App() {
 
         {/* Blood & Wine Mutations Modal */}
         <MutationsModal />
+
+        {/* Equip Ability Modal */}
+        <EquipAbilityModal />
       </div>
     </BuildProvider>
   );

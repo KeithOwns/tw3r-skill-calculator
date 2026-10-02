@@ -11,12 +11,17 @@ import {
 export const SlottedMatrixPanel: React.FC = () => {
   const {
     slottedAbilities,
+    slotSkill,
     unslotSkill,
     activeMutationId,
     setIsMutationsModalOpen,
     getQuadrantBonus,
     mutagenSockets,
-    cycleMutagenSocket
+    cycleMutagenSocket,
+    selectedSlotIndex,
+    setSelectedSlotIndex,
+    setIsEquipModalOpen,
+    swapSlots
   } = useBuild();
 
   const activeMutation = MUTATIONS_DATA[activeMutationId] || MUTATIONS_DATA.cat_eyes;
@@ -29,10 +34,12 @@ export const SlottedMatrixPanel: React.FC = () => {
     const iconPath = skill ? (skill.icon.startsWith('./') ? skill.icon : `./${skill.icon.replace(/^\//, '')}`) : null;
 
     const isFilled = Boolean(skill);
+    const isSelected = selectedSlotIndex === slotIdx;
     const isSigns = skill?.category === 'signs' || (!skill?.category && !!SIGNS_SKILLS_DATA[skillId!]);
     const isAlchemy = skill?.category === 'alchemy' || (!skill?.category && !!ALCHEMY_SKILLS_DATA[skillId!]);
     const isGeneral = skill?.category === 'general';
     let slotClass = isBonus ? 'bonus-slot-unit' : 'game-ability-slot';
+    if (isSelected) slotClass += ' selected';
     if (isFilled) {
       if (isSigns) slotClass += ' filled filled-signs';
       else if (isAlchemy) slotClass += ' filled filled-alchemy';
@@ -44,8 +51,30 @@ export const SlottedMatrixPanel: React.FC = () => {
       <div
         key={slotIdx}
         className={slotClass}
-        onClick={() => skillId && unslotSkill(slotIdx)}
-        title={skill ? `${skill.name} (Click to unslot)` : `Empty Slot ${slotIdx + 1}`}
+        draggable={isFilled}
+        onDragStart={(e) => {
+          e.dataTransfer.setData('fromSlot', slotIdx.toString());
+          if (skillId) e.dataTransfer.setData('text/plain', skillId);
+        }}
+        onDragOver={(e) => {
+          e.preventDefault();
+          e.dataTransfer.dropEffect = 'copy';
+        }}
+        onDrop={(e) => {
+          e.preventDefault();
+          const fromSlot = e.dataTransfer.getData('fromSlot');
+          const draggedSkillId = e.dataTransfer.getData('text/plain');
+          if (fromSlot !== '') {
+            swapSlots(parseInt(fromSlot, 10), slotIdx);
+          } else if (draggedSkillId) {
+            slotSkill(draggedSkillId, slotIdx);
+          }
+        }}
+        onClick={() => {
+          setSelectedSlotIndex(slotIdx);
+          setIsEquipModalOpen(true);
+        }}
+        title={skill ? `${skill.name} (Click to change/unslot)` : `Empty Slot ${slotIdx + 1} (Click to equip ability)`}
       >
         {iconPath ? (
           <>
@@ -56,6 +85,7 @@ export const SlottedMatrixPanel: React.FC = () => {
             />
             <span
               className="slot-remove-badge"
+              title="Remove skill"
               onClick={(e) => {
                 e.stopPropagation();
                 unslotSkill(slotIdx);
@@ -65,7 +95,7 @@ export const SlottedMatrixPanel: React.FC = () => {
             </span>
           </>
         ) : (
-          <div className="w-full h-full flex items-center justify-center opacity-20 text-xs">
+          <div className="w-full h-full flex items-center justify-center opacity-40 text-xs font-bold text-amber-200/60">
             +
           </div>
         )}

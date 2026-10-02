@@ -20,7 +20,8 @@ export const SkillTreeCanvas: React.FC = () => {
     investSkill,
     slotSkill,
     setHoveredSkillId,
-    setHoverPos
+    setHoverPos,
+    selectedSlotIndex
   } = useBuild();
 
   const skillsDict = 
@@ -39,12 +40,30 @@ export const SkillTreeCanvas: React.FC = () => {
 
   const handleNodeClick = (e: React.MouseEvent, skillId: string) => {
     e.preventDefault();
+    // If a slot is currently selected in the HUD, clicking any skill equips it there!
+    if (selectedSlotIndex !== null) {
+      slotSkill(skillId, selectedSlotIndex);
+      return;
+    }
+
     if (e.shiftKey) {
       // Shift+Click equips skill
       slotSkill(skillId);
     } else {
-      investSkill(skillId, 1);
+      const skill = skillsDict[skillId];
+      const rank = allocatedSkills[skillId] || 0;
+      // If already maxed or no points left, equip it!
+      if (rank >= (skill?.maxRank || 3) || pointsAvailable <= 0) {
+        slotSkill(skillId);
+      } else {
+        investSkill(skillId, 1);
+      }
     }
+  };
+
+  const handleDoubleClick = (e: React.MouseEvent, skillId: string) => {
+    e.preventDefault();
+    slotSkill(skillId);
   };
 
   const handleContextMenu = (e: React.MouseEvent, skillId: string) => {
@@ -127,12 +146,18 @@ export const SkillTreeCanvas: React.FC = () => {
                 key={skill.id}
                 id={`node-${skill.id}`}
                 className={nodeClass}
-                style={{ left: `${skill.x}px`, top: `${skill.y}px` }}
+                style={{ left: `${skill.x}px`, top: `${skill.y}px`, cursor: 'grab' }}
+                draggable={true}
+                onDragStart={(e) => {
+                  e.dataTransfer.setData('text/plain', skill.id);
+                  e.dataTransfer.effectAllowed = 'copy';
+                }}
                 onClick={e => handleNodeClick(e, skill.id)}
+                onDoubleClick={e => handleDoubleClick(e, skill.id)}
                 onContextMenu={e => handleContextMenu(e, skill.id)}
                 onMouseEnter={e => handleMouseEnter(e, skill.id)}
                 onMouseLeave={handleMouseLeave}
-                title={`${skill.name} (${rank}/${skill.maxRank})\nLeft click: +1 pt\nRight click: -1 pt\nShift+click: Equip`}
+                title={`${skill.name} (${rank}/${skill.maxRank})\n• Click to invest / Equip to selected slot\n• Double-click or Shift+click to equip\n• Drag & drop onto any slot\n• Right click to refund`}
               >
                 <div className="node-frame-box">
                   <img

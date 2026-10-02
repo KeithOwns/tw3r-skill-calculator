@@ -3,7 +3,7 @@ import { useBuild } from '../context/BuildStateContext';
 import { COMBAT_SKILLS_DATA, SIGNS_SKILLS_DATA, ALCHEMY_SKILLS_DATA, GENERAL_SKILLS_DATA } from '../data/groundTruthData';
 
 export const SkillTooltip: React.FC = () => {
-  const { hoveredSkillId, hoverPos, allocatedSkills } = useBuild();
+  const { hoveredSkillId, hoverPos, allocatedSkills, slotSkill, slottedAbilities, selectedSlotIndex } = useBuild();
 
   if (!hoveredSkillId) return null;
 
@@ -13,6 +13,7 @@ export const SkillTooltip: React.FC = () => {
   const currentRank = allocatedSkills[skill.id] || 0;
   const currentRankData = currentRank > 0 ? skill.ranks[currentRank - 1] : null;
   const nextRankData = currentRank < skill.maxRank ? skill.ranks[currentRank] : null;
+  const isSlotted = slottedAbilities.includes(skill.id);
 
   // Position tooltip safely within viewport
   const left = hoverPos ? Math.min(window.innerWidth - 350, Math.max(20, hoverPos.x)) : 100;
@@ -59,6 +60,42 @@ export const SkillTooltip: React.FC = () => {
       {skill.tacticalTip && (
         <div className="tooltip-tip">{skill.tacticalTip}</div>
       )}
+
+      <div
+        className="tooltip-action-row"
+        style={{
+          marginTop: '8px',
+          paddingTop: '6px',
+          borderTop: '1px solid rgba(229, 184, 57, 0.25)',
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center'
+        }}
+      >
+        <button
+          className="btn-action-stone"
+          style={{
+            padding: '3px 10px',
+            fontSize: '11px',
+            borderColor: 'var(--tw-gold-primary)',
+            color: '#facc15',
+            cursor: 'pointer'
+          }}
+          onMouseDown={(e) => {
+            e.stopPropagation();
+            slotSkill(skill.id, selectedSlotIndex !== null ? selectedSlotIndex : undefined);
+          }}
+        >
+          {isSlotted
+            ? '⇄ Move Slot'
+            : (selectedSlotIndex !== null ? `⚡ Equip to Slot ${selectedSlotIndex + 1}` : '⚡ Equip Ability')}
+        </button>
+        {isSlotted && (
+          <span style={{ fontSize: '10px', color: '#4ade80', fontWeight: 'bold' }}>
+            ✓ Slotted
+          </span>
+        )}
+      </div>
     </div>
   );
 };

@@ -828,6 +828,26 @@
       transform: translateY(-2px);
     }
 
+    .game-ability-slot.selected,
+    .bonus-slot-unit.selected {
+      border-color: #ffd700 !important;
+      box-shadow: 0 0 16px rgba(255, 215, 0, 0.95), inset 0 0 10px rgba(255, 215, 0, 0.45) !important;
+      animation: pulse-selected-gold 1.5s infinite alternate;
+      transform: scale(1.05);
+      z-index: 10;
+    }
+
+    @keyframes pulse-selected-gold {
+      from {
+        border-color: #e5b839;
+        box-shadow: 0 0 10px rgba(229, 184, 57, 0.6), inset 0 0 5px rgba(229, 184, 57, 0.3);
+      }
+      to {
+        border-color: #ffd700;
+        box-shadow: 0 0 22px rgba(255, 215, 0, 1), inset 0 0 12px rgba(255, 215, 0, 0.6);
+      }
+    }
+
     .game-ability-slot.filled {
       border-color: #ef4444;
       box-shadow: 0 0 12px rgba(239, 68, 68, 0.45);

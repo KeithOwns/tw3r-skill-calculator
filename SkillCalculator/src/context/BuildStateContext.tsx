@@ -34,6 +34,12 @@ export interface BuildContextType {
   activePresetKey: string | null;
   setActivePresetKey: (key: string | null) => void;
   
+  selectedSlotIndex: number | null;
+  setSelectedSlotIndex: (idx: number | null) => void;
+  isEquipModalOpen: boolean;
+  setIsEquipModalOpen: (open: boolean) => void;
+  swapSlots: (fromSlot: number, toSlot: number) => void;
+  
   totalPointsPool: number;
   spentCombat: number;
   spentSigns: number;
@@ -69,6 +75,8 @@ export const BuildProvider = ({ children }: { children: ReactNode }) => {
   const [hoveredSkillId, setHoveredSkillId] = useState<string | null>(null);
   const [hoverPos, setHoverPos] = useState<{ x: number; y: number } | null>(null);
   const [isMutationsModalOpen, setIsMutationsModalOpen] = useState<boolean>(false);
+  const [selectedSlotIndex, setSelectedSlotIndex] = useState<number | null>(null);
+  const [isEquipModalOpen, setIsEquipModalOpen] = useState<boolean>(false);
   const [mutagenSockets, setMutagenSockets] = useState<('red' | 'blue' | 'green')[]>(['red', 'red', 'red', 'red']);
 
   const cycleMutagenSocket = (quadIndex: number) => {
@@ -187,18 +195,28 @@ export const BuildProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const slotSkill = (skillId: string, targetSlot?: number) => {
-    const rank = allocatedSkills[skillId] || 0;
-    if (rank <= 0) return;
+    // Auto-allocate 1 point if uninvested so user can immediately slot and experiment
+    const currentRank = allocatedSkills[skillId] || 0;
+    if (currentRank <= 0) {
+      setAllocatedSkills(prev => ({
+        ...prev,
+        [skillId]: 1
+      }));
+    }
+
+    const resolvedSlot = targetSlot !== undefined 
+      ? targetSlot 
+      : (selectedSlotIndex !== null ? selectedSlotIndex : undefined);
 
     setSlottedAbilities(prev => {
       const next = [...prev];
       const existingIndex = next.indexOf(skillId);
 
-      if (targetSlot !== undefined && targetSlot >= 0 && targetSlot < 16) {
+      if (resolvedSlot !== undefined && resolvedSlot >= 0 && resolvedSlot < 16) {
         if (existingIndex !== -1) {
           next[existingIndex] = null;
         }
-        next[targetSlot] = skillId;
+        next[resolvedSlot] = skillId;
       } else {
         // If already slotted, unslot it on toggle
         if (existingIndex !== -1) {
@@ -213,12 +231,28 @@ export const BuildProvider = ({ children }: { children: ReactNode }) => {
       }
       return next;
     });
+
+    // Clear slot selection and close modal
+    setSelectedSlotIndex(null);
+    setIsEquipModalOpen(false);
   };
 
   const unslotSkill = (slotIndex: number) => {
     setSlottedAbilities(prev => {
       const next = [...prev];
       next[slotIndex] = null;
+      return next;
+    });
+    setSelectedSlotIndex(slotIndex);
+  };
+
+  const swapSlots = (fromSlot: number, toSlot: number) => {
+    if (fromSlot < 0 || fromSlot >= 16 || toSlot < 0 || toSlot >= 16) return;
+    setSlottedAbilities(prev => {
+      const next = [...prev];
+      const temp = next[fromSlot];
+      next[fromSlot] = next[toSlot];
+      next[toSlot] = temp;
       return next;
     });
   };
@@ -329,6 +363,11 @@ export const BuildProvider = ({ children }: { children: ReactNode }) => {
         setHoverPos,
         isMutationsModalOpen,
         setIsMutationsModalOpen,
+        selectedSlotIndex,
+        setSelectedSlotIndex,
+        isEquipModalOpen,
+        setIsEquipModalOpen,
+        swapSlots,
         activePresetKey,
         setActivePresetKey,
         totalPointsPool,
