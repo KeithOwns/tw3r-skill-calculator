@@ -102,7 +102,7 @@ export const SkillTreeCanvas: React.FC = () => {
               else if (activeDiscipline === 'signs') lineClass += ' active-signs';
               else if (activeDiscipline === 'alchemy') lineClass += ' active-alchemy';
               else lineClass += ' active-general';
-            } else if (isParentAllocated) {
+            } else if (isParentAllocated || (activeDiscipline === 'general' && isChildAllocated)) {
               lineClass += ' unlocked';
             }
 
@@ -142,6 +142,7 @@ export const SkillTreeCanvas: React.FC = () => {
             return (
               <div
                 key={skill.id}
+                id={`node-${skill.id}`}
                 className={nodeClass}
                 style={{ left: `${skill.x}px`, top: `${skill.y}px` }}
                 onClick={e => handleNodeClick(e, skill.id)}

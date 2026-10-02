@@ -1823,7 +1823,7 @@
           else if (appState.currentDiscipline === "signs") lineClass += " active-signs";
           else if (appState.currentDiscipline === "alchemy") lineClass += " active-alchemy";
           else lineClass += " active-general";
-        } else if (isParentAllocated) {
+        } else if (isParentAllocated || (appState.currentDiscipline === "general" && isChildAllocated)) {
           lineClass += " unlocked";
         }
         line.setAttribute("class", lineClass);

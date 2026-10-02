@@ -1589,8 +1589,8 @@ const GENERAL_SKILLS_DATA = {
     x: 390,
     y: 263,
     maxRank: 3,
-    parents: ["cat_school_techniques"],
-    requiresAnyParent: true,
+    parents: [],
+    requiresAnyParent: false,
     minPointsInTree: 0,
     icon: "assets/icons/general/wolf_school_techniques.png",
     ranks: [
@@ -1623,8 +1623,8 @@ const GENERAL_SKILLS_DATA = {
     x: 390,
     y: 395,
     maxRank: 3,
-    parents: ["wolf_school_techniques"],
-    requiresAnyParent: true,
+    parents: [],
+    requiresAnyParent: false,
     minPointsInTree: 0,
     icon: "assets/icons/general/bear_school_techniques.png",
     ranks: [
@@ -1657,8 +1657,8 @@ const GENERAL_SKILLS_DATA = {
     x: 390,
     y: 527,
     maxRank: 3,
-    parents: ["bear_school_techniques"],
-    requiresAnyParent: true,
+    parents: [],
+    requiresAnyParent: false,
     minPointsInTree: 0,
     icon: "assets/icons/general/griffin_school_techniques.png",
     ranks: [
@@ -1691,8 +1691,8 @@ const GENERAL_SKILLS_DATA = {
     x: 390,
     y: 659,
     maxRank: 3,
-    parents: ["griffin_school_techniques"],
-    requiresAnyParent: true,
+    parents: [],
+    requiresAnyParent: false,
     minPointsInTree: 0,
     icon: "assets/icons/general/manticore_school_techniques.png",
     ranks: [
@@ -1725,8 +1725,8 @@ const GENERAL_SKILLS_DATA = {
     x: 390,
     y: 791,
     maxRank: 3,
-    parents: ["element_of_surprise", "manticore_school_techniques", "metabolic_boost"],
-    requiresAnyParent: true,
+    parents: [],
+    requiresAnyParent: false,
     minPointsInTree: 0,
     icon: "assets/icons/general/viper_school_techniques.png",
     ranks: [
@@ -1793,7 +1793,7 @@ const GENERAL_SKILLS_DATA = {
     x: 258,
     y: 329,
     maxRank: 3,
-    parents: ["battle_frenzy", "wolf_school_techniques"],
+    parents: ["cat_school_techniques", "battle_frenzy", "wolf_school_techniques"],
     requiresAnyParent: true,
     minPointsInTree: 0,
     icon: "assets/icons/general/attack_is_the_best_defense.png",
@@ -1827,7 +1827,7 @@ const GENERAL_SKILLS_DATA = {
     x: 127,
     y: 395,
     maxRank: 3,
-    parents: ["attack_is_the_best_defense"],
+    parents: ["battle_frenzy", "attack_is_the_best_defense"],
     requiresAnyParent: true,
     minPointsInTree: 0,
     icon: "assets/icons/general/strong_back.png",
@@ -1861,7 +1861,7 @@ const GENERAL_SKILLS_DATA = {
     x: 258,
     y: 461,
     maxRank: 3,
-    parents: ["strong_back", "bear_school_techniques"],
+    parents: ["strong_back", "wolf_school_techniques", "bear_school_techniques"],
     requiresAnyParent: true,
     minPointsInTree: 0,
     icon: "assets/icons/general/gourmand.png",
@@ -1895,7 +1895,7 @@ const GENERAL_SKILLS_DATA = {
     x: 127,
     y: 527,
     maxRank: 3,
-    parents: ["gourmand"],
+    parents: ["strong_back", "gourmand"],
     requiresAnyParent: true,
     minPointsInTree: 0,
     icon: "assets/icons/general/elemental_attunement.png",
@@ -1929,7 +1929,7 @@ const GENERAL_SKILLS_DATA = {
     x: 258,
     y: 593,
     maxRank: 3,
-    parents: ["gourmand", "griffin_school_techniques"],
+    parents: ["elemental_attunement", "bear_school_techniques", "griffin_school_techniques", "manticore_school_techniques", "viper_school_techniques"],
     requiresAnyParent: true,
     minPointsInTree: 0,
     icon: "assets/icons/general/advanced_pyrotechnics.png",
@@ -1963,7 +1963,7 @@ const GENERAL_SKILLS_DATA = {
     x: 127,
     y: 659,
     maxRank: 3,
-    parents: ["advanced_pyrotechnics"],
+    parents: ["elemental_attunement", "advanced_pyrotechnics", "viper_school_techniques"],
     requiresAnyParent: true,
     minPointsInTree: 0,
     icon: "assets/icons/general/element_of_surprise.png",
@@ -2031,7 +2031,7 @@ const GENERAL_SKILLS_DATA = {
     x: 521,
     y: 329,
     maxRank: 3,
-    parents: ["adrenaline_burst", "wolf_school_techniques"],
+    parents: ["cat_school_techniques", "adrenaline_burst", "wolf_school_techniques"],
     requiresAnyParent: true,
     minPointsInTree: 0,
     icon: "assets/icons/general/sun_and_stars.png",
@@ -2065,7 +2065,7 @@ const GENERAL_SKILLS_DATA = {
     x: 653,
     y: 395,
     maxRank: 3,
-    parents: ["sun_and_stars"],
+    parents: ["adrenaline_burst", "sun_and_stars"],
     requiresAnyParent: true,
     minPointsInTree: 0,
     icon: "assets/icons/general/survival_instinct.png",
@@ -2099,7 +2099,7 @@ const GENERAL_SKILLS_DATA = {
     x: 521,
     y: 461,
     maxRank: 3,
-    parents: ["survival_instinct", "bear_school_techniques"],
+    parents: ["survival_instinct", "wolf_school_techniques", "bear_school_techniques"],
     requiresAnyParent: true,
     minPointsInTree: 0,
     icon: "assets/icons/general/anger_management.png",
@@ -2133,7 +2133,7 @@ const GENERAL_SKILLS_DATA = {
     x: 653,
     y: 527,
     maxRank: 3,
-    parents: ["anger_management"],
+    parents: ["survival_instinct", "anger_management"],
     requiresAnyParent: true,
     minPointsInTree: 0,
     icon: "assets/icons/general/synergy.png",
@@ -2167,7 +2167,7 @@ const GENERAL_SKILLS_DATA = {
     x: 521,
     y: 593,
     maxRank: 3,
-    parents: ["anger_management", "griffin_school_techniques"],
+    parents: ["synergy", "bear_school_techniques", "griffin_school_techniques", "manticore_school_techniques", "viper_school_techniques"],
     requiresAnyParent: true,
     minPointsInTree: 0,
     icon: "assets/icons/general/metabolic_control.png",
@@ -2201,7 +2201,7 @@ const GENERAL_SKILLS_DATA = {
     x: 653,
     y: 659,
     maxRank: 3,
-    parents: ["metabolic_control"],
+    parents: ["synergy", "metabolic_control", "viper_school_techniques"],
     requiresAnyParent: true,
     minPointsInTree: 0,
     icon: "assets/icons/general/metabolic_boost.png",
@@ -2230,114 +2230,55 @@ const GENERAL_SKILLS_DATA = {
 };
 
 const GENERAL_TREE_CONNECTIONS = [
-  [
-    "cat_school_techniques",
-    "battle_frenzy"
-  ],
-  [
-    "cat_school_techniques",
-    "wolf_school_techniques"
-  ],
-  [
-    "cat_school_techniques",
-    "adrenaline_burst"
-  ],
-  [
-    "battle_frenzy",
-    "attack_is_the_best_defense"
-  ],
-  [
-    "wolf_school_techniques",
-    "attack_is_the_best_defense"
-  ],
-  [
-    "wolf_school_techniques",
-    "sun_and_stars"
-  ],
-  [
-    "adrenaline_burst",
-    "sun_and_stars"
-  ],
-  [
-    "wolf_school_techniques",
-    "bear_school_techniques"
-  ],
-  [
-    "attack_is_the_best_defense",
-    "strong_back"
-  ],
-  [
-    "sun_and_stars",
-    "survival_instinct"
-  ],
-  [
-    "strong_back",
-    "gourmand"
-  ],
-  [
-    "bear_school_techniques",
-    "gourmand"
-  ],
-  [
-    "bear_school_techniques",
-    "anger_management"
-  ],
-  [
-    "survival_instinct",
-    "anger_management"
-  ],
-  [
-    "bear_school_techniques",
-    "griffin_school_techniques"
-  ],
-  [
-    "gourmand",
-    "elemental_attunement"
-  ],
-  [
-    "gourmand",
-    "advanced_pyrotechnics"
-  ],
-  [
-    "griffin_school_techniques",
-    "advanced_pyrotechnics"
-  ],
-  [
-    "anger_management",
-    "synergy"
-  ],
-  [
-    "anger_management",
-    "metabolic_control"
-  ],
-  [
-    "griffin_school_techniques",
-    "metabolic_control"
-  ],
-  [
-    "griffin_school_techniques",
-    "manticore_school_techniques"
-  ],
-  [
-    "advanced_pyrotechnics",
-    "element_of_surprise"
-  ],
-  [
-    "metabolic_control",
-    "metabolic_boost"
-  ],
-  [
-    "element_of_surprise",
-    "viper_school_techniques"
-  ],
-  [
-    "manticore_school_techniques",
-    "viper_school_techniques"
-  ],
-  [
-    "metabolic_boost",
-    "viper_school_techniques"
-  ]
+  // From Cat School (Top)
+  ["cat_school_techniques", "battle_frenzy"],
+  ["cat_school_techniques", "attack_is_the_best_defense"],
+  ["cat_school_techniques", "sun_and_stars"],
+  ["cat_school_techniques", "adrenaline_burst"],
+
+  // Outer Top Down & Cross
+  ["battle_frenzy", "strong_back"],
+  ["battle_frenzy", "attack_is_the_best_defense"],
+  ["adrenaline_burst", "survival_instinct"],
+  ["adrenaline_burst", "sun_and_stars"],
+
+  // Around Wolf School
+  ["attack_is_the_best_defense", "wolf_school_techniques"],
+  ["sun_and_stars", "wolf_school_techniques"],
+  ["wolf_school_techniques", "gourmand"],
+  ["wolf_school_techniques", "anger_management"],
+
+  // Mid Outer Down & Cross
+  ["strong_back", "gourmand"],
+  ["strong_back", "elemental_attunement"],
+  ["survival_instinct", "anger_management"],
+  ["survival_instinct", "synergy"],
+
+  // Around Bear School
+  ["gourmand", "bear_school_techniques"],
+  ["anger_management", "bear_school_techniques"],
+  ["bear_school_techniques", "advanced_pyrotechnics"],
+  ["bear_school_techniques", "metabolic_control"],
+
+  // Lower Outer Down & Cross
+  ["elemental_attunement", "advanced_pyrotechnics"],
+  ["elemental_attunement", "element_of_surprise"],
+  ["synergy", "metabolic_control"],
+  ["synergy", "metabolic_boost"],
+
+  // Around Griffin School
+  ["advanced_pyrotechnics", "griffin_school_techniques"],
+  ["metabolic_control", "griffin_school_techniques"],
+
+  // Around Manticore School
+  ["advanced_pyrotechnics", "manticore_school_techniques"],
+  ["metabolic_control", "manticore_school_techniques"],
+
+  // Converging at Viper School (Bottom)
+  ["element_of_surprise", "viper_school_techniques"],
+  ["advanced_pyrotechnics", "viper_school_techniques"],
+  ["metabolic_control", "viper_school_techniques"],
+  ["metabolic_boost", "viper_school_techniques"]
 ];
 
 /**
