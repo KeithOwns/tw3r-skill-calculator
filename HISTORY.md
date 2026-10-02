@@ -25,7 +25,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Automated visual regression testing suite with headless browser capture.
 - GitHub Pages live web deployment with root relative asset routing.
 
-- Official Witcher 3 Remastered (v5.00c) brand emblem logo, banner, and icon extracted from `TW3R_Brand.png` title screen capture.
+- Integrated authentic in-game title screen emblem featuring the crimson claw 'III', engraved 'REMASTERED' plate, and exact 'v 5.00c' version indicator into HUD navigation bar and metadata.
+- Standardized project version targeting and documentation to The Witcher 3: Wild Hunt — Remastered v5.00c.
 - High-resolution in-game mutation apparatus orbs for Metamorphosis and Mutated Skin extracted from gameplay snips.
 - Social media Open Graph preview cards and branding meta tags in index headers.
 

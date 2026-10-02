@@ -1348,15 +1348,24 @@
        ======================================================== -->
   <header class="tw-hud-header">
     
-    <!-- Level & XP Indicator -->
-    <div class="hud-level-box">
-      <span class="hud-level-label">LEVEL</span>
-      <span class="hud-level-number" id="hudLevelNumber">100</span>
-      <div class="hud-xp-bar-container">
-        <div class="hud-xp-frame">
-          <div class="hud-xp-fill"></div>
+    <!-- Brand Logo & Level/XP Indicator -->
+    <div class="hud-left-group" style="display: flex; align-items: center; gap: 1.25rem;">
+      <a href="#top" title="The Witcher 3: Wild Hunt — REMASTERED v5.00c" style="display: flex; align-items: center; text-decoration: none;">
+        <img
+          src="assets/brand/tw3r_logo.png"
+          alt="The Witcher 3: Remastered v5.00c"
+          style="height: 44px; width: auto; object-fit: contain; filter: drop-shadow(0 2px 8px rgba(0,0,0,0.85)); cursor: pointer;"
+        />
+      </a>
+      <div class="hud-level-box">
+        <span class="hud-level-label">LEVEL</span>
+        <span class="hud-level-number" id="hudLevelNumber">100</span>
+        <div class="hud-xp-bar-container">
+          <div class="hud-xp-frame">
+            <div class="hud-xp-fill"></div>
+          </div>
+          <span class="hud-xp-text">0 / 2000</span>
         </div>
-        <span class="hud-xp-text">0 / 2000</span>
       </div>
     </div>
 
