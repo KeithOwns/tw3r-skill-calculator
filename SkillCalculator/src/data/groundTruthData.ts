@@ -470,38 +470,38 @@ export const COMBAT_SKILLS_DATA: Record<string, SkillDefinition> = {
 
   // Tier 5 Battle Trance Pillars
   razor_focus: {
-    id: "focus",
-    name: "Focus",
-    branch: "general",
-    category: "general",
-    x: 405,
-    y: 470,
+    id: "razor_focus",
+    name: "Razor Focus",
+    branch: "trance",
+    nodeLetter: "N",
+    x: 261,
+    y: 680,
     maxRank: 3,
-    parents: ["griffin_school_techniques"],
+    parents: ["rend", "counterattack", "resolve"],
     requiresAnyParent: true,
     minPointsInTree: 0,
-    icon: "assets/icons/general/focus.png",
+    icon: "assets/icons/combat/razor_focus.png",
     ranks: [
       {
         level: 1,
-        desc: "Adrenaline points also increase Sign damage and weapon damage by 5%.",
-        bonus: "Vitality gain: +3%",
-        highlight: "+5% Weapon & Sign Damage per Adrenaline point"
+        desc: "Gain 1 Adrenaline point upon entering combat. Increases Adrenaline generation from weapon strikes by 10%.",
+        bonus: "Adrenaline Point gain: +1%",
+        highlight: "+1 Adrenaline point on combat entry; +10% Adrenaline generation from strikes"
       },
       {
         level: 2,
-        desc: "Adrenaline points also increase Sign damage and weapon damage by 10%.",
-        bonus: "Vitality gain: +3%",
-        highlight: "+10% Weapon & Sign Damage per Adrenaline point"
+        desc: "Gain 1 Adrenaline point upon entering combat. Increases Adrenaline generation from weapon strikes by 20%.",
+        bonus: "Adrenaline Point gain: +2%",
+        highlight: "+1 Adrenaline point on combat entry; +20% Adrenaline generation from strikes"
       },
       {
         level: 3,
-        desc: "Adrenaline points also increase Sign damage and weapon damage by 15%.",
-        bonus: "Vitality gain: +3%",
-        highlight: "+15% Weapon & Sign Damage per Adrenaline point"
+        desc: "Gain 1 Adrenaline point upon entering combat. Increases Adrenaline generation from weapon strikes by 30%.",
+        bonus: "Adrenaline Point gain: +3%",
+        highlight: "+1 Adrenaline point on combat entry; +30% Adrenaline generation from strikes"
       }
     ],
-    tacticalTip: "Direct offensive scaling turning banked Adrenaline points into raw output."
+    tacticalTip: "Instantly awards 1 full Adrenaline Point upon entering any combat encounter, allowing immediate special abilities (Whirl/Rend) and activating Adrenaline buffs."
   },
 
   undying: {
