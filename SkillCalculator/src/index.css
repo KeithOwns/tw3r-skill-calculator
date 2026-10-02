@@ -1,0 +1,48 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    @apply bg-[#0c0d12] text-[#d6d6d8] antialiased selection:bg-[#c89b3c]/30 selection:text-amber-200;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  }
+}
+
+/* Witcher Custom UI Details */
+.witcher-border {
+  border: 1px solid #786438;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.8), 0 0 8px rgba(120, 100, 56, 0.2);
+}
+
+.witcher-panel {
+  background: radial-gradient(circle at 50% 0%, #1a1c23 0%, #0d0e14 100%);
+  border: 1px solid #4a3e26;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(200, 155, 60, 0.15);
+}
+
+.witcher-gold {
+  color: #c89b3c;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.witcher-gold-gradient {
+  background: linear-gradient(180deg, #f0cf75 0%, #c89b3c 50%, #956e20 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Tree glowing highlights */
+.glow-combat {
+  box-shadow: 0 0 12px rgba(230, 57, 70, 0.4);
+}
+
+.glow-signs {
+  box-shadow: 0 0 12px rgba(58, 134, 255, 0.4);
+}
+
+.glow-alchemy {
+  box-shadow: 0 0 12px rgba(42, 157, 143, 0.4);
+}
+
+.glow-general {
+  box-shadow: 0 0 12px rgba(233, 196, 106, 0.4);
+}

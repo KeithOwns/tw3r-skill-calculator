@@ -1,0 +1,26 @@
+{
+  "name": "tw3r-skill-calculator",
+  "version": "1.0.0",
+  "description": "The Witcher 3: Wild Hunt — Next-Gen v4.0+ Character Development & Skill Calculator",
+  "private": true,
+  "scripts": {
+    "dev": "npm --prefix SkillCalculator run dev",
+    "build": "npm --prefix SkillCalculator run build && node -e \"const fs=require('fs'); fs.cpSync('SkillCalculator/dist', '.', {recursive: true}); console.log('Copied dist to root.');\""
+  },
+  "keywords": [
+    "witcher-3",
+    "witcher",
+    "skill-calculator",
+    "react",
+    "typescript",
+    "tailwind",
+    "next-gen",
+    "alchemy",
+    "combat",
+    "signs",
+    "general",
+    "mutations"
+  ],
+  "author": "Keith Tibbitts",
+  "license": "MIT"
+}
