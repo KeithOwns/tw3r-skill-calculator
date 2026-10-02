@@ -375,16 +375,7 @@
       pointer-events: none;
     }
 
-    /* Watermark Canvas */
-    .tree-canvas-watermark {
-      position: absolute;
-      inset: 0;
-      background-image: url('./assets/fully_upgraded_clean.png');
-      background-size: cover;
-      opacity: 0.12;
-      filter: saturate(0.2) contrast(1.15);
-      pointer-events: none;
-    }
+
 
     /* SVG Conduits Layer */
     svg.tree-lines-svg {

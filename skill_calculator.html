@@ -385,16 +385,7 @@
       pointer-events: none;
     }
 
-    /* Watermark Canvas */
-    .tree-canvas-watermark {
-      position: absolute;
-      inset: 0;
-      background-image: url('fully_upgraded_clean.png');
-      background-size: cover;
-      opacity: 0.12;
-      filter: saturate(0.2) contrast(1.15);
-      pointer-events: none;
-    }
+
 
     /* SVG Conduits Layer */
     svg.tree-lines-svg {
@@ -1453,7 +1444,6 @@
       <div class="tree-box-frame" id="treeBoxFrame">
         <div class="corner-bottom-left"></div>
         <div class="corner-bottom-right"></div>
-        <div class="tree-canvas-watermark" id="treeWatermark"></div>
 
         <!-- SVG Connection Conduits -->
         <svg class="tree-lines-svg" id="treeConduitsSvg" viewBox="0 0 780 900"></svg>
@@ -1772,17 +1762,6 @@
       document.getElementById("tabBtnGeneral").classList.toggle("active", discKey === "general");
       document.getElementById("discCurrentTitle").innerText = discKey.toUpperCase();
 
-      // Change background watermark
-      const wm = document.getElementById("treeWatermark");
-      if (discKey === "general") {
-        wm.style.backgroundImage = "url('assets/general_tree_bg.png')";
-      } else if (discKey === "signs") {
-        wm.style.backgroundImage = "url('assets/signs_tree_bg.png')";
-      } else if (discKey === "alchemy") {
-        wm.style.backgroundImage = "url('assets/alchemy_tree_bg.png')";
-      } else {
-        wm.style.backgroundImage = "url('fully_upgraded_clean.png')";
-      }
 
       renderTree();
     }

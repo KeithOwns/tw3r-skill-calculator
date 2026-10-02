@@ -63,28 +63,11 @@ export const SkillTreeCanvas: React.FC = () => {
     setHoverPos(null);
   };
 
-  const watermarkBg = 
-    activeDiscipline === 'combat'
-      ? "url('./assets/fully_upgraded_clean.png')"
-      : (activeDiscipline === 'signs' 
-          ? "url('./assets/signs_tree_bg.png')" 
-          : (activeDiscipline === 'alchemy' 
-              ? "url('./assets/alchemy_tree_bg.png')" 
-              : "url('./assets/general_tree_bg.png')"));
-
   return (
     <>
       <div className="tree-box-frame" id="treeBoxFrame">
         <div className="corner-bottom-left" />
         <div className="corner-bottom-right" />
-        
-        {/* Background Watermark */}
-        <div
-          className="tree-canvas-watermark"
-          style={{
-            backgroundImage: watermarkBg
-          }}
-        />
 
         {/* SVG Connecting Conduits */}
         <svg className="tree-lines-svg" viewBox="0 0 780 900">
