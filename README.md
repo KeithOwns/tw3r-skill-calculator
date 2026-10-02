@@ -10,6 +10,8 @@ A pixel-authentic, 1:1 interactive character development suite and build planner
 
 🎮 **[Launch the Live Web Application](https://keithowns.github.io/tw3r-skill-calculator/)**
 
+![The Witcher 3: Remastered Skill Calculator & Euphoria Build Planner](./assets/preview.png)
+
 ---
 
 ## 🌟 Key Features
