@@ -227,7 +227,7 @@
     .game-screen-viewport {
       max-width: 1720px;
       margin: 0 auto;
-      padding: 1rem 1.5rem 2rem;
+      padding: 1rem 1.5rem 1rem;
       display: grid;
       grid-template-columns: 780px 1fr;
       gap: 2rem;
@@ -335,7 +335,7 @@
     /* The Authentic Ornate Tree Frame */
     .tree-box-frame {
       width: 780px;
-      height: 900px;
+      height: 940px;
       position: relative;
       background: radial-gradient(circle at 50% 50%, #15080a 0%, #0d0406 60%, #060203 100%);
       border: 3px solid #3d2a1d;
@@ -392,7 +392,7 @@
       position: absolute;
       inset: 0;
       width: 780px;
-      height: 900px;
+      height: 940px;
       pointer-events: none;
       z-index: 2;
     }
@@ -495,7 +495,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      filter: grayscale(100%) brightness(0.35) contrast(1.1);
+      filter: grayscale(100%) brightness(0.48) contrast(1.05);
       transition: filter 0.25s ease;
     }
 
@@ -645,6 +645,19 @@
       position: relative;
     }
 
+    /* Subtle Authentic Horizontal Divider Line across Center (Screenshot bestbuild.png) */
+    .in-game-board-container::before {
+      content: "";
+      position: absolute;
+      left: 1.5rem;
+      right: 1.5rem;
+      top: 50%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent 0%, rgba(184, 151, 88, 0.12) 12%, rgba(184, 151, 88, 0.42) 50%, rgba(184, 151, 88, 0.12) 88%, transparent 100%);
+      pointer-events: none;
+      z-index: 1;
+    }
+
     @media (max-width: 1200px) {
       .in-game-board-container {
         grid-template-columns: 1fr;
@@ -705,6 +718,22 @@
       text-shadow: 0 0 6px rgba(255, 255, 255, 0.6);
     }
 
+    /* Right-Wing Symmetrical Ribbon Order matching in-game HUD */
+    .matrix-wing-column.right-wing .ribbon-title-group {
+      display: contents;
+    }
+    .matrix-wing-column.right-wing .ribbon-title {
+      order: 1;
+    }
+    .matrix-wing-column.right-wing .ribbon-ap-value {
+      order: 2;
+      margin-left: auto;
+      margin-right: 0.45rem;
+    }
+    .matrix-wing-column.right-wing .ribbon-swords-icon {
+      order: 3;
+    }
+
     /* Row containing Mutagen Socket + 3 Vertical Slots */
     .quad-socket-row {
       display: flex;
@@ -717,39 +746,75 @@
       flex-direction: row-reverse;
     }
 
-    /* Circular Mutagen Slot */
+    /* Conduit Lines connecting Mutagen Socket to 3 Ability Slots */
+    .quad-socket-conduit {
+      width: 20px;
+      height: 190px;
+      flex-shrink: 0;
+      pointer-events: none;
+    }
+
+    .quad-socket-conduit path {
+      fill: none;
+      stroke: #dc2626;
+      stroke-width: 2.2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      filter: drop-shadow(0 0 4px rgba(220, 38, 38, 0.7));
+      transition: stroke 0.3s ease, filter 0.3s ease;
+    }
+
+    .matrix-quadrant-block.quad-signs .quad-socket-conduit path {
+      stroke: #38bdf8;
+      filter: drop-shadow(0 0 4px rgba(56, 189, 248, 0.7));
+    }
+
+    .matrix-quadrant-block.quad-alchemy .quad-socket-conduit path {
+      stroke: #22c55e;
+      filter: drop-shadow(0 0 4px rgba(34, 197, 94, 0.7));
+    }
+
+    .matrix-wing-column.right-wing .quad-socket-conduit {
+      transform: scaleX(-1);
+    }
+
+    /* Diamond Mutagen Slot (Matching In-Game Bezel) */
     .mutagen-orb-socket {
-      width: 68px;
-      height: 68px;
-      border-radius: 50%;
-      background: radial-gradient(circle at 35% 35%, #7f1d1d 0%, #2a080a 70%, #100204 100%);
+      width: 60px;
+      height: 60px;
+      border-radius: 4px;
+      transform: rotate(45deg);
+      background: radial-gradient(circle at 50% 50%, #450a0a 0%, #1a0405 70%, #0c0203 100%);
       border: 2px solid #ef4444;
-      box-shadow: 0 0 16px rgba(239, 68, 68, 0.55), inset 0 0 10px rgba(0, 0, 0, 0.8);
+      box-shadow: 0 0 16px rgba(239, 68, 68, 0.55), inset 0 0 10px rgba(0, 0, 0, 0.9);
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
       position: relative;
       transition: var(--transition-smooth);
+      margin: 0 0.4rem;
     }
 
     .mutagen-orb-socket:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 22px rgba(239, 68, 68, 0.8);
+      transform: rotate(45deg) scale(1.08);
+      box-shadow: 0 0 24px rgba(239, 68, 68, 0.85);
     }
 
     .mutagen-swirl-core {
       width: 44px;
       height: 44px;
       border-radius: 50%;
-      background: radial-gradient(circle, #f87171 0%, #dc2626 50%, transparent 80%);
-      filter: blur(1px);
+      transform: rotate(-45deg);
+      background: radial-gradient(circle at 38% 38%, #fca5a5 0%, #dc2626 50%, #7f1d1d 90%);
+      box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.7), 0 0 12px rgba(239, 68, 68, 0.8);
+      filter: blur(0.5px);
       animation: pulse-mutagen 3s infinite alternate ease-in-out;
     }
 
     @keyframes pulse-mutagen {
-      0% { transform: scale(0.9); opacity: 0.8; }
-      100% { transform: scale(1.1); opacity: 1; }
+      0% { transform: rotate(-45deg) scale(0.92); opacity: 0.85; }
+      100% { transform: rotate(-45deg) scale(1.06); opacity: 1; }
     }
 
     /* 3 Vertical Ability Slots */
@@ -807,17 +872,18 @@
     }
 
     .mutagen-orb-socket.socket-blue {
-      background: radial-gradient(circle at 35% 35%, #075985 0%, #0c4a6e 70%, #032135 100%);
+      background: radial-gradient(circle at 50% 50%, #075985 0%, #082f49 70%, #03131e 100%);
       border: 2px solid #38bdf8;
-      box-shadow: 0 0 16px rgba(56, 189, 248, 0.55), inset 0 0 10px rgba(0, 0, 0, 0.8);
+      box-shadow: 0 0 16px rgba(56, 189, 248, 0.55), inset 0 0 10px rgba(0, 0, 0, 0.9);
     }
 
     .mutagen-orb-socket.socket-blue:hover {
-      box-shadow: 0 0 22px rgba(56, 189, 248, 0.85);
+      box-shadow: 0 0 24px rgba(56, 189, 248, 0.85);
     }
 
     .mutagen-swirl-core.swirl-blue {
-      background: radial-gradient(circle, #7dd3fc 0%, #0284c7 50%, transparent 80%);
+      background: radial-gradient(circle at 38% 38%, #bae6fd 0%, #0284c7 50%, #0369a1 90%);
+      box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.7), 0 0 12px rgba(56, 189, 248, 0.8);
     }
 
     .matrix-quadrant-block.quad-alchemy .quad-ribbon-banner {
@@ -836,17 +902,18 @@
     }
 
     .mutagen-orb-socket.socket-green {
-      background: radial-gradient(circle at 35% 35%, #14532d 0%, #166534 70%, #052e16 100%);
+      background: radial-gradient(circle at 50% 50%, #14532d 0%, #166534 70%, #052e16 100%);
       border: 2px solid #22c55e;
-      box-shadow: 0 0 16px rgba(34, 197, 94, 0.55), inset 0 0 10px rgba(0, 0, 0, 0.8);
+      box-shadow: 0 0 16px rgba(34, 197, 94, 0.55), inset 0 0 10px rgba(0, 0, 0, 0.9);
     }
 
     .mutagen-orb-socket.socket-green:hover {
-      box-shadow: 0 0 22px rgba(34, 197, 94, 0.85);
+      box-shadow: 0 0 24px rgba(34, 197, 94, 0.85);
     }
 
     .mutagen-swirl-core.swirl-green {
-      background: radial-gradient(circle, #86efac 0%, #22c55e 50%, transparent 80%);
+      background: radial-gradient(circle at 38% 38%, #bbf7d0 0%, #16a34a 50%, #14532d 90%);
+      box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.7), 0 0 12px rgba(34, 197, 94, 0.8);
     }
 
     .game-ability-slot.filled.filled-alchemy,
@@ -912,9 +979,11 @@
     .mutation-middle-slots-row {
       display: flex;
       flex-direction: column;
-      gap: 0.5rem;
+      gap: 0.75rem;
       align-items: flex-end;
       padding-right: 0.8rem;
+      position: relative;
+      z-index: 5;
     }
     .matrix-wing-column.right-wing .mutation-middle-slots-row {
       align-items: flex-start;
@@ -935,6 +1004,7 @@
       justify-content: center;
       transition: var(--transition-smooth);
       overflow: hidden;
+      box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.8);
     }
 
     .bonus-slot-unit:hover {
@@ -955,16 +1025,18 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 1rem;
+      gap: 1.15rem;
       text-align: center;
       padding: 0 0.5rem;
+      position: relative;
+      z-index: 5;
     }
 
     .nexus-heading-block {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 0.4rem;
+      gap: 0.45rem;
     }
 
     .mutation-label-heading {
@@ -972,8 +1044,8 @@
       font-size: 1.35rem;
       font-weight: 800;
       color: #ffffff;
-      letter-spacing: 0.06em;
-      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+      letter-spacing: 0.08em;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8), 0 0 14px rgba(229, 184, 57, 0.25);
     }
 
     .btn-mutations-trigger {
@@ -981,7 +1053,7 @@
       border: 1px solid #b89758;
       border-radius: 3px;
       color: var(--tw-parchment);
-      padding: 0.3rem 0.75rem;
+      padding: 0.28rem 0.75rem;
       font-family: 'Cinzel', serif;
       font-size: 0.76rem;
       font-weight: 700;
@@ -1068,13 +1140,15 @@
     /* Mutation Formatted Description */
     .mutation-center-desc-box {
       font-size: 0.78rem;
-      line-height: 1.5;
+      line-height: 1.55;
       color: #e2e8f0;
-      background: rgba(14, 10, 11, 0.85);
-      border: 1px solid #3d2a1d;
+      background: radial-gradient(circle at 50% 50%, rgba(22, 16, 17, 0.9) 0%, rgba(10, 8, 9, 0.96) 100%);
+      border: 1px solid #4a382c;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(229, 184, 57, 0.2);
       border-radius: 3px;
-      padding: 0.75rem 0.9rem;
+      padding: 0.75rem 0.95rem;
       max-width: 260px;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
     }
 
     .mutation-center-desc-box b {
@@ -1087,17 +1161,17 @@
     footer.tw-hud-footer {
       width: 100%;
       background: linear-gradient(0deg, rgba(8, 6, 7, 0.98) 0%, rgba(14, 11, 12, 0.92) 100%);
-      border-top: 1px solid #33231a;
-      padding: 0.75rem 2rem;
+      border-top: 1px solid #3d2a1d;
+      padding: 0.7rem 2rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
       flex-wrap: wrap;
-      gap: 1rem;
-      position: sticky;
-      bottom: 0;
+      gap: 0.8rem;
+      position: relative;
+      margin-top: 1.5rem;
       z-index: 500;
-      box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.8);
+      box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.85);
     }
 
     .footer-game-prompts {
@@ -1127,36 +1201,38 @@
     .footer-preset-buttons {
       display: flex;
       align-items: center;
-      gap: 0.55rem;
+      gap: 0.4rem;
       flex-wrap: wrap;
+      justify-content: flex-end;
     }
 
     .btn-preset-pill {
-      background: rgba(26, 18, 14, 0.8);
-      border: 1px solid #5a3e27;
+      background: rgba(22, 16, 17, 0.85);
+      border: 1px solid #4a382c;
       color: var(--tw-parchment);
-      padding: 0.35rem 0.8rem;
-      border-radius: 3px;
+      padding: 0.28rem 0.65rem;
+      border-radius: 2px;
       font-family: 'Cinzel', serif;
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       font-weight: 700;
       letter-spacing: 0.04em;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
-      gap: 0.4rem;
+      gap: 0.35rem;
       transition: var(--transition-smooth);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
     }
 
     .btn-preset-pill:hover {
-      background: rgba(220, 38, 38, 0.2);
+      background: rgba(220, 38, 38, 0.25);
       border-color: #ef4444;
       color: #ffffff;
-      box-shadow: 0 0 12px rgba(239, 68, 68, 0.4);
+      box-shadow: 0 0 10px rgba(239, 68, 68, 0.4);
     }
 
     .btn-preset-pill.active {
-      background: linear-gradient(135deg, rgba(220, 38, 38, 0.3), rgba(185, 28, 28, 0.5));
+      background: linear-gradient(135deg, rgba(220, 38, 38, 0.35), rgba(185, 28, 28, 0.55));
       border-color: #ef4444;
       color: #ffffff;
       box-shadow: 0 0 14px rgba(239, 68, 68, 0.6);
@@ -1165,7 +1241,7 @@
     .btn-preset-pill.gold-glow:hover {
       background: rgba(229, 184, 57, 0.2);
       border-color: var(--tw-gold-primary);
-      box-shadow: 0 0 12px rgba(229, 184, 57, 0.4);
+      box-shadow: 0 0 12px rgba(229, 184, 57, 0.45);
     }
 
     /* ========================================================
@@ -1455,7 +1531,7 @@
         <div class="corner-bottom-right"></div>
 
         <!-- SVG Connection Conduits -->
-        <svg class="tree-lines-svg" id="treeConduitsSvg" viewBox="0 0 780 900"></svg>
+        <svg class="tree-lines-svg" id="treeConduitsSvg" viewBox="0 0 780 940"></svg>
 
         <!-- Skill Nodes Interactive Layer -->
         <div id="treeNodesLayer"></div>
@@ -1512,6 +1588,9 @@
               <div class="mutagen-orb-socket" title="Greater Red Mutagen (+10% base + 10% per Combat skill)">
                 <div class="mutagen-swirl-core"></div>
               </div>
+              <svg class="quad-socket-conduit" viewBox="0 0 20 190">
+                <path d="M 0 95 H 10 V 29 H 20 M 10 95 H 20 M 10 95 V 161 H 20" />
+              </svg>
               <div class="slots-vertical-column">
                 <div class="game-ability-slot" data-slot="0" onclick="handleSlotClick(0)"></div>
                 <div class="game-ability-slot" data-slot="1" onclick="handleSlotClick(1)"></div>
@@ -1539,6 +1618,9 @@
               <div class="mutagen-orb-socket" title="Greater Red Mutagen (+10% base + 10% per Combat skill)">
                 <div class="mutagen-swirl-core"></div>
               </div>
+              <svg class="quad-socket-conduit" viewBox="0 0 20 190">
+                <path d="M 0 95 H 10 V 29 H 20 M 10 95 H 20 M 10 95 V 161 H 20" />
+              </svg>
               <div class="slots-vertical-column">
                 <div class="game-ability-slot" data-slot="6" onclick="handleSlotClick(6)"></div>
                 <div class="game-ability-slot" data-slot="7" onclick="handleSlotClick(7)"></div>
@@ -1589,6 +1671,9 @@
               <div class="mutagen-orb-socket" title="Greater Red Mutagen (+10% base + 10% per Combat skill)">
                 <div class="mutagen-swirl-core"></div>
               </div>
+              <svg class="quad-socket-conduit" viewBox="0 0 20 190">
+                <path d="M 0 95 H 10 V 29 H 20 M 10 95 H 20 M 10 95 V 161 H 20" />
+              </svg>
               <div class="slots-vertical-column">
                 <div class="game-ability-slot" data-slot="3" onclick="handleSlotClick(3)"></div>
                 <div class="game-ability-slot" data-slot="4" onclick="handleSlotClick(4)"></div>
@@ -1616,6 +1701,9 @@
               <div class="mutagen-orb-socket" title="Greater Red Mutagen (+10% base + 10% per Combat skill)">
                 <div class="mutagen-swirl-core"></div>
               </div>
+              <svg class="quad-socket-conduit" viewBox="0 0 20 190">
+                <path d="M 0 95 H 10 V 29 H 20 M 10 95 H 20 M 10 95 V 161 H 20" />
+              </svg>
               <div class="slots-vertical-column">
                 <div class="game-ability-slot" data-slot="9" onclick="handleSlotClick(9)"></div>
                 <div class="game-ability-slot" data-slot="10" onclick="handleSlotClick(10)"></div>
@@ -1667,6 +1755,12 @@
       </button>
       <button class="btn-preset-pill" id="btnPresetEuphoria" onclick="loadGroundTruthPreset('euphoria_toxic')">
         ☣️ Euphoria Chemist (+Toxic)
+      </button>
+      <button class="btn-preset-pill gold-glow" id="btnPresetKeithMaster" onclick="loadGroundTruthPreset('keith_master_euphoria')">
+        🏆 Euphoria Hybrid Master (Oct 2026)
+      </button>
+      <button class="btn-preset-pill" id="btnPresetKeithTanky" onclick="loadGroundTruthPreset('keith_tanky_euphoria')">
+        🛡️ Euphoria Balanced Tank (aLittleTanky)
       </button>
       <button class="btn-preset-pill gold-glow" id="btnPresetTitan" onclick="loadGroundTruthPreset('snips_titan')">
         👑 Level 100 Titan (Maxed)
@@ -2194,15 +2288,21 @@
       } else {
         availableSkills.forEach(skill => {
           const isSlotted = appState.slottedAbilities.includes(skill.id);
+          const isCombat = !!COMBAT_SKILLS_DATA[skill.id];
+          const isSigns = !!SIGNS_SKILLS_DATA[skill.id];
+          const isAlchemy = !!ALCHEMY_SKILLS_DATA[skill.id];
+          const color = isCombat ? "#ef4444" : (isSigns ? "#38bdf8" : (isAlchemy ? "#22c55e" : "#eab308"));
           const card = document.createElement("div");
           card.className = "mutation-select-card";
-          card.style.opacity = isSlotted ? "0.4" : "1";
+          card.style.borderColor = color;
+          card.style.opacity = isSlotted ? "0.45" : "1";
           card.innerHTML = `
             <div class="mut-card-title">
-              <img src="${skill.icon}" style="width:28px; height:28px; border-radius:2px; border:1px solid #78350f;">
-              <span>${skill.name}</span>
+              <img src="${skill.icon}" style="width:30px; height:30px; border-radius:2px; border:1px solid ${color}; object-fit:cover;">
+              <span style="color:#ffffff;">${skill.name}</span>
+              ${isSlotted ? '<span style="margin-left:auto; font-size:0.68rem; color:#f59e0b; font-weight:700;">SLOTTED</span>' : ''}
             </div>
-            <div class="mut-card-desc">Rank ${appState.skillAllocations[skill.id]}/${skill.maxRank} &bull; ${skill.branch.toUpperCase()}</div>
+            <div class="mut-card-desc" style="color:#cbd5e1;">Rank ${appState.skillAllocations[skill.id]}/${skill.maxRank} &bull; <span style="color:${color}; font-weight:600;">${skill.branch.toUpperCase()}</span></div>
           `;
           card.addEventListener("click", () => {
             equipAbilityToSlot(skill.id, appState.activeSlotPickerIndex);
