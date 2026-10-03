@@ -2,7 +2,7 @@ import type React from 'react';
 import { useBuild } from '../context/BuildStateContext';
 
 export const WitcherHudHeader: React.FC = () => {
-  const { level, resetEntireTree } = useBuild();
+  const { level, resetEntireTree, copyShareableLink } = useBuild();
 
   return (
     <header className="tw-hud-header">
@@ -74,11 +74,11 @@ export const WitcherHudHeader: React.FC = () => {
             alignItems: 'center',
             gap: '0.4rem'
           }}
-          title="Sign up to save custom builds (Feature coming soon!)"
-          onClick={() => alert("Sign up option coming soon! You'll be able to create an account and save your custom builds.")}
+          title="Copy Shareable Build URL to Clipboard"
+          onClick={copyShareableLink}
         >
-          <span>💾</span>
-          <span>SAVE BUILD</span>
+          <span>🔗</span>
+          <span>SHARE BUILD</span>
         </button>
         <button
           className="hud-btn-close"

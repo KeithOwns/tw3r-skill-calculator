@@ -8,6 +8,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- Added "Euphoria BestBuild (8216+ DPS)" preset featuring 4 Greater Red Mutagens, Synergy (3/3) in Quad 3 Slot 1 (+169% cumulative Attack Power mutagen boost), Whirl/Rend/Precise Blows (+52%), Sunder Armor/Muscle Memory/Cat School Techniques (+39%), and Focus/Resolve/Fleet Footed (+39%).
+- Added "Euphoria Roaming / Riposte" preset configuring Counterattack (3/3) + Razor Focus (3/3) + Resolve (3/3) + Fleet Footed (3/3) for instant 300% riposte bursts without potion preparation.
+- Added shareable URL link generation and clipboard copying (`#build=...` and `#preset=...`) directly accessible from both the HUD navigation bar ("SHARE BUILD") and Bottom Action Bar ("Share Link").
+- Added "Copy Summary" button exporting complete plain text / markdown build specifications, active mutagen statistics, slotted abilities, and share link to the clipboard.
+- Added HUD toast notification banner providing visual feedback when URLs and summaries are copied to the clipboard.
+- Added responsive mobile viewport mode with tabbed toggle between "Tree View" and "Slotted Loadout" for portrait and smaller screens.
 - Added `EquipAbilityModal` component providing instant ability selection with category filtering (Combat, Signs, Alchemy, General, Learned) and quick search upon clicking any ability slot.
 - Added first-class "Max Toxicity Manticore (Chemist Tank)" preset derived directly from Level 100 in-game ground truth screenshots (234 Max Toxicity, 15,902 Vitality, 4 Greater Green Mutagens, and 4 concurrent 50-cost decoctions + Metamorphosis procs for up to 9 active decoctions).
 - Added full support for Green, Blue, and Red Greater Mutagen sockets in each quadrant with interactive cycling and ground-truth Synergy (+30%) scaling (+780 / +195 Vitality; +52% / +13% Sign Intensity; +52% / +13% Attack Power).

@@ -231,6 +231,99 @@
       }
     }
 
+    /* Mobile Viewport Toggle */
+    .mobile-view-toggle {
+      display: none;
+    }
+
+    @media (max-width: 1024px) {
+      .mobile-view-toggle {
+        display: flex;
+        justify-content: center;
+        gap: 0.75rem;
+        margin: 0.75rem auto 1rem;
+        padding: 0 1rem;
+        width: 100%;
+        max-width: 500px;
+      }
+
+      .mobile-toggle-btn {
+        flex: 1;
+        background: linear-gradient(180deg, #1b130e 0%, #100b08 100%);
+        border: 1px solid #5a3e27;
+        color: var(--tw-parchment);
+        padding: 0.6rem 1rem;
+        border-radius: 3px;
+        font-family: 'Cinzel', serif;
+        font-size: 0.85rem;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        cursor: pointer;
+        transition: var(--transition-smooth);
+        text-align: center;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+      }
+
+      .mobile-toggle-btn:hover {
+        border-color: var(--tw-gold-primary);
+        color: #ffffff;
+      }
+
+      .mobile-toggle-btn.active {
+        background: linear-gradient(180deg, #d4a945 0%, #a67c2e 50%, #7d591d 100%);
+        color: #0c0803;
+        border-color: #ffe599;
+        box-shadow: 0 0 12px rgba(229, 184, 57, 0.4), inset 0 1px 2px rgba(255, 255, 255, 0.6);
+        font-weight: 800;
+      }
+
+      .tree-discipline-card.mobile-hidden,
+      .slotted-abilities-matrix.mobile-hidden {
+        display: none !important;
+      }
+
+      .tree-discipline-card.mobile-visible,
+      .slotted-abilities-matrix.mobile-visible {
+        display: block !important;
+        width: 100%;
+      }
+    }
+
+    /* Floating HUD Toast Notification */
+    .hud-toast-banner {
+      position: fixed;
+      top: 4.8rem;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(180deg, rgba(26, 18, 14, 0.96) 0%, rgba(13, 10, 11, 0.98) 100%);
+      border: 1px solid var(--tw-gold-primary);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.9), 0 0 15px rgba(229, 184, 57, 0.35);
+      border-radius: 4px;
+      padding: 0.6rem 1.6rem;
+      color: var(--tw-gold-light);
+      font-family: 'Cinzel', serif;
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      z-index: 9999;
+      pointer-events: none;
+      animation: hudToastFadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    @keyframes hudToastFadeIn {
+      from {
+        opacity: 0;
+        transform: translate(-50%, -10px);
+      }
+      to {
+        opacity: 1;
+        transform: translate(-50%, 0);
+      }
+    }
+
     /* ========================================================
        LEFT PANEL: DISCIPLINE TREE CANVAS
        ======================================================== */
@@ -1181,6 +1274,19 @@
       background: rgba(229, 184, 57, 0.2);
       border-color: var(--tw-gold-primary);
       box-shadow: 0 0 12px rgba(229, 184, 57, 0.4);
+    }
+
+    .btn-preset-pill.share-glow {
+      border-color: rgba(229, 184, 57, 0.5);
+      background: linear-gradient(180deg, rgba(212, 169, 69, 0.15) 0%, rgba(125, 89, 29, 0.25) 100%);
+      color: var(--tw-gold-light);
+    }
+
+    .btn-preset-pill.share-glow:hover {
+      background: linear-gradient(180deg, rgba(212, 169, 69, 0.35) 0%, rgba(125, 89, 29, 0.45) 100%);
+      border-color: var(--tw-gold-light);
+      box-shadow: 0 0 14px rgba(229, 184, 57, 0.5);
+      color: #ffffff;
     }
 
     /* ========================================================

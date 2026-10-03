@@ -3152,6 +3152,91 @@ export const MUTATIONS_DATA: Record<string, MutationDetail> = {
  * Verified Ground-Truth Presets from Keith's Snips
  */
 export const PRESETS_DATA: Record<string, BuildPreset> = {
+  euphoria_best_build: {
+    name: "Euphoria BestBuild (8216+ DPS)",
+    subtitle: "8,216+ Silver / 9,436+ Steel DPS | 4 Red Mutagens (+169% AP) + Synergy Quad 3",
+    mutation: "euphoria",
+    mutagenSockets: ["red", "red", "red", "red"],
+    combatAllocations: {
+      muscle_memory: 3,
+      crushing_blows: 3,
+      strength_training: 3,
+      whirl: 3,
+      rend: 3,
+      precise_blows: 3,
+      sunder_armor: 3,
+      razor_focus: 3,
+      resolve: 3,
+      fleet_footed: 3,
+      deadly_precision: 3,
+      counterattack: 3
+    },
+    alchemyAllocations: {
+      refreshment: 3,
+      acquired_tolerance: 3,
+      frenzy: 3,
+      poisoned_blades: 3,
+      protective_coating: 3,
+      endure_pain: 3,
+      tissue_transmutation: 3
+    },
+    generalAllocations: {
+      cat_school_techniques: 3,
+      battle_frenzy: 3,
+      synergy: 3,
+      survival_instinct: 3,
+      anger_management: 3
+    },
+    slottedSkills: [
+      "whirl", "rend", "precise_blows",                           // Quad 1 (Top Left) -> +52% Red Mutagen
+      "sunder_armor", "muscle_memory", "cat_school_techniques",   // Quad 2 (Top Right) -> +39% Red Mutagen
+      "synergy", "crushing_blows", "razor_focus",                 // Quad 3 (Bottom Left) -> +39% Red Mutagen
+      "battle_frenzy", "resolve", "fleet_footed",                 // Quad 4 (Bottom Right) -> +39% Red Mutagen
+      "acquired_tolerance", "poisoned_blades", "tissue_transmutation", "protective_coating" // Mutation bonus slots
+    ]
+  },
+  euphoria_roaming_riposte: {
+    name: "Euphoria Roaming / Riposte",
+    subtitle: "Counterattack (3/3) + Razor Focus (3/3) + Resolve (3/3) + Fleet Footed (3/3)",
+    mutation: "euphoria",
+    mutagenSockets: ["red", "red", "red", "red"],
+    combatAllocations: {
+      muscle_memory: 3,
+      crushing_blows: 3,
+      strength_training: 3,
+      whirl: 3,
+      rend: 3,
+      precise_blows: 3,
+      sunder_armor: 3,
+      razor_focus: 3,
+      counterattack: 3,
+      resolve: 3,
+      fleet_footed: 3,
+      deadly_precision: 3
+    },
+    alchemyAllocations: {
+      refreshment: 3,
+      acquired_tolerance: 3,
+      frenzy: 3,
+      poisoned_blades: 3,
+      protective_coating: 3,
+      endure_pain: 3,
+      tissue_transmutation: 3
+    },
+    generalAllocations: {
+      cat_school_techniques: 3,
+      battle_frenzy: 3,
+      survival_instinct: 3,
+      anger_management: 3
+    },
+    slottedSkills: [
+      "whirl", "rend", "precise_blows",                           // Quad 1 (Top Left) -> +40% Red Mutagen
+      "sunder_armor", "muscle_memory", "cat_school_techniques",   // Quad 2 (Top Right) -> +30% Red Mutagen
+      "counterattack", "crushing_blows", "razor_focus",           // Quad 3 (Bottom Left) -> +40% Red Mutagen
+      "battle_frenzy", "resolve", "fleet_footed",                 // Quad 4 (Bottom Right) -> +30% Red Mutagen
+      "acquired_tolerance", "poisoned_blades", "tissue_transmutation", "protective_coating" // Mutation bonus slots
+    ]
+  },
   max_toxicity_manticore: {
     name: "Max Toxicity Manticore (Chemist Tank)",
     subtitle: "234 Max Toxicity | 15,902 HP | 4 Decoctions + Metamorphosis (9 Total)",

@@ -6,7 +6,9 @@ export const BottomActionBar: React.FC = () => {
     loadPreset,
     resetEntireTree,
     setIsMutationsModalOpen,
-    activePresetKey
+    activePresetKey,
+    copyShareableLink,
+    copyBuildSummary
   } = useBuild();
 
   return (
@@ -32,6 +34,22 @@ export const BottomActionBar: React.FC = () => {
 
       {/* Right: Presets & Reset */}
       <div className="footer-preset-buttons">
+        <button
+          className={`btn-preset-pill ${activePresetKey === 'euphoria_best_build' ? 'active' : ''}`}
+          onClick={() => loadPreset('euphoria_best_build')}
+          title="Load Euphoria BestBuild (8216+ Silver DPS | 4 Red Mutagens +169% AP | Synergy in Quad 3 Slot 1)"
+        >
+          👑 Euphoria BestBuild (8216+ DPS)
+        </button>
+
+        <button
+          className={`btn-preset-pill ${activePresetKey === 'euphoria_roaming_riposte' ? 'active' : ''}`}
+          onClick={() => loadPreset('euphoria_roaming_riposte')}
+          title="Load Euphoria Roaming / Riposte (Counterattack 3/3 + Razor Focus 3/3 + Resolve 3/3 + Fleet Footed 3/3)"
+        >
+          ⚔️ Euphoria Roaming / Riposte
+        </button>
+
         <button
           className={`btn-preset-pill ${activePresetKey === 'cat_eyes_sniper' ? 'active' : ''}`}
           onClick={() => loadPreset('cat_eyes_sniper')}
@@ -86,6 +104,22 @@ export const BottomActionBar: React.FC = () => {
           title="Load Level 100 Titan Reference (60 pts combat maxed)"
         >
           👑 Level 100 Titan (Maxed)
+        </button>
+
+        <button
+          className="btn-preset-pill share-glow"
+          onClick={copyShareableLink}
+          title="Copy Shareable Build URL to Clipboard"
+        >
+          🔗 Share Link
+        </button>
+
+        <button
+          className="btn-preset-pill share-glow"
+          onClick={copyBuildSummary}
+          title="Copy Complete Build Summary to Clipboard"
+        >
+          📋 Copy Summary
         </button>
 
         <button
