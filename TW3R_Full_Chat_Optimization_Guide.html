@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Witcher 3 Remastered: Complete Optimization & Project Master Guide</title>
+    <style>
+        :root {
+            --bg-color: #0d1117;
+            --panel-bg: #161b22;
+            --panel-border: #30363d;
+            --accent-gold: #d29922;
+            --accent-green: #238636;
+            --accent-red: #da3633;
+            --accent-blue: #58a6ff;
+            --text-light: #f0f6fc;
+            --text-dim: #8b949e;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-light);
+            line-height: 1.6;
+            padding: 2.5rem 1rem;
+        }
+        .container { max-width: 1200px; margin: 0 auto; }
+        header {
+            text-align: center;
+            border-bottom: 2px solid var(--panel-border);
+            padding-bottom: 2rem;
+            margin-bottom: 2.5rem;
+        }
+        h1 { color: var(--accent-gold); font-size: 2.4rem; margin-bottom: 0.5rem; }
+        .subtitle { color: var(--text-dim); font-size: 1.1rem; }
+        h2 {
+            color: var(--accent-gold);
+            font-size: 1.6rem;
+            margin: 2.2rem 0 1rem 0;
+            border-bottom: 1px solid var(--panel-border);
+            padding-bottom: 0.4rem;
+        }
+        h3 { color: #ffffff; font-size: 1.2rem; margin-bottom: 0.5rem; }
+        .badge {
+            display: inline-block;
+            font-size: 0.75rem;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        .badge-green { background: rgba(35, 134, 54, 0.2); color: #3fb950; border: 1px solid #238636; }
+        .badge-blue { background: rgba(88, 166, 255, 0.2); color: #58a6ff; border: 1px solid #1f6feb; }
+        .badge-red { background: rgba(218, 54, 51, 0.2); color: #f85149; border: 1px solid #da3633; }
+        .card {
+            background-color: var(--panel-bg);
+            border: 1px solid var(--panel-border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 0.75rem;
+            font-size: 0.95rem;
+        }
+        th, td {
+            padding: 0.75rem 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--panel-border);
+        }
+        th { background-color: rgba(255, 255, 255, 0.03); color: var(--text-dim); }
+        tr:hover { background-color: rgba(255, 255, 255, 0.02); }
+        ul { list-style: none; margin-top: 0.5rem; }
+        li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-light);
+        }
+        li::before {
+            content: "•";
+            position: absolute;
+            left: 0.5rem;
+            color: var(--accent-gold);
+            font-weight: bold;
+        }
+        .mono { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-weight: bold; }
+        .val-gold { color: var(--accent-gold); }
+        .val-green { color: #3fb950; }
+        .val-blue { color: #58a6ff; }
+        .val-red { color: #f85149; }
+        .step-num {
+            display: inline-block;
+            width: 1.5rem;
+            height: 1.5rem;
+            line-height: 1.5rem;
+            text-align: center;
+            border-radius: 50%;
+            background-color: var(--accent-gold);
+            color: #000;
+            font-weight: bold;
+            font-size: 0.85rem;
+            margin-right: 0.5rem;
+        }
+        footer {
+            margin-top: 3.5rem;
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--panel-border);
+            color: var(--text-dim);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>The Witcher 3: Wild Hunt (Next-Gen)</h1>
+            <p class="subtitle">Complete Technical Calibration, Display Setup, Driver Configuration & Endgame Builds Master Record</p>
+        </header>
+
+        <!-- 1. DISPLAY & AUDIO CALIBRATION -->
+        <h2>1. Display & Audio Configuration</h2>
+        <div class="grid-2">
+            <div class="card">
+                <h3>Hisense 75A65K 4K HDR Calibration</h3>
+                <span class="badge badge-blue">Display Pipeline</span>
+                <ul style="margin-top: 1rem;">
+                    <li><strong>TV Picture Mode:</strong> <span class="mono val-blue">HDR Game</span></li>
+                    <li><strong>HDMI Format:</strong> <span class="mono">Enhanced (4K @ 60 Hz, 10 bpc)</span></li>
+                    <li><strong>Backlight / Dynamic Backlight:</strong> <span class="mono">100 / Off</span></li>
+                    <li><strong>Motion Enhancement & Clearness:</strong> <span class="mono">Off</span></li>
+                    <li><strong>Color Temperature:</strong> <span class="mono">Warm 1 / Warm 2</span></li>
+                    <li><strong>In-Game Max Brightness:</strong> <span class="mono val-gold">350</span> (Calibrated to panel limit)</li>
+                    <li><strong>In-Game Paper White:</strong> <span class="mono val-gold">130</span> (Prevents washed-out highlights)</li>
+                    <li><strong>In-Game Saturation:</strong> <span class="mono val-gold">0.20</span></li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>Acoustic & Immersion Architecture</h3>
+                <span class="badge badge-blue">Audio Pipeline</span>
+                <ul style="margin-top: 1rem;">
+                    <li><strong>Dynamic Combat Music:</strong> <span class="mono val-red">0 (Disabled)</span></li>
+                    <li><strong>Dynamic Range Preset:</strong> <span class="mono val-blue">Home Cinema</span></li>
+                    <li><strong>Operational Logic:</strong> Complete zero-HUD spatial acoustic immersion. Enemy lunges, incoming arrows, and parry impact timings are read via directional audio cues through the ear-level soundbar.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 2. IN-GAME GRAPHICS CONFIGURATION -->
+        <h2>2. Verified In-Game Graphics Settings</h2>
+        <div class="card">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Sub-Menu / Page</th>
+                        <th>Setting Name</th>
+                        <th>Target Value</th>
+                        <th>Operational Reason</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td rowspan="4"><strong>Display / Scaling</strong></td>
+                        <td>Anti-aliasing</td>
+                        <td class="mono val-green">DLSS</td>
+                        <td>Locks anti-aliasing to Nvidia's AI temporal reconstruction.</td>
+                    </tr>
+                    <tr>
+                        <td>DLSS Quality</td>
+                        <td class="mono val-green">Balanced</td>
+                        <td>Ideal 4K internal resolution baseline for locked 60 FPS.</td>
+                    </tr>
+                    <tr>
+                        <td>NVIDIA Reflex Low Latency</td>
+                        <td class="mono val-green">On + Boost</td>
+                        <td>Minimizes GPU pipeline latency for tight parry/dodge windows.</td>
+                    </tr>
+                    <tr>
+                        <td>DLSS Ray Reconstruction</td>
+                        <td class="mono val-dim">Grayed Out (Off)</td>
+                        <td>Automatically inactive when standard Ray Tracing is Off.</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="4"><strong>Post-Processing</strong></td>
+                        <td>Motion Blur / Blur</td>
+                        <td class="mono val-red">Off</td>
+                        <td>Removes camera smearing; maintains visual sharpness at 4K.</td>
+                    </tr>
+                    <tr>
+                        <td>Chromatic Aberration & Vignetting</td>
+                        <td class="mono val-red">Off</td>
+                        <td>Removes corner shading and color distortion.</td>
+                    </tr>
+                    <tr>
+                        <td>GTAO Quality</td>
+                        <td class="mono val-green">Ultra</td>
+                        <td>Next-gen Ground Truth Ambient Occlusion for contact shadows.</td>
+                    </tr>
+                    <tr>
+                        <td>Light Shafts & Bloom</td>
+                        <td class="mono val-green">On</td>
+                        <td>Provides full volumetric sunlight atmosphere under HDR.</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="4"><strong>Environment & World</strong></td>
+                        <td>Ray Tracing (All Options)</td>
+                        <td class="mono val-red">Off</td>
+                        <td>Eliminates CPU/GPU micro-stutters to hold rock-solid 60 FPS.</td>
+                    </tr>
+                    <tr>
+                        <td>Graphics Preset</td>
+                        <td class="mono val-gold">Ultra</td>
+                        <td>Highest quality rasterized assets.</td>
+                    </tr>
+                    <tr>
+                        <td>Foliage Visibility Range</td>
+                        <td class="mono val-green">Ultra</td>
+                        <td>Prevents forest frame drops associated with Ultra+.</td>
+                    </tr>
+                    <tr>
+                        <td>Texture / Terrain / Water</td>
+                        <td class="mono val-green">Ultra</td>
+                        <td>Maximum asset detail for 4K display.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- 3. NVIDIA APP & DRIVER CONFIGURATION -->
+        <h2>3. NVIDIA App Driver Settings & Settings Lockdown</h2>
+        <div class="grid-2">
+            <div class="card">
+                <h3>NVIDIA App Driver Profile</h3>
+                <span class="badge badge-green">Driver Level</span>
+                <ul style="margin-top: 0.75rem;">
+                    <li><strong>Program:</strong> <span class="mono">The Witcher 3: Wild Hunt - GOTY</span></li>
+                    <li><strong>Low Latency Mode:</strong> <span class="mono val-green">On / Ultra</span></li>
+                    <li><strong>Power Management Mode:</strong> <span class="mono val-green">Prefer maximum performance</span></li>
+                    <li><strong>Vertical Sync:</strong> <span class="mono">Use 3D application setting</span></li>
+                    <li><strong>Max Frame Rate:</strong> <span class="mono">Off</span> (Regulated by in-game 60 FPS cap)</li>
+                    <li><strong>RTX HDR & Dynamic Vibrance:</strong> <span class="mono val-red">Off</span> (Prevents double tone-mapping)</li>
+                    <li><strong>Auto-Optimize Apps:</strong> <span class="mono val-red">Off</span> (NVIDIA App Settings &gt; Games &amp; Apps)</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>Configuration Lock-Down Procedure</h3>
+                <span class="badge badge-red">Protection</span>
+                <ul style="margin-top: 0.75rem;">
+                    <li><span class="step-num">1</span> Navigate to <span class="mono">C:\Users\&lt;Username&gt;\Documents\The Witcher 3\</span></li>
+                    <li><span class="step-num">2</span> Right-click <span class="mono">dx12user.settings</span> (and <span class="mono">user.settings</span>) &gt; <strong>Properties</strong>.</li>
+                    <li><span class="step-num">3</span> Check <strong>Read-only</strong> and click <strong>Apply</strong>.</li>
+                    <li><span class="step-num">4</span> This prevents Steam Cloud or GeForce Experience from resetting custom 4K HDR calibrations across devices.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 4. GAMEPLAY MECHANICS & MAP NAVIGATION -->
+        <h2>4. Gameplay Tweaks & Next-Gen Quest Navigation</h2>
+        <div class="grid-2">
+            <div class="card">
+                <h3>Quick Sign Casting Functionality</h3>
+                <span class="badge badge-gold">Gameplay Option</span>
+                <p style="margin-top: 0.5rem; color: var(--text-dim);">Replaces the slow-motion radial wheel with instant real-time controller shortcuts:</p>
+                <ul style="margin-top: 0.5rem;">
+                    <li><strong>Hold RT + B:</strong> <span class="mono val-gold">Quen</span> (Instant shield recast mid-strike)</li>
+                    <li><strong>Hold RT + Y:</strong> <span class="mono val-red">Igni</span></li>
+                    <li><strong>Hold RT + X:</strong> <span class="mono val-blue">Aard</span></li>
+                    <li><strong>Hold RT + A:</strong> <span class="mono">Yrden</span></li>
+                    <li><strong>Hold RT + RB:</strong> <span class="mono">Axii</span></li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>New Quest: "In the Eternal Fire's Shadow"</h3>
+                <span class="badge badge-gold">Content Trigger</span>
+                <ul style="margin-top: 0.75rem;">
+                    <li><strong>Map Location:</strong> <strong>Velen</strong> &gt; <strong>Devil's Pit</strong> (East/Northeast of Crow's Perch / Castle Village, past Burned Ruins).</li>
+                    <li><strong>Landmark:</strong> Massive circular open-pit quarry mine.</li>
+                    <li><strong>Initiation:</strong> Speak to the <strong>Deacon of the Eternal Fire</strong> standing by the cart outside the quarry entrance.</li>
+                    <li><strong>Reward:</strong> Crafting diagrams and questline for the Netflix-inspired <strong>Forgotten Wolven Gear</strong>.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 5. ENDGAME BUILD ARCHITECTURES -->
+        <h2>5. Level 100 Endgame Build Architecture</h2>
+        <div class="grid-2">
+            <div class="card">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <h3>Tank Titan Archetype</h3>
+                    <span class="badge badge-green">Survivability</span>
+                </div>
+                <ul style="margin-top: 0.75rem;">
+                    <li><strong>Vitality Pool:</strong> <span class="mono val-green">18,017 HP</span> (Base + 4 Greater Greens + Synergy 3/3 + Bear Techniques + Corvo Bianco Bed).</li>
+                    <li><strong>Damage Mitigation:</strong> <span class="mono val-green">-45.0% Flat</span> via Mutated Skin (Locked at 3 Adrenaline points).</li>
+                    <li><strong>Adrenaline Retention:</strong> Resolve (3/3) prevents 100% loss on hit; Attack Is the Best Defense (3/3) generates Adrenaline on dodges.</li>
+                    <li><strong>Dodge Security:</strong> Fleet-Footed (3/3) grants 100% invulnerability frames during evasion.</li>
+                    <li><strong>Active Toxicity:</strong> 150 / 214 cap (Troll, Katakan, Archgriffin decoctions) with 64-point potion buffer.</li>
+                </ul>
+            </div>
+            <div class="card">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <h3>Feline Glass Cannon Archetype</h3>
+                    <span class="badge badge-red">Burst DPS</span>
+                </div>
+                <ul style="margin-top: 0.75rem;">
+                    <li><strong>Core Mutation:</strong> <span class="mono val-red">Euphoria</span> (+112.5% to +138% Attack Power scaling on Toxicity).</li>
+                    <li><strong>Primary Weapons:</strong> Toussaint Knight's Steel Sword (6,581 DPS, +100% Crit DMG, +20% Crit Chance) with Severance.</li>
+                    <li><strong>Gauntlet Specialization:</strong>
+                        <ul style="margin-left: 1rem; margin-top: 0.25rem;">
+                            <li><strong>Assassin's Gauntlets:</strong> Peak Silver DPS (<span class="mono val-gold">7,351</span>) vs. Monsters.</li>
+                            <li><strong>Nilfgaardian Guardsman's:</strong> Peak Steel DPS (<span class="mono val-gold">9,077</span>) vs. Humans.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Combat Loop:</strong> Extended Whirl flurry via Severance Runeword with Water Hag Decoction (+50% DMG at full HP).</li>
+                </ul>
+            </div>
+        </div>
+
+        <footer>
+            <p>Generated for Keith Tibbitts | Complete Witcher 3 Remastered Optimization Master Dashboard</p>
+        </footer>
+    </div>
+</body>
+</html>
