@@ -2,13 +2,13 @@ import type React from 'react';
 import { useBuild } from '../context/BuildStateContext';
 
 export const WitcherHudHeader: React.FC = () => {
-  const { level, resetEntireTree, copyShareableLink } = useBuild();
+  const { level, resetEntireTree, copyShareableLink, currentView, setCurrentView } = useBuild();
 
   return (
     <header className="tw-hud-header">
       {/* Brand Title Logo & Level Indicator */}
       <div className="hud-left-group" style={{ display: 'flex', alignItems: 'center', gap: '1.25rem' }}>
-        <a href="#top" title="The Witcher 3: Wild Hunt — REMASTERED v5.00c" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
+        <a href="#top" title="The Witcher 3: Wild Hunt - REMASTERED v5.00c" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
           <img
             src="./assets/brand/tw3r_logo.png"
             alt="The Witcher 3: Remastered"
@@ -37,13 +37,23 @@ export const WitcherHudHeader: React.FC = () => {
       {/* Center Navigation Tabs */}
       <nav className="hud-nav-menu">
         <span className="hud-nav-arrow">&lt;</span>
-        <span className="hud-nav-tab">GLOSSARY</span>
-        <span className="hud-nav-tab">ALCHEMY</span>
         <span className="hud-nav-tab">INVENTORY</span>
         <span className="hud-nav-tab">WORLD MAP</span>
         <span className="hud-nav-tab">QUESTS</span>
-        <div className="hud-nav-tab active-character">CHARACTER</div>
-        <span className="hud-nav-tab">MEDITATION</span>
+        <div 
+          className={`hud-nav-tab ${currentView === 'calculator' ? 'active-character' : ''}`}
+          onClick={() => setCurrentView('calculator')}
+          style={{ cursor: 'pointer' }}
+        >
+          CHARACTER
+        </div>
+        <div 
+          className={`hud-nav-tab ${currentView === 'guide' ? 'active-character' : ''}`}
+          onClick={() => setCurrentView('guide')}
+          style={{ cursor: 'pointer' }}
+        >
+          OPTIMIZATION
+        </div>
         <span className="hud-nav-arrow">&gt;</span>
       </nav>
 

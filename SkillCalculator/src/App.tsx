@@ -8,11 +8,12 @@ import { MutationsModal } from './components/MutationsModal';
 import { EquipAbilityModal } from './components/EquipAbilityModal';
 import { SkillTooltip } from './components/SkillTooltip';
 import { BottomActionBar } from './components/BottomActionBar';
+import { OptimizationGuide } from './components/OptimizationGuide';
 import './App.css';
 
 function MainAppContent() {
   const [mobileTab, setMobileTab] = useState<'tree' | 'loadout'>('tree');
-  const { toastMessage } = useBuild();
+  const { toastMessage, currentView } = useBuild();
 
   return (
     <div className="min-h-screen flex flex-col justify-between selection:bg-[#c89b3c]/30 selection:text-amber-200">
@@ -27,6 +28,8 @@ function MainAppContent() {
           </div>
         )}
 
+        {currentView === 'calculator' ? (
+          <>
         {/* Mobile Viewport Toggle (Visible on smaller viewports) */}
         <div className="mobile-view-toggle">
           <button
@@ -58,19 +61,25 @@ function MainAppContent() {
             <SlottedMatrixPanel />
           </section>
         </main>
+          </>
+        ) : (
+          <div style={{ overflowY: 'auto', flex: 1, padding: '1rem', background: '#07090e' }}>
+            <OptimizationGuide />
+          </div>
+        )}
       </div>
 
       {/* Bottom In-Game Action Bar with Presets */}
-      <BottomActionBar />
+      {currentView === 'calculator' && <BottomActionBar />}
 
       {/* Global Floating Tooltip */}
-      <SkillTooltip />
+      {currentView === 'calculator' && <SkillTooltip />}
 
       {/* Blood & Wine Mutations Modal */}
-      <MutationsModal />
+      {currentView === 'calculator' && <MutationsModal />}
 
       {/* Equip Ability Modal */}
-      <EquipAbilityModal />
+      {currentView === 'calculator' && <EquipAbilityModal />}
     </div>
   );
 }

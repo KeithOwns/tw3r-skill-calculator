@@ -17,6 +17,8 @@ export interface QuadrantBonus {
 }
 
 export interface BuildContextType {
+  currentView: 'calculator' | 'guide';
+  setCurrentView: (view: 'calculator' | 'guide') => void;
   level: number;
   setLevel: (lvl: number) => void;
   allocatedSkills: Record<string, number>;
@@ -68,6 +70,7 @@ export interface BuildContextType {
 const BuildContext = createContext<BuildContextType | undefined>(undefined);
 
 export const BuildProvider = ({ children }: { children: ReactNode }) => {
+  const [currentView, setCurrentView] = useState<'calculator' | 'guide'>('calculator');
   const [level, setLevel] = useState<number>(100);
   const totalPointsPool = 100; // Level 100 benchmark from in-game snips
   
@@ -522,6 +525,8 @@ export const BuildProvider = ({ children }: { children: ReactNode }) => {
   return (
     <BuildContext.Provider
       value={{
+        currentView,
+        setCurrentView,
         level,
         setLevel,
         allocatedSkills,

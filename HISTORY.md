@@ -8,6 +8,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- Integrated the "Master Experience & Hardware Calibration Hub" (Optimization Guide) directly into the React Skill Calculator SPA.
+- Added an "OPTIMIZATION" tab toggle to the top navigation header to seamlessly switch between the Character Planner and the Optimization Guide.
 - Added "Euphoria BestBuild (8216+ DPS)" preset featuring 4 Greater Red Mutagens, Synergy (3/3) in Quad 3 Slot 1 (+169% cumulative Attack Power mutagen boost), Whirl/Rend/Precise Blows (+52%), Sunder Armor/Muscle Memory/Cat School Techniques (+39%), and Focus/Resolve/Fleet Footed (+39%).
 - Added "Euphoria Roaming / Riposte" preset configuring Counterattack (3/3) + Razor Focus (3/3) + Resolve (3/3) + Fleet Footed (3/3) for instant 300% riposte bursts without potion preparation.
 - Added shareable URL link generation and clipboard copying (`#build=...` and `#preset=...`) directly accessible from both the HUD navigation bar ("SHARE BUILD") and Bottom Action Bar ("Share Link").
