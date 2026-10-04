@@ -61,11 +61,11 @@ export const WitcherHudHeader: React.FC = () => {
       <div className="hud-right-stats">
         <div className="hud-stat-item">
           <span className="hud-stat-icon">👑</span>
-          <span>223,369</span>
+          <span>196,501</span>
         </div>
         <div className="hud-stat-item">
           <span className="hud-stat-icon">🎒</span>
-          <span>142 / 170</span>
+          <span>126 / 170</span>
         </div>
         <button
           className="hud-stat-item hover:brightness-125"

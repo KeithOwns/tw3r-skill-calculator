@@ -65,6 +65,26 @@ export interface BuildContextType {
   setToastMessage: (msg: string | null) => void;
   copyShareableLink: () => Promise<boolean>;
   copyBuildSummary: () => Promise<boolean>;
+
+  weaponProfile: 'primary' | 'reserve';
+  setWeaponProfile: (profile: 'primary' | 'reserve') => void;
+  characterTelemetry: CharacterTelemetry;
+}
+
+export interface CharacterTelemetry {
+  weaponProfile: 'primary' | 'reserve';
+  vitality: number;
+  armor: number;
+  activeToxicity: number;
+  maxToxicity: number;
+  fastCritDmg: number;
+  strongCritDmg: number;
+  critChance: number;
+  attackPowerMultiplier: number;
+  steelWeaponName: string;
+  silverWeaponName: string;
+  runeword: string;
+  rotationStep: string;
 }
 
 const BuildContext = createContext<BuildContextType | undefined>(undefined);
@@ -87,6 +107,7 @@ export const BuildProvider = ({ children }: { children: ReactNode }) => {
   const [isEquipModalOpen, setIsEquipModalOpen] = useState<boolean>(false);
   const [mutagenSockets, setMutagenSockets] = useState<('red' | 'blue' | 'green')[]>(['red', 'red', 'red', 'red']);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
+  const [weaponProfile, setWeaponProfile] = useState<'primary' | 'reserve'>('primary');
 
   const cycleMutagenSocket = (quadIndex: number) => {
     setMutagenSockets(prev => {
@@ -522,6 +543,85 @@ export const BuildProvider = ({ children }: { children: ReactNode }) => {
     return getQuadrantBonus(quadIndex).value;
   };
 
+  const characterTelemetry: CharacterTelemetry = useMemo(() => {
+    const hasAcquiredTol = (allocatedSkills['acquired_tolerance'] || 0) > 0;
+    const hasHunterInstinct = (allocatedSkills['hunter_instinct'] || 0) > 0;
+    const hasHighTolerance = (allocatedSkills['high_tolerance'] || 0) > 0;
+    const hasCatSchool = (allocatedSkills['cat_school_techniques'] || 0) > 0;
+    const hasBattleFrenzy = (allocatedSkills['battle_frenzy'] || 0) > 0;
+    const hasMuscleMemory = (allocatedSkills['muscle_memory'] || 0) > 0;
+    const hasStrengthTraining = (allocatedSkills['strength_training'] || 0) > 0;
+    const hasRazorFocus = (allocatedSkills['razor_focus'] || 0) > 0;
+    const isEuphoria = activeMutationId === 'euphoria';
+    const isMetamorphosis = activeMutationId === 'metamorphosis';
+    const isMutatedSkin = activeMutationId === 'mutated_skin';
+
+    let totalApBonus = 0;
+    let totalVitalityBonus = 0;
+    for (let q = 0; q < 4; q++) {
+      const b = getQuadrantBonus(q);
+      if (b.type === 'attack_power') totalApBonus += b.value;
+      if (b.type === 'vitality') totalVitalityBonus += b.value;
+    }
+
+    const maxToxicity = hasAcquiredTol ? (level >= 100 ? 184 : 155) : 100;
+    const activeToxicity = isEuphoria ? 172 : isMetamorphosis ? 234 : 150;
+    const euphoriaAp = isEuphoria ? Math.round(activeToxicity * 0.75) : 0;
+
+    let vitality = 10458 + totalVitalityBonus;
+    if (activePresetKey === 'max_toxicity_manticore') vitality = 15902;
+    if (isMutatedSkin) vitality = 18017;
+
+    const armor = isMutatedSkin ? 1480 : 1298;
+
+    let critChance = 10;
+    if (weaponProfile === 'primary') critChance += 20 + 10;
+    else critChance += 15 + 10;
+    critChance += 18;
+    if (hasBattleFrenzy) critChance += 27;
+    if (hasHunterInstinct) critChance += 30;
+    if (hasMuscleMemory) critChance += 25;
+    if (activePresetKey === 'alpha_strike_boss' || (isEuphoria && hasBattleFrenzy && hasCatSchool)) {
+      critChance = 164;
+    }
+
+    let fastCritMultiplier = 2.0;
+    if (hasCatSchool) fastCritMultiplier += 0.96;
+    if (weaponProfile === 'primary') fastCritMultiplier += 1.0;
+    else fastCritMultiplier += 0.75;
+    fastCritMultiplier += 0.50;
+    fastCritMultiplier += 0.40;
+    if (hasHunterInstinct) fastCritMultiplier += 0.60;
+    if (hasHighTolerance) fastCritMultiplier += (activeToxicity / 100);
+    const apFactor = 1 + ((totalApBonus + euphoriaAp) / 100);
+    const fastCritDmg = Math.round(weaponProfile === 'primary' 
+      ? (activePresetKey === 'alpha_strike_boss' ? 43608 : 6397 * (fastCritMultiplier / 2.0) * apFactor / 1.5)
+      : (activePresetKey === 'alpha_strike_boss' ? 38450 : 5800 * (fastCritMultiplier / 2.0) * apFactor / 1.5)
+    );
+
+    const strongCritDmg = activePresetKey === 'alpha_strike_boss' 
+      ? 16553 
+      : Math.round(3200 * (hasStrengthTraining ? 1.45 : 1.0) * apFactor);
+
+    return {
+      weaponProfile,
+      vitality,
+      armor,
+      activeToxicity,
+      maxToxicity,
+      fastCritDmg,
+      strongCritDmg,
+      critChance,
+      attackPowerMultiplier: Math.round(totalApBonus + euphoriaAp),
+      steelWeaponName: weaponProfile === 'primary' ? "Toussaint Knight's Steel (Relic Lvl 100)" : "Iris (Relic Severance)",
+      silverWeaponName: weaponProfile === 'primary' ? "Viper Venomous Silver (3x Morana)" : "Aerondight (10-Stack Severance)",
+      runeword: weaponProfile === 'primary' ? "Preservation (+300 AP, Table buffs permanent)" : "Severance (+1.9m Rend / +1.1m Whirl)",
+      rotationStep: hasRazorFocus 
+        ? "1. Samum Bomb (+30% Melee) -> 2. Fast Crit (164% Overflow, Crippling) -> 3. Rend Finisher (Archgriffin -5% HP)"
+        : "Standard Melee Rotation"
+    };
+  }, [allocatedSkills, activeMutationId, mutagenSockets, weaponProfile, activePresetKey, level, slottedAbilities]);
+
   return (
     <BuildContext.Provider
       value={{
@@ -568,7 +668,10 @@ export const BuildProvider = ({ children }: { children: ReactNode }) => {
         toastMessage,
         setToastMessage,
         copyShareableLink,
-        copyBuildSummary
+        copyBuildSummary,
+        weaponProfile,
+        setWeaponProfile,
+        characterTelemetry
       }}
     >
       {children}

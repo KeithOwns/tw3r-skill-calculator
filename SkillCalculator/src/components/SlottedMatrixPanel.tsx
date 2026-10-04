@@ -21,7 +21,9 @@ export const SlottedMatrixPanel: React.FC = () => {
     selectedSlotIndex,
     setSelectedSlotIndex,
     setIsEquipModalOpen,
-    swapSlots
+    swapSlots,
+    characterTelemetry,
+    setWeaponProfile
   } = useBuild();
 
   const activeMutation = MUTATIONS_DATA[activeMutationId] || MUTATIONS_DATA.cat_eyes;
@@ -235,6 +237,63 @@ export const SlottedMatrixPanel: React.FC = () => {
 
         {/* Quadrant 4 */}
         {renderQuadrant(3, 9)}
+      </div>
+
+      {/* Live Combat Telemetry & Weapon Loadout Dock */}
+      <div className="telemetry-loadout-dock">
+        <div className="telemetry-profile-selector">
+          <div className="profile-label">EQUIPPED LOADOUT:</div>
+          <button
+            type="button"
+            className={`btn-weapon-toggle ${characterTelemetry.weaponProfile === 'primary' ? 'active' : ''}`}
+            onClick={() => setWeaponProfile('primary')}
+            title="Toggle Primary: Toussaint Knight's Steel + Viper Venomous Silver (Preservation & Morana Runestones)"
+          >
+            ⚔️ Primary: TKSS + Viper Silver
+          </button>
+          <button
+            type="button"
+            className={`btn-weapon-toggle ${characterTelemetry.weaponProfile === 'reserve' ? 'active' : ''}`}
+            onClick={() => setWeaponProfile('reserve')}
+            title="Toggle Reserve: Iris + Aerondight (Severance 10-Stack Critical Engine)"
+          >
+            🗡️ Reserve: Iris + Aerondight
+          </button>
+        </div>
+
+        <div className="telemetry-stats-grid">
+          <div className="telemetry-stat-cell">
+            <span className="telemetry-stat-label">FAST CRIT HIT</span>
+            <span className="telemetry-stat-val val-gold">{characterTelemetry.fastCritDmg.toLocaleString()}</span>
+          </div>
+          <div className="telemetry-stat-cell">
+            <span className="telemetry-stat-label">STRONG CRIT / REND</span>
+            <span className="telemetry-stat-val val-red">{characterTelemetry.strongCritDmg.toLocaleString()}</span>
+          </div>
+          <div className="telemetry-stat-cell">
+            <span className="telemetry-stat-label">CRIT CHANCE</span>
+            <span className="telemetry-stat-val val-blue">{characterTelemetry.critChance}% (Overflow)</span>
+          </div>
+          <div className="telemetry-stat-cell">
+            <span className="telemetry-stat-label">ACTIVE TOXICITY</span>
+            <span className="telemetry-stat-val val-green">{characterTelemetry.activeToxicity} / {characterTelemetry.maxToxicity}</span>
+          </div>
+          <div className="telemetry-stat-cell">
+            <span className="telemetry-stat-label">ARMOR RATING</span>
+            <span className="telemetry-stat-val val-steel">{characterTelemetry.armor}</span>
+          </div>
+          <div className="telemetry-stat-cell">
+            <span className="telemetry-stat-label">VITALITY POOL</span>
+            <span className="telemetry-stat-val val-green">{characterTelemetry.vitality.toLocaleString()} HP</span>
+          </div>
+        </div>
+
+        <div className="telemetry-gear-footer">
+          <span className="telemetry-gear-badge">Steel: {characterTelemetry.steelWeaponName}</span>
+          <span className="telemetry-gear-badge">Silver: {characterTelemetry.silverWeaponName}</span>
+          <span className="telemetry-gear-badge gold">Runeword: {characterTelemetry.runeword}</span>
+          <span className="telemetry-gear-badge purple">Rotation: {characterTelemetry.rotationStep}</span>
+        </div>
       </div>
     </div>
   );

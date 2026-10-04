@@ -3150,6 +3150,43 @@ const MUTATIONS_DATA = {
  * Verified Ground-Truth Presets from Keith's Snips
  */
 const PRESETS_DATA = {
+  alpha_strike_boss: {
+    name: "Alpha-Strike Boss Executioner",
+    subtitle: "164%+ Overflow Crit | 43,608 Peak Hit | TKSS + Viper / Iris & Aerondight",
+    mutation: "euphoria",
+    mutagenSockets: ["red", "red", "red", "red"],
+    combatAllocations: {
+      muscle_memory: 3,
+      strength_training: 3,
+      three_strikes: 3,
+      razor_focus: 3,
+      crushing_blows: 3,
+      sunder_armor: 3,
+      whirl: 3,
+      rend: 3,
+      deadly_precision: 3,
+      crippling_strikes: 3
+    },
+    alchemyAllocations: {
+      hunter_instinct: 3,
+      acquired_tolerance: 3,
+      high_tolerance: 3,
+      potent_sting: 3,
+      synergy: 3
+    },
+    generalAllocations: {
+      cat_school_techniques: 3,
+      battle_frenzy: 3,
+      element_of_surprise: 3
+    },
+    slottedSkills: [
+      "muscle_memory", "strength_training", "three_strikes",
+      "razor_focus", "crushing_blows", "sunder_armor",
+      "whirl", "deadly_precision", "crippling_strikes",
+      "cat_school_techniques", "battle_frenzy", "element_of_surprise",
+      "hunter_instinct", "acquired_tolerance", "high_tolerance", "potent_sting"
+    ]
+  },
   euphoria_best_build: {
     name: "Euphoria BestBuild (8216+ DPS)",
     subtitle: "8,216+ Silver / 9,436+ Steel DPS | 4 Red Mutagens (+169% AP) + Synergy Quad 3",

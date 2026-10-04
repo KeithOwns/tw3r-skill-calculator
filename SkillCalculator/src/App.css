@@ -1460,3 +1460,137 @@
       cursor: pointer;
     }
     .btn-close-modal:hover { color: #f87171; }
+
+    /* ========================================================
+       LIVE TELEMETRY & WEAPON LOADOUT DOCK
+       ======================================================== */
+    .telemetry-loadout-dock {
+      margin-top: 1rem;
+      background: rgba(10, 13, 19, 0.95);
+      border: 1px solid rgba(229, 184, 57, 0.35);
+      border-radius: 4px;
+      padding: 0.75rem 1rem;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.6);
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+    }
+
+    .telemetry-profile-selector {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      border-bottom: 1px solid rgba(229, 184, 57, 0.18);
+      padding-bottom: 0.5rem;
+    }
+
+    .profile-label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.76rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: var(--tw-gold-primary);
+    }
+
+    .btn-weapon-toggle {
+      font-family: 'Cinzel', serif;
+      font-size: 0.74rem;
+      font-weight: 700;
+      padding: 0.3rem 0.75rem;
+      border-radius: 3px;
+      border: 1px solid #4a3b2c;
+      background: rgba(20, 24, 32, 0.85);
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .btn-weapon-toggle:hover {
+      border-color: var(--tw-gold-primary);
+      color: #ffffff;
+      background: rgba(229, 184, 57, 0.15);
+    }
+
+    .btn-weapon-toggle.active {
+      border-color: var(--tw-gold-light);
+      background: linear-gradient(180deg, rgba(229, 184, 57, 0.3) 0%, rgba(140, 95, 20, 0.4) 100%);
+      color: #ffffff;
+      box-shadow: 0 0 10px rgba(229, 184, 57, 0.4);
+    }
+
+    .telemetry-stats-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 0.5rem;
+    }
+
+    @media (max-width: 1024px) {
+      .telemetry-stats-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .telemetry-stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .telemetry-stat-cell {
+      background: rgba(16, 20, 28, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 3px;
+      padding: 0.4rem 0.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.15rem;
+      text-align: center;
+    }
+
+    .telemetry-stat-label {
+      font-size: 0.64rem;
+      font-family: 'Cinzel', serif;
+      letter-spacing: 0.06em;
+      color: var(--text-muted);
+    }
+
+    .telemetry-stat-val {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.88rem;
+      font-weight: 700;
+    }
+
+    .val-gold { color: #facc15; }
+    .val-red { color: #f87171; }
+    .val-green { color: #4ade80; }
+    .val-blue { color: #38bdf8; }
+    .val-steel { color: #cbd5e1; }
+
+    .telemetry-gear-footer {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      font-size: 0.68rem;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .telemetry-gear-badge {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 0.18rem 0.45rem;
+      border-radius: 2px;
+      color: #94a3b8;
+    }
+
+    .telemetry-gear-badge.gold {
+      border-color: rgba(229, 184, 57, 0.3);
+      color: var(--tw-gold-light);
+    }
+
+    .telemetry-gear-badge.purple {
+      border-color: rgba(168, 85, 247, 0.35);
+      color: #c084fc;
+    }

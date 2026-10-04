@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- Added "Alpha-Strike Boss Executioner" build preset featuring 164%+ overflow critical hit rate, 43,608 peak Fast Attack critical strikes, and full 16-slot combat/alchemy/general matrix (TKSS + Viper Venomous Silver / Iris & Aerondight reserve).
+- Added interactive Live Combat Telemetry & Weapon Loadout Dock to the slotted ability matrix panel, dynamically calculating Fast Crit DMG, Strong Crit / Rend DMG, Overflow Crit Chance, Active/Max Toxicity, Armor Rating, and Vitality pool with live runeword badges and boss execution rotation cues.
+- Added Primary vs. Reserve weapon profile toggling (`TKSS + Viper Silver` vs. `Iris + Aerondight`) with instant stat recalculation and Severance vs. Preservation runeword adaptation.
 - Added Section 6 "Alpha-Strike Combat Telemetry & Master Loadout" to the Optimization Guide covering the 3-step boss execution sequence (Superior Samum opener -> Fast Attack Crit -> Archgriffin Rend finisher), master weapon pairings (TKSS + Viper Silver / Aerondight Reserve), Nilfgaardian Guardsman's + New Moon Levity synergy, and 164%+ critical hit overflow telemetry.
 - Integrated the "Master Experience & Hardware Calibration Hub" (Optimization Guide) directly into the React Skill Calculator SPA.
 - Added an "OPTIMIZATION" tab toggle to the top navigation header to seamlessly switch between the Character Planner and the Optimization Guide.

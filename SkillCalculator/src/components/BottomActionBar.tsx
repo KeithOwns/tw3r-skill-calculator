@@ -35,6 +35,14 @@ export const BottomActionBar: React.FC = () => {
       {/* Right: Presets & Reset */}
       <div className="footer-preset-buttons">
         <button
+          className={`btn-preset-pill ${activePresetKey === 'alpha_strike_boss' ? 'active' : ''}`}
+          onClick={() => loadPreset('alpha_strike_boss')}
+          title="Load Alpha-Strike Boss Executioner (164%+ Overflow Crit | 43,608 Peak Hit | TKSS + Viper / Iris & Aerondight)"
+        >
+          ⚡ Alpha-Strike Boss (43k Crit)
+        </button>
+
+        <button
           className={`btn-preset-pill ${activePresetKey === 'euphoria_best_build' ? 'active' : ''}`}
           onClick={() => loadPreset('euphoria_best_build')}
           title="Load Euphoria BestBuild (8216+ Silver DPS | 4 Red Mutagens +169% AP | Synergy in Quad 3 Slot 1)"
