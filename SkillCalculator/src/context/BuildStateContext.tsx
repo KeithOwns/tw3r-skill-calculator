@@ -272,8 +272,8 @@ export const BuildProvider = ({ children }: { children: ReactNode }) => {
 
     const mergedAllocations: Record<string, number> = {
       ...preset.combatAllocations,
-      ...(preset.signsAllocations || {}),
-      ...(preset.alchemyAllocations || {}),
+      ...preset.signsAllocations,
+      ...preset.alchemyAllocations,
       ...preset.generalAllocations
     };
     setAllocatedSkills(mergedAllocations);

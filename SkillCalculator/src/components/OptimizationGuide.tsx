@@ -208,6 +208,34 @@ export function OptimizationGuide() {
             </div>
         </div>
 
+        {/* Section 6: Alpha-Strike Combat Telemetry & Master Loadout */}
+        <h2>6. Alpha-Strike Combat Telemetry & Master Loadout</h2>
+        <div className="grid-2">
+            <div className="card">
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                    <h3>3-Step Alpha-Strike Rotation</h3>
+                    <span className="badge badge-gold">Boss Execution</span>
+                </div>
+                <ul style={{ marginTop: '0.75rem' }}>
+                    <li><strong>1. Bomb Opener:</strong> Superior Samum stun activates <span className="mono val-gold">Element of Surprise</span> (+30% melee damage for 10s).</li>
+                    <li><strong>2. Opening Fast Attack:</strong> Guaranteed critical strike (164%+ overflow rate) procs <span className="mono val-red">Crippling Strike</span> (+30% damage taken) &amp; <span className="mono val-red">Strength Training</span> (+45% next Strong Attack).</li>
+                    <li><strong>3. Strong Attack Finisher:</strong> Heavy Rend expends stamina for <span className="mono val-green">Archgriffin Decoction</span> (-5% enemy max HP chunk) + expends banked Adrenaline (<span className="mono val-red">Razor Focus</span>) compounding all multipliers for instant 2-hit boss execution.</li>
+                </ul>
+            </div>
+            <div className="card">
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                    <h3>Master Equipment &amp; Runewords</h3>
+                    <span className="badge badge-blue">Bis Loadout</span>
+                </div>
+                <ul style={{ marginTop: '0.75rem' }}>
+                    <li><strong>Primary Steel:</strong> Toussaint Knight's Steel Sword (<span className="mono val-gold">Preservation</span>, +300 AP, +100% Crit DMG, +20% Crit Chance).</li>
+                    <li><strong>Primary Silver:</strong> Viper Venomous Silver (<span className="mono val-green">3x Morana</span>, 45% Poison, +75% Crit DMG, +10% Crit Chance).</li>
+                    <li><strong>Reserve Duo:</strong> Iris &amp; Aerondight (<span className="mono val-blue">Severance</span>, +1.9m Rend / +1.1m Whirl reach, 10-stack critical charge engine).</li>
+                    <li><strong>Armor Synergy:</strong> Nilfgaardian Guardsman's Gauntlets (+50% Crit DMG) + New Moon Relic Set with <span className="mono val-gold">Levity</span> (Cat School Techniques: +96% Crit DMG / +24% Fast DMG).</li>
+                </ul>
+            </div>
+        </div>
+
         <footer>
             <p>Generated for Keith Tibbitts | Complete Witcher 3 Remastered Optimization Master Dashboard</p>
         </footer>

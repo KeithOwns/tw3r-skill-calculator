@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- Added Section 6 "Alpha-Strike Combat Telemetry & Master Loadout" to the Optimization Guide covering the 3-step boss execution sequence (Superior Samum opener -> Fast Attack Crit -> Archgriffin Rend finisher), master weapon pairings (TKSS + Viper Silver / Aerondight Reserve), Nilfgaardian Guardsman's + New Moon Levity synergy, and 164%+ critical hit overflow telemetry.
 - Integrated the "Master Experience & Hardware Calibration Hub" (Optimization Guide) directly into the React Skill Calculator SPA.
 - Added an "OPTIMIZATION" tab toggle to the top navigation header to seamlessly switch between the Character Planner and the Optimization Guide.
 - Added "Euphoria BestBuild (8216+ DPS)" preset featuring 4 Greater Red Mutagens, Synergy (3/3) in Quad 3 Slot 1 (+169% cumulative Attack Power mutagen boost), Whirl/Rend/Precise Blows (+52%), Sunder Armor/Muscle Memory/Cat School Techniques (+39%), and Focus/Resolve/Fleet Footed (+39%).
@@ -42,6 +43,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Social media Open Graph preview cards and branding meta tags in index headers.
 
 ### Fixed
+- Resolved oxlint linter warnings in `BuildStateContext.tsx` by eliminating redundant empty object fallbacks in preset allocation spreads.
 - Restored and enhanced ability slotting functionality across the application: restored interactive slot selection with authentic pulsing gold HUD cursor border, added the Witcher 3 "Equip Ability" modal picker, enabled HTML5 drag-and-drop from the tree canvas onto slots and between slots, enabled double-click and auto-allocate slotting, and added quick equip buttons directly inside floating tooltips.
 - Corrected `razor_focus` skill entry in `COMBAT_SKILLS_DATA` which previously contained an erroneous duplicate copy of the General skill "Focus"; restored authentic Next-Gen Razor Focus description, 3 ranks (+1 AP on combat start; +10%/+20%/+30% Adrenaline generation from weapon strikes), nodeLetter "N", coordinates (261, 680), and prerequisite parents.
 - Aligned Metamorphosis description and max simultaneous decoction limit (5) directly with in-game tooltips.
