@@ -1,8 +1,8 @@
-# AGY CLI Handoff: The Witcher 3 Remastered (v5.00c) Skill Calculator
+# AGY CLI Handoff: The Witcher 3 Remastered (v5.01) Skill Calculator & Companion App
 
 ## 1. Project Overview & Locations
 
-This project is an authentic, 1:1 in-game fidelity Skill Calculator, Character Matrix, and Mutation Planner for **The Witcher 3: Wild Hunt — Remastered (v5.00c)**.
+This project is an authentic, 1:1 in-game fidelity Skill Calculator, Character Matrix, Mutation Planner, and Hardware/Mod Optimization Hub for **The Witcher 3: Wild Hunt — Remastered (v5.01)**.
 
 ### Local Repositories:
 ```text
@@ -17,28 +17,20 @@ c:\Users\admin\src\github.com\KeithOwns\YouTube\Projects\TW3R
 * **Live GitHub Pages URL:** `https://keithowns.github.io/tw3r-skill-calculator/`
 * **Local Preview Server:** `http://localhost:4173/` (serving root `index.html`)
 
-### Source In-Game Ground Truth Snips (Google Drive):
-* `G:\My Drive\Projects\TheWitcher3_Remastered\TW3R\TW3R_Brand` (branding assets & title badges)
-* `G:\My Drive\Projects\TheWitcher3_Remastered\TW3R\Snips\MyBuild` (dynamic flex swap slot options)
-* `G:\My Drive\Projects\TheWitcher3_Remastered\TW3R\Snips\MyBuild\bestBuild` (8200+ DPS Euphoria boss setup & Roaming riposte setup)
-* `G:\My Drive\Projects\TheWitcher3_Remastered\TW3R\Snips\MyBuild\aLittleTanky` (defensive alchemy HP options)
-* `G:\My Drive\Projects\TheWitcher3_Remastered\TW3R\Snips\CharacterBuilds\MedArmorX2` (Wolven vs. Feline gear stats)
-* `G:\My Drive\Projects\TheWitcher3_Remastered\TW3R\Snips\CharacterBuilds\MaxToxicity_Manticore` (234 Toxicity Chemist)
-
 ---
 
 ## 2. Technology Stack & Architecture
 
 * **Frontend Framework:** React 18, Vite, TypeScript.
-* **Styling:** Custom CSS design system replicating Witcher 3 game HUD (`App.css`), Cinzel & Inter typography, authentic stone borders, gold foil highlights, SVG tree conduits.
+* **Styling:** Custom CSS design system replicating Witcher 3 game HUD (`App.css`, `OptimizationGuide.css`), Cinzel & Inter typography, authentic stone borders, gold foil highlights, SVG tree conduits.
 * **Build System:**
   * Root `npm run build` runs `npm --prefix SkillCalculator run build` and copies `SkillCalculator/dist` into the repository root so GitHub Pages serves it directly from `main`.
-* **State Management:** `BuildStateContext.tsx` managing allocated skill points, 16 ability slots, mutations, mutagen sockets, active presets, and slot selection.
+* **State Management:** `BuildStateContext.tsx` managing allocated skill points, 16 ability slots, mutations, mutagen sockets, active presets, live combat telemetry dock, and slot selection.
 * **Ground Truth Data:** `groundTruthData.ts` and `combat_skills_data.js` holding accurate skill descriptions, coordinates, prerequisites, and icons.
 
 ---
 
-## 3. Remastered (v5.00c) Ground Truth Rules
+## 3. Remastered (v5.01) Ground Truth Rules
 
 1. **Synergy (Alchemy Tier 3, Rank 3):**
    * Multiplies mutagen bonuses by **+30%**.
@@ -54,41 +46,56 @@ c:\Users\admin\src\github.com\KeithOwns\YouTube\Projects\TW3R
 
 ---
 
-## 4. Current State & Completed Features
+## 4. Verified Personal Immersion Configuration (Ground Truth)
 
-* **Ability Slotting System:**
-  * Clicking an empty slot selects it with a pulsing gold border and opens the `EquipAbilityModal`.
-  * Filter tabs: `All Abilities`, `★ Learned`, `Combat`, `Signs`, `Alchemy`, `General`, plus instant search.
-  * Drag & Drop: Full HTML5 drag from skill tree nodes to slots, and dragging between slots to reorder.
-  * Double-click and Shift+click to auto-slot into the first empty slot.
-  * Floating tooltip quick-equip button: `[ ⚡ Equip Ability ]`.
-  * One-click unslotting via `×` badge.
-* **Presets Integrated:**
-  * *Cat Eyes Hybrid (Snips)*
-  * *Bloodbath Melee (+250% AP)*
-  * *Mutated Skin Tank (-45% DR)*
-  * *Piercing Cold (+160% Signs)*
-  * *Manticore Chemist (234 Tox)*
-  * *Euphoria Chemist (+Toxic)*
-  * *Level 100 Titan (Maxed)*
+* **Audio Pipeline**:
+  * `Music Volume: 0` (Zero-HUD spatial acoustic radar; parry timing, arrow whistles, and enemy lunges read purely by ear).
+  * `Dynamic Range: Home Cinema` | `Master / SFX / Voiceover: 100`.
+* **Controls Pipeline**:
+  * `Adaptive Triggers: On` (Tactile sign resistance and crossbow draw weight on wired DualSense).
+  * `Invert Camera Y-axis: On` | `Sprint by Pressing Left Stick: On` | `New Horse Controls: On (Sensitivity 0.90)`.
+* **Minimalist Diegetic HUD (`Video > Interface`)**:
+  * `HUD Size: Small` | `Subtitles: -5` | `Dialogue Choices: 10` (75" 4K legibility) | `NPC Chatter: -5`.
+  * `Enemy Health Bars: Off` | `Boss Health Bar: Off` (Pure animation-based combat).
+  * `Active Quests: Off` | `Buffs: Off` | `Info Messages: Off` | `Control Hints: Off` | `Action Log: Off`.
+  * `Witcher Medallion & Stat Bars: On` | `Breath Remaining: On` | `Damaged Items: On` | `Horse Stamina: On` | `Critical Hit & Effect Text: On`.
+* **GeForce NOW Ultimate (RTX 4080) Cloud Profile**:
+  * **Critical 4K Fix:** If resolution defaults to `1024x768`, configure GFN App Settings > Streaming Quality to **Custom**: `3840x2160 (16:9)`, `60/120 FPS`, `75 Mbps`, `Adjust for poor network: Off`, `HDR: On`. In-game Display Mode: `Borderless Window`.
+  * **Graphics Stack:** Full Ray Tracing (GI Quality, Refl On, Shadows Quality, AO On) + `DLSS Ray Reconstruction: On` + `DLSS Quality` (or DLAA) + `DLSS Frame Generation: On` with `Frames to generate: 1` (offsets latency on 60Hz panels) + `Motion Blur / Blur: Off`.
 
 ---
 
-## 5. Public Release Checklist & Next Tasks for New AGY Instance
+## 5. Active Mod Testing Stack (19 Mods Verified)
 
-1. **Add Remaining Community Presets to `PRESETS_DATA` and `BottomActionBar`:**
-   * **Euphoria BestBuild (8216+ Silver DPS):**
-     * Quad 1: Whirl (3/3), Rend (3/3), Precise Blows (3/3) [+52% Red Mutagen]
-     * Quad 2: Sunder Armor (3/3), Muscle Memory (3/3), Cat School Techniques [+39% Red Mutagen]
-     * Quad 3: Synergy (3/3), Crushing Blows (3/3), Razor Focus (3/3) [+39% Red Mutagen]
-     * Quad 4: Focus (General), Resolve (3/3), Fleet Footed (3/3) [+39% Red Mutagen]
-     * Center Mutation: Euphoria (+138%) with 4 Green Alchemy skills in mutation slots.
-   * **Euphoria Roaming / Riposte (Quick combat without potion prep):**
-     * Quad 3 swaps Synergy for Counterattack (3/3) for instant 300% riposte bursts and immediate Adrenaline from Razor Focus.
-2. **Build Sharing & Export:**
-   * Ensure URL hash or query string persists build state and provides a "Copy Shareable Link" button in `BottomActionBar.tsx`.
-   * Add a "Copy Build Summary" (markdown or plaintext) button.
-3. **Mobile & Responsive Layout:**
-   * Ensure viewport handles portrait screens (e.g. tabbed toggle between "Tree View" and "Slotted Loadout").
-4. **Always Sync Both Repositories:**
-   * Ensure changes to `tw3r-skill-calculator` are mirrored into `YouTube/Projects/TW3R`.
+1. **Combat & Vitality Telemetry**:
+   * `No Inventory During Combat (v5.01)` — Enforces authentic witcher preparation; blocks mid-combat food/potion cheese.
+   * `CROW Combat Modules (v4.1.2)` — Fluid dodge-canceling, aggressive parry pacing.
+   * `Hurt Animation` — Visual limping/stumbling cues when HP is low (crucial replacement for disabled player/boss health bars).
+   * `Blood Trails (v1.05-29)` — Visceral blade slash effects.
+2. **Build & Gear Reworks**:
+   * `Viper Set Bonus` — Restores missing Grandmaster poison immunity/scaling set bonus to Viper gear.
+   * `Crossbow Rework` — Rebalances crossbows into functional land combat utility weapons.
+   * `Mutagen Tab Alchemy (v3.1)` — Dedicated sub-menu for mutagen transmutations.
+3. **World & Visual Enhancements**:
+   * `Larger White Orchard (v1.1)` — Visual continental landmass extension.
+   * `E3 Boat (v2.0)` — Sturdier weathered boat with lantern.
+   * `Iris and Olgierd Scabbard Fix (v1.03-29)` — Fixes scabbard mesh alignment for Iris.
+   * `Ladder with Torch (v2.1.0)` — Keeps torch lit while climbing cave ladders.
+   * `3D Eyebrows for Geralt (v3.1)` — Modern 3D brow geometry.
+   * `Corvo Bianco Enhanced Collection (v5.01)` — Estate upgrades.
+4. **Navigation & Convenience**:
+   * `Fast Travel Pack (v2.1.0)` — 49 lore-friendly fast travel signposts.
+   * `Friendly Focus (v3.1)` & `Sprint in Witcher Senses (v2.1.0)` — *Test for potential sprint script redundancy.*
+   * `New Questlines`: *The Spider and The Wolf (v1.2.3)* & *Sins of the Student (v2.1.3)*.
+   * `Auto Win Gwent (v1.01)` — Instant card collection bypass.
+
+---
+
+## 6. Public Release Checklist & Next Tasks for New AGY Instance
+
+1. **Test & Validate Mod Synergies:**
+   * Test `Friendly Focus` vs `Sprint in Witcher Senses` in-game for camera jitter; disable `Sprint in Witcher Senses` if redundant.
+   * Validate `Viper Set Bonus` interaction with Viper Venomous Silver Sword in the companion app telemetry calculations.
+2. **Sync Repositories:**
+   * Ensure `tw3r-skill-calculator` and `YouTube/Projects/TW3R` remain identical across all builds.
+

@@ -46,6 +46,29 @@
         .badge-green { background: rgba(35, 134, 54, 0.2); color: #3fb950; border: 1px solid #238636; }
         .badge-blue { background: rgba(88, 166, 255, 0.2); color: #58a6ff; border: 1px solid #1f6feb; }
         .badge-red { background: rgba(218, 54, 51, 0.2); color: #f85149; border: 1px solid #da3633; }
+        .badge-gold { background: rgba(210, 153, 34, 0.2); color: #d29922; border: 1px solid #d29922; }
+        .badge-dim { background: rgba(139, 148, 158, 0.2); color: #8b949e; border: 1px solid #30363d; }
+        .callout {
+            background-color: #11151c;
+            border-left: 4px solid var(--accent-gold);
+            padding: 1rem 1.25rem;
+            border-radius: 0 6px 6px 0;
+            margin: 1rem 0;
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+        .callout-warn {
+            border-left-color: var(--accent-red);
+            background-color: rgba(218, 54, 51, 0.1);
+        }
+        .callout-success {
+            border-left-color: var(--accent-green);
+            background-color: rgba(35, 134, 54, 0.1);
+        }
+        .table-responsive {
+            width: 100%;
+            overflow-x: auto;
+        }
         .card {
             background-color: var(--panel-bg);
             border: 1px solid var(--panel-border);

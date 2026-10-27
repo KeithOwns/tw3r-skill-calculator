@@ -63,7 +63,7 @@ function MainAppContent() {
         </main>
           </>
         ) : (
-          <div style={{ overflowY: 'auto', flex: 1, padding: '1rem', background: '#07090e' }}>
+          <div style={{ width: '100%', minHeight: 'calc(100vh - 60px)', background: '#07090e', padding: '1rem' }}>
             <OptimizationGuide />
           </div>
         )}

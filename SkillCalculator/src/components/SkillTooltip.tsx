@@ -36,24 +36,24 @@ export const SkillTooltip: React.FC = () => {
       </div>
 
       {currentRankData && (
-        <div id="tipCurrentBlock">
-          <div className="tooltip-section-header">Current Level:</div>
+        <div id="tipCurrentBlock" className="tooltip-rank-block">
+          <div className="tooltip-section-header">Current level:</div>
           <div className="tooltip-desc-body">{currentRankData.desc}</div>
+          {currentRankData.bonus && (
+            <div className="tooltip-bonus-stat">{currentRankData.bonus}</div>
+          )}
         </div>
       )}
 
       {nextRankData && (
-        <div id="tipNextBlock">
+        <div id="tipNextBlock" className="tooltip-rank-block">
           <div className="tooltip-section-header">
-            {currentRank === 0 ? 'Description:' : 'Next Level:'}
+            {currentRank === 0 ? 'Description:' : 'Next level:'}
           </div>
           <div className="tooltip-desc-body">{nextRankData.desc}</div>
-        </div>
-      )}
-
-      {currentRankData?.bonus && (
-        <div className="tooltip-bonus-stat">
-          <span>⚡</span> <span>{currentRankData.bonus}</span>
+          {nextRankData.bonus && (
+            <div className="tooltip-bonus-stat">{nextRankData.bonus}</div>
+          )}
         </div>
       )}
 

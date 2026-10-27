@@ -1,5 +1,6 @@
-import type React from 'react';
+import React, { useState } from 'react';
 import { useBuild } from '../context/BuildStateContext';
+import { PRESETS_DATA } from '../data/groundTruthData';
 
 export const BottomActionBar: React.FC = () => {
   const {
@@ -11,110 +12,62 @@ export const BottomActionBar: React.FC = () => {
     copyBuildSummary
   } = useBuild();
 
+  const [isPresetsDrawerOpen, setIsPresetsDrawerOpen] = useState<boolean>(false);
+
   return (
     <footer className="tw-hud-footer">
-      {/* Left: In-Game Controller / Mouse Hints */}
+      {/* Center / Left: In-Game Controller / Mouse Prompts (Matches Screenshot) */}
       <div className="footer-game-prompts">
-        <div className="prompt-item">
+        <div className="prompt-item" title="Rotate mouse wheel over tooltips to resize description box">
           <kbd>🐭</kbd>
           <span>Description size</span>
         </div>
-        <div className="prompt-item">
+        <div className="prompt-item" title="Press Space to activate or slot the selected ability">
           <kbd>Space</kbd>
           <span>Activate / Equip</span>
         </div>
         <div
           className="prompt-item cursor-pointer hover:opacity-80"
           onClick={() => setIsMutationsModalOpen(true)}
+          title="Press C to open advanced Mutations matrix"
         >
           <kbd>C</kbd>
           <span>Mutations</span>
         </div>
       </div>
 
-      {/* Right: Presets & Reset */}
-      <div className="footer-preset-buttons">
+      {/* Right: Presets Drawer Trigger & Quick Controls */}
+      <div className="footer-preset-controls">
         <button
+          type="button"
+          className={`btn-preset-pill ${activePresetKey === 'in_game_screenshot' ? 'active' : ''}`}
+          onClick={() => loadPreset('in_game_screenshot')}
+          title="Load Authentic In-Game Build from Screenshot (13 Combat, 7 Alchemy, 4 General, 4 Red Mutagens)"
+        >
+          👑 In-Game Screenshot (Euphoria)
+        </button>
+
+        <button
+          type="button"
           className={`btn-preset-pill ${activePresetKey === 'alpha_strike_boss' ? 'active' : ''}`}
           onClick={() => loadPreset('alpha_strike_boss')}
           title="Load Alpha-Strike Boss Executioner (164%+ Overflow Crit | 43,608 Peak Hit | TKSS + Viper / Iris & Aerondight)"
         >
-          ⚡ Alpha-Strike Boss (43k Crit)
+          ⚡ Alpha-Strike (43k Crit)
         </button>
 
         <button
-          className={`btn-preset-pill ${activePresetKey === 'euphoria_best_build' ? 'active' : ''}`}
-          onClick={() => loadPreset('euphoria_best_build')}
-          title="Load Euphoria BestBuild (8216+ Silver DPS | 4 Red Mutagens +169% AP | Synergy in Quad 3 Slot 1)"
+          type="button"
+          className="btn-preset-pill gold-glow"
+          onClick={() => setIsPresetsDrawerOpen(!isPresetsDrawerOpen)}
+          title="Open complete library of 11 verified build presets"
         >
-          👑 Euphoria BestBuild (8216+ DPS)
+          <span>📜 ALL PRESETS ({Object.keys(PRESETS_DATA).length})</span>
+          <span>{isPresetsDrawerOpen ? '▲' : '▾'}</span>
         </button>
 
         <button
-          className={`btn-preset-pill ${activePresetKey === 'euphoria_roaming_riposte' ? 'active' : ''}`}
-          onClick={() => loadPreset('euphoria_roaming_riposte')}
-          title="Load Euphoria Roaming / Riposte (Counterattack 3/3 + Razor Focus 3/3 + Resolve 3/3 + Fleet Footed 3/3)"
-        >
-          ⚔️ Euphoria Roaming / Riposte
-        </button>
-
-        <button
-          className={`btn-preset-pill ${activePresetKey === 'cat_eyes_sniper' ? 'active' : ''}`}
-          onClick={() => loadPreset('cat_eyes_sniper')}
-          title="Load Cat Eyes Sniper (SwordsNCrossbowDPS + SwapOutFOA)"
-        >
-          🎯 Cat Eyes Hybrid (Snips)
-        </button>
-
-        <button
-          className={`btn-preset-pill ${activePresetKey === 'bloodbath_melee' ? 'active' : ''}`}
-          onClick={() => loadPreset('bloodbath_melee')}
-          title="Load Bloodbath Pure Melee (+250% Attack Power)"
-        >
-          ⚔️ Bloodbath Melee (+250% AP)
-        </button>
-
-        <button
-          className={`btn-preset-pill ${activePresetKey === 'swords_tank' ? 'active' : ''}`}
-          onClick={() => loadPreset('swords_tank')}
-          title="Load Mutated Skin Heavy Tank (-45% Damage Reduction)"
-        >
-          🛡️ Mutated Skin Tank (-45% DR)
-        </button>
-
-        <button
-          className={`btn-preset-pill ${activePresetKey === 'archmage_pyromancer' ? 'active' : ''}`}
-          onClick={() => loadPreset('archmage_pyromancer')}
-          title="Load Piercing Cold Grandmaster (All 20 Signs Mastered + Piercing Cold +160% Signs)"
-        >
-          ❄️ Piercing Cold (+160% Signs)
-        </button>
-
-        <button
-          className={`btn-preset-pill ${activePresetKey === 'max_toxicity_manticore' ? 'active' : ''}`}
-          onClick={() => loadPreset('max_toxicity_manticore')}
-          title="Load Max Toxicity Manticore Chemist (234 Max Toxicity | 15,902 HP | 4 Decoctions + Metamorphosis)"
-        >
-          🧪 Manticore Chemist (234 Tox)
-        </button>
-
-        <button
-          className={`btn-preset-pill ${activePresetKey === 'euphoria_toxic' ? 'active' : ''}`}
-          onClick={() => loadPreset('euphoria_toxic')}
-          title="Load Euphoria Toxic Chemist (Euphoria Mutation + Maxed Alchemy & Toxicity)"
-        >
-          ☣️ Euphoria Chemist (+Toxic)
-        </button>
-
-        <button
-          className={`btn-preset-pill ${activePresetKey === 'snips_titan' ? 'active' : ''}`}
-          onClick={() => loadPreset('snips_titan')}
-          title="Load Level 100 Titan Reference (60 pts combat maxed)"
-        >
-          👑 Level 100 Titan (Maxed)
-        </button>
-
-        <button
+          type="button"
           className="btn-preset-pill share-glow"
           onClick={copyShareableLink}
           title="Copy Shareable Build URL to Clipboard"
@@ -123,6 +76,7 @@ export const BottomActionBar: React.FC = () => {
         </button>
 
         <button
+          type="button"
           className="btn-preset-pill share-glow"
           onClick={copyBuildSummary}
           title="Copy Complete Build Summary to Clipboard"
@@ -131,13 +85,48 @@ export const BottomActionBar: React.FC = () => {
         </button>
 
         <button
-          className="btn-preset-pill gold-glow"
+          type="button"
+          className="btn-preset-pill red-glow"
           onClick={resetEntireTree}
           title="Reset All Allocations"
         >
           🔄 Reset
         </button>
       </div>
+
+      {/* Expanded Presets Drawer Modal / Overlay */}
+      {isPresetsDrawerOpen && (
+        <div className="presets-drawer-overlay" onClick={() => setIsPresetsDrawerOpen(false)}>
+          <div className="presets-drawer-panel" onClick={(e) => e.stopPropagation()}>
+            <div className="presets-drawer-header">
+              <h3>THE WITCHER 3: REMASTERED — BUILD PRESETS</h3>
+              <button
+                type="button"
+                className="btn-close-drawer"
+                onClick={() => setIsPresetsDrawerOpen(false)}
+              >
+                ✕
+              </button>
+            </div>
+            <div className="presets-drawer-grid">
+              {Object.entries(PRESETS_DATA).map(([pKey, preset]) => (
+                <div
+                  key={pKey}
+                  className={`preset-card-item ${activePresetKey === pKey ? 'active' : ''}`}
+                  onClick={() => {
+                    loadPreset(pKey);
+                    setIsPresetsDrawerOpen(false);
+                  }}
+                >
+                  <div className="preset-card-title">{preset.name}</div>
+                  <div className="preset-card-subtitle">{preset.subtitle}</div>
+                  <div className="preset-card-mutation">Mutation: {preset.mutation?.toUpperCase() || 'NONE'}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
     </footer>
   );
 };

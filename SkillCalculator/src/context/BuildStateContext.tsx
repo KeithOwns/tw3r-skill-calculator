@@ -92,14 +92,23 @@ const BuildContext = createContext<BuildContextType | undefined>(undefined);
 export const BuildProvider = ({ children }: { children: ReactNode }) => {
   const [currentView, setCurrentView] = useState<'calculator' | 'guide'>('calculator');
   const [level, setLevel] = useState<number>(100);
-  const totalPointsPool = 100; // Level 100 benchmark from in-game snips
-  
-  // Starts completely empty each time it is loaded
-  const [allocatedSkills, setAllocatedSkills] = useState<Record<string, number>>({});
+  const totalPointsPool = 84; // 24 spent + 60 available = 84 total points in in-game screenshot
+
+  const defaultPreset = PRESETS_DATA.in_game_screenshot;
+  const initialAllocations: Record<string, number> = defaultPreset ? {
+    ...defaultPreset.combatAllocations,
+    ...defaultPreset.signsAllocations,
+    ...defaultPreset.alchemyAllocations,
+    ...defaultPreset.generalAllocations
+  } : {};
+  const initialSlots: (string | null)[] = defaultPreset ? [...defaultPreset.slottedSkills] : Array(16).fill(null);
+  while (initialSlots.length < 16) initialSlots.push(null);
+
+  const [allocatedSkills, setAllocatedSkills] = useState<Record<string, number>>(initialAllocations);
   const [activeDiscipline, setActiveDiscipline] = useState<DisciplineType>('combat');
-  const [slottedAbilities, setSlottedAbilities] = useState<(string | null)[]>(Array(16).fill(null));
-  const [activeMutationId, setActiveMutationId] = useState<string>('cat_eyes');
-  const [activePresetKey, setActivePresetKey] = useState<string | null>(null);
+  const [slottedAbilities, setSlottedAbilities] = useState<(string | null)[]>(initialSlots);
+  const [activeMutationId, setActiveMutationId] = useState<string>('euphoria');
+  const [activePresetKey, setActivePresetKey] = useState<string | null>('in_game_screenshot');
   const [hoveredSkillId, setHoveredSkillId] = useState<string | null>(null);
   const [hoverPos, setHoverPos] = useState<{ x: number; y: number } | null>(null);
   const [isMutationsModalOpen, setIsMutationsModalOpen] = useState<boolean>(false);
@@ -453,7 +462,10 @@ export const BuildProvider = ({ children }: { children: ReactNode }) => {
   useEffect(() => {
     const parseHash = () => {
       const hash = window.location.hash;
-      if (!hash) return;
+      if (!hash) {
+        loadPreset('in_game_screenshot');
+        return;
+      }
       if (hash.startsWith('#preset=')) {
         const pKey = hash.slice(8);
         if (PRESETS_DATA[pKey]) {

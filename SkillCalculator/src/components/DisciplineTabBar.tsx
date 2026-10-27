@@ -13,65 +13,72 @@ export const DisciplineTabBar: React.FC = () => {
   } = useBuild();
 
   return (
-    <div className="discipline-tabs-row">
-      <div className="discipline-tabs-list">
-        {/* Combat Tab */}
+    <div className="discipline-header-container">
+      {/* 5 In-Game Tree Icons Strip (Top-Left) */}
+      <div className="discipline-icons-strip">
+        {/* Combat */}
         <button
-          className={`disc-tab-btn tab-combat ${activeDiscipline === 'combat' ? 'active' : ''}`}
+          type="button"
+          className={`disc-mini-tab tab-combat ${activeDiscipline === 'combat' ? 'active' : ''}`}
           onClick={() => setActiveDiscipline('combat')}
-          title="Combat Abilities"
+          title="Combat Abilities (Swordplay & Melee)"
         >
-          <span className="disc-tab-icon">⚔️</span>
-          <div className="disc-tab-bar" />
-          <span className="disc-tab-points">{spentCombat}</span>
+          <span className="disc-icon">⚔️</span>
+          <div className="disc-underline combat" />
+          <span className="disc-points-count">{spentCombat}</span>
         </button>
 
-        {/* Signs Tab */}
+        {/* Signs */}
         <button
-          className={`disc-tab-btn tab-signs ${activeDiscipline === 'signs' ? 'active' : ''}`}
+          type="button"
+          className={`disc-mini-tab tab-signs ${activeDiscipline === 'signs' ? 'active' : ''}`}
           onClick={() => setActiveDiscipline('signs')}
-          title="Signs Abilities (Magic)"
+          title="Signs Abilities (Magic & Runes)"
         >
-          <span className="disc-tab-icon">👁️</span>
-          <div className="disc-tab-bar" />
-          <span className="disc-tab-points">{spentSigns}</span>
+          <span className="disc-icon">👁️</span>
+          <div className="disc-underline signs" />
+          <span className="disc-points-count">{spentSigns}</span>
         </button>
 
-        {/* Alchemy Tab */}
+        {/* Alchemy */}
         <button
-          className={`disc-tab-btn tab-alchemy ${activeDiscipline === 'alchemy' ? 'active' : ''}`}
+          type="button"
+          className={`disc-mini-tab tab-alchemy ${activeDiscipline === 'alchemy' ? 'active' : ''}`}
           onClick={() => setActiveDiscipline('alchemy')}
-          title="Alchemy Abilities"
+          title="Alchemy Abilities (Potions, Oils & Decoctions)"
         >
-          <span className="disc-tab-icon">🧪</span>
-          <div className="disc-tab-bar" />
-          <span className="disc-tab-points">{spentAlchemy}</span>
+          <span className="disc-icon">🧪</span>
+          <div className="disc-underline alchemy" />
+          <span className="disc-points-count">{spentAlchemy}</span>
         </button>
 
-        {/* General Tab */}
+        {/* General */}
         <button
-          className={`disc-tab-btn tab-general ${activeDiscipline === 'general' ? 'active' : ''}`}
+          type="button"
+          className={`disc-mini-tab tab-general ${activeDiscipline === 'general' ? 'active' : ''}`}
           onClick={() => setActiveDiscipline('general')}
-          title="General Abilities"
+          title="General Abilities (Techniques & Survival)"
         >
-          <span className="disc-tab-icon">🐺</span>
-          <div className="disc-tab-bar" />
-          <span className="disc-tab-points">{spentGeneral}</span>
+          <span className="disc-icon">🐺</span>
+          <div className="disc-underline general" />
+          <span className="disc-points-count">{spentGeneral}</span>
         </button>
 
-        {/* Mutations Tab */}
+        {/* Mutations / Mutagens */}
         <button
-          className="disc-tab-btn tab-mutations"
+          type="button"
+          className="disc-mini-tab tab-mutations"
           onClick={() => setIsMutationsModalOpen(true)}
-          title="Blood & Wine Mutation Matrix"
+          title="Blood & Wine Mutation Matrix (Press C)"
         >
-          <span className="disc-tab-icon">🧬</span>
-          <div className="disc-tab-bar" />
-          <span className="disc-tab-points">958</span>
+          <span className="disc-icon">🧬</span>
+          <div className="disc-underline mutations" />
+          <span className="disc-points-count">869</span>
         </button>
       </div>
 
-      <div className="disc-active-title">
+      {/* Centered Active Tree Title */}
+      <div className="discipline-centered-title">
         {activeDiscipline.toUpperCase()}
       </div>
     </div>

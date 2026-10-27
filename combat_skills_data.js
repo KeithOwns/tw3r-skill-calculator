@@ -2985,7 +2985,7 @@ const ALCHEMY_SKILLS_DATA = {
         highlight: "+15% poisoned weapon DMG (+30% vs poison immune targets)"
       }
     ],
-    tacticalTip: "Guarantees heavy bonus damage even against poison-immune elementals and specters, ensuring poison builds never encounter a hard immunity wall."
+    tacticalTip: "Empirically verified in Next-Gen: Potent Sting triggers strictly when monster oil is applied to the blade. Morana runestones and native poison stats do not activate the bonus—only an oiled weapon qualifies as a 'poisoned weapon'."
   }
 };
 

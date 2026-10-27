@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Witcher 3 & GeForce NOW — Complete Session Summary</title>
+    <style>
+        :root {
+            --bg-dark: #0f1115;
+            --bg-card: #181b22;
+            --bg-table-alt: #1f242d;
+            --accent-gold: #c9a45c;
+            --accent-red: #b8332a;
+            --accent-green: #3b8e54;
+            --accent-blue: #3b76a8;
+            --text-main: #e4e6eb;
+            --text-muted: #9ba1ab;
+            --border-color: #2c323d;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            padding: 2.5rem 1.5rem;
+            background: linear-gradient(135deg, #1b1f29 0%, #101218 100%);
+            border: 1px solid var(--accent-gold);
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+        }
+
+        header h1 {
+            color: var(--accent-gold);
+            font-size: 2.2rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+        }
+
+        nav.toc {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.25rem 1.75rem;
+            margin-bottom: 2rem;
+        }
+
+        nav.toc h2 {
+            font-size: 1.2rem;
+            color: var(--accent-gold);
+            margin-bottom: 0.75rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.4rem;
+        }
+
+        nav.toc ul {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 0.5rem 1.5rem;
+            list-style: none;
+        }
+
+        nav.toc a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        nav.toc a:hover {
+            color: var(--accent-gold);
+        }
+
+        section {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 1.75rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+        }
+
+        section h2 {
+            color: var(--accent-gold);
+            font-size: 1.5rem;
+            border-bottom: 2px solid var(--accent-gold);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.25rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        section h3 {
+            color: #ffffff;
+            font-size: 1.15rem;
+            margin: 1.25rem 0 0.6rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        p {
+            margin-bottom: 0.85rem;
+        }
+
+        ul, ol {
+            margin: 0.5rem 0 1rem 1.5rem;
+        }
+
+        li {
+            margin-bottom: 0.45rem;
+        }
+
+        strong {
+            color: #ffffff;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.15rem 0.55rem;
+            font-size: 0.78rem;
+            font-weight: 700;
+            border-radius: 4px;
+            text-transform: uppercase;
+        }
+
+        .badge-gold { background-color: rgba(201, 164, 92, 0.2); color: var(--accent-gold); border: 1px solid var(--accent-gold); }
+        .badge-green { background-color: rgba(59, 142, 84, 0.2); color: #67d185; border: 1px solid var(--accent-green); }
+        .badge-red { background-color: rgba(184, 51, 42, 0.25); color: #ff7f76; border: 1px solid var(--accent-red); }
+        .badge-blue { background-color: rgba(59, 118, 168, 0.25); color: #7bc0f7; border: 1px solid var(--accent-blue); }
+
+        .callout {
+            background-color: #13161c;
+            border-left: 4px solid var(--accent-gold);
+            padding: 1rem 1.25rem;
+            border-radius: 0 6px 6px 0;
+            margin: 1rem 0;
+        }
+
+        .callout-warn {
+            border-left-color: var(--accent-red);
+        }
+
+        .callout-success {
+            border-left-color: var(--accent-green);
+        }
+
+        .formula-box {
+            background-color: #101318;
+            border: 1px solid var(--border-color);
+            padding: 0.9rem 1.2rem;
+            border-radius: 6px;
+            font-family: 'Consolas', 'Courier New', monospace;
+            color: var(--accent-gold);
+            margin: 0.85rem 0;
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0 1.25rem 0;
+            font-size: 0.94rem;
+        }
+
+        th, td {
+            text-align: left;
+            padding: 0.75rem 0.9rem;
+            border: 1px solid var(--border-color);
+        }
+
+        th {
+            background-color: #232834;
+            color: var(--accent-gold);
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.82rem;
+            letter-spacing: 0.5px;
+        }
+
+        tr:nth-child(even) {
+            background-color: var(--bg-table-alt);
+        }
+
+        code {
+            background-color: #252a36;
+            color: #ffcf7c;
+            padding: 0.15rem 0.4rem;
+            border-radius: 4px;
+            font-family: 'Consolas', 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+
+        footer {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-top: 2.5rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border-color);
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>The Witcher 3 &amp; GeForce NOW Guide</h1>
+            <p>Complete Technical, Gameplay Mechanics, and Quest Progression Summary</p>
+        </header>
+
+        <nav class="toc">
+            <h2>Table of Contents</h2>
+            <ul>
+                <li><a href="#vr-support">1. VR Support &amp; PC Modding</a></li>
+                <li><a href="#path-tracing-gfn">2. Path Tracing, Graphics &amp; GFN Ultimate Setup</a></li>
+                <li><a href="#fps-overlay">3. Displaying FPS on NVIDIA Shield (GFN)</a></li>
+                <li><a href="#me2-hdr">4. Mass Effect 2 HDR Calibration</a></li>
+                <li><a href="#combat-mechanics">5. Combat Skills, Mutations &amp; Equipment Mechanics</a></li>
+                <li><a href="#economy-hugo">6. Selling Crossbow Bolts &amp; Hugo Monnart Quest</a></li>
+                <li><a href="#missable-quests">7. Missable Quests: White Orchard &amp; Velen</a></li>
+                <li><a href="#scavenger-hunts">8. All Witcher Gear Scavenger Hunts (By Level)</a></li>
+                <li><a href="#trolls">9. Monster Ecology: Trolls in White Orchard &amp; Velen</a></li>
+            </ul>
+        </nav>
+
+        <!-- SECTION 1: VR -->
+        <section id="vr-support">
+            <h2>1. VR Support &amp; PC Modding</h2>
+            <p><strong>The Witcher 3 does not have an official native VR version</strong> from CD Projekt Red, but it can be played in full 6DOF VR on a PC using community OpenXR and injector mods.</p>
+            <ul>
+                <li><strong>Dedicated Next-Gen OpenXR Mod (<code>witcher3-vr</code>):</strong> Built for DirectX 12 using OpenXR runtimes (SteamVR or Virtual Desktop VDXR). Features 6DOF head tracking, stereo 3D rendering, customizable VR HUD, and an experimental toggleable first-person mode (<code>F11</code>). Requires a standard gamepad or mouse/keyboard (no motion-controller sword swinging).</li>
+                <li><strong>Universal Injectors (VorpX):</strong> Used primarily on the classic DX11 version to inject stereoscopic 3D and head tracking.</li>
+                <li><strong>Comparison to Native VR Simulators:</strong>
+                    <ul>
+                        <li><em>VTOL VR:</em> 100% native VR built from the ground up for tracked motion controllers.</li>
+                        <li><em>BeamNG.drive:</em> Native experimental OpenXR support in Display settings.</li>
+                        <li><em>Assetto Corsa:</em> Native SteamVR/OpenXR support (best launched via Content Manager + Custom Shaders Patch).</li>
+                        <li><em>Microsoft Flight Simulator:</em> Built-in native VR toggled via <code>Ctrl + Tab</code>.</li>
+                    </ul>
+                </li>
+            </ul>
+            <div class="callout">
+                <strong>Local RTX 3080 VR Tuning for Witcher 3:</strong> Disable Ray Tracing completely, enable DLSS or OptiScaler to hit 72Hz/90Hz headset targets, and drop presets from Ultra+ to High (especially Shadows and Foliage Visibility Range) to prevent VRAM spikes in Novigrad and Toussaint.
+            </div>
+        </section>
+
+        <!-- SECTION 2: PATH TRACING & GFN SETTINGS -->
+        <section id="path-tracing-gfn">
+            <h2>2. Path Tracing, Graphics &amp; GFN Ultimate Setup</h2>
+            <h3>What Path Tracing Does</h3>
+            <p><strong>Path Tracing</strong> (Full Ray Tracing) replaces hybrid rasterization and separate ray-tracing passes with a single, unified physics-based light simulation:</p>
+            <ul>
+                <li><strong>Unified Multi-Bounce Lighting:</strong> Traces light rays across multiple bounces between walls, ceilings, and foliage rather than single-bounce approximations.</li>
+                <li><strong>Accurate Color Bleeding:</strong> Light bouncing off colored surfaces naturally tints adjacent armor, stone, and skin.</li>
+                <li><strong>Physically Correct Shadows &amp; Reflections:</strong> Contact-hardening shadows soften naturally with distance, and metallic/glossy surfaces reflect true off-screen geometry.</li>
+                <li><strong>No Artificial Shading Halos:</strong> Removes screen-space ambient occlusion artifacts and static light pop-in.</li>
+            </ul>
+
+            <h3>Optimal GeForce NOW Ultimate (Cloud RTX 4080) Settings</h3>
+            <p>Streaming via GFN Ultimate connects your NVIDIA Shield to a cloud <strong>RTX 4080 SuperPOD</strong>. To maintain a locked <strong>4K 60 FPS</strong> stream with Path Tracing or Ray Tracing enabled, configure your menus as follows:</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Setting</th>
+                        <th>Recommended Value</th>
+                        <th>Technical Reason</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Ray Tracing</strong></td>
+                        <td><span class="badge badge-green">On</span></td>
+                        <td>Master toggle required for RT and Path Tracing features.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Path Tracing</strong></td>
+                        <td><span class="badge badge-gold">On</span> (Visuals) / <span class="badge badge-blue">Off</span> (Low Latency)</td>
+                        <td>Enable with Frame Gen + DLSS Balanced/Performance for photorealism; disable for native clarity and zero frame-gen latency.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>DLSS Mode</strong></td>
+                        <td><strong>Balanced</strong> or <strong>Performance</strong> (PT) / <strong>Quality</strong> (RT)</td>
+                        <td>Provides the required internal resolution headroom for 4K multi-bounce ray tracing.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>DLSS Ray Reconstruction</strong></td>
+                        <td><span class="badge badge-green">On</span></td>
+                        <td>Replaces standard denoisers with an AI neural network, sharpening foliage, hair, and reflections.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>DLSS Frame Generation</strong></td>
+                        <td><span class="badge badge-green">On</span></td>
+                        <td>Uses the RTX 4080 Optical Flow Accelerator to double frame rates and hold 60 FPS under Path Tracing.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Frames to Generate</strong></td>
+                        <td><strong>1</strong></td>
+                        <td>Generates 1 interpolated frame per rendered frame (ideal for 60Hz displays without adding excess latency).</td>
+                    </tr>
+                    <tr>
+                        <td><strong>NVIDIA Reflex Low Latency</strong></td>
+                        <td><span class="badge badge-green">On + Boost</span></td>
+                        <td>Offsets both Frame Generation queue delay and cloud network streaming latency.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>NVIDIA HairWorks</strong></td>
+                        <td><span class="badge badge-red">Off</span></td>
+                        <td>Fine sub-pixel hair strands cause video compression shimmer over cloud streams while consuming heavy GPU compute.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>AMD FSR &amp; Intel XeSS Options</strong></td>
+                        <td><span class="badge badge-red">Off</span></td>
+                        <td>Keep FSR Frame Gen, FSR Latency Reduction, XeSS Frame Gen, and XeSS Low Latency disabled on NVIDIA hardware.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Why Intel GPU Settings (XeSS) Appear in the Menu</h3>
+            <p>Intel manufactures discrete desktop gaming graphics cards under the <strong>Intel Arc</strong> brand (such as the Arc A750, A770, and Battlemage B580) as well as integrated Arc laptop GPUs. CD Projekt Red built full feature parity into the engine for all three vendors:</p>
+            <ul>
+                <li><strong>NVIDIA:</strong> DLSS Super Resolution + DLSS Frame Generation + NVIDIA Reflex</li>
+                <li><strong>AMD:</strong> FSR Super Resolution + FSR Frame Generation + AMD Anti-Lag / Latency Reduction 2.0</li>
+                <li><strong>Intel:</strong> XeSS Super Resolution (powered by XMX AI engines) + XeSS Frame Generation + XeSS Low Latency</li>
+            </ul>
+        </section>
+
+        <!-- SECTION 3: FPS OVERLAY -->
+        <section id="fps-overlay">
+            <h2>3. Displaying FPS on NVIDIA Shield (GeForce NOW)</h2>
+            <ul>
+                <li><strong>Controller Method (GFN Stream Stats Overlay):</strong>
+                    Hold the <strong>Start / Menu button</strong> for 2–3 seconds to open the top GFN bar. While visible, press <code>LB + LT + B</code> (or <code>L1 + L2 + Circle</code>). Displays live stream FPS, resolution (<code>3840x2160</code>), bandwidth, and packet loss.</li>
+                <li><strong>Keyboard Shortcut (Advanced GFN Diagnostic HUD):</strong>
+                    On a connected keyboard, press <code>Ctrl + Alt + F6</code> (or <code>Ctrl + Shift + Alt + F6</code>) to inspect both cloud GPU render FPS and client decode FPS.</li>
+                <li><strong>Steam In-Game Counter:</strong>
+                    Press <code>Shift + Tab</code> to open the Steam Overlay &rarr; <strong>Settings (Gear Icon)</strong> &rarr; <strong>In Game</strong> &rarr; Set <strong>In-game FPS counter</strong> to <strong>Top-left</strong> and enable <strong>High contrast color</strong>.</li>
+            </ul>
+        </section>
+
+        <!-- SECTION 4: MASS EFFECT 2 HDR -->
+        <section id="me2-hdr">
+            <h2>4. Mass Effect 2 (Legendary Edition) HDR Calibration</h2>
+            <p>In <em>Mass Effect 2</em>, the <strong>HDR Brightness</strong> slider corresponds directly to peak display luminance in nits. Setting it to <code>5600</code> severely blows out highlights and clips the test logo.</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Calibration Setting</th>
+                        <th>Previous Value</th>
+                        <th>Recommended Value</th>
+                        <th>Visual Impact</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Enable HDR</strong></td>
+                        <td>Auto</td>
+                        <td><span class="badge badge-green">Auto</span></td>
+                        <td>Maintains the HDR10 metadata pipeline from GeForce NOW to your TV.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>HDR Brightness</strong></td>
+                        <td>5600</td>
+                        <td><strong>400</strong> (or 350–500)</td>
+                        <td>Matches the TV's peak nit luminance so the faint calibration logo remains visible and weapon/engine flares don't clip into pure white blobs.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>HDR Contrast</strong></td>
+                        <td>+5</td>
+                        <td><strong>0</strong> to <strong>+1</strong></td>
+                        <td>Prevents crushed shadow detail in dark corridors (like Omega) and eliminates overly harsh color saturation.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- SECTION 5: COMBAT MECHANICS -->
+        <section id="combat-mechanics">
+            <h2>5. Combat Skills, Mutations &amp; Equipment Mechanics</h2>
+
+            <h3>A. Potent Sting (Tier 4 Alchemy — Rank 3/3)</h3>
+            <ul>
+                <li><strong>Original Polish Name &amp; Text:</strong> <em>Jadowite Żądło</em> — <em>„Zatruta broń zadaje dodatkowo 15% obrażeń lub dodatkowo 30% obrażeń celom odpornym na zatrucie. Czas działania eliksirów i obrażenia od petard: +6%.”</em></li>
+                <li><strong>Damage Multipliers:</strong> Grants <strong>+15% flat weapon damage</strong> on hit against targets vulnerable to poison, or <strong>+30% flat weapon damage</strong> against poison-immune enemies (Elementals, Golems, Gargoyles, Specters, Wild Hunt). Also grants +6% potion duration and bomb damage.</li>
+                <li><strong>Empirically Verified "Poisoned Weapon" Trigger:</strong> Direct in-game combat testing against poison-immune targets (Level 20 Earth Elemental) confirms that <strong>Potent Sting only amplifies damage after applying an oil to the blade</strong>. The game engine treats an oiled weapon as meeting the "poisoned weapon" requirement:
+                    <ul>
+                        <li><span class="badge badge-green">Activates</span> <strong>Applied Monster Oil:</strong> Applying monster oil (with active charges) to your steel or silver sword immediately activates Potent Sting's bonus damage (+15% vs vulnerable foes, +30% vs poison-immune foes).</li>
+                        <li><span class="badge badge-red">Does Not Activate</span> <strong>Morana Runestones Alone:</strong> Slotting Morana runestones (+% Chance to poison) onto an un-oiled blade does <em>not</em> activate Potent Sting.</li>
+                        <li><span class="badge badge-red">Does Not Activate</span> <strong>Native Weapon Poison Stat:</strong> Built-in sword poison chance (e.g. Viper swords) does <em>not</em> activate Potent Sting without oil applied.</li>
+                        <li><span class="badge badge-red">Does Not Activate</span> <strong>Expired Oil (0 Charges):</strong> When oil charges deplete to 0/20, Potent Sting deactivates immediately until oil is reapplied.</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h3>B. Cold Blood (Rank 3/3) &amp; Crossbow Adrenaline Generation</h3>
+            <p>Why a single crossbow shot generates anywhere from <strong>1 to 3 Adrenaline Points</strong>:</p>
+            <ol>
+                <li><strong>Remastered Baseline (1 Point):</strong> Reworked at Rank 3/3 to grant 1.0 full Adrenaline Point per bolt hit.</li>
+                <li><strong>Multi-Target / Explosive Bolts (2 to 3 Points):</strong> Cold Blood triggers per instance of damage dealt. Firing an Explosive Bolt into a group of 2 or 3 enemies triggers hit registrations on each target simultaneously, immediately filling 2 or 3 segments. Large single targets can also register both direct kinetic impact and blast wave ticks.</li>
+                <li><strong>Critical Hits &amp; Headshots:</strong> Critical crossbow strikes and kill thresholds stack bonus adrenaline generation on top of Cold Blood's +1.0 baseline.</li>
+            </ol>
+
+            <h3>C. Metamorphosis Mutation ("Applying Critical Effects")</h3>
+            <p>In <em>The Witcher 3</em> engine terminology, <strong>"critical effects" means negative status effects</strong>—it does <strong>not</strong> mean critical strike damage (orange numbers).</p>
+            <ul>
+                <li><strong>Status Effects That Trigger Metamorphosis:</strong>
+                    <ul>
+                        <li><em>Damage-over-Time:</em> Burning, Poisoning, Bleeding.</li>
+                        <li><em>Crowd Control / Incapacitation:</em> Knockdown (Aard), Stagger / Off-Balance, Hypnosis / Confusion / Blindness (Axii, Samum), Freezing (Northern Wind, Piercing Cold).</li>
+                    </ul>
+                </li>
+                <li><strong>Fast Trigger Tips:</strong> Use Broadhead bolts or Devana runestones (guaranteed Bleed), high-intensity Igni (Burn), multi-target Aard sweeps (Knockdown/Stagger), or cast Axii on Roach before combat to proc free 120-second decoctions at 0 Toxicity.</li>
+            </ul>
+
+            <h3>D. Exploding Bolts — Ignite Chance</h3>
+            <div class="formula-box">
+                Final Ignite Chance = Base Bolt Ignite Chance (100% Direct Hit) - Target Burn Resistance
+            </div>
+            <ul>
+                <li><strong>Direct Hit vs. Splash:</strong> Direct hits carry a 100% base ignite chance against flammable targets; splash radius hits suffer distance falloff (~30%–50% at the blast edge).</li>
+                <li><strong>Modifiers:</strong> Does <em>not</em> scale with Sign Intensity, but benefits from the General skill <strong>Pyromaniac</strong> (+100% Burning chance buffer).</li>
+                <li><strong>Target Resistance:</strong> Fire Elementals, Golems, Gargoyles, and Specters have 100% immunity. Over-leveled ("Red Skull") enemies gain ~1.6% resistance per level difference, and Death March adds a global resistance buffer.</li>
+            </ul>
+
+            <h3>E. Armor Piercing (AP) Equipment Trait</h3>
+            <div class="formula-box">
+                Effective Target Armor = max(0, Target Base Armor - Armor Piercing)<br>
+                Final Damage = (Attack Base Damage - Effective Target Armor) &times; (1 - Target % Resistances)
+            </div>
+            <ul>
+                <li><strong>Flat Subtraction Only:</strong> AP subtracts point-for-point from flat armor before percentage resistances are calculated. It cannot reduce armor below 0, does not multiply on critical hits, and does not bypass percentage resistances.</li>
+                <li><strong>Steel vs. Silver:</strong> High value on <strong>Steel Swords</strong> and Crossbow Bolts against plate-armored human knights/bandits. Very low value on <strong>Silver Swords</strong> because most monsters have near-zero flat armor and rely on percentage resistances instead.</li>
+            </ul>
+        </section>
+
+        <!-- SECTION 6: HUGO MONNART & CROSSBOW BOLTS -->
+        <section id="economy-hugo">
+            <h2>6. Selling Crossbow Bolts &amp; "Father Knows Worst" Audit</h2>
+            <p>Standard blacksmiths, armorers, and general merchants will not buy crossbow bolts. Only one merchant in the entire game buys them:</p>
+            <ul>
+                <li><strong>The Vendor:</strong> <strong>Hugo Monnart</strong> at <strong>The Clever Clogs Tavern</strong> in Toussaint (<em>Blood and Wine</em> DLC), located north of Lebioda's Gate. He buys crossbow bolts, monster trophies, and junk at <strong>100% full item value</strong>.</li>
+            </ul>
+            <div class="callout callout-warn">
+                <strong>Your Quest Log Audit ("Father Knows Worst"):</strong><br>
+                Your journal states: <em>"Deciding that he should see the matter through to the end, Geralt fulfilled Hugo's wish."</em><br>
+                Because you sided with Hugo and killed his two brothers outside the cave, the family business collapsed and <strong>Hugo does NOT become a merchant at The Clever Clogs Tavern</strong>. To unlock him, reload a checkpoint outside Albertus Cavern and select <strong>"No one dies today"</strong> so the three brothers reconcile peacefully.
+            </div>
+        </section>
+
+        <!-- SECTION 7: MISSABLE QUESTS -->
+        <section id="missable-quests">
+            <h2>7. Missable Quests &amp; Cutoff Triggers</h2>
+
+            <h3>White Orchard Cutoffs</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Quest / Content</th>
+                        <th>Location / NPC</th>
+                        <th>Cutoff Point</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>On Death's Bed</strong></td>
+                        <td>Tomira's Herbalist Hut</td>
+                        <td>Leaving White Orchard with Vesemir/Yennefer (<em>Lilac and Gooseberries</em>)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Missing in Action</strong></td>
+                        <td>Dune Vildenvert (Ransacked Village / Board)</td>
+                        <td>Leaving White Orchard (<em>Lilac and Gooseberries</em>)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Twisted Firestarter</strong></td>
+                        <td>Willis (Dwarven Blacksmith)</td>
+                        <td>Leaving White Orchard (<em>Lilac and Gooseberries</em>)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Precious Cargo</strong></td>
+                        <td>Merchant near Swamp Road</td>
+                        <td>Leaving White Orchard (<em>Lilac and Gooseberries</em>)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>A Frying Pan, Spick and Span</strong></td>
+                        <td>Old Woman by Riverside Hut</td>
+                        <td>Leaving White Orchard (<em>Lilac and Gooseberries</em>)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Aldert Geert Gwent Match &amp; Elsa's Shop</strong></td>
+                        <td>White Orchard Tavern</td>
+                        <td>Triggering the tavern brawl cutscene when departing</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Yennefer's Crystal Bird Skull</strong></td>
+                        <td>Starting Campsite Brush</td>
+                        <td>Leaving White Orchard (<em>Lilac and Gooseberries</em>)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Contract: Devil by the Well</strong></td>
+                        <td>Odolan / White Orchard Notice Board</td>
+                        <td>Late-Game Point of No Return: <strong>The Isle of Mists</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+            <p><em>Note: Viper School Gear diagrams, Treasure Hunts (Dirty Funds, Deserter Gold, Temerian Valuables), and all 6 Places of Power never expire.</em></p>
+
+            <h3>Velen (No Man's Land) Cutoffs</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Category</th>
+                        <th>Quest Name</th>
+                        <th>Cutoff / Failure Trigger</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="badge badge-gold">Mid-Story</span></td>
+                        <td><strong>Return to Crookback Bog</strong></td>
+                        <td>Fails if not completed before starting <strong>Ugly Baby</strong>.</td>
+                    </tr>
+                    <tr>
+                        <td><span class="badge badge-gold">Mid-Story</span></td>
+                        <td><strong>Ciri's Room</strong></td>
+                        <td>Fails at <strong>Ugly Baby / The Isle of Mists</strong>.</td>
+                    </tr>
+                    <tr>
+                        <td><span class="badge badge-gold">Mid-Story</span></td>
+                        <td><strong>Gwent: Velen Players (Baron)</strong></td>
+                        <td>Playing the Baron fails if he leaves/dies after <em>Return to Crookback Bog</em> (card remains lootable in his office).</td>
+                    </tr>
+                    <tr>
+                        <td><span class="badge badge-gold">Mid-Story</span></td>
+                        <td><strong>Lynch Mob</strong></td>
+                        <td>Expires if you advance Keira's questline to <strong>A Favor for a Friend</strong>.</td>
+                    </tr>
+                    <tr>
+                        <td><span class="badge badge-gold">Mid-Story</span></td>
+                        <td><strong>Thou Shalt Not Pass</strong></td>
+                        <td>Bypassed if you obtain a transit pass before speaking to the bridge guard.</td>
+                    </tr>
+                    <tr>
+                        <td><span class="badge badge-red">Isle of Mists</span></td>
+                        <td><strong>Keira Metz Quest Chain</strong> (<em>Invitation, Towerful of Mice, Favor for a Friend, Advancement of Learning</em>)</td>
+                        <td>Auto-fails upon entering the fog in <strong>The Isle of Mists</strong>.</td>
+                    </tr>
+                    <tr>
+                        <td><span class="badge badge-red">Isle of Mists</span></td>
+                        <td><strong>The Fall of the House of Reardon &amp; Ghosts of the Past</strong></td>
+                        <td>Auto-fails upon entering the fog in <strong>The Isle of Mists</strong>.</td>
+                    </tr>
+                    <tr>
+                        <td><span class="badge badge-blue">Proximity</span></td>
+                        <td><strong>Death by Fire, At the Mercy of Strangers, Bitter Harvest, Hazardous Goods, Love's Cruel Snares, Caravan Attack</strong></td>
+                        <td>Immediate fail if you ride past, walk away, or let the NPCs die once the roadside encounter spawns.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- SECTION 8: SCAVENGER HUNTS -->
+        <section id="scavenger-hunts">
+            <h2>8. All Witcher Gear Scavenger Hunt Quests (Sorted by Level)</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Quest Level</th>
+                        <th>Quest Name</th>
+                        <th>Region</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td><strong>6</strong></td><td>Scavenger Hunt: Viper School Gear</td><td>White Orchard</td></tr>
+                    <tr><td><strong>11</strong></td><td>Scavenger Hunt: Griffin School Gear (Basic)</td><td>Velen</td></tr>
+                    <tr><td><strong>14</strong></td><td>Scavenger Hunt: Wolf School Gear (Basic)</td><td>Kaer Morhen</td></tr>
+                    <tr><td><strong>17</strong></td><td>Scavenger Hunt: Cat School Gear (Basic)</td><td>Novigrad</td></tr>
+                    <tr><td><strong>18</strong></td><td>Scavenger Hunt: Griffin School Gear Upgrade Diagrams – Part 1 (Enhanced)</td><td>Velen</td></tr>
+                    <tr><td><strong>18</strong></td><td>Scavenger Hunt: Griffin School Gear Upgrade Diagrams – Part 2 (Enhanced)</td><td>Velen</td></tr>
+                    <tr><td><strong>20</strong></td><td>Scavenger Hunt: Bear School Gear (Basic)</td><td>Skellige</td></tr>
+                    <tr><td><strong>21</strong></td><td>Scavenger Hunt: Wolf School Gear Upgrade Diagrams – Part 1 (Enhanced)</td><td>Velen</td></tr>
+                    <tr><td><strong>21</strong></td><td>Scavenger Hunt: Wolf School Gear Upgrade Diagrams – Part 2 (Enhanced)</td><td>Kaer Morhen</td></tr>
+                    <tr><td><strong>23</strong></td><td>Scavenger Hunt: Cat School Gear Upgrade Diagrams – Part 1 (Enhanced)</td><td>Novigrad / Velen</td></tr>
+                    <tr><td><strong>23</strong></td><td>Scavenger Hunt: Cat School Gear Upgrade Diagrams – Part 2 (Enhanced)</td><td>Novigrad / Velen</td></tr>
+                    <tr><td><strong>25</strong></td><td>Scavenger Hunt: Bear School Gear Upgrade Diagrams – Part 1 (Enhanced)</td><td>Skellige</td></tr>
+                    <tr><td><strong>25</strong></td><td>Scavenger Hunt: Bear School Gear Upgrade Diagrams – Part 2 (Enhanced)</td><td>Skellige</td></tr>
+                    <tr><td><strong>26</strong></td><td>Scavenger Hunt: Griffin School Gear Upgrade Diagrams – Part 3 (Superior)</td><td>Skellige</td></tr>
+                    <tr><td><strong>29</strong></td><td>Scavenger Hunt: Cat School Gear Upgrade Diagrams – Part 3 (Superior)</td><td>Velen</td></tr>
+                    <tr><td><strong>29</strong></td><td>Scavenger Hunt: Wolf School Gear Upgrade Diagrams – Part 3 (Superior)</td><td>Skellige</td></tr>
+                    <tr><td><strong>29</strong></td><td>Scavenger Hunt: Wolf School Gear Upgrade Diagrams – Part 4 (Superior)</td><td>Kaer Morhen</td></tr>
+                    <tr><td><strong>30</strong></td><td>Scavenger Hunt: Bear School Gear Upgrade Diagrams – Part 3 (Superior)</td><td>Velen</td></tr>
+                    <tr><td><strong>34</strong></td><td>Scavenger Hunt: Griffin School Gear Upgrade Diagrams – Part 4 (Mastercrafted)</td><td>Skellige</td></tr>
+                    <tr><td><strong>34</strong></td><td>Scavenger Hunt: Cat School Gear Upgrade Diagrams – Part 4 (Mastercrafted)</td><td>Skellige</td></tr>
+                    <tr><td><strong>34</strong></td><td>Scavenger Hunt: Bear School Gear Upgrade Diagrams – Part 4 (Mastercrafted)</td><td>Velen</td></tr>
+                    <tr><td><strong>34</strong></td><td>Scavenger Hunt: Wolf School Gear Upgrade Diagrams – Part 5 (Mastercrafted)</td><td>Velen</td></tr>
+                    <tr><td><strong>34</strong></td><td>Scavenger Hunt: Wolf School Gear Upgrade Diagrams – Part 6 (Mastercrafted)</td><td>Skellige</td></tr>
+                    <tr><td><strong>34</strong></td><td>Scavenger Hunt: Forgotten Wolf School Gear Diagrams (Next-Gen / Remastered)</td><td>Kaer Morhen</td></tr>
+                    <tr><td><strong>38</strong></td><td>Scavenger Hunt: From Ofier's Distant Shores (<em>Hearts of Stone</em>)</td><td>Novigrad / Gustfields</td></tr>
+                    <tr><td><strong>40</strong></td><td>Scavenger Hunt: Grandmaster Feline Gear (<em>Blood and Wine</em>)</td><td>Toussaint</td></tr>
+                    <tr><td><strong>40</strong></td><td>Scavenger Hunt: Grandmaster Griffin Gear (<em>Blood and Wine</em>)</td><td>Toussaint</td></tr>
+                    <tr><td><strong>40</strong></td><td>Scavenger Hunt: Grandmaster Ursine Gear (<em>Blood and Wine</em>)</td><td>Toussaint</td></tr>
+                    <tr><td><strong>40</strong></td><td>Scavenger Hunt: Grandmaster Wolven Gear (<em>Blood and Wine</em>)</td><td>Toussaint</td></tr>
+                    <tr><td><strong>40</strong></td><td>Scavenger Hunt: Grandmaster Manticore Gear (<em>Blood and Wine</em>)</td><td>Toussaint</td></tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- SECTION 9: TROLLS -->
+        <section id="trolls">
+            <h2>9. Monster Ecology: Trolls in White Orchard &amp; Velen</h2>
+            <p><strong>There are no trolls in White Orchard.</strong> The prologue region only spawns Ghouls, Alghouls, Drowners, Wolves, Wild Dogs, Bears, Wraiths/Noonwraiths, Harpies, the Royal Griffin, and low-level Worker Arachasae.</p>
+            <h3>Earliest Troll Encounters (Velen / Novigrad)</h3>
+            <ul>
+                <li><strong>Boris (Friendly / Unmarked Quest — <em>Harassing a Troll</em>):</strong> Found northwest of the <em>Inn at the Crossroads</em> by the riverbank, fighting off Nekkers.</li>
+                <li><strong>Trollololo (Quest — <em>The Volunteer</em>):</strong> Guarding the makeshift Redanian boats across the river east of Oxenfurt. Can be killed for troll liver/mutagen or helped with paint.</li>
+                <li><strong>Rabid Rock Troll (Hostile &amp; Respawning):</strong> Located at a ruined bridge and swamp camp directly south of Crookback Bog / east of the Byways. Hostile on sight, making him ideal for farming Cave Troll Livers and Troll Mutagens without killing friendly NPCs.</li>
+            </ul>
+        </section>
+
+        <footer>
+            Generated Session Reference Guide &bull; The Witcher 3: Wild Hunt &amp; GeForce NOW Ultimate
+        </footer>
+    </div>
+</body>
+</html>

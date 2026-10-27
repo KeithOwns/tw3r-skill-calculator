@@ -34,68 +34,76 @@ export const WitcherHudHeader: React.FC = () => {
         </div>
       </div>
 
-      {/* Center Navigation Tabs */}
+      {/* Center Navigation Tabs with In-Game Menu Icons */}
       <nav className="hud-nav-menu">
         <span className="hud-nav-arrow">&lt;</span>
-        <span className="hud-nav-tab">INVENTORY</span>
-        <span className="hud-nav-tab">WORLD MAP</span>
-        <span className="hud-nav-tab">QUESTS</span>
+        <div className="hud-nav-tab-item">
+          <span className="hud-tab-icon">📖</span>
+          <span className="hud-nav-tab">GLOSSARY</span>
+        </div>
+        <div className="hud-nav-tab-item">
+          <span className="hud-tab-icon">⚗️</span>
+          <span className="hud-nav-tab">ALCHEMY</span>
+        </div>
+        <div className="hud-nav-tab-item">
+          <span className="hud-tab-icon">🎒</span>
+          <span className="hud-nav-tab">INVENTORY</span>
+        </div>
+        <div className="hud-nav-tab-item">
+          <span className="hud-tab-icon">🧭</span>
+          <span className="hud-nav-tab">WORLD MAP</span>
+        </div>
+        <div className="hud-nav-tab-item">
+          <span className="hud-tab-icon">📜</span>
+          <span className="hud-nav-tab">QUESTS</span>
+        </div>
         <div 
-          className={`hud-nav-tab ${currentView === 'calculator' ? 'active-character' : ''}`}
+          className={`hud-nav-tab-item ${currentView === 'calculator' ? 'active-character-tab' : ''}`}
           onClick={() => setCurrentView('calculator')}
           style={{ cursor: 'pointer' }}
         >
-          CHARACTER
+          <span className="hud-tab-icon">👁️</span>
+          <span className="hud-nav-tab">CHARACTER</span>
+        </div>
+        <div className="hud-nav-tab-item">
+          <span className="hud-tab-icon">🔥</span>
+          <span className="hud-nav-tab">MEDITATION</span>
         </div>
         <div 
-          className={`hud-nav-tab ${currentView === 'guide' ? 'active-character' : ''}`}
+          className={`hud-nav-tab-item ${currentView === 'guide' ? 'active-character-tab' : ''}`}
           onClick={() => setCurrentView('guide')}
           style={{ cursor: 'pointer' }}
         >
-          OPTIMIZATION
+          <span className="hud-tab-icon">⚙️</span>
+          <span className="hud-nav-tab">OPTIMIZATION</span>
         </div>
         <span className="hud-nav-arrow">&gt;</span>
       </nav>
 
       {/* Right Currency & Satchel Stats */}
       <div className="hud-right-stats">
-        <div className="hud-stat-item">
+        <div className="hud-stat-item" title="Crowns (Orens / Florens)">
           <span className="hud-stat-icon">👑</span>
-          <span>196,501</span>
+          <span className="hud-stat-number">197501</span>
         </div>
-        <div className="hud-stat-item">
+        <div className="hud-stat-item" title="Inventory Weight / Maximum Capacity">
           <span className="hud-stat-icon">🎒</span>
-          <span>126 / 170</span>
+          <span className="hud-stat-number">85 / 170</span>
         </div>
         <button
-          className="hud-stat-item hover:brightness-125"
-          style={{
-            background: 'linear-gradient(180deg, rgba(212, 169, 69, 0.22) 0%, rgba(125, 89, 29, 0.35) 100%)',
-            border: '1px solid rgba(229, 184, 57, 0.45)',
-            borderRadius: '3px',
-            padding: '0.22rem 0.65rem',
-            color: 'var(--tw-gold-light)',
-            cursor: 'pointer',
-            fontFamily: "'Cinzel', serif",
-            fontWeight: 700,
-            fontSize: '0.74rem',
-            letterSpacing: '0.06em',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '0.4rem'
-          }}
+          className="hud-stat-item share-link-btn hover:brightness-125"
           title="Copy Shareable Build URL to Clipboard"
           onClick={copyShareableLink}
         >
           <span>🔗</span>
-          <span>SHARE BUILD</span>
+          <span>SHARE</span>
         </button>
         <button
           className="hud-btn-close"
           onClick={resetEntireTree}
           title="Reset All Allocations"
         >
-          &times;
+          ✕
         </button>
       </div>
     </header>

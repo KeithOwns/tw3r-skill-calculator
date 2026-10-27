@@ -2130,8 +2130,8 @@ export const GENERAL_SKILLS_DATA: Record<string, SkillDefinition> = {
   synergy: {
     id: "synergy",
     name: "Synergy",
-    branch: "general",
-    category: "general",
+    branch: "mutation",
+    category: "alchemy",
     x: 653,
     y: 527,
     maxRank: 3,
@@ -2987,7 +2987,7 @@ export const ALCHEMY_SKILLS_DATA: Record<string, SkillDefinition> = {
         highlight: "+15% poisoned weapon DMG (+30% vs poison immune targets)"
       }
     ],
-    tacticalTip: "Guarantees heavy bonus damage even against poison-immune elementals and specters, ensuring poison builds never encounter a hard immunity wall."
+    tacticalTip: "Empirically verified in Next-Gen: Potent Sting triggers strictly when monster oil is applied to the blade. Morana runestones and native poison stats do not activate the bonus—only an oiled weapon qualifies as a 'poisoned weapon'."
   }
 };
 
@@ -3152,6 +3152,35 @@ export const MUTATIONS_DATA: Record<string, MutationDetail> = {
  * Verified Ground-Truth Presets from Keith's Snips
  */
 export const PRESETS_DATA: Record<string, BuildPreset> = {
+  in_game_screenshot: {
+    name: "In-Game Screenshot (Euphoria)",
+    subtitle: "Authentic In-Game Build: 13 Combat, 7 Alchemy, 4 General, 4 Greater Red Mutagens",
+    mutation: "euphoria",
+    mutagenSockets: ["red", "red", "red", "red"],
+    combatAllocations: {
+      muscle_memory: 3,
+      crushing_blows: 3,
+      precise_blows: 3,
+      whirl: 3,
+      undying: 1
+    },
+    alchemyAllocations: {
+      acquired_tolerance: 3,
+      high_tolerance: 3,
+      tissue_transmutation: 1
+    },
+    generalAllocations: {
+      cat_school_techniques: 1,
+      focus: 3
+    },
+    slottedSkills: [
+      "cat_school_techniques", "focus", "whirl",                    // Quad 1 (Top Left) -> +20% Red Mutagen (1 Red + 2 Yellow)
+      "crushing_blows", "precise_blows", "sunder_armor",            // Quad 2 (Top Right) -> +40% Red Mutagen (3 Red)
+      "muscle_memory", "rend", "undying",                           // Quad 3 (Bottom Left) -> +40% Red Mutagen (3 Red)
+      "razor_focus", "crippling_strikes", "survival_instinct",      // Quad 4 (Bottom Right) -> +30% Red Mutagen (2 Red + 1 Yellow)
+      "high_tolerance", "acquired_tolerance", "synergy", "tissue_transmutation" // 4 Bonus Slots (All 4 Green Alchemy)
+    ]
+  },
   alpha_strike_boss: {
     name: "Alpha-Strike Boss Executioner",
     subtitle: "164%+ Overflow Crit | 43,608 Peak Hit | TKSS + Viper / Iris & Aerondight",
