@@ -1,0 +1,1139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TW3R v5.01 — Personal Run Quest Tracker & Cutoff Risk Guide</title>
+  <link rel="icon" type="image/png" href="./favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg-deep: #07090e;
+      --bg-panel: #0e121a;
+      --bg-card: #131822;
+      --bg-card-hover: #19202e;
+      --border-stone: #2b313d;
+      --border-gold: #c89b3c;
+      --accent-gold: #e4b858;
+      --accent-gold-dim: #9e7b2f;
+      --text-main: #e5e7eb;
+      --text-dim: #9ca3af;
+      --text-muted: #6b7280;
+      --risk-critical: #ef4444;
+      --risk-high: #f59e0b;
+      --risk-mod: #3b82f6;
+      --risk-safe: #10b981;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-deep);
+      background-image:
+        radial-gradient(circle at 18% 12%, rgba(200, 155, 60, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 82% 88%, rgba(239, 68, 68, 0.05) 0%, transparent 40%);
+      color: var(--text-main);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    /* Top Witcher HUD Header */
+    .hud-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: linear-gradient(180deg, rgba(10, 13, 19, 0.98) 0%, rgba(14, 18, 26, 0.95) 100%);
+      border-bottom: 1px solid rgba(200, 155, 60, 0.4);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+      padding: 0.75rem 1.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .hud-brand {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      text-decoration: none;
+      color: var(--text-main);
+    }
+
+    .hud-brand img {
+      height: 38px;
+      width: auto;
+      filter: drop-shadow(0 2px 6px rgba(0,0,0,0.9));
+    }
+
+    .hud-title-block h1 {
+      font-family: 'Cinzel', serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--accent-gold);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .hud-title-block p {
+      font-size: 0.75rem;
+      color: var(--text-dim);
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .hud-telemetry {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      flex-wrap: wrap;
+    }
+
+    .stat-pill {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-stone);
+      border-radius: 6px;
+      padding: 0.35rem 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.82rem;
+    }
+
+    .stat-pill strong {
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--accent-gold);
+      font-size: 0.92rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .btn-hud {
+      background: rgba(200, 155, 60, 0.12);
+      border: 1px solid var(--border-gold);
+      color: var(--accent-gold);
+      font-family: 'Cinzel', serif;
+      font-size: 0.78rem;
+      font-weight: 600;
+      padding: 0.45rem 0.85rem;
+      border-radius: 4px;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.18s ease;
+      letter-spacing: 0.05em;
+    }
+
+    .btn-hud:hover {
+      background: rgba(200, 155, 60, 0.25);
+      box-shadow: 0 0 12px rgba(200, 155, 60, 0.3);
+    }
+
+    /* Main Container */
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 1.75rem 1.5rem 4rem;
+    }
+
+    /* Summary Cards Strip */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .kpi-card {
+      background: var(--bg-panel);
+      border: 1px solid var(--border-stone);
+      border-top: 2px solid var(--border-gold);
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    }
+
+    .kpi-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-dim);
+      margin-bottom: 0.25rem;
+    }
+
+    .kpi-value {
+      font-family: 'Cinzel', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--accent-gold);
+    }
+
+    .kpi-sub {
+      font-size: 0.76rem;
+      color: var(--text-muted);
+      margin-top: 0.2rem;
+    }
+
+    /* Controls Bar (Tabs + Search + Reset) */
+    .controls-bar {
+      background: var(--bg-panel);
+      border: 1px solid var(--border-stone);
+      border-radius: 8px;
+      padding: 0.85rem 1rem;
+      margin-bottom: 1.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .tab-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .tab-btn {
+      background: transparent;
+      border: 1px solid var(--border-stone);
+      color: var(--text-dim);
+      font-family: 'Cinzel', serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 0.45rem 0.9rem;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .tab-btn:hover {
+      color: var(--text-main);
+      border-color: var(--accent-gold-dim);
+    }
+
+    .tab-btn.active {
+      background: rgba(200, 155, 60, 0.18);
+      border-color: var(--border-gold);
+      color: var(--accent-gold);
+      box-shadow: 0 0 10px rgba(200, 155, 60, 0.2);
+    }
+
+    .search-box {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      flex: 1;
+      max-width: 360px;
+    }
+
+    .search-input {
+      width: 100%;
+      background: var(--bg-deep);
+      border: 1px solid var(--border-stone);
+      color: var(--text-main);
+      padding: 0.48rem 0.85rem;
+      border-radius: 5px;
+      font-size: 0.85rem;
+      outline: none;
+    }
+
+    .search-input:focus {
+      border-color: var(--border-gold);
+    }
+
+    /* Section Headers & Cards */
+    .section-block {
+      margin-bottom: 2.25rem;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(200, 155, 60, 0.35);
+      padding-bottom: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .section-header h2 {
+      font-family: 'Cinzel', serif;
+      font-size: 1.25rem;
+      color: var(--accent-gold);
+      letter-spacing: 0.04em;
+    }
+
+    .callout {
+      padding: 1rem 1.25rem;
+      border-radius: 6px;
+      margin-bottom: 1.25rem;
+      font-size: 0.88rem;
+      border-left: 4px solid var(--border-gold);
+      background: rgba(200, 155, 60, 0.07);
+    }
+
+    .callout-danger {
+      border-left-color: var(--risk-critical);
+      background: rgba(239, 68, 68, 0.08);
+    }
+
+    .callout strong {
+      color: var(--accent-gold);
+    }
+
+    .callout-danger strong {
+      color: #f87171;
+    }
+
+    /* Tables */
+    .table-wrap {
+      overflow-x: auto;
+      background: var(--bg-panel);
+      border: 1px solid var(--border-stone);
+      border-radius: 8px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.45);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.87rem;
+    }
+
+    th {
+      background: rgba(255, 255, 255, 0.03);
+      color: var(--accent-gold);
+      font-family: 'Cinzel', serif;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 0.85rem 1rem;
+      border-bottom: 1px solid var(--border-stone);
+    }
+
+    td {
+      padding: 0.8rem 1rem;
+      border-bottom: 1px solid rgba(43, 49, 61, 0.6);
+      vertical-align: top;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    tr:hover td {
+      background: var(--bg-card-hover);
+    }
+
+    tr.checked-row td {
+      opacity: 0.48;
+      text-decoration: line-through;
+    }
+
+    /* Badges */
+    .badge {
+      display: inline-block;
+      padding: 0.18rem 0.55rem;
+      border-radius: 4px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      font-family: 'JetBrains Mono', monospace;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+    }
+
+    .badge-crit {
+      background: rgba(239, 68, 68, 0.18);
+      color: #fca5a5;
+      border: 1px solid rgba(239, 68, 68, 0.45);
+    }
+
+    .badge-high {
+      background: rgba(245, 158, 11, 0.18);
+      color: #fcd34d;
+      border: 1px solid rgba(245, 158, 11, 0.45);
+    }
+
+    .badge-mod {
+      background: rgba(59, 130, 246, 0.18);
+      color: #93c5fd;
+      border: 1px solid rgba(59, 130, 246, 0.45);
+    }
+
+    .badge-safe {
+      background: rgba(16, 185, 129, 0.18);
+      color: #6ee7b7;
+      border: 1px solid rgba(16, 185, 129, 0.45);
+    }
+
+    .lvl-pill {
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+      color: var(--accent-gold);
+      background: rgba(200, 155, 60, 0.12);
+      border: 1px solid rgba(200, 155, 60, 0.35);
+      padding: 0.15rem 0.5rem;
+      border-radius: 4px;
+      display: inline-block;
+      min-width: 2.2rem;
+      text-align: center;
+    }
+
+    .quest-check {
+      width: 18px;
+      height: 18px;
+      accent-color: var(--border-gold);
+      cursor: pointer;
+      margin-top: 2px;
+    }
+
+    /* Roadmap Step Cards */
+    .roadmap-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1rem;
+    }
+
+    .step-card {
+      background: var(--bg-panel);
+      border: 1px solid var(--border-stone);
+      border-left: 3px solid var(--border-gold);
+      border-radius: 8px;
+      padding: 1.15rem;
+    }
+
+    .step-card h3 {
+      font-family: 'Cinzel', serif;
+      font-size: 1rem;
+      color: var(--accent-gold);
+      margin-bottom: 0.65rem;
+    }
+
+    .step-card ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .step-card li {
+      font-size: 0.86rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.55rem;
+    }
+
+    .completed-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .completed-tag {
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      color: #a7f3d0;
+      padding: 0.3rem 0.7rem;
+      border-radius: 5px;
+      font-size: 0.8rem;
+    }
+
+    @media (max-width: 768px) {
+      .hud-header {
+        padding: 0.75rem 1rem;
+      }
+      .container {
+        padding: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Witcher HUD Bar -->
+  <header class="hud-header">
+    <a href="./index.html" class="hud-brand" title="Back to Skill Calculator">
+      <img src="./assets/brand/tw3r_logo.png" alt="TW3R Logo" onerror="this.style.display='none'" />
+      <div class="hud-title-block">
+        <h1>Personal Run Quest Tracker &amp; Risk Guide</h1>
+        <p>The Witcher 3: Wild Hunt — Remastered (v5.01) • Snapshot: Oct 28, 2026</p>
+      </div>
+    </a>
+
+    <div class="hud-telemetry">
+      <div class="stat-pill"><span>LEVEL</span> <strong>8 (410/1000 XP)</strong></div>
+      <div class="stat-pill"><span>👑 CROWNS</span> <strong>1,353</strong></div>
+      <div class="stat-pill"><span>🎒 WEIGHT</span> <strong>26 / 90</strong></div>
+      <div class="stat-pill"><span>✅ COMPLETED</span> <strong id="hud-completed-count">35</strong></div>
+      <div class="stat-pill"><span>❌ FAILED</span> <strong style="color:#10b981;">0</strong></div>
+    </div>
+
+    <div class="nav-links">
+      <a href="./index.html" class="btn-hud">⚔️ Skill Calculator</a>
+      <button class="btn-hud" onclick="resetTrackerChecks()" title="Clear local checkmarks">↺ Reset Checks</button>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- KPI Overview Strip -->
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-label">Main Story Act I</div>
+        <div class="kpi-value">Velen 100%</div>
+        <div class="kpi-sub">Next: Broken Flowers (Lvl 11, Novigrad)</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">At-Risk Active Quests</div>
+        <div class="kpi-value" style="color:#f87171;">13 Priority</div>
+        <div class="kpi-sub">Storyline cutoffs, proximity &amp; XP loss</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Uncollected `!` Quests</div>
+        <div class="kpi-value" style="color:#fcd34d;">24 Velen/Nov</div>
+        <div class="kpi-sub">Roadside proximity &amp; hidden triggers</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Active Contracts</div>
+        <div class="kpi-value">19 Contracts</div>
+        <div class="kpi-sub">Lvl 2 (Devil by the Well) → Lvl 35</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Scavenger Hunts</div>
+        <div class="kpi-value">11 Active</div>
+        <div class="kpi-sub">Viper Complete • Next: Griffin (Lvl 11)</div>
+      </div>
+    </div>
+
+    <!-- Filter & Search Controls -->
+    <div class="controls-bar">
+      <div class="tab-group">
+        <button class="tab-btn active" onclick="filterSection('all', this)">All Sections</button>
+        <button class="tab-btn" onclick="filterSection('roadmap', this)">Lvl 8→12 Roadmap</button>
+        <button class="tab-btn" onclick="filterSection('at-risk', this)">⚠️ At-Risk Active (13)</button>
+        <button class="tab-btn" onclick="filterSection('missing-triggers', this)">❗ Missing Velen/Novigrad `!` (24)</button>
+        <button class="tab-btn" onclick="filterSection('full-log', this)">📜 Full Active Log (59)</button>
+        <button class="tab-btn" onclick="filterSection('completed', this)">✅ Completed (35)</button>
+      </div>
+      <div class="search-box">
+        <input type="text" id="questSearch" class="search-input" placeholder="Search quest, region, NPC, mutagen..." oninput="filterRows()" />
+      </div>
+    </div>
+
+    <!-- SECTION 1: OPTIMAL ROADMAP -->
+    <section class="section-block" data-section="roadmap">
+      <div class="section-header">
+        <h2>1. Optimal Execution Roadmap (Level 8 → Level 12)</h2>
+        <span class="badge badge-safe">Zero-Failure Path</span>
+      </div>
+      <div class="roadmap-grid">
+        <div class="step-card">
+          <h3>Phase 1: Immediate Low-Level Cleanup (Lvl 8)</h3>
+          <ul>
+            <li><input type="checkbox" class="quest-check" data-id="rm-1" /> <span><strong>Contract: Devil by the Well</strong> (Lvl 2, White Orchard) — Only contract that fails at <em>Isle of Mists</em>.</span></li>
+            <li><input type="checkbox" class="quest-check" data-id="rm-2" /> <span><strong>Funeral Pyres</strong> (Lvl 3, Velen) — Clear immediately before XP greys out at Lvl 9; confront corrupt priest.</span></li>
+            <li><input type="checkbox" class="quest-check" data-id="rm-3" /> <span><strong>Contract: Woodland Beast</strong> (Lvl 6, Velen) &amp; <strong>Contract: Patrol Gone Missing</strong> (Lvl 7, Velen).</span></li>
+          </ul>
+        </div>
+        <div class="step-card">
+          <h3>Phase 2: Reardon &amp; Keira Metz Chain (Lvl 8–9)</h3>
+          <ul>
+            <li><input type="checkbox" class="quest-check" data-id="rm-4" /> <span><strong>The Fall of the House of Reardon</strong> (Lvl 6) — <strong>Avoid barn tripwires</strong>; climb loft ladder to trigger <strong>Ghosts of the Past</strong> (Lvl 6, recruit Letho).</span></li>
+            <li><input type="checkbox" class="quest-check" data-id="rm-5" /> <span><strong>An Invitation from Keira Metz</strong> (Lvl 6) → <strong>A Towerful of Mice</strong> (Lvl 6).</span></li>
+            <li><input type="checkbox" class="quest-check" data-id="rm-6" /> <span>Walk off Fyke Isle dock to meet the Pellar &amp; complete <strong>Forefathers' Eve</strong> (Lvl 7).</span></li>
+            <li><input type="checkbox" class="quest-check" data-id="rm-7" /> <span><strong>A Favor for a Friend</strong> (Lvl 6) → <strong>For the Advancement of Learning</strong> (Lvl 8 — send Keira to <strong>Kaer Morhen</strong>).</span></li>
+          </ul>
+        </div>
+        <div class="step-card">
+          <h3>Phase 3: Finalize Velen Arcs (Lvl 9–10)</h3>
+          <ul>
+            <li><input type="checkbox" class="quest-check" data-id="rm-8" /> <span><strong>Wild at Heart</strong> (Lvl 7), <strong>The Truth is in the Stars</strong> (Lvl 7), <strong>A Greedy God</strong> (Lvl 7), and <strong>Contract: Shrieker</strong> (Lvl 8).</span></li>
+            <li><input type="checkbox" class="quest-check" data-id="rm-9" /> <span><strong>Return to Crookback Bog</strong> (Lvl 9) — <em>Hard cutoff before Ugly Baby</em>.</span></li>
+            <li><input type="checkbox" class="quest-check" data-id="rm-10" /> <span><strong>Defender of the Faith</strong> (Lvl 10) &amp; <strong>Fools' Gold</strong> (Lvl 10, Lurtch).</span></li>
+          </ul>
+        </div>
+        <div class="step-card">
+          <h3>Phase 4: Griffin Gear &amp; Novigrad Entry (Lvl 10–12)</h3>
+          <ul>
+            <li><input type="checkbox" class="quest-check" data-id="rm-11" /> <span><strong>Scavenger Hunt: Griffin School Gear</strong> (Lvl 11, Velen) &amp; <strong>Of Dairy and Darkness</strong> (Lvl 9, Novigrad).</span></li>
+            <li><input type="checkbox" class="quest-check" data-id="rm-12" /> <span>Play <strong>Olivier at the Kingfisher Inn</strong> (<em>Gwent: Playing Innkeeps</em>) before advancing Triss's quests!</span></li>
+            <li><input type="checkbox" class="quest-check" data-id="rm-13" /> <span>Decompress <strong>The Nobleman Statuette</strong> (Lvl 14) with Triss before starting <em>Now or Never</em>.</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: AT-RISK ACTIVE QUESTS -->
+    <section class="section-block" data-section="at-risk">
+      <div class="section-header">
+        <h2>2. Priority 1: At-Risk Quests Currently in Your Active Log</h2>
+        <span class="badge badge-crit">Storyline &amp; Proximity Cutoffs</span>
+      </div>
+      <div class="callout callout-danger">
+        <strong>Why These 13 Quests Require Attention:</strong> These quests are already in your journal and can fail permanently if you cross main story thresholds (<em>Get Junior</em>, <em>Now or Never</em>, <em>Ugly Baby</em>, <em>The Isle of Mists</em>), walk away from spawned NPCs, or out-level their XP window (6+ levels above suggested level).
+      </div>
+      <div class="table-wrap">
+        <table class="searchable-table">
+          <thead>
+            <tr>
+              <th style="width:42px;">Done</th>
+              <th>Quest Name</th>
+              <th style="width:80px;">Lvl</th>
+              <th>Region</th>
+              <th>Risk Level</th>
+              <th>Cutoff / Failure Trigger</th>
+              <th>Action Required</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><input type="checkbox" class="quest-check" data-id="risk-1" /></td>
+              <td><strong>Funeral Pyres</strong></td>
+              <td><span class="lvl-pill">3</span></td>
+              <td>Velen</td>
+              <td><span class="badge badge-crit">XP + Dialogue</span></td>
+              <td>5 levels below your Lvl 8. Fails if you refuse the corrupt priest's bribe and let him walk away without confronting him.</td>
+              <td><strong>Do #1 Now.</strong> Fast travel to Mulbrydale / Border Post before hitting Level 9.</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" class="quest-check" data-id="risk-2" /></td>
+              <td><strong>Contract: Devil by the Well</strong></td>
+              <td><span class="lvl-pill">2</span></td>
+              <td>White Orchard</td>
+              <td><span class="badge badge-high">Isle of Mists</span></td>
+              <td>Only Witcher Contract in the game that auto-fails upon entering <em>The Isle of Mists</em>.</td>
+              <td><strong>Do #2 Now.</strong> Quick 5-minute trip to White Orchard for Noonwraith mutagen &amp; trophy.</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" class="quest-check" data-id="risk-3" /></td>
+              <td><strong>The Fall of the House of Reardon</strong></td>
+              <td><span class="lvl-pill">6</span></td>
+              <td>Velen (Lindenvale)</td>
+              <td><span class="badge badge-crit">Letho Trap + Cutoff</span></td>
+              <td>Fails at <em>Isle of Mists</em>. <strong>Breaking the barn tripwires</strong> can skip/aggro Letho and miss <strong>Ghosts of the Past</strong>.</td>
+              <td><strong>Do #3 Now.</strong> Enter Reardon barn carefully without tripping wires, climb loft ladder, help Letho, and send him to Kaer Morhen.</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" class="quest-check" data-id="risk-4" /></td>
+              <td><strong>An Invitation from Keira Metz</strong></td>
+              <td><span class="lvl-pill">6</span></td>
+              <td>Velen</td>
+              <td><span class="badge badge-crit">4-Quest Chain</span></td>
+              <td>Entire chain (<em>Towerful of Mice → Favor for a Friend → Advancement of Learning</em>) fails at <em>Isle of Mists</em>. (You already completed <em>Lynch Mob</em>, so no conflict!)</td>
+              <td><strong>Do #4 Now.</strong> Complete full chain and persuade Keira to go to <strong>Kaer Morhen</strong> (never let her go to Radovid).</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" class="quest-check" data-id="risk-5" /></td>
+              <td><strong>Wild at Heart</strong></td>
+              <td><span class="lvl-pill">7</span></td>
+              <td>Velen (Blackbough)</td>
+              <td><span class="badge badge-mod">XP Window</span></td>
+              <td>Accepting Margrit's bribe ends the quest early without the werewolf cave boss fight or loot.</td>
+              <td>Refuse the bribe, face the werewolf at night, and finish while Level 8.</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" class="quest-check" data-id="risk-6" /></td>
+              <td><strong>The Truth is in the Stars</strong></td>
+              <td><span class="lvl-pill">7</span></td>
+              <td>Velen (Benek)</td>
+              <td><span class="badge badge-mod">Mid-Story</span></td>
+              <td>Old Sage in Benek. Best completed before finishing <em>Return to Crookback Bog</em>.</td>
+              <td>Gather Dragonroot from the cave near Benek and play the Old Sage in Gwent at the same time.</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" class="quest-check" data-id="risk-7" /></td>
+              <td><strong>Return to Crookback Bog</strong></td>
+              <td><span class="lvl-pill">9</span></td>
+              <td>Velen (Downwarren)</td>
+              <td><span class="badge badge-crit">Fails at Ugly Baby</span></td>
+              <td>Auto-fails permanently upon starting <strong>Ugly Baby</strong>.</td>
+              <td>Complete at Level 8–9 right after clearing Reardon and Keira's chain.</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" class="quest-check" data-id="risk-8" /></td>
+              <td><strong>Gwent: Velen Players</strong></td>
+              <td><span class="lvl-pill">—</span></td>
+              <td>Velen</td>
+              <td><span class="badge badge-high">Baron Departure</span></td>
+              <td>Since <em>Family Matters</em> is finished, the Baron has left Crow's Perch.</td>
+              <td>Loot the Baron's office desk in Crow's Perch if not already done, then beat Boatwright (Oreton), Haddy (Midcopse), and Old Sage (Benek).</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" class="quest-check" data-id="risk-9" /></td>
+              <td><strong>Gwent: Playing Innkeeps</strong></td>
+              <td><span class="lvl-pill">—</span></td>
+              <td>Novigrad / Velen</td>
+              <td><span class="badge badge-crit">Olivier Death</span></td>
+              <td><strong>Olivier</strong> (Kingfisher Inn, Novigrad) dies during <em>Now or Never</em> if you help the mages escape.</td>
+              <td>Play Olivier and buy every Gwent card in his inventory immediately when entering the Kingfisher!</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" class="quest-check" data-id="risk-10" /></td>
+              <td><strong>Defender of the Faith</strong></td>
+              <td><span class="lvl-pill">10</span></td>
+              <td>Velen</td>
+              <td><span class="badge badge-high">Proximity (3rd Shrine)</span></td>
+              <td>Riding away after the Oxenfurt students spawn at the 3rd shrine south of Mulbrydale fails the quest.</td>
+              <td>Complete at Level 9–10; stay and confront the students at the 3rd shrine.</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" class="quest-check" data-id="risk-11" /></td>
+              <td><strong>Following the Thread</strong></td>
+              <td><span class="lvl-pill">11</span></td>
+              <td>Novigrad / Skellige</td>
+              <td><span class="badge badge-crit">Fails at Ugly Baby</span></td>
+              <td>Because Lambert's quest is already active in your journal, starting <strong>Ugly Baby</strong> before finishing it auto-fails the quest.</td>
+              <td>Finish with Lambert in Novigrad &amp; Faroe before starting <em>Ugly Baby</em>.</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" class="quest-check" data-id="risk-12" /></td>
+              <td><strong>Black Pearl</strong></td>
+              <td><span class="lvl-pill">13</span></td>
+              <td>Novigrad / Skellige</td>
+              <td><span class="badge badge-crit">NPC Death Fail</span></td>
+              <td>Once Nidas dives into the water near Arinbjorn in Skellige, drowners swarm him on the shore. Leaving or reacting slowly kills Nidas.</td>
+              <td>Sprint to the shoreline as soon as Nidas surfaces and kill the drowners immediately.</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" class="quest-check" data-id="risk-13" /></td>
+              <td><strong>The Nobleman Statuette</strong></td>
+              <td><span class="lvl-pill">14</span></td>
+              <td>Novigrad</td>
+              <td><span class="badge badge-high">Blocked at Now or Never</span></td>
+              <td>Requires Triss Merigold. If you complete <em>Now or Never</em> first, Triss leaves Novigrad until late Act III (<em>Blindingly Obvious</em>).</td>
+              <td>Decompress with Triss (along with <em>The Soldier Statuette</em>) before starting <em>Now or Never</em>.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- SECTION 3: MISSING LOCATION-TRIGGERED QUESTS -->
+    <section class="section-block" data-section="missing-triggers">
+      <div class="section-header">
+        <h2>3. Priority 2: Missing Location-Triggered (`!`) Quests — Velen &amp; Novigrad</h2>
+        <span class="badge badge-high">24 Uncollected Encounters</span>
+      </div>
+      <div class="callout">
+        <strong>Already Secured by You:</strong> You have already found and completed <strong>Lynch Mob</strong>, <strong>Bitter Harvest</strong>, <strong>Death By Fire</strong>, <strong>Fake Papers</strong>, <strong>Thou Shalt Not Pass</strong>, and <strong>Message from an Old Friend</strong>. Below are the remaining location-triggered and chain-unlocked quests across Velen and Novigrad that are not yet in your journal.
+      </div>
+      <div class="table-wrap">
+        <table class="searchable-table">
+          <thead>
+            <tr>
+              <th style="width:42px;">Done</th>
+              <th>Quest Name</th>
+              <th style="width:70px;">Lvl</th>
+              <th>Map / Exact Trigger Location</th>
+              <th>Risk Type</th>
+              <th>Trigger &amp; Failure Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- VELEN -->
+            <tr>
+              <td><input type="checkbox" class="quest-check" data-id="trig-1" /></td>
+              <td><strong>Ghosts of the Past</strong></td>
+              <td><span class="lvl-pill">6</span></td>
+              <td><strong>Velen:</strong> Lindenvale — Reardon Manor Barn Loft</td>
+              <td><span class="badge badge-crit">Trap / Cutoff</span></td>
+              <td>Triggers inside the barn loft during <em>The Fall of the House of Reardon</em>. Do not break tripwires; help Letho and send him to Kaer Morhen.</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" class="quest-check" data-id="trig-2" /></td>
+              <td><strong>A Towerful of Mice → A Favor for a Friend → For the Advancement of Learning</strong></td>
+              <td><span class="lvl-pill">6–8</span></td>
+              <td><strong>Velen:</strong> Keira's Hut / Fyke Isle</td>
+              <td><span class="badge badge-crit">Isle of Mists</span></td>
+              <td>Unlocks immediately upon completing your active <em>An Invitation from Keira Metz</em>. Send Keira to Kaer Morhen at the end.</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" class="quest-check" data-id="trig-3" /></td>
+              <td><strong>Forefathers' Eve</strong></td>
+              <td><span class="lvl-pill">7</span></td>
+              <td><strong>Velen:</strong> Fyke Isle Boat Dock / Blackbough</td>
+              <td><span class="badge badge-crit">Missable Chain</span></td>
+              <td>Unlocks right after finishing <em>A Towerful of Mice</em>. Walk off the Fyke Isle dock so the Pellar approaches you, then meet him at the stone circle at midnight.</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" class="quest-check" data-id="trig-4" /></td>
+              <td><strong>Hazardous Goods</strong></td>
+              <td><span class="lvl-pill">6</span></td>
+              <td><strong>Velen:</strong> Road between Inn at the Crossroads &amp; Blackbough (or NW of Lindenvale)</td>
+              <td><span class="badge badge-crit">Proximity Fail</span></td>
+              <td>Gert Borel's plague cart surrounded by ghouls. Fails if ridden past or after <em>Isle of Mists</em>. Burn corpses with Igni.</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" class="quest-check" data-id="trig-5" /></td>
+              <td><strong>Harassing a Troll</strong> <em>(Unmarked)</em></td>
+              <td><span class="lvl-pill">6</span></td>
+              <td><strong>Velen:</strong> Riverbank NW of Inn at the Crossroads</td>
+              <td><span class="badge badge-crit">Proximity Fail</span></td>
+              <td>Friendly rock troll <strong>Boris</strong> being attacked by Nekkers. Save him before they kill him.</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" class="quest-check" data-id="trig-6" /></td>
+              <td><strong>At the Mercy of Strangers</strong></td>
+              <td><span class="lvl-pill">7–9</span></td>
+              <td><strong>Velen:</strong> Riverbank West of Boatmakers' Hut / East of Condyle</td>
+              <td><span class="badge badge-crit">Proximity Fail</span></td>
+              <td>John Verdun is tied up on the shore while drowners attack him. Riding away lets him die permanently.</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" class="quest-check" data-id="trig-7" /></td>
+              <td><strong>A Greedy God</strong></td>
+              <td><span class="lvl-pill">7</span></td>
+              <td><strong>Velen:</strong> Forest Ruins NW of Wastrel Manor</td>
+              <td><span class="badge badge-safe">Hidden `!`</span></td>
+              <td>Two peasants praying at a Sylvan ("Allgod") altar. Use Keira's <em>Eye of Nehaleni</em> to dispel the cellar illusion.</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" class="quest-check" data-id="trig-8" /></td>
+              <td><strong>A Dog's Life</strong></td>
+              <td><span class="lvl-pill">9</span></td>
+              <td><strong>Velen:</strong> Road East of Drudge / NW of Bald Mountain</td>
+              <td><span class="badge badge-crit">Proximity Fail</span></td>
+              <td>Wolves cornering a dog outside a ruined hut. If the wolves kill the dog before you intervene, the quest fails immediately.</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" class="quest-check" data-id="trig-9" /></td>
+              <td><strong>Caravan Attack</strong></td>
+              <td><span class="lvl-pill">9</span></td>
+              <td><strong>Velen:</strong> Road South of Frischlow / Near Army Group 'Center' Camp</td>
+              <td><span class="badge badge-crit">Proximity Fail</span></td>
+              <td>Merchants under attack in southern Velen. Defend them immediately when the `!` appears.</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" class="quest-check" data-id="trig-10" /></td>
+              <td><strong>Love's Cruel Snares</strong></td>
+              <td><span class="lvl-pill">10</span></td>
+              <td><strong>Velen:</strong> Woods SW of Condyle / North of Byways</td>
+              <td><span class="badge badge-crit">Proximity Fail</span></td>
+              <td>Spawns after visiting Condyle/Refugee Camp; weeping woman &amp; corpse guarded by wolves/leshen in the woods.</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" class="quest-check" data-id="trig-11" /></td>
+              <td><strong>Fools' Gold</strong> <em>(DLC)</em></td>
+              <td><span class="lvl-pill">10</span></td>
+              <td><strong>Velen:</strong> Lurtch (Village East of Lindenvale)</td>
+              <td><span class="badge badge-high">Proximity Start</span></td>
+              <td>Bandits roasting a pig and threatening Yontek. Walking away after triggering the argument fails the quest.</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" class="quest-check" data-id="trig-12" /></td>
+              <td><strong>Last Rites</strong></td>
+              <td><span class="lvl-pill">15</span></td>
+              <td><strong>Velen:</strong> Blackbough Cemetery Bridge (Midnight 23:00–04:00)</td>
+              <td><span class="badge badge-mod">Night-Only `!`</span></td>
+              <td>Old woman ghost only appears on the wooden bridge to Blackbough cemetery at night now that <em>Ladies of the Wood</em> is complete.</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" class="quest-check" data-id="trig-13" /></td>
+              <td><strong>Where the Cat and Wolf Play...</strong> <em>(DLC)</em></td>
+              <td><span class="lvl-pill">25</span></td>
+              <td><strong>Velen:</strong> Honorton (During active <em>Contract: The Beast of Honorton</em>)</td>
+              <td><span class="badge badge-mod">Contract Chain</span></td>
+              <td>Unlocks automatically when investigating the slaughtered villagers in Honorton. Leads to Cat School Witcher Gaetan (<em>Teigr</em> steel sword).</td>
+            </tr>
+
+            <!-- NOVIGRAD -->
+            <tr>
+              <td><input type="checkbox" class="quest-check" data-id="trig-14" /></td>
+              <td><strong>A Barnful of Trouble</strong></td>
+              <td><span class="lvl-pill">7</span></td>
+              <td><strong>Novigrad Outskirts:</strong> Carsten (Village NE of Oxenfurt)</td>
+              <td><span class="badge badge-crit">Proximity Fail</span></td>
+              <td>Villagers outside a locked barn full of ghouls. Leaving after approaching or opening the doors lets the ghouls kill the peasants.</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" class="quest-check" data-id="trig-15" /></td>
+              <td><strong>Empty Coop</strong></td>
+              <td><span class="lvl-pill">8</span></td>
+              <td><strong>Novigrad Outskirts:</strong> Farms South of Glory Gate</td>
+              <td><span class="badge badge-safe">Roadside `!`</span></td>
+              <td>Old woman complaining about chicken thieves; follow wolf-paw prints under the bridge.</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" class="quest-check" data-id="trig-16" /></td>
+              <td><strong>Gangs of Novigrad</strong></td>
+              <td><span class="lvl-pill">9</span></td>
+              <td><strong>Novigrad:</strong> Auto-triggers upon starting <em>Get Junior</em></td>
+              <td><span class="badge badge-crit">Auto-Fail Trap</span></td>
+              <td><strong>Fails automatically</strong> if you enter Whoreson Junior's Arena or Casino before talking to Cleaver, or if you don't raid both with Cleaver's dwarves!</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" class="quest-check" data-id="trig-17" /></td>
+              <td><strong>Honor Among Thieves</strong></td>
+              <td><span class="lvl-pill">9</span></td>
+              <td><strong>Novigrad:</strong> Whoreson's Casino Basement (During <em>Get Junior</em>)</td>
+              <td><span class="badge badge-crit">Timed Cutoff</span></td>
+              <td>Free <strong>Rico Meiersdorf</strong> in the Casino basement during <em>Get Junior</em>, then immediately visit the King of Beggars before finishing <em>Get Junior</em>.</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" class="quest-check" data-id="trig-18" /></td>
+              <td><strong>A Walk on the Waterfront</strong></td>
+              <td><span class="lvl-pill">12</span></td>
+              <td><strong>Novigrad:</strong> Western Docks (West of Hierarch Square)</td>
+              <td><span class="badge badge-crit">Proximity Fail</span></td>
+              <td>Thugs ambush a merchant on the docks as soon as you walk near. Sprint in with Quen and save him before he dies.</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" class="quest-check" data-id="trig-19" /></td>
+              <td><strong>Spooked Mare</strong></td>
+              <td><span class="lvl-pill">12</span></td>
+              <td><strong>Novigrad Outskirts:</strong> Forest North of Oxenfurt (Near Aeramas' Manor)</td>
+              <td><span class="badge badge-crit">Proximity Fail</span></td>
+              <td>Wandering grey mare by the river; calm with Axii and ride her back to the Scoia'tael camp.</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" class="quest-check" data-id="trig-20" /></td>
+              <td><strong>An Eye for an Eye</strong></td>
+              <td><span class="lvl-pill">12</span></td>
+              <td><strong>Novigrad/Velen:</strong> Temerian Partisan Camp (Vernon Roche)</td>
+              <td><span class="badge badge-crit">Ves Death + Cutoff</span></td>
+              <td>Unlocks after meeting Roche in <em>Get Junior</em>. Keep <strong>Ves</strong> alive in Mulbrydale (kill crossbowmen first) so she can join Kaer Morhen.</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" class="quest-check" data-id="trig-21" /></td>
+              <td><strong>A Dangerous Game &amp; The Soldier Statuette</strong></td>
+              <td><span class="lvl-pill">12–14</span></td>
+              <td><strong>Novigrad:</strong> Rosemary and Thyme (Zoltan Chivay)</td>
+              <td><span class="badge badge-crit">Gwent + Triss Cutoff</span></td>
+              <td>Unlocks after rescuing Dandelion. Loot <strong>The Soldier Statuette</strong> in Caesar Bilzen's upstairs room (take to Triss before <em>Now or Never</em>) and choose the <strong>3 unique Gwent cards</strong> at the end!</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" class="quest-check" data-id="trig-22" /></td>
+              <td><strong>Redania's Most Wanted</strong></td>
+              <td><span class="lvl-pill">12</span></td>
+              <td><strong>Novigrad/Oxenfurt:</strong> Radovid's Ship (After <em>Get Junior</em>)</td>
+              <td><span class="badge badge-high">Isle of Mists</span></td>
+              <td>Recover Philippa's megascope crystal and show it to <strong>Triss</strong> before completing <em>Now or Never</em>.</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" class="quest-check" data-id="trig-23" /></td>
+              <td><strong>A Tome Entombed</strong></td>
+              <td><span class="lvl-pill">13</span></td>
+              <td><strong>Novigrad Sewers:</strong> Under Temple Isle (Behind weak brick wall)</td>
+              <td><span class="badge badge-mod">Hidden Underground</span></td>
+              <td>Blast the brick wall in the northern sewers with Aard to find the resting Higher Vampire professor.</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" class="quest-check" data-id="trig-24" /></td>
+              <td><strong>Cabaret → Carnal Sins &amp; A Deadly Plot</strong></td>
+              <td><span class="lvl-pill">14–16</span></td>
+              <td><strong>Novigrad:</strong> Rosemary and Thyme / Passiflora</td>
+              <td><span class="badge badge-crit">Isle of Mists</span></td>
+              <td>In <em>Carnal Sins</em>, interrogate Nathaniel Pastodi first to expose the real vampire killer (<strong>Hubert Rejk</strong>). Complete <em>A Deadly Plot</em> to unlock <em>Reason of State</em>.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- SECTION 4: FULL ACTIVE JOURNAL SNAPSHOT -->
+    <section class="section-block" data-section="full-log">
+      <div class="section-header">
+        <h2>4. Complete Active Quest Log Snapshot (59 Active Quests)</h2>
+        <span class="badge badge-mod">Extracted from 13 In-Game Captures</span>
+      </div>
+      <div class="table-wrap">
+        <table class="searchable-table">
+          <thead>
+            <tr>
+              <th style="width:42px;">Done</th>
+              <th>Category</th>
+              <th>Quest Name</th>
+              <th style="width:70px;">Lvl</th>
+              <th>Region</th>
+              <th>Tactical Notes &amp; Rewards</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- MAIN QUESTS -->
+            <tr><td><input type="checkbox" class="quest-check" data-id="act-m1" /></td><td><span class="badge badge-crit">Main</span></td><td><strong>Broken Flowers</strong></td><td><span class="lvl-pill">11</span></td><td>Novigrad</td><td>Current Objective: <em>Go to the Rosemary and Thyme.</em></td></tr>
+            <tr><td><input type="checkbox" class="quest-check" data-id="act-m2" /></td><td><span class="badge badge-crit">Main</span></td><td><strong>Destination: Skellige</strong></td><td><span class="lvl-pill">16</span></td><td>Novigrad</td><td>1,000 Crowns fare to Captain Wolverstone (refundable via loot on Skellige beach).</td></tr>
+            <tr><td><input type="checkbox" class="quest-check" data-id="act-m3" /></td><td><span class="badge badge-crit">Main (HoS)</span></td><td><strong>Evil's Soft First Touches</strong></td><td><span class="lvl-pill">32</span></td><td>Novigrad</td><td><em>Hearts of Stone</em> expansion entry.</td></tr>
+            <tr><td><input type="checkbox" class="quest-check" data-id="act-m4" /></td><td><span class="badge badge-crit">Main</span></td><td><strong>In Ciri's Footsteps</strong></td><td><span class="lvl-pill">—</span></td><td>Multiple</td><td>✅ Velen Complete • ⬜ Novigrad • ⬜ Skellige</td></tr>
+
+            <!-- SECONDARY QUESTS -->
+            <tr><td><input type="checkbox" class="quest-check" data-id="act-s1" /></td><td><span class="badge badge-high">Secondary</span></td><td><strong>Funeral Pyres</strong></td><td><span class="lvl-pill">3</span></td><td>Velen</td><td>⚠️ Clear immediately at Level 8.</td></tr>
+            <tr><td><input type="checkbox" class="quest-check" data-id="act-s2" /></td><td><span class="badge badge-high">Secondary</span></td><td><strong>The Fall of the House of Reardon</strong></td><td><span class="lvl-pill">6</span></td><td>Velen</td><td>⚠️ Avoid barn tripwires to unlock <em>Ghosts of the Past</em> (Letho).</td></tr>
+            <tr><td><input type="checkbox" class="quest-check" data-id="act-s3" /></td><td><span class="badge badge-high">Secondary</span></td><td><strong>An Invitation from Keira Metz</strong></td><td><span class="lvl-pill">6</span></td><td>Velen</td><td>⚠️ Unlocks 3-quest Fyke Isle sequel chain + <em>Forefathers' Eve</em>.</td></tr>
+            <tr><td><input type="checkbox" class="quest-check" data-id="act-s4" /></td><td><span class="badge badge-high">Secondary</span></td><td><strong>Wild at Heart</strong></td><td><span class="lvl-pill">7</span></td><td>Velen</td><td>Werewolf investigation in Blackbough.</td></tr>
+            <tr><td><input type="checkbox" class="quest-check" data-id="act-s5" /></td><td><span class="badge badge-high">Secondary</span></td><td><strong>The Truth is in the Stars</strong></td><td><span class="lvl-pill">7</span></td><td>Velen</td><td>Old Sage in Benek (Dragonroot cave).</td></tr>
+            <tr><td><input type="checkbox" class="quest-check" data-id="act-s6" /></td><td><span class="badge badge-high">Secondary</span></td><td><strong>Return to Crookback Bog</strong></td><td><span class="lvl-pill">9</span></td><td>Velen</td><td>⚠️ Cutoff: <em>Ugly Baby</em>.</td></tr>
+            <tr><td><input type="checkbox" class="quest-check" data-id="act-s7" /></td><td><span class="badge badge-high">Secondary</span></td><td><strong>Of Dairy and Darkness</strong></td><td><span class="lvl-pill">9</span></td><td>Novigrad</td><td>Aeramas' Manor — Emmentaler sword + Place of Power!</td></tr>
+            <tr><td><input type="checkbox" class="quest-check" data-id="act-s8" /></td><td><span class="badge badge-high">Secondary</span></td><td><strong>Defender of the Faith</strong></td><td><span class="lvl-pill">10</span></td><td>Velen</td><td>⚠️ Proximity trigger at 3rd shrine.</td></tr>
+            <tr><td><input type="checkbox" class="quest-check" data-id="act-s9" /></td><td><span class="badge badge-high">Secondary</span></td><td><strong>Fists of Fury: Velen</strong></td><td><span class="lvl-pill">11</span></td><td>Velen</td><td>Fishgulper, Smithy, Jonah, and the Sergeant at Crow's Perch.</td></tr>
+            <tr><td><input type="checkbox" class="quest-check" data-id="act-s10" /></td><td><span class="badge badge-high">Secondary</span></td><td><strong>Following the Thread</strong></td><td><span class="lvl-pill">11</span></td><td>Multiple</td><td>⚠️ Lambert questline — Cutoff: <em>Ugly Baby</em>.</td></tr>
+            <tr><td><input type="checkbox" class="quest-check" data-id="act-s11" /></td><td><span class="badge badge-high">Secondary</span></td><td><strong>Blood Ties</strong></td><td><span class="lvl-pill">12</span></td><td>Velen</td><td>Nilfgaardian Army Group 'Center' Camp quartermaster.</td></tr>
+            <tr><td><input type="checkbox" class="quest-check" data-id="act-s12" /></td><td><span class="badge badge-high">Secondary</span></td><td><strong>The Volunteer</strong></td><td><span class="lvl-pill">13</span></td><td>Novigrad</td><td>Trollololo east of Oxenfurt (buy Redanian paint in Oxenfurt).</td></tr>
+            <tr><td><input type="checkbox" class="quest-check" data-id="act-s13" /></td><td><span class="badge badge-high">Secondary</span></td><td><strong>Black Pearl</strong></td><td><span class="lvl-pill">13</span></td><td>Multiple</td><td>⚠️ Protect Nidas immediately on the Skellige beach.</td></tr>
+            <tr><td><input type="checkbox" class="quest-check" data-id="act-s14" /></td><td><span class="badge badge-high">Secondary</span></td><td><strong>The Nobleman Statuette</strong></td><td><span class="lvl-pill">14</span></td><td>Novigrad</td><td>⚠️ Complete with Triss before <em>Now or Never</em>.</td></tr>
+            <tr><td><input type="checkbox" class="quest-check" data-id="act-s15" /></td><td><span class="badge badge-high">Secondary</span></td><td><strong>The Silence of the Cows</strong></td><td><span class="lvl-pill">17</span></td><td>White Orchard</td><td>Modded Questline.</td></tr>
+            <tr><td><input type="checkbox" class="quest-check" data-id="act-s16" /></td><td><span class="badge badge-high">Secondary</span></td><td><strong>Fists of Fury: Novigrad</strong></td><td><span class="lvl-pill">23</span></td><td>Novigrad</td><td>Novigrad street brawlers &amp; Tailor Durden.</td></tr>
+            <tr><td><input type="checkbox" class="quest-check" data-id="act-s17" /></td><td><span class="badge badge-high">Secondary</span></td><td><strong>Of Swords and Dumplings</strong></td><td><span class="lvl-pill">24</span></td><td>Novigrad</td><td>Unlocks Master Weaponsmith <strong>Hattori</strong>.</td></tr>
+            <tr><td><input type="checkbox" class="quest-check" data-id="act-s18" /></td><td><span class="badge badge-high">Secondary</span></td><td><strong>Master Armorers</strong></td><td><span class="lvl-pill">24</span></td><td>Multiple</td><td>Unlocks Master Armorer <strong>Yoana</strong> at Crow's Perch.</td></tr>
+            <tr><td><input type="checkbox" class="quest-check" data-id="act-s19" /></td><td><span class="badge badge-high">Secondary</span></td><td><strong>High Stakes</strong></td><td><span class="lvl-pill">26</span></td><td>Novigrad</td><td>Passiflora Gwent Tournament (4 unique Leader cards).</td></tr>
+            <tr><td><input type="checkbox" class="quest-check" data-id="act-s20" /></td><td><span class="badge badge-high">Secondary</span></td><td><strong>Enchanting: Start-up Costs</strong></td><td><span class="lvl-pill">32</span></td><td>Novigrad</td><td>Runewright in Upper Mill (5,000 / 10,000 / 15,000 Crowns).</td></tr>
+            <tr><td><input type="checkbox" class="quest-check" data-id="act-s21" /></td><td><span class="badge badge-high">Secondary</span></td><td><strong>Without a Trace</strong></td><td><span class="lvl-pill">32</span></td><td>Novigrad</td><td>Herbalist apprentice investigation near Brunwich.</td></tr>
+            <tr><td><input type="checkbox" class="quest-check" data-id="act-s22" /></td><td><span class="badge badge-high">Gwent</span></td><td><strong>Gwent: Velen Players</strong></td><td><span class="lvl-pill">—</span></td><td>Velen</td><td>Baron's desk, Boatwright, Haddy, Old Sage.</td></tr>
+            <tr><td><input type="checkbox" class="quest-check" data-id="act-s23" /></td><td><span class="badge badge-high">Gwent</span></td><td><strong>Gwent: Big City Players</strong></td><td><span class="lvl-pill">—</span></td><td>Novigrad</td><td>Vivaldi, Serenity, Dijkstra, Scoia'tael Trader.</td></tr>
+            <tr><td><input type="checkbox" class="quest-check" data-id="act-s24" /></td><td><span class="badge badge-high">Gwent</span></td><td><strong>Gwent: Playing Innkeeps</strong></td><td><span class="lvl-pill">—</span></td><td>Multiple</td><td>⚠️ Play Olivier at Kingfisher before <em>Now or Never</em>!</td></tr>
+            <tr><td><input type="checkbox" class="quest-check" data-id="act-s25" /></td><td><span class="badge badge-high">Gwent</span></td><td><strong>Collect 'Em All</strong></td><td><span class="lvl-pill">—</span></td><td>Multiple</td><td>Full base-game Gwent deck collection.</td></tr>
+
+            <!-- WITCHER CONTRACTS -->
+            <tr><td><input type="checkbox" class="quest-check" data-id="act-c1" /></td><td><span class="badge badge-safe">Contract</span></td><td><strong>Contract: Devil by the Well</strong></td><td><span class="lvl-pill">2</span></td><td>White Orchard</td><td>⚠️ Cutoff: <em>Isle of Mists</em>. Noonwraith Mutagen.</td></tr>
+            <tr><td><input type="checkbox" class="quest-check" data-id="act-c2" /></td><td><span class="badge badge-safe">Contract</span></td><td><strong>Contract: Woodland Beast</strong></td><td><span class="lvl-pill">6</span></td><td>Velen</td><td>Border Post / Scoia'tael ambush.</td></tr>
+            <tr><td><input type="checkbox" class="quest-check" data-id="act-c3" /></td><td><span class="badge badge-safe">Contract</span></td><td><strong>Contract: Patrol Gone Missing</strong></td><td><span class="lvl-pill">7</span></td><td>Velen</td><td>Army Group 'Center' Camp — Wyvern.</td></tr>
+            <tr><td><input type="checkbox" class="quest-check" data-id="act-c4" /></td><td><span class="badge badge-safe">Contract</span></td><td><strong>Contract: Shrieker</strong></td><td><span class="lvl-pill">8</span></td><td>Velen</td><td>Crow's Perch — Cockatrice Mutagen.</td></tr>
+            <tr><td><input type="checkbox" class="quest-check" data-id="act-c5" /></td><td><span class="badge badge-safe">Contract</span></td><td><strong>Contract: The Merry Widow</strong></td><td><span class="lvl-pill">10</span></td><td>Velen</td><td>Lindenvale — Grave Hag Mutagen.</td></tr>
+            <tr><td><input type="checkbox" class="quest-check" data-id="act-c6" /></td><td><span class="badge badge-safe">Contract</span></td><td><strong>Contract: Jenny o' the Woods</strong></td><td><span class="lvl-pill">10</span></td><td>Velen</td><td>Midcopse — Nightwraith Mutagen.</td></tr>
+            <tr><td><input type="checkbox" class="quest-check" data-id="act-c7" /></td><td><span class="badge badge-safe">Contract</span></td><td><strong>Contract: Swamp Thing</strong></td><td><span class="lvl-pill">12</span></td><td>Velen</td><td>Downwarren — Ignis Fatuus (Foglet Mutagen).</td></tr>
+            <tr><td><input type="checkbox" class="quest-check" data-id="act-c8" /></td><td><span class="badge badge-safe">Contract</span></td><td><strong>Contract: An Elusive Thief</strong></td><td><span class="lvl-pill">13</span></td><td>Novigrad</td><td>Hierarch Square — <strong>Doppler Mutagen</strong> (only drops if fought).</td></tr>
+            <tr><td><input type="checkbox" class="quest-check" data-id="act-c9" /></td><td><span class="badge badge-safe">Contract</span></td><td><strong>Contract: The Apiarian Phantom</strong></td><td><span class="lvl-pill">14</span></td><td>Novigrad</td><td>Honeyfill Meadworks — Wild Hunt Hound.</td></tr>
+            <tr><td><input type="checkbox" class="quest-check" data-id="act-c10" /></td><td><span class="badge badge-safe">Contract</span></td><td><strong>Contract: Deadly Delights</strong></td><td><span class="lvl-pill">15</span></td><td>Novigrad</td><td>Novigrad Docks — <strong>Succubus Mutagen</strong> (1 of only 2 in game).</td></tr>
+            <tr><td><input type="checkbox" class="quest-check" data-id="act-c11" /></td><td><span class="badge badge-safe">Contract</span></td><td><strong>Contract: The White Lady</strong></td><td><span class="lvl-pill">16</span></td><td>Novigrad</td><td>Farcorners — Noonwraith Mutagen.</td></tr>
+            <tr><td><input type="checkbox" class="quest-check" data-id="act-c12" /></td><td><span class="badge badge-safe">Contract</span></td><td><strong>Contract: Mysterious Tracks</strong></td><td><span class="lvl-pill">20</span></td><td>Velen</td><td>Lindenvale — Chort Mutagen.</td></tr>
+            <tr><td><input type="checkbox" class="quest-check" data-id="act-c13" /></td><td><span class="badge badge-safe">Contract</span></td><td><strong>Contract: The Mystery of the Byways Murders</strong></td><td><span class="lvl-pill">22</span></td><td>Velen</td><td>Oreton / Byways — Ekimmara Mutagen.</td></tr>
+            <tr><td><input type="checkbox" class="quest-check" data-id="act-c14" /></td><td><span class="badge badge-safe">Contract</span></td><td><strong>Contract: Doors Slamming Shut</strong></td><td><span class="lvl-pill">24</span></td><td>Novigrad</td><td>Hierarch Square — Earth Elemental.</td></tr>
+            <tr><td><input type="checkbox" class="quest-check" data-id="act-c15" /></td><td><span class="badge badge-safe">Contract</span></td><td><strong>Contract: The Beast of Honorton</strong></td><td><span class="lvl-pill">25</span></td><td>Velen</td><td>⚠️ Unlocks <em>Where the Cat and Wolf Play...</em> DLC quest!</td></tr>
+            <tr><td><input type="checkbox" class="quest-check" data-id="act-c16" /></td><td><span class="badge badge-safe">Contract</span></td><td><strong>Contract: Lord of the Wood</strong></td><td><span class="lvl-pill">25</span></td><td>Novigrad</td><td>Cunny of the Goose — Ancient Leshen Mutagen.</td></tr>
+            <tr><td><input type="checkbox" class="quest-check" data-id="act-c17" /></td><td><span class="badge badge-safe">Contract</span></td><td><strong>Contract: The Oxenfurt Drunk</strong></td><td><span class="lvl-pill">26</span></td><td>Novigrad</td><td>Oxenfurt — Gael (Katakan Mutagen).</td></tr>
+            <tr><td><input type="checkbox" class="quest-check" data-id="act-c18" /></td><td><span class="badge badge-safe">Contract</span></td><td><strong>Contract: Missing Brother</strong></td><td><span class="lvl-pill">33</span></td><td>Velen</td><td>Inn at the Crossroads — Harrisi (Arachas Mutagen).</td></tr>
+            <tr><td><input type="checkbox" class="quest-check" data-id="act-c19" /></td><td><span class="badge badge-safe">Contract</span></td><td><strong>Contract: The Creature from Oxenfurt Forest</strong></td><td><span class="lvl-pill">35</span></td><td>Novigrad</td><td>Oxenfurt Forest — Opinicus (Archgriffin Mutagen).</td></tr>
+
+            <!-- TREASURE HUNTS -->
+            <tr><td><input type="checkbox" class="quest-check" data-id="act-t1" /></td><td><span class="badge badge-mod">Treasure</span></td><td><strong>Scavenger Hunt: Griffin School Gear</strong></td><td><span class="lvl-pill">11</span></td><td>Velen</td><td>Basic Griffin Set (6 diagrams).</td></tr>
+            <tr><td><input type="checkbox" class="quest-check" data-id="act-t2" /></td><td><span class="badge badge-mod">Treasure</span></td><td><strong>Scavenger Hunt: Wolf School Gear</strong></td><td><span class="lvl-pill">14</span></td><td>Kaer Morhen</td><td>Basic Wolven Set.</td></tr>
+            <tr><td><input type="checkbox" class="quest-check" data-id="act-t3" /></td><td><span class="badge badge-mod">Treasure</span></td><td><strong>Scavenger Hunt: Cat School Gear</strong></td><td><span class="lvl-pill">17</span></td><td>Novigrad</td><td>Basic Feline Set.</td></tr>
+            <tr><td><input type="checkbox" class="quest-check" data-id="act-t4" /></td><td><span class="badge badge-mod">Treasure</span></td><td><strong>Scavenger Hunt: Griffin Upgrade Diagrams - Part 1</strong></td><td><span class="lvl-pill">18</span></td><td>Velen</td><td>Enhanced Griffin Set (Part 1).</td></tr>
+            <tr><td><input type="checkbox" class="quest-check" data-id="act-t5" /></td><td><span class="badge badge-mod">Treasure</span></td><td><strong>Scavenger Hunt: Griffin Upgrade Diagrams - Part 2</strong></td><td><span class="lvl-pill">18</span></td><td>Velen</td><td>Enhanced Griffin Set (Part 2).</td></tr>
+            <tr><td><input type="checkbox" class="quest-check" data-id="act-t6" /></td><td><span class="badge badge-mod">Treasure</span></td><td><strong>Scavenger Hunt: Cat Upgrade Diagrams - Part 1</strong></td><td><span class="lvl-pill">23</span></td><td>Novigrad</td><td>Enhanced Feline Set (Part 1).</td></tr>
+            <tr><td><input type="checkbox" class="quest-check" data-id="act-t7" /></td><td><span class="badge badge-mod">Treasure</span></td><td><strong>Scavenger Hunt: Cat Upgrade Diagrams - Part 2</strong></td><td><span class="lvl-pill">23</span></td><td>Velen</td><td>Enhanced Feline Set (Part 2).</td></tr>
+            <tr><td><input type="checkbox" class="quest-check" data-id="act-t8" /></td><td><span class="badge badge-mod">Treasure</span></td><td><strong>Scavenger Hunt: Griffin Upgrade Diagrams - Part 3</strong></td><td><span class="lvl-pill">26</span></td><td>Skellige</td><td>Superior Griffin Set.</td></tr>
+            <tr><td><input type="checkbox" class="quest-check" data-id="act-t9" /></td><td><span class="badge badge-mod">Treasure</span></td><td><strong>Scavenger Hunt: Cat Upgrade Diagrams - Part 3</strong></td><td><span class="lvl-pill">29</span></td><td>Novigrad</td><td>Superior Feline Set.</td></tr>
+            <tr><td><input type="checkbox" class="quest-check" data-id="act-t10" /></td><td><span class="badge badge-mod">Treasure</span></td><td><strong>Scavenger Hunt: Wolf Upgrade Diagrams - Part 4</strong></td><td><span class="lvl-pill">29</span></td><td>Kaer Morhen</td><td>Superior Wolven Set.</td></tr>
+            <tr><td><input type="checkbox" class="quest-check" data-id="act-t11" /></td><td><span class="badge badge-mod">Treasure</span></td><td><strong>From Ofier's Distant Shores</strong></td><td><span class="lvl-pill">33</span></td><td>Novigrad</td><td>Ofieri diagrams (<em>Hearts of Stone</em>).</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- SECTION 5: COMPLETED QUESTS -->
+    <section class="section-block" data-section="completed">
+      <div class="section-header">
+        <h2>5. Verified Completed Quests (35 Completed • 0 Failed)</h2>
+        <span class="badge badge-safe">100% Clean Journal</span>
+      </div>
+      <div class="completed-pills">
+        <span class="completed-tag">✅ A Frying Pan, Spick and Span (White Orchard)</span>
+        <span class="completed-tag">✅ A Princess in Distress (Lvl 5, Velen)</span>
+        <span class="completed-tag">✅ Bitter Harvest (Lvl 9, Velen)</span>
+        <span class="completed-tag">✅ Bloody Baron (Lvl 6, Velen)</span>
+        <span class="completed-tag">✅ Ciri's Room (Lvl 5, Velen)</span>
+        <span class="completed-tag">✅ Ciri's Story: Fleeing the Bog (Lvl 5, Velen)</span>
+        <span class="completed-tag">✅ Ciri's Story: Out of the Shadows (Lvl 5, Velen)</span>
+        <span class="completed-tag">✅ Ciri's Story: The King of the Wolves (Lvl 5, Velen)</span>
+        <span class="completed-tag">✅ Ciri's Story: The Race (Lvl 5, Velen)</span>
+        <span class="completed-tag">✅ Death By Fire (Lvl 10, Velen)</span>
+        <span class="completed-tag">✅ Fake Papers (Velen)</span>
+        <span class="completed-tag">✅ Family Matters (Lvl 6, Velen)</span>
+        <span class="completed-tag">✅ Hunting a Witch (Lvl 5, Velen)</span>
+        <span class="completed-tag">✅ Imperial Audience (Lvl 2, Vizima)</span>
+        <span class="completed-tag">✅ Kaer Morhen (Kaer Morhen)</span>
+        <span class="completed-tag">✅ Ladies of the Wood (Lvl 6, Velen)</span>
+        <span class="completed-tag">✅ Lilac and Gooseberries (White Orchard)</span>
+        <span class="completed-tag">✅ Lynch Mob (Lvl 7, Velen)</span>
+        <span class="completed-tag">✅ Magic Lamp (Lvl 6, Velen)</span>
+        <span class="completed-tag">✅ Message from an Old Friend (Novigrad)</span>
+        <span class="completed-tag">✅ Missing in Action (White Orchard)</span>
+        <span class="completed-tag">✅ Novigrad Dreaming (Lvl 7, Novigrad)</span>
+        <span class="completed-tag">✅ On Death's Bed (Lvl 2, White Orchard)</span>
+        <span class="completed-tag">✅ Precious Cargo (White Orchard)</span>
+        <span class="completed-tag">✅ Pyres of Novigrad (Lvl 10, Novigrad)</span>
+        <span class="completed-tag">✅ Races: Crow's Perch (Velen)</span>
+        <span class="completed-tag">✅ Scavenger Hunt: Viper School Gear (Lvl 6, White Orchard)</span>
+        <span class="completed-tag">✅ The Beast of White Orchard (Lvl 3, White Orchard)</span>
+        <span class="completed-tag">✅ The Dwarven Document Dilemma (Lvl 2, Novigrad)</span>
+        <span class="completed-tag">✅ The Incident at White Orchard (Lvl 2, White Orchard)</span>
+        <span class="completed-tag">✅ The Nilfgaardian Connection (Lvl 5, Velen)</span>
+        <span class="completed-tag">✅ The Whispering Hillock (Lvl 5, Velen)</span>
+        <span class="completed-tag">✅ Thou Shalt Not Pass (Lvl 7, Novigrad)</span>
+        <span class="completed-tag">✅ Twisted Firestarter (White Orchard)</span>
+        <span class="completed-tag">✅ Wandering in the Dark (Lvl 6, Velen)</span>
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    const STORAGE_KEY = 'tw3r_personal_quest_tracker_v1';
+
+    function loadChecks() {
+      try {
+        const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+        document.querySelectorAll('.quest-check').forEach(cb => {
+          const id = cb.getAttribute('data-id');
+          if (saved[id]) {
+            cb.checked = true;
+            const tr = cb.closest('tr');
+            if (tr) tr.classList.add('checked-row');
+          }
+          cb.addEventListener('change', () => {
+            const current = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+            current[id] = cb.checked;
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(current));
+            const row = cb.closest('tr');
+            if (row) row.classList.toggle('checked-row', cb.checked);
+          });
+        });
+      } catch (e) {
+        console.error(e);
+      }
+    }
+
+    function resetTrackerChecks() {
+      localStorage.removeItem(STORAGE_KEY);
+      document.querySelectorAll('.quest-check').forEach(cb => {
+        cb.checked = false;
+        const row = cb.closest('tr');
+        if (row) row.classList.remove('checked-row');
+      });
+    }
+
+    function filterSection(sectionName, btn) {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('.section-block').forEach(sec => {
+        if (sectionName === 'all' || sec.getAttribute('data-section') === sectionName) {
+          sec.style.display = '';
+        } else {
+          sec.style.display = 'none';
+        }
+      });
+    }
+
+    function filterRows() {
+      const q = document.getElementById('questSearch').value.toLowerCase().trim();
+      document.querySelectorAll('.searchable-table tbody tr').forEach(tr => {
+        const text = tr.innerText.toLowerCase();
+        tr.style.display = text.includes(q) ? '' : 'none';
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', loadChecks);
+  </script>
+</body>
+</html>

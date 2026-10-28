@@ -53,10 +53,15 @@ export const WitcherHudHeader: React.FC = () => {
           <span className="hud-tab-icon">🧭</span>
           <span className="hud-nav-tab">WORLD MAP</span>
         </div>
-        <div className="hud-nav-tab-item">
+        <a
+          href="./quest_tracker.html"
+          className="hud-nav-tab-item"
+          style={{ cursor: 'pointer', textDecoration: 'none' }}
+          title="Open Personal Run Quest Tracker & Risk Guide"
+        >
           <span className="hud-tab-icon">📜</span>
           <span className="hud-nav-tab">QUESTS</span>
-        </div>
+        </a>
         <div 
           className={`hud-nav-tab-item ${currentView === 'calculator' ? 'active-character-tab' : ''}`}
           onClick={() => setCurrentView('calculator')}

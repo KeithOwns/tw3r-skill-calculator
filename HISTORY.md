@@ -8,6 +8,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- Added interactive web-based Quest Tracker & Cutoff Risk Guide (`quest_tracker.html` / `SkillCalculator/public/quest_tracker.html`) featuring persistent `localStorage` checkboxes, section filtering, live search, and wired the top HUD `QUESTS` tab (`WitcherHudHeader.tsx`) directly to it.
+- Created `TW3R_Personal_Guide/QUEST_TRACKER_GUIDE.md` from 13 in-game Level 8 quest log screenshots, cataloging all 4 active Main Quests, 25 Secondary Quests, 19 Witcher Contracts, 11 Treasure Hunts, and 35 Completed Quests (0 failed), along with storyline cutoff risks and missing location-triggered (`!`) Velen/Novigrad quests.
 - Integrated Section 11 ("Minimalist Immersive HUD & Interface Calibration") into the Optimization Guide documenting verified in-game 4K interface scaling, zero-HUD combat (enemy and boss health bars disabled), and essential survival gauge settings.
 - Integrated Section 12 ("GeForce NOW Ultimate (RTX 4080) Cloud Profile & Troubleshooting") detailing the 1024x768 resolution lock fix, custom 4K 75 Mbps GFN streaming parameters, and DLSS 3.5 Ray Reconstruction / Frame Generation latency balancing.
 - Integrated Section 13 ("Verified Active Mod Stack & Immersion Synergies") documenting the 19 verified active in-game mods across combat discipline (No Inventory During Combat, CROW, Hurt Animation), mechanics (Viper Set Bonus, Crossbow Rework), world visuals, and navigation.
