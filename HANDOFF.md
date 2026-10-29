@@ -91,7 +91,18 @@ c:\Users\admin\src\github.com\KeithOwns\YouTube\Projects\TW3R
 
 ---
 
-## 6. Public Release Checklist & Next Tasks for New AGY Instance
+## 6. Level 100 NG+ Master Save Audit & Catalogs
+
+All 5 screen recordings and 8 inventory/world-map screenshots from the Level 100 NG+ save (`0 / 2000 XP`, `0 Failed Quests`) have been transcribed and audited in `TW3R_Personal_Guide/`:
+* `NG_PLUS_COMPLETED_AUDIT.md`: All **355 Completed Quests** + **19 Missed/Bypassed Quests** (Empress Ciri ending, Cerys crowned, Olgierd saved, Land of a Thousand Fables path).
+* `NG_PLUS_BOOKS_CATALOG.md`: All **651 Glossary Books & Scrolls** (`426 Quest Books` + `225 Books`).
+* `NG_PLUS_CRAFTING_BESTIARY_ALCHEMY_CATALOG.md`: All **385 Crafting Diagrams** (confirming 100% Witcher School diagram completion across all 7 schools including the 3 map-bypassed Scavenger Hunts), **124 Bestiary Entries** across 11 classes, and **53 Repeatable/Uncrafted Alchemy Formulas**.
+* `NG_PLUS_INVENTORY_AND_WORLD_MAP_AUDIT.md`: Complete **Inventory Alchemy Grid** (`12/12 Superior Oils`, `12/12 Superior Potions`, `8/8 Superior Bombs`, `27/28 Monster Decoctions`) and **6-Region World Map `ALL`-Filter Legend Totals** (`211 Signposts`, `3 active Quest markers in Velen/Novigrad`, and undiscovered `Igni Place of Power` in Kaer Morhen).
+* Integrated into `OptimizationGuide.tsx` (**Section 14**) and `quest_tracker.html` (**`#ngplus` Tab**).
+
+---
+
+## 7. Public Release Checklist & Next Tasks for New AGY Instance
 
 1. **Test & Validate Mod Synergies:**
    * Test `Friendly Focus` vs `Sprint in Witcher Senses` in-game for camera jitter; disable `Sprint in Witcher Senses` if redundant.

@@ -524,7 +524,8 @@
         <button class="tab-btn" onclick="filterSection('at-risk', this)">⚠️ At-Risk Active (13)</button>
         <button class="tab-btn" onclick="filterSection('missing-triggers', this)">❗ Missing Velen/Novigrad `!` (24)</button>
         <button class="tab-btn" onclick="filterSection('full-log', this)">📜 Full Active Log (59)</button>
-        <button class="tab-btn" onclick="filterSection('completed', this)">✅ Completed (35)</button>
+        <button class="tab-btn" onclick="filterSection('completed', this)">✅ Lvl 8 Completed (35)</button>
+        <button class="tab-btn" id="tab-ngplus" onclick="filterSection('ngplus', this)" style="border-color:var(--border-gold);color:var(--accent-gold);">🏆 Lvl 100 NG+ Audit (355)</button>
       </div>
       <div class="search-box">
         <input type="text" id="questSearch" class="search-input" placeholder="Search quest, region, NPC, mutagen..." oninput="filterRows()" />
@@ -1076,6 +1077,448 @@
       </div>
     </section>
 
+    <!-- SECTION 6: LEVEL 100 NG+ MASTER AUDIT (355 COMPLETED + POST-GAME CLEANUP + GLOSSARY/ALCHEMY/MAP) -->
+    <section class="section-block" data-section="ngplus">
+      <div class="section-header">
+        <h2>6. Level 100 NG+ Master Save Audit (355 Completed • 385 Diagrams • 124 Bestiary • 651 Books)</h2>
+        <span class="badge badge-safe">Empress Ciri • Cerys • Olgierd Saved • Fables Path</span>
+      </div>
+
+      <div class="callout">
+        <strong>Ground-Truth Verification Across 5 Screen Recordings &amp; 8 Screenshots (Oct 29, 2026):</strong>
+        Your Level 100 NG+ save has <strong>355 Completed Quests (0 Failed)</strong>, <strong>100% Witcher School Gear Diagrams across all 7 schools (385 Crafting entries)</strong>, <strong>12/12 Superior Oils</strong>, <strong>12/12 Superior Potions</strong>, <strong>8/8 Superior Bombs</strong>, <strong>27/28 Monster Decoctions</strong>, <strong>124 Bestiary entries</strong>, and <strong>651 Glossary Books</strong>.
+      </div>
+
+      <!-- Actionable Post-Game Free-Roam Cleanups -->
+      <div class="roadmap-grid" style="margin-bottom: 1.5rem;">
+        <div class="step-card">
+          <h3>⚡ Actionable Now #1: Velen Map 1/3 Quest</h3>
+          <ul>
+            <li><input type="checkbox" class="quest-check" data-id="ngp-clean-1" /> <span>Open the <strong>Velen / Novigrad World Map</strong> (<code>ALL</code> filter), hover over <strong><code>1/3 Quest</code></strong> in the bottom-left legend, and click <code>&gt;</code> to jump directly to each of the <strong>3 active <code>!</code> encounters</strong> currently on your map.</span></li>
+            <li><input type="checkbox" class="quest-check" data-id="ngp-clean-2" /> <span>Check <strong>Blackbough Cemetery Bridge</strong> at midnight (23:00–04:00) for the Old Woman ghost to complete <strong>Last Rites</strong>.</span></li>
+          </ul>
+        </div>
+        <div class="step-card">
+          <h3>⚡ Actionable Now #2: Kaer Morhen Sweep</h3>
+          <ul>
+            <li><input type="checkbox" class="quest-check" data-id="ngp-clean-3" /> <span><strong>Igni Place of Power (+1 Ability Point):</strong> Fast-travel to <em>Iron Mine</em>, cross north of the lake above the Trial of the Grasses cavern, and draw from the undiscovered Igni Place of Power.</span></li>
+            <li><input type="checkbox" class="quest-check" data-id="ngp-clean-4" /> <span><strong>The Witchers' Forge:</strong> Read <em>Monstrum, or a Portrayal of Witchers, Vol. 2</em> in Yennefer's bedroom tower at Kaer Morhen Keep and dispel the mine shaft illusion.</span></li>
+            <li><input type="checkbox" class="quest-check" data-id="ngp-clean-5" /> <span><strong>Greenhouse Effect:</strong> Use the Eye of Nehaleni on the stone arch just south of Kaer Morhen Keep, and clear the white cave entrance north of <em>Bastion</em>.</span></li>
+          </ul>
+        </div>
+        <div class="step-card">
+          <h3>⚡ Actionable Now #3: Log +3 Scavenger Hunts</h3>
+          <ul>
+            <li><input type="checkbox" class="quest-check" data-id="ngp-clean-6" /> <span><strong>Bear Upgrade Diagrams Pt 1 &amp; Pt 3:</strong> You already looted 100% of the Ursine diagrams in the world! Buy &amp; read <em>Ibrahim Savi's First &amp; Third Maps</em> from the <strong>Kaer Trolde Armorer</strong> to add both quests to your Completed log.</span></li>
+            <li><input type="checkbox" class="quest-check" data-id="ngp-clean-7" /> <span><strong>Wolf Upgrade Diagrams Pt 3:</strong> You already have <em>Superior legendary Wolven armor</em> in Crafting! Buy &amp; read <em>Hieronymus' Notes</em> from the <strong>Lindenvale Blacksmith</strong> to log the quest (355 &rarr; 358+).</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 19 Missed / Bypassed Quests Table -->
+      <div class="section-header" style="margin-top: 1.5rem;">
+        <h2>NG+ Audit: 19 Bypassed or Missed Quests Breakdown</h2>
+        <span class="badge badge-high">Cross-Referenced vs. Full Database</span>
+      </div>
+      <div class="table-wrap" style="margin-bottom: 1.5rem;">
+        <table class="searchable-table">
+          <thead>
+            <tr>
+              <th style="width:42px;">Done</th>
+              <th>Status</th>
+              <th>Quest Name</th>
+              <th>Region</th>
+              <th>Audit Verification &amp; How to Trigger / Why Bypassed</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><input type="checkbox" class="quest-check" data-id="ngp-m1" /></td><td><span class="badge badge-safe">Diagrams Looted</span></td><td><strong>Scavenger Hunt: Bear School Gear Upgrade Diagrams - Part 1</strong></td><td>Skellige</td><td>All 3 Enhanced Legendary Ursine diagrams ARE in your Crafting menu. Map wrapper bypassed; buy <em>Ibrahim Savi's 1st Map</em> at Kaer Trolde Armorer.</td></tr>
+            <tr><td><input type="checkbox" class="quest-check" data-id="ngp-m2" /></td><td><span class="badge badge-safe">Diagrams Looted</span></td><td><strong>Scavenger Hunt: Bear School Gear Upgrade Diagrams - Part 3</strong></td><td>Skellige</td><td>All 4 Superior Legendary Ursine diagrams ARE in your Crafting menu. Map wrapper bypassed; buy <em>Ibrahim Savi's 3rd Map</em> at Kaer Trolde Armorer.</td></tr>
+            <tr><td><input type="checkbox" class="quest-check" data-id="ngp-m3" /></td><td><span class="badge badge-safe">Diagram Looted</span></td><td><strong>Scavenger Hunt: Wolf School Gear Upgrade Diagrams - Part 3</strong></td><td>Velen / Skellige</td><td><em>Superior legendary Wolven armor</em> IS in your Crafting menu. Map wrapper bypassed; buy map from Lindenvale Blacksmith.</td></tr>
+            <tr><td><input type="checkbox" class="quest-check" data-id="ngp-m4" /></td><td><span class="badge badge-safe">Sequel Done</span></td><td><strong>Contract: The Beast of Honorton</strong></td><td>Velen</td><td>You completed its sequel <strong>Where the Cat and Wolf Play...</strong> (Lvl 81) by entering Honorton directly, bypassing the pre-contract notice wrapper.</td></tr>
+            <tr><td><input type="checkbox" class="quest-check" data-id="ngp-m5" /></td><td><span class="badge badge-mod">Post-Game Ready</span></td><td><strong>The Witchers' Forge</strong></td><td>Kaer Morhen</td><td>Read <em>Monstrum, or a Portrayal of Witchers, Vol. 2</em> in Yennefer's bedroom tower in Kaer Morhen Keep and dispel the mine shaft illusion.</td></tr>
+            <tr><td><input type="checkbox" class="quest-check" data-id="ngp-m6" /></td><td><span class="badge badge-mod">Post-Game Ready</span></td><td><strong>Greenhouse Effect</strong></td><td>Kaer Morhen</td><td>Inspect the stone arch south of Kaer Morhen Keep using the Eye of Nehaleni.</td></tr>
+            <tr><td><input type="checkbox" class="quest-check" data-id="ngp-m7" /></td><td><span class="badge badge-mod">Night Only</span></td><td><strong>Last Rites</strong></td><td>Velen</td><td>Visit Blackbough Cemetery Bridge between 23:00 and 04:00 at night.</td></tr>
+            <tr><td><input type="checkbox" class="quest-check" data-id="ngp-m8" /></td><td><span class="badge badge-high">Check Map 1/3</span></td><td><strong>A Dog's Life</strong></td><td>Velen</td><td>Roadside <code>!</code> east of Drudge (save Hussar from wolves). Check Velen Map <code>1/3 Quest</code> markers.</td></tr>
+            <tr><td><input type="checkbox" class="quest-check" data-id="ngp-m9" /></td><td><span class="badge badge-high">Check Map 1/3</span></td><td><strong>Caravan Attack</strong></td><td>Velen</td><td>Roadside <code>!</code> on the southern road near Frischlow. Check Velen Map <code>1/3 Quest</code> markers.</td></tr>
+            <tr><td><input type="checkbox" class="quest-check" data-id="ngp-m10" /></td><td><span class="badge badge-high">Check Map 1/3</span></td><td><strong>A Walk on the Waterfront</strong></td><td>Novigrad</td><td>Western Novigrad Docks proximity <code>!</code> escort encounter.</td></tr>
+            <tr><td><input type="checkbox" class="quest-check" data-id="ngp-m11" /></td><td><span class="badge badge-high">Check Map 1/3</span></td><td><strong>Empty Coop</strong></td><td>Novigrad</td><td>Outside Glory Gate (old woman &amp; street urchins stealing chickens).</td></tr>
+            <tr><td><input type="checkbox" class="quest-check" data-id="ngp-m12" /></td><td><span class="badge badge-crit">Story Cutoff</span></td><td><strong>Avid Collector</strong></td><td>Novigrad (HoS)</td><td>Requires buying the Van Rogh painting at the Borsodi auction during <em>Open Sesame!</em> and selling it to Marcus T.K. Hodgson.</td></tr>
+            <tr><td><input type="checkbox" class="quest-check" data-id="ngp-m13" /></td><td><span class="badge badge-crit">Story Cutoff</span></td><td><strong>The Palio</strong></td><td>Novigrad</td><td>Cleaver's secret derby invitation right after winning <em>The Great Erasmus Vegelbud Memorial Derby</em>.</td></tr>
+            <tr><td><input type="checkbox" class="quest-check" data-id="ngp-m14" /></td><td><span class="badge badge-crit">Story Cutoff</span></td><td><strong>Hazardous Goods</strong></td><td>Velen</td><td>Gert Borel's plague cart between Crossroads Inn &amp; Blackbough (despawns after <em>Isle of Mists</em>).</td></tr>
+            <tr><td><input type="checkbox" class="quest-check" data-id="ngp-m15" /></td><td><span class="badge badge-crit">Story Cutoff</span></td><td><strong>At the Mercy of Strangers</strong></td><td>Velen</td><td>John Verdun tied up on the riverbank west of Boatmakers' Hut (despawns if not rescued early).</td></tr>
+            <tr><td><input type="checkbox" class="quest-check" data-id="ngp-m16" /></td><td><span class="badge badge-crit">Mutually Exclusive</span></td><td><strong>Flesh for Sale</strong></td><td>Skellige (Faroe)</td><td>Blocked if Lambert's <em>Following the Thread</em> is already active in your journal before visiting Trottheim.</td></tr>
+            <tr><td><input type="checkbox" class="quest-check" data-id="ngp-m17" /></td><td><span class="badge badge-high">Check Skellige</span></td><td><strong>Crime and Punishment</strong></td><td>Skellige</td><td>Yorg tied to a rock north of Rogne being attacked by harpies.</td></tr>
+            <tr><td><input type="checkbox" class="quest-check" data-id="ngp-m18" /></td><td><span class="badge badge-crit">Story Cutoff</span></td><td><strong>Taken as a Lass</strong></td><td>Skellige</td><td>Harpy attack near Freya's Garden / Spikeroog (must be triggered before completing <em>Nameless</em>).</td></tr>
+            <tr><td><input type="checkbox" class="quest-check" data-id="ngp-m19" /></td><td><span class="badge badge-high">Check Skellige</span></td><td><strong>Worthy of Trust</strong></td><td>Skellige</td><td>Loan-shark <code>!</code> conversation at the Kaer Trolde bridge entrance.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- All 355 Verified Completed Quests on NG+ Save -->
+      <div class="section-header" style="margin-top: 1.5rem;">
+        <h2>All 355 Verified Completed Quests (Level 100 NG+ Save)</h2>
+        <span class="badge badge-safe">355 Completed • 0 Failed</span>
+      </div>
+      <div class="completed-pills">
+        <span class="completed-tag">✅ A Bard's Beloved (71, Skellige)</span>
+        <span class="completed-tag">✅ A Barnful of Trouble (67, Novigrad)</span>
+        <span class="completed-tag">✅ A Costly Mistake (74, Velen)</span>
+        <span class="completed-tag">✅ A Dangerous Game (68, Novigrad)</span>
+        <span class="completed-tag">✅ A Dark Legacy (Novigrad)</span>
+        <span class="completed-tag">✅ A Deadly Plot (70, Novigrad)</span>
+        <span class="completed-tag">✅ A Favor for Radovid (65, Novigrad)</span>
+        <span class="completed-tag">✅ A Favor for a Friend (62, Velen)</span>
+        <span class="completed-tag">✅ A Feast for Crows (76, Novigrad)</span>
+        <span class="completed-tag">✅ A Frying Pan, Spick and Span (White Orchard)</span>
+        <span class="completed-tag">✅ A Greedy God (63, Velen)</span>
+        <span class="completed-tag">✅ A Hallowed Horn (68, Skellige)</span>
+        <span class="completed-tag">✅ A Knight's Tales (96, Toussaint)</span>
+        <span class="completed-tag">✅ A Matter of Life and Death (68, Novigrad)</span>
+        <span class="completed-tag">✅ A Midnight Clear (89, Novigrad)</span>
+        <span class="completed-tag">✅ A Plea Ignored (84, Velen)</span>
+        <span class="completed-tag">✅ A Poet Under Pressure (69, Novigrad)</span>
+        <span class="completed-tag">✅ A Portrait of the Witcher as an Old Man (99, Toussaint)</span>
+        <span class="completed-tag">✅ A Princess in Distress (61, Velen)</span>
+        <span class="completed-tag">✅ A Surprise Inheritance (94, Novigrad)</span>
+        <span class="completed-tag">✅ A Tome Entombed (69, Novigrad)</span>
+        <span class="completed-tag">✅ A Towerful of Mice (62, Velen)</span>
+        <span class="completed-tag">✅ An Eye for an Eye (68, Novigrad)</span>
+        <span class="completed-tag">✅ An Invitation from Keira Metz (62, Velen)</span>
+        <span class="completed-tag">✅ An Unfortunate Turn of Events (60, Velen)</span>
+        <span class="completed-tag">✅ Applied Escapology (96, Toussaint)</span>
+        <span class="completed-tag">✅ Around the World in... Eight Days (96, Toussaint)</span>
+        <span class="completed-tag">✅ Bald Mountain (82, Velen)</span>
+        <span class="completed-tag">✅ Battle Preparations (84, Skellige)</span>
+        <span class="completed-tag">✅ Battlefield Loot (76, Velen)</span>
+        <span class="completed-tag">✅ Be It Ever So Humble... (100, Toussaint)</span>
+        <span class="completed-tag">✅ Berengar's Blade (83, Kaer Morhen)</span>
+        <span class="completed-tag">✅ Beyond Hill and Dale... (100, Toussaint)</span>
+        <span class="completed-tag">✅ Big Feet to Fill (96, Toussaint)</span>
+        <span class="completed-tag">✅ Big Feet to Fill: The Fifth Group (Toussaint)</span>
+        <span class="completed-tag">✅ Big Feet to Fill: The First Group (Toussaint)</span>
+        <span class="completed-tag">✅ Big Feet to Fill: The Fourth Group (Toussaint)</span>
+        <span class="completed-tag">✅ Big Feet to Fill: The Second Group (Toussaint)</span>
+        <span class="completed-tag">✅ Big Feet to Fill: The Third Group (Toussaint)</span>
+        <span class="completed-tag">✅ Big Game Hunter (93, Toussaint)</span>
+        <span class="completed-tag">✅ Bitter Harvest (65, Velen)</span>
+        <span class="completed-tag">✅ Black Pearl (69, Multiple locations)</span>
+        <span class="completed-tag">✅ Blindingly Obvious (84, Novigrad)</span>
+        <span class="completed-tag">✅ Blood Gold (74, Velen)</span>
+        <span class="completed-tag">✅ Blood Run (92, Toussaint)</span>
+        <span class="completed-tag">✅ Blood Ties (68, Velen)</span>
+        <span class="completed-tag">✅ Blood on the Battlefield (76, Kaer Morhen)</span>
+        <span class="completed-tag">✅ Bloody Baron (62, Velen)</span>
+        <span class="completed-tag">✅ Brave Fools Die Young (Skellige)</span>
+        <span class="completed-tag">✅ Broken Flowers (67, Novigrad)</span>
+        <span class="completed-tag">✅ Brothers In Arms: Nilfgaard (78, Vizima)</span>
+        <span class="completed-tag">✅ Brothers In Arms: Novigrad (78, Novigrad)</span>
+        <span class="completed-tag">✅ Brothers In Arms: Skellige (78, Skellige)</span>
+        <span class="completed-tag">✅ Brothers In Arms: Velen (78, Velen)</span>
+        <span class="completed-tag">✅ But Other Than That, How Did You Enjoy the Play? (99, Toussaint)</span>
+        <span class="completed-tag">✅ Cabaret (70, Novigrad)</span>
+        <span class="completed-tag">✅ Capture the Castle (100, Toussaint)</span>
+        <span class="completed-tag">✅ Carnal Sins (72, Novigrad)</span>
+        <span class="completed-tag">✅ Child of the Elder Blood (87, Skellige)</span>
+        <span class="completed-tag">✅ Ciri's Room (61, Velen)</span>
+        <span class="completed-tag">✅ Ciri's Story: Breakneck Speed (67, Novigrad)</span>
+        <span class="completed-tag">✅ Ciri's Story: Fleeing the Bog (61, Velen)</span>
+        <span class="completed-tag">✅ Ciri's Story: Out of the Shadows (61, Velen)</span>
+        <span class="completed-tag">✅ Ciri's Story: The King of the Wolves (61, Velen)</span>
+        <span class="completed-tag">✅ Ciri's Story: The Race (61, Velen)</span>
+        <span class="completed-tag">✅ Ciri's Story: Visiting Junior (65, Novigrad)</span>
+        <span class="completed-tag">✅ Coast of Wrecks (69, Novigrad)</span>
+        <span class="completed-tag">✅ Coin Doesn't Stink (93, Toussaint)</span>
+        <span class="completed-tag">✅ Collect 'Em All (Multiple locations)</span>
+        <span class="completed-tag">✅ Contract: An Elusive Thief (69, Novigrad)</span>
+        <span class="completed-tag">✅ Contract: Bovine Blues (94, Toussaint)</span>
+        <span class="completed-tag">✅ Contract: Deadly Delights (71, Novigrad)</span>
+        <span class="completed-tag">✅ Contract: Devil by the Well (58, White Orchard)</span>
+        <span class="completed-tag">✅ Contract: Doors Slamming Shut (80, Novigrad)</span>
+        <span class="completed-tag">✅ Contract: Dragon (84, Skellige)</span>
+        <span class="completed-tag">✅ Contract: Here Comes the Groom (75, Skellige)</span>
+        <span class="completed-tag">✅ Contract: Jenny o' the Woods (66, Velen)</span>
+        <span class="completed-tag">✅ Contract: Lord of the Wood (81, Novigrad)</span>
+        <span class="completed-tag">✅ Contract: Missing Brother (89, Velen)</span>
+        <span class="completed-tag">✅ Contract: Missing Miners (83, Skellige)</span>
+        <span class="completed-tag">✅ Contract: Missing Son (85, Skellige)</span>
+        <span class="completed-tag">✅ Contract: Muire D'yaeblen (74, Skellige)</span>
+        <span class="completed-tag">✅ Contract: Mysterious Tracks (76, Velen)</span>
+        <span class="completed-tag">✅ Contract: Patrol Gone Missing (63, Velen)</span>
+        <span class="completed-tag">✅ Contract: Phantom of the Trade Route (79, Velen)</span>
+        <span class="completed-tag">✅ Contract: Shrieker (64, Velen)</span>
+        <span class="completed-tag">✅ Contract: Skellige's Most Wanted (85, Skellige)</span>
+        <span class="completed-tag">✅ Contract: Strange Beast (72, Skellige)</span>
+        <span class="completed-tag">✅ Contract: Swamp Thing (68, Velen)</span>
+        <span class="completed-tag">✅ Contract: The Apiarian Phantom (70, Novigrad)</span>
+        <span class="completed-tag">✅ Contract: The Creature from Oxenfurt Forest (91, Novigrad)</span>
+        <span class="completed-tag">✅ Contract: The Griffin from the Highlands (80, Velen)</span>
+        <span class="completed-tag">✅ Contract: The Merry Widow (66, Velen)</span>
+        <span class="completed-tag">✅ Contract: The Mystery of the Byways Murders (78, Velen)</span>
+        <span class="completed-tag">✅ Contract: The Oxenfurt Drunk (82, Novigrad)</span>
+        <span class="completed-tag">✅ Contract: The Phantom of Eldberg (73, Skellige)</span>
+        <span class="completed-tag">✅ Contract: The Tufo Monster (100, Toussaint)</span>
+        <span class="completed-tag">✅ Contract: The White Lady (72, Novigrad)</span>
+        <span class="completed-tag">✅ Contract: Woodland Beast (62, Velen)</span>
+        <span class="completed-tag">✅ Coronation (74, Skellige)</span>
+        <span class="completed-tag">✅ Count Reuven's Treasure (68, Novigrad)</span>
+        <span class="completed-tag">✅ Dead Man's Party (89, Novigrad)</span>
+        <span class="completed-tag">✅ Death By Fire (66, Velen)</span>
+        <span class="completed-tag">✅ Defender of the Faith (66, Velen)</span>
+        <span class="completed-tag">✅ Deserter Gold (59, White Orchard)</span>
+        <span class="completed-tag">✅ Destination: Skellige (72, Novigrad)</span>
+        <span class="completed-tag">✅ Dirty Funds (58, White Orchard)</span>
+        <span class="completed-tag">✅ Disturbance (Kaer Morhen)</span>
+        <span class="completed-tag">✅ Don't Play with the Gods (71, Velen)</span>
+        <span class="completed-tag">✅ Don't Take Candy from a Stranger (93, Toussaint)</span>
+        <span class="completed-tag">✅ Dowry (88, Velen)</span>
+        <span class="completed-tag">✅ Duck, Duck, Goosed! (100, Toussaint)</span>
+        <span class="completed-tag">✅ Echoes of the Past (73, Skellige)</span>
+        <span class="completed-tag">✅ Enchanting: Quality Has Its Price (88, Novigrad)</span>
+        <span class="completed-tag">✅ Envoys, Wineboys (90, Velen)</span>
+        <span class="completed-tag">✅ Evil's Soft First Touches (88, Novigrad)</span>
+        <span class="completed-tag">✅ Extreme Cosplay (96, Toussaint)</span>
+        <span class="completed-tag">✅ Faithful Friend (White Orchard)</span>
+        <span class="completed-tag">✅ Fake Papers (Velen)</span>
+        <span class="completed-tag">✅ Family Fortune (69, Skellige)</span>
+        <span class="completed-tag">✅ Family Matters (62, Velen)</span>
+        <span class="completed-tag">✅ Father Knows Worst (93, Toussaint)</span>
+        <span class="completed-tag">✅ Feet as Cold as Ice (100, Toussaint)</span>
+        <span class="completed-tag">✅ Fencing Lessons (68, Novigrad)</span>
+        <span class="completed-tag">✅ Filibert Always Pays His Debts (100, Toussaint)</span>
+        <span class="completed-tag">✅ Final Preparations (Novigrad)</span>
+        <span class="completed-tag">✅ Finders Keepers (80, Skellige)</span>
+        <span class="completed-tag">✅ Fists of Fury: Champion of Champions (67, Skellige)</span>
+        <span class="completed-tag">✅ Fists of Fury: Novigrad (79, Novigrad)</span>
+        <span class="completed-tag">✅ Fists of Fury: Skellige (86, Skellige)</span>
+        <span class="completed-tag">✅ Fists of Fury: Toussaint (92, Toussaint)</span>
+        <span class="completed-tag">✅ Fists of Fury: Velen (67, Velen)</span>
+        <span class="completed-tag">✅ Following the Thread (67, Multiple locations)</span>
+        <span class="completed-tag">✅ Fools' Gold (62, Velen)</span>
+        <span class="completed-tag">✅ For Fame and Glory (71, Skellige)</span>
+        <span class="completed-tag">✅ For the Advancement of Learning (64, Velen)</span>
+        <span class="completed-tag">✅ Forefathers' Eve (63, Velen)</span>
+        <span class="completed-tag">✅ Free Spirit (69, Skellige)</span>
+        <span class="completed-tag">✅ Freya Be Praised! (60, Skellige)</span>
+        <span class="completed-tag">✅ From Ofier's Distant Shores (89, Novigrad)</span>
+        <span class="completed-tag">✅ From a Land Far, Far Away (69, Multiple locations)</span>
+        <span class="completed-tag">✅ Funeral Pyres (59, Velen)</span>
+        <span class="completed-tag">✅ Get Junior (68, Novigrad)</span>
+        <span class="completed-tag">✅ Ghosts of the Past (62, Velen)</span>
+        <span class="completed-tag">✅ Goodness, Gracious, Great Balls of Granite! (92, Toussaint)</span>
+        <span class="completed-tag">✅ Gwent: Big City Players (Novigrad)</span>
+        <span class="completed-tag">✅ Gwent: Never Fear, Skellige's Here (Toussaint)</span>
+        <span class="completed-tag">✅ Gwent: Old Pals (Multiple locations)</span>
+        <span class="completed-tag">✅ Gwent: Playing Innkeeps (Multiple locations)</span>
+        <span class="completed-tag">✅ Gwent: Playing Thaler (Novigrad)</span>
+        <span class="completed-tag">✅ Gwent: Skellige Style (Skellige)</span>
+        <span class="completed-tag">✅ Gwent: To Everything - Turn, Turn, Tournament! (94, Toussaint)</span>
+        <span class="completed-tag">✅ Gwent: Velen Players (Velen)</span>
+        <span class="completed-tag">✅ Hard Times (77, Skellige)</span>
+        <span class="completed-tag">✅ Hey, You Wanna Look at my Stuff? (62, Novigrad)</span>
+        <span class="completed-tag">✅ Hidden from the World (63, Velen)</span>
+        <span class="completed-tag">✅ Hidden in the Depths (87, Skellige)</span>
+        <span class="completed-tag">✅ High Stakes (82, Novigrad)</span>
+        <span class="completed-tag">✅ Honor Among Thieves (65, Novigrad)</span>
+        <span class="completed-tag">✅ Hunting a Witch (61, Velen)</span>
+        <span class="completed-tag">✅ Imperial Audience (58, Vizima)</span>
+        <span class="completed-tag">✅ In Ciri's Footsteps (Multiple locations)</span>
+        <span class="completed-tag">✅ In Wolf's Clothing (71, Skellige)</span>
+        <span class="completed-tag">✅ In the Eternal Fire's Shadow (71, Velen)</span>
+        <span class="completed-tag">✅ In the Heart of the Woods (78, Skellige)</span>
+        <span class="completed-tag">✅ Inheritance (70, Skellige)</span>
+        <span class="completed-tag">✅ Iron Maiden (75, Skellige)</span>
+        <span class="completed-tag">✅ Ironsides' Treasure (69, Skellige)</span>
+        <span class="completed-tag">✅ Kaer Morhen (Kaer Morhen)</span>
+        <span class="completed-tag">✅ King's Gambit (74, Skellige)</span>
+        <span class="completed-tag">✅ Knight for Hire (Toussaint)</span>
+        <span class="completed-tag">✅ La Cage au Fou (95, Toussaint)</span>
+        <span class="completed-tag">✅ Ladies of the Wood (62, Velen)</span>
+        <span class="completed-tag">✅ Lilac and Gooseberries (White Orchard)</span>
+        <span class="completed-tag">✅ Little Red (71, Novigrad)</span>
+        <span class="completed-tag">✅ Lost Goods (Novigrad)</span>
+        <span class="completed-tag">✅ Love's Cruel Snares (66, Velen)</span>
+        <span class="completed-tag">✅ Lynch Mob (63, Velen)</span>
+        <span class="completed-tag">✅ Magic Lamp (62, Velen)</span>
+        <span class="completed-tag">✅ Master Armorers (80, Multiple locations)</span>
+        <span class="completed-tag">✅ Master Master Master Master! (96, Toussaint)</span>
+        <span class="completed-tag">✅ Master of the Arena (70, Skellige)</span>
+        <span class="completed-tag">✅ Message from an Old Friend (Novigrad)</span>
+        <span class="completed-tag">✅ Missing Persons (71, Skellige)</span>
+        <span class="completed-tag">✅ Missing in Action (White Orchard)</span>
+        <span class="completed-tag">✅ Monster Slayer (82, Kaer Morhen)</span>
+        <span class="completed-tag">✅ Mutual of Beauclair's Wild Kingdom (100, Toussaint)</span>
+        <span class="completed-tag">✅ Nameless (70, Skellige)</span>
+        <span class="completed-tag">✅ Nilfgaardian Treasure (69, Skellige)</span>
+        <span class="completed-tag">✅ No Place Like Home (75, Kaer Morhen)</span>
+        <span class="completed-tag">✅ No Place Like Home (Toussaint)</span>
+        <span class="completed-tag">✅ Not Only Eagles Dare (66, Skellige)</span>
+        <span class="completed-tag">✅ Novigrad Dreaming (63, Novigrad)</span>
+        <span class="completed-tag">✅ Novigrad, Closed City (67, Novigrad)</span>
+        <span class="completed-tag">✅ Novigrad, Closed City II (Novigrad)</span>
+        <span class="completed-tag">✅ Now or Never (70, Novigrad)</span>
+        <span class="completed-tag">✅ Of Dairy and Darkness (65, Novigrad)</span>
+        <span class="completed-tag">✅ Of Sheers and a Witcher I Sing (99, Toussaint)</span>
+        <span class="completed-tag">✅ Of Swords and Dumplings (80, Novigrad)</span>
+        <span class="completed-tag">✅ On Death's Bed (58, White Orchard)</span>
+        <span class="completed-tag">✅ On Thin Ice (86, Skellige)</span>
+        <span class="completed-tag">✅ Open Sesame! (90, Novigrad)</span>
+        <span class="completed-tag">✅ Open Sesame: Breaking and Entering (90, Novigrad)</span>
+        <span class="completed-tag">✅ Open Sesame: The Safecracker (90, Novigrad)</span>
+        <span class="completed-tag">✅ Open Sesame: Witcher Seasonings (90, Novigrad)</span>
+        <span class="completed-tag">✅ Out On Your Arse! (70, Novigrad)</span>
+        <span class="completed-tag">✅ Out of the Frying Pan, into the Fire (Velen)</span>
+        <span class="completed-tag">✅ Paperchase (92, Toussaint)</span>
+        <span class="completed-tag">✅ Payback (84, Novigrad)</span>
+        <span class="completed-tag">✅ Pearls of the Coast (69, Skellige)</span>
+        <span class="completed-tag">✅ Pomp and Strange Circumstance (100, Toussaint)</span>
+        <span class="completed-tag">✅ Possession (73, Skellige)</span>
+        <span class="completed-tag">✅ Practicum in Advanced Alchemy (80, Skellige)</span>
+        <span class="completed-tag">✅ Precious Cargo (White Orchard)</span>
+        <span class="completed-tag">✅ Precious Haul (69, Skellige)</span>
+        <span class="completed-tag">✅ Pyres of Novigrad (66, Novigrad)</span>
+        <span class="completed-tag">✅ Queen Zuleyka's Treasure (60, Velen)</span>
+        <span class="completed-tag">✅ Race: The Great Erasmus Vegelbud Memorial Derby (Novigrad)</span>
+        <span class="completed-tag">✅ Races: Crow's Perch (Velen)</span>
+        <span class="completed-tag">✅ Races: Swift as the Western Winds (88, Novigrad)</span>
+        <span class="completed-tag">✅ Raging Wolf (96, Toussaint)</span>
+        <span class="completed-tag">✅ Reason of State (86, Novigrad)</span>
+        <span class="completed-tag">✅ Redania's Most Wanted (68, Novigrad)</span>
+        <span class="completed-tag">✅ Return to Crookback Bog (65, Velen)</span>
+        <span class="completed-tag">✅ Rose on a Red Field (89, Novigrad)</span>
+        <span class="completed-tag">✅ Rough Neighborhood (66, Novigrad)</span>
+        <span class="completed-tag">✅ Ruins, Hidden Treasure, You Know... (74, Skellige)</span>
+        <span class="completed-tag">✅ Scavenger Hunt: Bear School Gear (76, Skellige)</span>
+        <span class="completed-tag">✅ Scavenger Hunt: Bear School Gear Upgrade Diagrams - Part 2 (81, Skellige)</span>
+        <span class="completed-tag">✅ Scavenger Hunt: Bear School Gear Upgrade Diagrams - Part 4 (90, Velen)</span>
+        <span class="completed-tag">✅ Scavenger Hunt: Cat School Gear (73, Novigrad)</span>
+        <span class="completed-tag">✅ Scavenger Hunt: Cat School Gear Upgrade Diagrams - Part 1 (79, Novigrad)</span>
+        <span class="completed-tag">✅ Scavenger Hunt: Cat School Gear Upgrade Diagrams - Part 2 (79, Velen)</span>
+        <span class="completed-tag">✅ Scavenger Hunt: Cat School Gear Upgrade Diagrams - Part 3 (85, Novigrad)</span>
+        <span class="completed-tag">✅ Scavenger Hunt: Cat School Gear Upgrade Diagrams - Part 4 (90, Skellige)</span>
+        <span class="completed-tag">✅ Scavenger Hunt: Forgotten Wolf School Gear Diagrams (Kaer Morhen)</span>
+        <span class="completed-tag">✅ Scavenger Hunt: Grandmaster Feline Gear (96, Toussaint)</span>
+        <span class="completed-tag">✅ Scavenger Hunt: Grandmaster Griffin Gear (96, Toussaint)</span>
+        <span class="completed-tag">✅ Scavenger Hunt: Grandmaster Manticore Gear (96, Toussaint)</span>
+        <span class="completed-tag">✅ Scavenger Hunt: Grandmaster Ursine Gear (96, Toussaint)</span>
+        <span class="completed-tag">✅ Scavenger Hunt: Grandmaster Wolven Gear (96, Toussaint)</span>
+        <span class="completed-tag">✅ Scavenger Hunt: Griffin School Gear (67, Velen)</span>
+        <span class="completed-tag">✅ Scavenger Hunt: Griffin School Gear Upgrade Diagrams - Part 1 (74, Velen)</span>
+        <span class="completed-tag">✅ Scavenger Hunt: Griffin School Gear Upgrade Diagrams - Part 2 (74, Velen)</span>
+        <span class="completed-tag">✅ Scavenger Hunt: Griffin School Gear Upgrade Diagrams - Part 3 (82, Skellige)</span>
+        <span class="completed-tag">✅ Scavenger Hunt: Griffin School Gear Upgrade Diagrams - Part 4 (90, Skellige)</span>
+        <span class="completed-tag">✅ Scavenger Hunt: Viper School Gear (62, White Orchard)</span>
+        <span class="completed-tag">✅ Scavenger Hunt: Wolf School Gear (70, Kaer Morhen)</span>
+        <span class="completed-tag">✅ Scavenger Hunt: Wolf School Gear Upgrade Diagrams - Part 1 (77, Velen)</span>
+        <span class="completed-tag">✅ Scavenger Hunt: Wolf School Gear Upgrade Diagrams - Part 2 (77, Kaer Morhen)</span>
+        <span class="completed-tag">✅ Scavenger Hunt: Wolf School Gear Upgrade Diagrams - Part 3 (85, Skellige)</span>
+        <span class="completed-tag">✅ Scavenger Hunt: Wolf School Gear Upgrade Diagrams - Part 4 (85, Kaer Morhen)</span>
+        <span class="completed-tag">✅ Scavenger Hunt: Wolf School Gear Upgrade Diagrams - Part 5 (90, Velen)</span>
+        <span class="completed-tag">✅ Scavenger Hunt: Wolf School Gear Upgrade Diagrams - Part 6 (90, Skellige)</span>
+        <span class="completed-tag">✅ Scenes From a Marriage (91, Novigrad)</span>
+        <span class="completed-tag">✅ Shock Therapy (80, Skellige)</span>
+        <span class="completed-tag">✅ Shortcut (69, Skellige)</span>
+        <span class="completed-tag">✅ Skjall's Grave (84, Skellige)</span>
+        <span class="completed-tag">✅ Something Ends, Something Begins (86, White Orchard)</span>
+        <span class="completed-tag">✅ Spooked Mare (68, Novigrad)</span>
+        <span class="completed-tag">✅ Spoontaneous Profits! (98, Toussaint)</span>
+        <span class="completed-tag">✅ Stranger in a Strange Land (70, Skellige)</span>
+        <span class="completed-tag">✅ Sunken Chest (60, Velen)</span>
+        <span class="completed-tag">✅ Sunken Treasure (60, Velen)</span>
+        <span class="completed-tag">✅ Tedd Deireadh, the Final Age (86, Skellige)</span>
+        <span class="completed-tag">✅ Temerian Valuables (60, White Orchard)</span>
+        <span class="completed-tag">✅ Tesham Mutna (100, Toussaint)</span>
+        <span class="completed-tag">✅ The Bastion (79, Kaer Morhen)</span>
+        <span class="completed-tag">✅ The Battle of Kaer Morhen (80, Kaer Morhen)</span>
+        <span class="completed-tag">✅ The Beast of Toussaint (91, Toussaint)</span>
+        <span class="completed-tag">✅ The Beast of White Orchard (59, White Orchard)</span>
+        <span class="completed-tag">✅ The Black Widow (93, Toussaint)</span>
+        <span class="completed-tag">✅ The Calm Before the Storm (70, Skellige)</span>
+        <span class="completed-tag">✅ The Cave of Dreams (70, Skellige)</span>
+        <span class="completed-tag">✅ The Curse of Carnarvon (100, Toussaint)</span>
+        <span class="completed-tag">✅ The Cursed Chapel (92, Novigrad)</span>
+        <span class="completed-tag">✅ The Dead Have No Defense (65, Velen)</span>
+        <span class="completed-tag">✅ The Drakenborg Redemption (94, Novigrad)</span>
+        <span class="completed-tag">✅ The Dwarven Document Dilemma (58, Novigrad)</span>
+        <span class="completed-tag">✅ The Fall of the House of Reardon (62, Velen)</span>
+        <span class="completed-tag">✅ The Family Blade (71, Skellige)</span>
+        <span class="completed-tag">✅ The Final Trial (75, Kaer Morhen)</span>
+        <span class="completed-tag">✅ The Gangs of Novigrad (65, Novigrad)</span>
+        <span class="completed-tag">✅ The Great Escape (84, Novigrad)</span>
+        <span class="completed-tag">✅ The Heroes' Pursuits: Fayrlund (Skellige)</span>
+        <span class="completed-tag">✅ The Heroes' Pursuits: For the Goddess' Glory! (Skellige)</span>
+        <span class="completed-tag">✅ The Heroes' Pursuits: Fyresdal (Skellige)</span>
+        <span class="completed-tag">✅ The Heroes' Pursuits: Kaer Trolde (Skellige)</span>
+        <span class="completed-tag">✅ The Hunger Game (98, Toussaint)</span>
+        <span class="completed-tag">✅ The Incident at White Orchard (58, White Orchard)</span>
+        <span class="completed-tag">✅ The Inconstant Gardener (93, Toussaint)</span>
+        <span class="completed-tag">✅ The Isle of Mists (78, Multiple locations)</span>
+        <span class="completed-tag">✅ The King is Dead - Long Live the King (72, Skellige)</span>
+        <span class="completed-tag">✅ The Last Exploits of Selina's Gang (93, Toussaint)</span>
+        <span class="completed-tag">✅ The Last Wish (71, Skellige)</span>
+        <span class="completed-tag">✅ The Lord of Undvik (73, Skellige)</span>
+        <span class="completed-tag">✅ The Man from Cintra (99, Toussaint)</span>
+        <span class="completed-tag">✅ The Night of Long Fangs (100, Toussaint)</span>
+        <span class="completed-tag">✅ The Nilfgaardian Connection (61, Velen)</span>
+        <span class="completed-tag">✅ The Nithing (70, Skellige)</span>
+        <span class="completed-tag">✅ The Nobleman Statuette (70, Novigrad)</span>
+        <span class="completed-tag">✅ The Path of Warriors (72, Skellige)</span>
+        <span class="completed-tag">✅ The Play's the Thing (67, Novigrad)</span>
+        <span class="completed-tag">✅ The Price of Honor (70, Skellige)</span>
+        <span class="completed-tag">✅ The Royal Air Force (92, Novigrad)</span>
+        <span class="completed-tag">✅ The Sad Tale of the Grossbart Brothers (82, Skellige)</span>
+        <span class="completed-tag">✅ The Secret Life of Count Romilly (94, Novigrad)</span>
+        <span class="completed-tag">✅ The Silence of the Cows (73, White Orchard)</span>
+        <span class="completed-tag">✅ The Soldier Statuette (70, Novigrad)</span>
+        <span class="completed-tag">✅ The Suffering of Young Francois (100, Toussaint)</span>
+        <span class="completed-tag">✅ The Sunstone (84, Skellige)</span>
+        <span class="completed-tag">✅ The Sword, Famine and Perfidy (92, Novigrad)</span>
+        <span class="completed-tag">✅ The Taxman Cometh (88, Novigrad)</span>
+        <span class="completed-tag">✅ The Things Men Do For Coin... (68, Velen)</span>
+        <span class="completed-tag">✅ The Toussaint Prison Experiment (100, Toussaint)</span>
+        <span class="completed-tag">✅ The Tower Outta Nowheres (86, Skellige)</span>
+        <span class="completed-tag">✅ The Truth is in the Stars (Velen)</span>
+        <span class="completed-tag">✅ The Volunteer (69, Novigrad)</span>
+        <span class="completed-tag">✅ The Warble of a Smitten Knight (91, Toussaint)</span>
+        <span class="completed-tag">✅ The Whispering Hillock (61, Velen)</span>
+        <span class="completed-tag">✅ The Words of the Prophets Are Written on Sarcophagi (96, Toussaint)</span>
+        <span class="completed-tag">✅ There Can Be Only One (99, Toussaint)</span>
+        <span class="completed-tag">✅ Thou Shalt Not Pass (63, Novigrad)</span>
+        <span class="completed-tag">✅ Through Time and Space (82, Novigrad)</span>
+        <span class="completed-tag">✅ Till Death Do You Part (92, Toussaint)</span>
+        <span class="completed-tag">✅ Tinker, Hunter, Soldier, Spy (89, Novigrad)</span>
+        <span class="completed-tag">✅ To Bait a Forktail... (75, Kaer Morhen)</span>
+        <span class="completed-tag">✅ Tough Luck (74, Velen)</span>
+        <span class="completed-tag">✅ Turn and Face the Strange (91, Toussaint)</span>
+        <span class="completed-tag">✅ Twisted Firestarter (White Orchard)</span>
+        <span class="completed-tag">✅ Ugly Baby (75, Kaer Morhen)</span>
+        <span class="completed-tag">✅ Unlucky's Treasure (100, Skellige)</span>
+        <span class="completed-tag">✅ Va Fail, Elaine (75, Kaer Morhen)</span>
+        <span class="completed-tag">✅ Veni Vidi Vigo (84, Skellige)</span>
+        <span class="completed-tag">✅ Vintner's Contract: Chuchote Cave (96, Toussaint)</span>
+        <span class="completed-tag">✅ Vintner's Contract: Cleaning Those Hard-to-Reach Places (99, Toussaint)</span>
+        <span class="completed-tag">✅ Vintner's Contract: Duchaton Crest (99, Toussaint)</span>
+        <span class="completed-tag">✅ Vintner's Contract: Dun Tynne Hillside (96, Toussaint)</span>
+        <span class="completed-tag">✅ Vintner's Contract: Rivecalme Storehouse (93, Toussaint)</span>
+        <span class="completed-tag">✅ Waiting for Goe and Doh (96, Toussaint)</span>
+        <span class="completed-tag">✅ Wandering in the Dark (62, Velen)</span>
+        <span class="completed-tag">✅ Warehouse of Woe (69, Novigrad)</span>
+        <span class="completed-tag">✅ What Was This About Again? (99, Toussaint)</span>
+        <span class="completed-tag">✅ Whatsoever a Man Soweth... (92, Novigrad)</span>
+        <span class="completed-tag">✅ Where Children Toil, Toys Waste Away (98, Toussaint)</span>
+        <span class="completed-tag">✅ Where the Cat and Wolf Play... (81, Velen)</span>
+        <span class="completed-tag">✅ Wild at Heart (63, Velen)</span>
+        <span class="completed-tag">✅ Wine Wars: Belgaard (93, Toussaint)</span>
+        <span class="completed-tag">✅ Wine Wars: Belgaard (95, Toussaint)</span>
+        <span class="completed-tag">✅ Wine Wars: Coronata (93, Toussaint)</span>
+        <span class="completed-tag">✅ Wine Wars: The Deus in the Machina (98, Toussaint)</span>
+        <span class="completed-tag">✅ Wine Wars: Vermentino (93, Toussaint)</span>
+        <span class="completed-tag">✅ Wine is Sacred (98, Toussaint)</span>
+        <span class="completed-tag">✅ Witcher Wannabe (66, Velen)</span>
+        <span class="completed-tag">✅ Without a Trace (88, Novigrad)</span>
+      </div>
+    </section>
+
   </main>
 
   <script>
@@ -1131,9 +1574,19 @@
         const text = tr.innerText.toLowerCase();
         tr.style.display = text.includes(q) ? '' : 'none';
       });
+      document.querySelectorAll('.completed-pills .completed-tag').forEach(tag => {
+        const text = tag.innerText.toLowerCase();
+        tag.style.display = text.includes(q) ? '' : 'none';
+      });
     }
 
-    document.addEventListener('DOMContentLoaded', loadChecks);
+    document.addEventListener('DOMContentLoaded', () => {
+      loadChecks();
+      if (window.location.hash === '#ngplus') {
+        const ngBtn = document.getElementById('tab-ngplus');
+        if (ngBtn) filterSection('ngplus', ngBtn);
+      }
+    });
   </script>
 </body>
 </html>

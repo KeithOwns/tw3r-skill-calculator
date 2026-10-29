@@ -6,3 +6,6 @@ Thumbs.db
 .idea/
 SkillCalculator/node_modules/
 SkillCalculator/dist/
+*.mp4
+
+desktop.ini

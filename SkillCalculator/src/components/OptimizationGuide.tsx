@@ -633,6 +633,78 @@ export function OptimizationGuide() {
             </div>
         </div>
 
+        {/* Section 14: Verified Level 100 NG+ Master Save Audit & Completionist Telemetry */}
+        <h2>14. Verified Level 100 NG+ Master Save Audit &amp; Completionist Telemetry</h2>
+        <div className="card">
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '0.75rem', marginBottom: '0.75rem' }}>
+                <h3>Ground-Truth Save Verification (Level 100 • 0 / 2000 XP • 0 Failed Quests)</h3>
+                <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
+                    <span className="badge badge-green">355 Quests Completed</span>
+                    <a href="./quest_tracker.html#ngplus" style={{ textDecoration: 'none' }}>
+                        <span className="badge badge-gold" style={{ cursor: 'pointer' }}>Open Interactive NG+ Audit ↗</span>
+                    </a>
+                </div>
+            </div>
+            <p style={{ color: 'var(--text-dim)', marginBottom: '1rem' }}>
+                Extracted frame-by-frame from 5 in-game screen recordings and 8 inventory/world-map screenshots across Quest Logs, Glossary (Books, Crafting, Bestiary), Alchemy, Inventory, and all 6 World Map regions.
+            </p>
+
+            <div className="grid-3" style={{ marginBottom: '1.25rem' }}>
+                <div className="card" style={{ marginBottom: 0 }}>
+                    <h4>Quests &amp; World State</h4>
+                    <div className="stat-big">355</div>
+                    <p style={{ fontSize: '0.85rem', color: 'var(--text-dim)' }}>
+                        <strong>Empress Ciri Ending</strong> (<em>Faithful Friend</em> + <em>Something Ends, Something Begins</em>), <strong>Cerys an Craite</strong> crowned in Skellige, <strong>Olgierd Saved</strong> in <em>Hearts of Stone</em>, and <strong>Land of a Thousand Fables</strong> path in <em>Blood and Wine</em>.
+                    </p>
+                </div>
+                <div className="card" style={{ marginBottom: 0 }}>
+                    <h4>Witcher Gear &amp; Crafting</h4>
+                    <div className="stat-big">385 Diagrams</div>
+                    <p style={{ fontSize: '0.85rem', color: 'var(--text-dim)' }}>
+                        <strong>100% Completion Across All 7 Witcher Schools</strong> (Ursine, Feline, Griffin, Wolven, Forgotten Wolven, Viper, Manticore) + Ofieri gear. All 3 bypassed map-wrapper quests (<em>Bear Upgrade Pt 1 &amp; 3</em>, <em>Wolf Upgrade Pt 3</em>) confirmed 100% looted in Crafting!
+                    </p>
+                </div>
+                <div className="card" style={{ marginBottom: 0 }}>
+                    <h4>Alchemy, Bestiary &amp; Lore</h4>
+                    <div className="stat-big">12/12 • 27/28</div>
+                    <p style={{ fontSize: '0.85rem', color: 'var(--text-dim)' }}>
+                        <strong>12/12 Superior Oils</strong>, <strong>12/12 Superior Potions</strong>, <strong>8/8 Superior Bombs</strong>, <strong>27/28 Monster Decoctions</strong>, <strong>12/12 Armor Dyes</strong>, <strong>24/24 Mutagen Formulas</strong>, <strong>124 Bestiary Entries</strong>, and <strong>651 Books</strong>.
+                    </p>
+                </div>
+            </div>
+
+            <div className="grid-2">
+                <div>
+                    <h4 style={{ color: 'var(--accent-gold)', marginBottom: '0.5rem' }}>6-Region World Map POI Totals (ALL Filter)</h4>
+                    <div className="table-responsive">
+                        <table>
+                            <thead>
+                                <tr><th>Region</th><th>Signposts</th><th>Guarded / Hidden</th><th>Camps / Sites</th><th>Special Notes</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td><strong>White Orchard</strong></td><td className="mono val-green">10 / 10</td><td className="mono">5 GT • 3 HT</td><td className="mono">6 BC • 2 AS</td><td><span className="badge badge-green">6/6 Places of Power</span></td></tr>
+                                <tr><td><strong>Royal Palace Vizima</strong></td><td className="mono val-green">1 / 1</td><td className="mono">—</td><td className="mono">—</td><td>100% Complete</td></tr>
+                                <tr><td><strong>Velen / Novigrad</strong></td><td className="mono val-gold">103</td><td className="mono">32 GT • 29 HT</td><td className="mono">31 BC • 16 AS</td><td><span className="badge badge-gold">Quest: 1/3 Active on Map!</span></td></tr>
+                                <tr><td><strong>Kaer Morhen</strong></td><td className="mono val-gold">5 / 6</td><td className="mono">2 GT • 0 HT</td><td className="mono">8 Entrances</td><td><span className="badge badge-red">Igni PoP + 2 Hidden Quests Left</span></td></tr>
+                                <tr><td><strong>The Skellige Isles</strong></td><td className="mono val-green">50</td><td className="mono">22 GT • 22 HT</td><td className="mono">59 Smugglers</td><td>8 Notice Boards • 8 Spoils of War</td></tr>
+                                <tr><td><strong>Duchy of Toussaint</strong></td><td className="mono val-green">42</td><td className="mono">14 GT • 14 HT</td><td className="mono">11 AS • 8 BC</td><td><span className="badge badge-green">3/3 Hanse • 5/5 Vineyards</span></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 style={{ color: 'var(--accent-gold)', marginBottom: '0.5rem' }}>Actionable Post-Game Free-Roam Cleanups (~20 Min)</h4>
+                    <ul>
+                        <li><span className="step-num">1</span> <strong>Cycle Velen/Novigrad <code>1/3 Quest</code> Markers:</strong> Open the Velen World Map, hover over <code>1/3 Quest</code> in the bottom-left legend, and click <code>&gt;</code> to jump directly to the 3 active <code>!</code> encounters waiting on your map.</li>
+                        <li><span className="step-num">2</span> <strong>Kaer Morhen Igni Place of Power (+1 Ability Point):</strong> Fast-travel to <em>Iron Mine</em>, cross north of the lake above the Trial of the Grasses cavern, and draw from the undiscovered Igni Place of Power.</li>
+                        <li><span className="step-num">3</span> <strong>Kaer Morhen Hidden Quests (<em>The Witchers&apos; Forge</em> &amp; <em>Greenhouse Effect</em>):</strong> Read <em>Monstrum, or a Portrayal of Witchers, Vol. 2</em> in Yennefer&apos;s bedroom tower to unlock the mine-shaft illusion (<em>The Witchers&apos; Forge</em>), and use the Eye of Nehaleni at the stone arch south of the keep (<em>Greenhouse Effect</em>).</li>
+                        <li><span className="step-num">4</span> <strong>Auto-Complete 3 Scavenger Hunt Log Entries:</strong> Since all 385 diagrams are already in your Crafting menu, buying &amp; reading <em>Ibrahim Savi&apos;s First &amp; Third Maps</em> (Kaer Trolde Armorer) and <em>Hieronymus&apos; Notes</em> (Lindenvale Blacksmith) will log <em>Bear Upgrade Pt 1 &amp; 3</em> and <em>Wolf Upgrade Pt 3</em> into your Completed Quests tab (355 &rarr; 358+).</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
         <footer>
             <p>Generated for Keith Tibbitts | Complete Witcher 3 Remastered Optimization Master Dashboard</p>
         </footer>
