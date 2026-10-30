@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Witcher 3 Next-Gen Skill Calculator — Project & Chat Summary</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-deep: #08090d;
+      --bg-surface: #0f121a;
+      --bg-card: rgba(18, 22, 33, 0.85);
+      --border-gold: #c89b3c;
+      --border-subtle: rgba(200, 155, 60, 0.25);
+      --gold-bright: #f3d47d;
+      --red-combat: #ef4444;
+      --blue-signs: #3b82f6;
+      --green-alchemy: #10b981;
+      --yellow-general: #f59e0b;
+      --purple-mutation: #a855f7;
+      --text-main: #f1f5f9;
+      --text-muted: #94a3b8;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: var(--bg-deep);
+      color: var(--text-main);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      padding: 2rem 1rem;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    header {
+      background: radial-gradient(circle at 50% 0%, #1c2233 0%, #0d1017 100%);
+      border: 1px solid var(--border-gold);
+      border-radius: 12px;
+      padding: 2.5rem 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.8), 0 0 15px rgba(200,155,60,0.15);
+      text-align: center;
+      position: relative;
+    }
+
+    .tag-badge {
+      display: inline-block;
+      text-transform: uppercase;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      font-weight: 700;
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+      background: rgba(200, 155, 60, 0.15);
+      color: var(--gold-bright);
+      border: 1px solid var(--border-subtle);
+      margin-bottom: 0.75rem;
+    }
+
+    h1 {
+      font-family: 'Cinzel', serif;
+      font-size: 2.4rem;
+      font-weight: 900;
+      color: var(--gold-bright);
+      letter-spacing: 0.05em;
+      margin-bottom: 0.5rem;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.9);
+    }
+
+    .subtitle {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .meta-bar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+      font-size: 0.85rem;
+      color: #cbd5e1;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 1rem;
+    }
+
+    .meta-bar strong { color: var(--gold-bright); }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 10px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+      backdrop-blur: 10px;
+    }
+
+    .card h2 {
+      font-family: 'Cinzel', serif;
+      font-size: 1.25rem;
+      color: var(--gold-bright);
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .card h3 {
+      font-size: 0.95rem;
+      color: #e2e8f0;
+      margin: 1rem 0 0.4rem;
+      font-weight: 600;
+    }
+
+    p, li {
+      font-size: 0.9rem;
+      color: #cbd5e1;
+      margin-bottom: 0.6rem;
+    }
+
+    ul {
+      list-style-position: inside;
+      padding-left: 0.2rem;
+    }
+
+    li { margin-bottom: 0.4rem; }
+
+    code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.82rem;
+      background: rgba(0,0,0,0.5);
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: 0.15rem 0.4rem;
+      border-radius: 4px;
+      color: #38bdf8;
+    }
+
+    pre {
+      background: #050608;
+      border: 1px solid rgba(200,155,60,0.2);
+      border-radius: 8px;
+      padding: 1rem;
+      overflow-x: auto;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      color: #e2e8f0;
+      margin: 0.8rem 0;
+    }
+
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.2rem 0.6rem;
+      border-radius: 4px;
+    }
+    .status-success { background: rgba(16,185,129,0.2); color: #34d399; border: 1px solid #10b981; }
+    .status-info { background: rgba(59,130,246,0.2); color: #60a5fa; border: 1px solid #3b82f6; }
+
+    .color-block {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      border-radius: 2px;
+      margin-right: 4px;
+    }
+    .c-red { background: var(--red-combat); }
+    .c-blue { background: var(--blue-signs); }
+    .c-green { background: var(--green-alchemy); }
+    .c-yellow { background: var(--yellow-general); }
+    .c-purple { background: var(--purple-mutation); }
+
+    .timeline-item {
+      border-left: 2px solid var(--border-gold);
+      padding-left: 1.25rem;
+      margin-left: 0.5rem;
+      position: relative;
+      margin-bottom: 1.5rem;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -6px;
+      top: 4px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--border-gold);
+      box-shadow: 0 0 8px var(--border-gold);
+    }
+
+    .timeline-title {
+      font-weight: 700;
+      color: var(--gold-bright);
+      font-size: 0.95rem;
+      margin-bottom: 0.25rem;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <span class="tag-badge">The Witcher 3: Wild Hunt — Next-Gen Patch 4.0+</span>
+      <h1>Skill Calculator &amp; Production Hub</h1>
+      <p class="subtitle">Complete technical overview, architectural log, and deployment guide for the Witcher 3 Remaster Character Build &amp; Mutation Calculator.</p>
+      
+      <div class="meta-bar">
+        <div><strong>Status:</strong> <span class="status-pill status-success">Live Locally &amp; Git Synced</span></div>
+        <div><strong>Local Path:</strong> <code>C:\projects\YouTube\Projects\TW3R\SkillCalculator</code></div>
+        <div><strong>GitHub Repository:</strong> <code>KeithOwns/YouTube</code> (Branch: <code>main</code>)</div>
+        <div><strong>Dev Port:</strong> <code>http://localhost:5173/</code></div>
+      </div>
+    </header>
+
+    <div class="grid-2">
+      <!-- Session Chronology & Problems Solved -->
+      <div class="card">
+        <h2><span>⚔️</span> Conversation Chronology</h2>
+        
+        <div class="timeline-item">
+          <div class="timeline-title">1. MCP &amp; SDK Architecture Evaluation</div>
+          <p>Evaluated whether Model Context Protocol (MCP) or the Antigravity (AGY) SDK were needed. Clarified that standard deterministic web apps do not need MCPs or agent SDKs, which would only add Python overhead. Native Vite + React was selected.</p>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-title">2. AGY vs. AGY IDE Clarification</div>
+          <p>Evaluated working in AGY Chat vs. AGY IDE. Recommended scaffolding the core engine in Chat and opening in AGY IDE for UI refinement and live split preview. The user installed AGY IDE during the session.</p>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-title">3. Next-Gen 4.0+ Mechanics Scaffolding</div>
+          <p>Created the full Vite + React 19 + TypeScript + Tailwind CSS v4 codebase. Normalized all Combat, Signs, and Alchemy skills to 3 ranks max, set tier gates to 0/6/12/18 points, created mutagen synergy math, and added Blood &amp; Wine mutations.</p>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-title">4. GitHub Monorepo Integration</div>
+          <p>Authenticated GitHub CLI via device flow, cloned <code>KeithOwns/YouTube</code> to <code>C:\projects\YouTube</code>, fixed Windows Git ownership (<code>safe.directory</code>), transferred the project to <code>Projects/TW3R/SkillCalculator</code>, and pushed commit <code>69bebff</code>.</p>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-title">5. Production Build &amp; Port Resolution</div>
+          <p>Added relative base paths (<code>base: './'</code>), Witcher <code>Cinzel</code> fonts, and SEO metadata. Resolved multiple dev server instances (port 5173 vs 5174) and explained the single-terminal workflow.</p>
+        </div>
+      </div>
+
+      <!-- Key Game Mechanics & Math -->
+      <div class="card">
+        <h2><span>🐺</span> Next-Gen (Patch 4.0+) Game Engine Math</h2>
+        
+        <h3>1. Skill Tree Normalization</h3>
+        <p>In Patch 4.0, skill nodes were rebalanced from 5 ranks down to <strong>3 ranks maximum</strong>:</p>
+        <ul>
+          <li><span class="color-block c-red"></span><strong>Combat (20 Skills):</strong> Fast, Strong, Defense, Crossbow, Battle Trance.</li>
+          <li><span class="color-block c-blue"></span><strong>Signs (20 Skills):</strong> Aard, Igni, Yrden, Quen, Axii (Standard &amp; Alternate forms).</li>
+          <li><span class="color-block c-green"></span><strong>Alchemy (20 Skills):</strong> Brewing, Oils, Bombs, Mutation, Trial of the Grasses.</li>
+          <li><span class="color-block c-yellow"></span><strong>General (15 Skills):</strong> Cat/Griffin/Bear School Techniques, Gourmet, etc. (1 rank, no tier gate).</li>
+        </ul>
+
+        <h3>2. Tier Unlock Thresholds</h3>
+        <p>Tier 1 = 0 pts &bull; Tier 2 = 6 pts &bull; Tier 3 = 12 pts &bull; Tier 4 = 18 pts spent in that tree.</p>
+
+        <h3>3. Active Loadout &amp; Mutagen Synergy</h3>
+        <ul>
+          <li><strong>12 Active Ability Slots:</strong> 4 quadrants (3 slots each).</li>
+          <li><strong>4 Mutagen Sockets:</strong> Greater Mutagens grant base +10% Attack Power (Red), +10% Sign Intensity (Blue), or +600 Vitality (Green). Each matching color slotted skill adds another base bonus (up to 4x).</li>
+          <li><strong>Synergy Perk Multiplier:</strong> Rank 1 (+15%), Rank 2 (+30%), Rank 3 (+50%) extra mutagen power!</li>
+          <li><span class="color-block c-purple"></span><strong>Blood &amp; Wine Mutations:</strong> 12 mutations (Euphoria, Piercing Cold, Bloodbath, etc.) unlocking up to 4 bonus ability slots.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Project File Structure & Architecture -->
+    <div class="card" style="margin-bottom: 2rem;">
+      <h2><span>📁</span> Project Architecture &amp; File Map</h2>
+      <pre>C:\projects\YouTube\Projects\TW3R\SkillCalculator\
+├── index.html                               # Production entry with Cinzel font & OpenGraph metadata
+├── vite.config.ts                           # Vite 8.3 + React + Tailwind v4 + base: './'
+├── package.json                             # React 19, Lucide Icons, clsx, tailwind-merge
+├── tsconfig.json                            # Strict TypeScript configuration
+├── public/
+│   ├── favicon.svg                          # Wolf school Witcher crest
+│   └── icons.svg                            # UI glyphs
+├── src/
+│   ├── App.tsx                              # Master 2-column layout (Trees + Slotted Loadout)
+│   ├── index.css                            # Tailwind CSS v4 & Witcher UI dark fantasy styling
+│   ├── types/
+│   │   └── witcher.ts                       # TypeScript interfaces for nodes, builds, and mutagens
+│   ├── data/
+│   │   ├── skillsData.ts                    # All 75 Next-Gen skills with 3-rank descriptions
+│   │   └── mutationsData.ts                 # Mutagens & Blood & Wine mutations definitions
+│   ├── context/
+│   │   └── BuildStateContext.tsx            # Complete state store, math engine, & URL hash sharing
+│   └── components/
+│       ├── Header.tsx                       # Level & Places of Power controls, points counter, sharing
+│       ├── SkillTreePanel.tsx               # Tabs (Combat, Signs, Alchemy, General, Mutations) & tier gates
+│       ├── SkillNodeComponent.tsx           # Interactive node (L-click add, R-click refund) & tooltips
+│       ├── CharacterPanel.tsx               # 12 active ability slots + 4 mutagen synergy sockets
+│       ├── MutationsPanel.tsx               # 12 Blood & Wine mutations with slot unlock mechanics
+│       └── StatsSummary.tsx                 # Real-time calculated Attack Power, Sign, & Vitality totals</pre>
+    </div>
+
+    <!-- Launch & Deployment Guide -->
+    <div class="grid-2">
+      <div class="card">
+        <h2><span>🚀</span> How to Deploy Live on the Web (Vercel)</h2>
+        <ol style="padding-left: 1.2rem; font-size: 0.9rem; color: #cbd5e1;">
+          <li style="margin-bottom: 0.6rem;">Push the latest commits:
+            <pre>cd C:\projects\YouTube&#10;git push origin main</pre>
+          </li>
+          <li style="margin-bottom: 0.6rem;">Go to <a href="https://vercel.com/new" target="_blank" style="color: #60a5fa;">vercel.com/new</a> and sign in with GitHub.</li>
+          <li style="margin-bottom: 0.6rem;">Select <strong>KeithOwns/YouTube</strong> and click <strong>Import</strong>.</li>
+          <li style="margin-bottom: 0.6rem;">Under <strong>Root Directory</strong>, click <strong>Edit</strong> and choose:
+            <pre>Projects/TW3R/SkillCalculator</pre>
+          </li>
+          <li>Click <strong>Deploy</strong>. In 30 seconds, your site is live with a free permanent SSL domain!</li>
+        </ol>
+      </div>
+
+      <div class="card">
+        <h2><span>⚡</span> Daily Local Development Workflow</h2>
+        <p>To run the app locally on your machine at any time:</p>
+        <pre># 1. Open PowerShell or Command Prompt
+cd C:\projects\YouTube\Projects\TW3R\SkillCalculator
+
+# 2. Start the dev server (keep only 1 window open)
+npm run dev
+
+# 3. Open in browser:
+http://localhost:5173/</pre>
+        <p style="margin-top: 0.5rem; font-size: 0.85rem; color: #94a3b8;">
+          <em>Note: Hot Module Replacement (HMR) is active. Any code edits you make in the IDE will instantly update in your browser without losing allocated skill points!</em>
+        </p>
+      </div>
+    </div>
+
+    <footer>
+      The Witcher 3: Remastered &copy; CD Projekt S.A. Project documentation maintained by KeithOwns / YouTube.
+    </footer>
+  </div>
+</body>
+</html>

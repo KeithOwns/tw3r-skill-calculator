@@ -99,6 +99,7 @@ All 5 screen recordings and 8 inventory/world-map screenshots from the Level 100
 * `NG_PLUS_CRAFTING_BESTIARY_ALCHEMY_CATALOG.md`: All **385 Crafting Diagrams** (confirming 100% Witcher School diagram completion across all 7 schools including the 3 map-bypassed Scavenger Hunts), **124 Bestiary Entries** across 11 classes, and **53 Repeatable/Uncrafted Alchemy Formulas**.
 * `NG_PLUS_INVENTORY_AND_WORLD_MAP_AUDIT.md`: Complete **Inventory Alchemy Grid** (`12/12 Superior Oils`, `12/12 Superior Potions`, `8/8 Superior Bombs`, `27/28 Monster Decoctions`) and **6-Region World Map `ALL`-Filter Legend Totals** (`211 Signposts`, `3 active Quest markers in Velen/Novigrad`, and undiscovered `Igni Place of Power` in Kaer Morhen).
 * Integrated into `OptimizationGuide.tsx` (**Section 14**) and `quest_tracker.html` (**`#ngplus` Tab**).
+* **Unified `Documents\TW3R_Guide` Profile Integration:** All HTML reports (`TW3R_Master_Project_Summary.html`, `TW3R_Complete_Optimization_Project_Report.html`, `TW3R_Viewing_Experience_Optimizer.html`, `TW3R_Skill_Calculator_Chat_Summary.html`), 4 CSV build spreadsheets, `Social_Media_Posts/01_Optimizing_Your_Viewing_Experience.md`, 4K `screenshots/`, hardware/skill `Snips/`, `Calibrating_Audio_Visual/Windows11/`, and **Section 15** (Next-Gen Engine Mechanics Overhaul & Death March `diff_abilities.xml` Multipliers) are integrated into root and `SkillCalculator`.
 
 ---
 

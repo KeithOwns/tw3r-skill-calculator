@@ -1,0 +1,25 @@
+Weapon,Details
+Toussaint Knight's Steel Sword,"6,581 Sheet DPS, 25% Crit Chance (+20% innate), +100% Crit Damage, +300 Armor Piercing, +30% Quen Intensity, Severance Runeword slotted (+1.1 Whirl / +1.9 Rend range)."
+Iris Steel Sword,"6,449 Sheet DPS, 5% Crit Chance, 15% HP recoil on kinetic discharge, double-hit strong attack."
+Verdict,Toussaint Knight's Steel Sword is mathematically superior for the Feline Light Armor build due to Whirl / Severance synergy and the critical hit damage profile.
+Gauntlet Name,Armor Type & Stats,Steel / Silver DPS,Set Bonus,Notes / Trade-offs
+Grandmaster Legendary Feline Gauntlets,"Light, +17% Attack Power","8,474 / 7,253",4/6 (40%),-
+Assassin's Gauntlets,"Light, +10% Crit Chance","8,752 / 7,351",3/6 (30%),Consistent crit rate across both swords
+Nilfgaardian Guardsman's Gauntlets,"Heavy, +50% Crit Damage","9,077 / 6,996",3/6 (30%),"2 empty sockets. Drops Cat School Techniques from 4/4 to 3/4 Light (-25% Crit DMG, -5% Fast Attack DMG), compensates with +50% Crit DMG."
+"Verdict: Assassin's Gauntlets provide balanced dual-sword scaling (7,351 Silver / 8,752 Steel); Nilfgaardian Guardsman's Gauntlets achieve the highest peak Steel DPS (9,077), but lower Silver DPS (6,996).",,,,
+Slot Group,Allocation,Effect
+Outer Sockets (12 slots),12 Red Combat Skills,Linked to 4 Greater Red Mutagens (+40% each = +160% base attack power)
+Center Mutation Slots,"Acquired Tolerance 3/3, Metabolic Control 3/3, Synergy 3/3, Protective Coating or Killing Spree",
+Metric,Value,Details
+Gear,Grandmaster Feline Armor (Light) x4,
+Mutation,Euphoria,replaces Mutated Skin
+Attack Power Multiplier,+160% to +210%,4 Greater Red Mutagens + Euphoria scaling
+Critical Hit Damage,+100%,Cat School Techniques: 4 pieces x 25%
+Fast Attack Damage,+20%,Cat School Techniques: 4 pieces x 5%
+Vitality Pool,"~6,500 - 7,200 HP",True Glass Cannon profile
+Toxicity Ceiling,214,Acquired Tolerance + Metabolic Control
+Active Decoctions (150 tox),"Water Hag, Katakan, Arachas or Echidna","Water Hag (50% dmg at max HP), Katakan (+crit rate)"
+Item,Stats & DPS,Bonuses & Effects
+Grandmaster Feline Gauntlets,"8,474 Steel DPS, 7,253 Silver DPS","+17% Attack Power, 4/6 Witcher Gear set bonus active (40% fast attack scaling on strong attacks), 2 glyph sockets (+20% Igni Intensity)"
+Assassin's Gauntlets (Level 98 Relic),"8,752 Steel DPS (+278 DPS), 7,351 Silver DPS (+98 DPS)","+10% Critical Hit Chance, maintains 3/6 Witcher Gear set bonus (30% scaling), +2 Armor"
+Verdict,Assassin's Gauntlets yield higher raw sheet and effective DPS due to the flat +10% Critical Hit Chance scaling with Cat School Techniques' +100% Critical Hit Damage bonus.,

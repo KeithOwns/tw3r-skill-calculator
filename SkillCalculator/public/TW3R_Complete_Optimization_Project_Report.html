@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Witcher 3 Remastered: Level 100 Character Optimization & Project Master Document</title>
+    <style>
+        :root {
+            --bg-color: #0d1117;
+            --panel-bg: #161b22;
+            --panel-border: #30363d;
+            --accent-gold: #d29922;
+            --accent-green: #238636;
+            --accent-red: #da3633;
+            --accent-blue: #58a6ff;
+            --accent-purple: #bc8cff;
+            --text-light: #f0f6fc;
+            --text-dim: #8b949e;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-light);
+            line-height: 1.6;
+            padding: 2.5rem 1rem;
+        }
+        .container { max-width: 1280px; margin: 0 auto; }
+        header {
+            text-align: center;
+            border-bottom: 2px solid var(--panel-border);
+            padding-bottom: 2rem;
+            margin-bottom: 3rem;
+        }
+        h1 { color: var(--accent-gold); font-size: 2.5rem; margin-bottom: 0.5rem; }
+        .meta-subtitle { color: var(--text-dim); font-size: 1.1rem; }
+        h2 {
+            color: var(--accent-gold);
+            font-size: 1.7rem;
+            margin: 2.5rem 0 1.2rem 0;
+            border-bottom: 1px solid var(--panel-border);
+            padding-bottom: 0.5rem;
+        }
+        h3 { color: #ffffff; font-size: 1.25rem; margin-bottom: 0.75rem; }
+        .badge {
+            display: inline-block;
+            font-size: 0.75rem;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+        .badge-tank { background: rgba(35, 134, 54, 0.2); color: #3fb950; border: 1px solid #238636; }
+        .badge-dps { background: rgba(218, 54, 51, 0.2); color: #f85149; border: 1px solid #da3633; }
+        .badge-tech { background: rgba(88, 166, 255, 0.2); color: #58a6ff; border: 1px solid #1f6feb; }
+        
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(540px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        .card {
+            background-color: var(--panel-bg);
+            border: 1px solid var(--panel-border);
+            border-radius: 8px;
+            padding: 1.5rem;
+        }
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--panel-border);
+            padding-bottom: 0.75rem;
+            margin-bottom: 1rem;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+            font-size: 0.92rem;
+        }
+        th, td {
+            padding: 0.75rem 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--panel-border);
+        }
+        th { background-color: rgba(255, 255, 255, 0.03); color: var(--text-dim); }
+        tr:hover { background-color: rgba(255, 255, 255, 0.02); }
+        ul { list-style: none; margin-top: 0.5rem; }
+        li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.6rem;
+            color: var(--text-light);
+        }
+        li::before {
+            content: "•";
+            position: absolute;
+            left: 0.5rem;
+            color: var(--accent-gold);
+            font-weight: bold;
+        }
+        .mono { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-weight: bold; }
+        .val-green { color: #3fb950; }
+        .val-red { color: #f85149; }
+        .val-gold { color: #d29922; }
+        .val-blue { color: #58a6ff; }
+        
+        .flow-diagram {
+            background-color: #090d13;
+            border: 1px solid var(--panel-border);
+            border-radius: 6px;
+            padding: 1rem;
+            font-family: monospace;
+            font-size: 0.9rem;
+            color: var(--accent-gold);
+            margin: 1rem 0;
+            overflow-x: auto;
+        }
+        footer {
+            margin-top: 4rem;
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid var(--panel-border);
+            color: var(--text-dim);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>The Witcher 3: Wild Hunt (Next-Gen Remastered)</h1>
+            <p class="meta-subtitle">Level 100 Character Build Architecture & Mathematical Optimization Report</p>
+        </header>
+
+        <!-- SECTION 1: HARDWARE & IMMERSION BASELINE -->
+        <h2>1. Hardware, Display & Audio Configuration</h2>
+        <div class="grid-2">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Hisense 4K HDR Display Optimization</h3>
+                    <span class="badge badge-tech">Display Pipeline</span>
+                </div>
+                <ul>
+                    <li><strong>Picture Mode:</strong> <span class="mono val-blue">HDR Game</span></li>
+                    <li><strong>HDMI Format:</strong> <span class="mono">Enhanced (4K @ 60 Hz, 10 bpc)</span></li>
+                    <li><strong>Backlight / Luminance:</strong> <span class="mono">100</span> | Dynamic Backlight & Motion: <span class="mono">Off</span></li>
+                    <li><strong>Color Temperature:</strong> <span class="mono">Warm 1 / Warm 2</span> | Filmmaker Mode Auto-Detect: <span class="mono">Off</span></li>
+                    <li><strong>In-Game Tone-Mapping:</strong> Paper White: <span class="mono val-gold">130</span> | Max Brightness: <span class="mono val-gold">350 nits</span></li>
+                </ul>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <h3>Zero-HUD Immersion Pipeline</h3>
+                    <span class="badge badge-tech">Acoustic Spatialization</span>
+                </div>
+                <ul>
+                    <li><strong>Dynamic Combat Music:</strong> <span class="mono val-red">0 (Disabled)</span></li>
+                    <li><strong>Dynamic Range Preset:</strong> <span class="mono val-blue">Home Cinema</span></li>
+                    <li><strong>Acoustic Spatialization:</strong> Enemy parry windows, lunges, and incoming projectiles tracked entirely by ear.</li>
+                    <li><strong>Audio Equipment:</strong> Ear-level aligned soundbar positioned directly beneath the 4K panel.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- SECTION 2: TANK TITAN BUILD ARCHITECTURE -->
+        <h2>2. Archetype A: The "Tank Titan" (Bear School)</h2>
+        <div class="card" style="margin-bottom: 1.5rem;">
+            <div class="card-header">
+                <h3>Core Defensive Framework</h3>
+                <span class="badge badge-tank">18,017 Max Vitality</span>
+            </div>
+            <div class="flow-diagram">
+[ Defensive Loop ]
+Evasion / Parries (Attack Is the Best Defense 3/3) ---> Generates 3 Adrenaline Points
+Resolve (3/3) Prevents Adrenaline Loss on Hit       ---> Mutated Skin Permanently Locked at -45% Mitigation
+Fleet-Footed (3/3) 100% Dodge Damage Immunity       ---> Troll Decoction Passive Regen (101 HP/s) Absorbs Recoil
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Metric / Parameter</th>
+                        <th>Calibrated Value</th>
+                        <th>Mechanic & Interaction</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Maximum Vitality Pool</strong></td>
+                        <td class="mono val-green">18,017 HP</td>
+                        <td>Base (11,123) + 4 Greater Green Mutagens scaled by Synergy (3/3) + Bear School Techniques (+24%) + Corvo Bianco Royal Bed (+1,000 HP).</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Damage Mitigation Ceiling</strong></td>
+                        <td class="mono val-green">-45.0% Flat</td>
+                        <td>Mutated Skin: Each Adrenaline Point decreases damage received by 15% (max 45% at 3 points).</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Adrenaline Engine</strong></td>
+                        <td class="mono">Permanent 3 Points</td>
+                        <td><em>Attack Is the Best Defense (3/3)</em> generates Adrenaline on dodges/parries; <em>Resolve (3/3)</em> prevents 100% loss on hit.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Evasion Frame Immunity</strong></td>
+                        <td class="mono val-blue">100% Invulnerability</td>
+                        <td><em>Fleet-Footed (3/3)</em> eliminates all damage taken while dodging.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Toxicity Threshold</strong></td>
+                        <td class="mono">150 / 214 (70%)</td>
+                        <td>Base (100) + Acquired Tolerance (84) + Metabolic Control (30). 64-point buffer for emergency potions without overdose.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Decoction Suite</strong></td>
+                        <td class="mono">3 Active (50 Tox each)</td>
+                        <td>Troll (+101 HP/s regen), Archgriffin (-5% current boss HP on strong hits), Katakan (+5% crit chance).</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- SECTION 3: FELINE GLASS CANNON ARCHITECTURE -->
+        <h2>3. Archetype B: "Glass Cannon DPS" (Cat School)</h2>
+        <div class="card" style="margin-bottom: 1.5rem;">
+            <div class="card-header">
+                <h3>Core Burst Damage Framework</h3>
+                <span class="badge badge-dps">9,077 Peak Sheet Steel DPS</span>
+            </div>
+            <div class="flow-diagram">
+[ Offensive Flurry Loop ]
+Euphoria (+112.5% to +138% Attack Power on Toxicity) ---> Cat School Techniques (+100% Crit DMG, +20% Fast Attack DMG)
+Severance Whirl Flurry (+1.1 yard reach)              ---> Water Hag Decoction (+50% Flat DMG at 100% Vitality via Quen)
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Metric / Parameter</th>
+                        <th>Calibrated Value</th>
+                        <th>Mechanic & Interaction</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Central Mutation</strong></td>
+                        <td class="mono val-red">Euphoria</td>
+                        <td>Increases sword damage and Sign intensity by 0.75% per point of Toxicity (up to +138%). Active baseline: +112.5% flat bonus.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Armor & School Perks</strong></td>
+                        <td class="mono">Grandmaster Feline</td>
+                        <td>Cat School Techniques: 4 Light pieces grant +100% Critical Hit Damage and +20% Fast Attack Damage.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Vitality Pool</strong></td>
+                        <td class="mono val-red">7,279 – 9,979 HP</td>
+                        <td>Substantially reduced health pool; relies entirely on Quen, Severance spacing, and Fleet-Footed evasion.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Peak Steel DPS</strong></td>
+                        <td class="mono val-gold">9,077 DPS</td>
+                        <td>Achieved with Nilfgaardian Guardsman's Gauntlets (+50% Crit DMG) and Toussaint Knight's Steel Sword (+100% Crit DMG).</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Peak Silver DPS</strong></td>
+                        <td class="mono val-gold">7,351 DPS</td>
+                        <td>Achieved with Assassin's Gauntlets (+10% flat Crit Chance preserving full 4-piece Light Armor multiplier).</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- SECTION 4: GEAR EVALUATIONS -->
+        <h2>4. Equipment Optimization & Comparative Verdicts</h2>
+        <div class="card" style="margin-bottom: 1.5rem;">
+            <div class="card-header">
+                <h3>Steel Sword: Toussaint Knight's vs. Iris (Level 100 Relics)</h3>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Weapon</th>
+                        <th>Steel DPS</th>
+                        <th>Crit Rate</th>
+                        <th>Crit Bonus</th>
+                        <th>Mechanics & Recoil</th>
+                        <th>Verdict</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Toussaint Knight's Steel Sword</strong></td>
+                        <td class="mono val-green">6,581</td>
+                        <td class="mono val-green">25% (+20% innate)</td>
+                        <td class="mono val-green">+100%</td>
+                        <td>+300 Armor Piercing, +30% Quen Intensity, Severance Runeword. Zero recoil penalty.</td>
+                        <td><strong class="val-green">Superior for Feline Glass Cannon</strong>. Fast attacks and Whirl flurries scale with massive critical multipliers.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Iris Steel Sword</strong></td>
+                        <td class="mono val-red">6,449</td>
+                        <td class="mono val-red">5%</td>
+                        <td>0%</td>
+                        <td>Double-hit strong attack. Discharges explosive kinetic strike at the cost of <strong>15% current HP</strong>.</td>
+                        <td><strong class="val-gold">Superior for Bear Tank Titan only</strong>. HP drain (1,100+ HP on a 7k pool) is fatal for a Glass Cannon under Death March.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="card-header" style="margin-top: 1.5rem;">
+                <h3>Gauntlet Evaluation: Feline vs. Assassin's vs. Nilfgaardian</h3>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Option</th>
+                        <th>Class</th>
+                        <th>Steel DPS</th>
+                        <th>Silver DPS</th>
+                        <th>Key Affix</th>
+                        <th>Strategic Application</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Grandmaster Feline</strong></td>
+                        <td>Light</td>
+                        <td class="mono">8,474</td>
+                        <td class="mono">7,253</td>
+                        <td>+17% Attack Power, 4/6 set bonus (40% Fast Buff)</td>
+                        <td>Standard baseline Witcher set.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Assassin's Gauntlets</strong></td>
+                        <td>Light</td>
+                        <td class="mono val-green">8,752</td>
+                        <td class="mono val-green">7,351</td>
+                        <td>+10% Critical Hit Chance, maintains 3/6 set bonus</td>
+                        <td><strong>Best All-Rounder</strong>. Delivers highest Silver DPS (+98 over Feline) against monsters.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Nilfgaardian Guardsman's</strong></td>
+                        <td>Heavy</td>
+                        <td class="mono val-gold">9,077</td>
+                        <td class="mono val-red">6,996</td>
+                        <td>+50% Critical Hit Damage (-1 Light piece penalty)</td>
+                        <td><strong>Peak Steel Specialist</strong>. Maximum human camp / Hanse base Whirl DPS (+325 over Assassin's).</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- SECTION 5: MECHANICS DEEP DIVE -->
+        <h2>5. Next-Gen Game Engine Mechanics Log (v4.0+)</h2>
+        <div class="card">
+            <table>
+                <thead>
+                    <tr>
+                        <th>System / Skill</th>
+                        <th>Tree & Allocation</th>
+                        <th>Engine Mechanics & Scaling Formulas</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Battle Frenzy</strong></td>
+                        <td>General (3/3)</td>
+                        <td>Increases critical hit chance by <strong>+9% per Adrenaline point</strong>. At 3 points, adds a flat <strong>+27.0% Crit Chance</strong> additively on top of standard Adrenaline damage (no longer overrides damage scaling).</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Potent Sting</strong></td>
+                        <td>Alchemy (3/3)</td>
+                        <td>Deals <strong>+15% damage</strong> with poisoned weapons (or <strong>+30% against poison-immune targets</strong>). Requires the weapon to carry an active poison capability (Poisoned Blades oil, Morana Runestones, or innate weapon stat).</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Medium Armor Perks</strong></td>
+                        <td>General (Griffin, Manticore, Viper)</td>
+                        <td><strong>All Medium Armor perks stack simultaneously.</strong> When wearing 4 Medium pieces (or using the <em>Balance</em> enchantment), Manticore grants +24% sword/bomb damage, Viper grants +24% toxicity/poison damage, and Griffin grants +24% Sign intensity.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Crossbow Scaling</strong></td>
+                        <td>Combat (Marksmanship)</td>
+                        <td><em>Lightning Reflexes (1/3)</em> slows aiming time by 30% and multiplies headshots by <strong>+250%</strong> (5% instant-kill). <em>Anatomical Knowledge</em> adds 10% of Silver Sword damage (<strong>+430.2 flat damage</strong> at 4,302 DPS) directly to bolt impact.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Bomb Infrastructure</strong></td>
+                        <td>Alchemy / General</td>
+                        <td><em>Volatile Compound</em> scales damage by +0.3% per Toxicity point (<strong>+64.2% damage</strong> at 214 cap). <em>Cluster Bombs</em> splits grenades into 5–6 sub-munitions. <em>Advanced Pyrotechnics</em> grants 100% self-damage immunity at point-blank range.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Glyphword: Ignition</strong></td>
+                        <td>Runewright (Master)</td>
+                        <td>Contagion mechanics: when an enemy is actively burning, secondary foes within a <strong>2-yard radius</strong> catch fire automatically. C-tier on Glass Cannon due to low sign intensity and narrow radius.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <footer>
+            <p>Generated for Keith Tibbitts | Project Master Build Architecture | TW3R v4.0+ Engine Calibration</p>
+        </footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,9 @@
+Name,Toxicity Cost,Effect,Tank Synergy Role
+Troll Decoction,50,101 HP/s regen,Constant HP recovery
+Archgriffin Decoction,50,% max HP shred on Rend/Strong Attack,Damage vs high HP targets
+Katakan Decoction,50,+crit chance,Crit scaling
+Ekhidna Decoction,50,Heals vitality upon performing actions that consume stamina,HP recovery on stamina use
+Fiend Decoction,50,Increases carrying capacity,Carry weight utility
+Superior Tawny Owl,20,Accelerates Stamina regeneration,Stamina regen for signs/attacks
+Superior Maribor Forest,20,Accelerates Adrenaline Point generation,Adrenaline generation for skills
+Superior White Raffard's Decoction,20,Instantly restores Vitality and grants brief invulnerability,Instant HP recovery and invulnerability

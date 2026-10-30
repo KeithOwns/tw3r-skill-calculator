@@ -7,35 +7,79 @@ export function OptimizationGuide() {
     <div className="container">
         <header>
             <h1>The Witcher 3: Wild Hunt (Next-Gen)</h1>
-            <p className="subtitle">Complete Technical Calibration, Display Setup, Driver Configuration & Endgame Builds Master Record</p>
+            <p className="subtitle">Complete Technical Calibration, Display Setup, Driver Configuration &amp; Endgame Builds Master Record</p>
+            <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '0.6rem', marginTop: '1.25rem' }}>
+                <a href="./TW3R_Master_Project_Summary.html" style={{ textDecoration: 'none' }}>
+                    <span className="badge badge-gold" style={{ cursor: 'pointer', padding: '0.4rem 0.75rem' }}>🏛️ Master Project Summary ↗</span>
+                </a>
+                <a href="./TW3R_Complete_Optimization_Project_Report.html" style={{ textDecoration: 'none' }}>
+                    <span className="badge badge-blue" style={{ cursor: 'pointer', padding: '0.4rem 0.75rem' }}>📊 Complete Optimization Report ↗</span>
+                </a>
+                <a href="./TW3R_Viewing_Experience_Optimizer.html" style={{ textDecoration: 'none' }}>
+                    <span className="badge badge-green" style={{ cursor: 'pointer', padding: '0.4rem 0.75rem' }}>🖥️ 4K HDR Viewing Optimizer &amp; Gallery ↗</span>
+                </a>
+                <a href="./TW3R_Skill_Calculator_Chat_Summary.html" style={{ textDecoration: 'none' }}>
+                    <span className="badge badge-blue" style={{ cursor: 'pointer', padding: '0.4rem 0.75rem' }}>⚙️ Calculator Architecture Log ↗</span>
+                </a>
+                <a href="./quest_tracker.html" style={{ textDecoration: 'none' }}>
+                    <span className="badge badge-gold" style={{ cursor: 'pointer', padding: '0.4rem 0.75rem' }}>📜 Interactive Quest Tracker ↗</span>
+                </a>
+                <a href="./quest_tracker.html#ngplus" style={{ textDecoration: 'none' }}>
+                    <span className="badge badge-green" style={{ cursor: 'pointer', padding: '0.4rem 0.75rem' }}>🏆 Lvl 100 NG+ Save Audit (355) ↗</span>
+                </a>
+            </div>
         </header>
 
         {/*  */}
-        <h2>1. Display & Audio Configuration</h2>
+        <h2>1. Display, Audio &amp; Controller Configuration</h2>
         <div className="grid-2">
             <div className="card">
                 <h3>Hisense 75A65K 4K HDR Calibration</h3>
-                <span className="badge badge-blue">Display Pipeline</span>
+                <span className="badge badge-blue">75&quot; Direct-Lit IPS Pipeline</span>
                 <ul style={{ marginTop: '1rem' }}>
                     <li><strong>TV Picture Mode:</strong> <span className="mono val-blue">HDR Game</span></li>
                     <li><strong>HDMI Format:</strong> <span className="mono">Enhanced (4K @ 60 Hz, 10 bpc)</span></li>
                     <li><strong>Backlight / Dynamic Backlight:</strong> <span className="mono">100 / Off</span></li>
-                    <li><strong>Motion Enhancement & Clearness:</strong> <span className="mono">Off</span></li>
-                    <li><strong>Color Temperature:</strong> <span className="mono">Warm 1 / Warm 2</span></li>
+                    <li><strong>Motion Enhancement &amp; Clearness:</strong> <span className="mono">Off</span></li>
+                    <li><strong>Color Temperature:</strong> <span className="mono">Warm 1 / Warm 2 (D65 6500K)</span></li>
                     <li><strong>In-Game Max Brightness:</strong> <span className="mono val-gold">350</span> (Calibrated to panel limit)</li>
                     <li><strong>In-Game Paper White:</strong> <span className="mono val-gold">130</span> (Prevents washed-out highlights)</li>
                     <li><strong>In-Game Saturation:</strong> <span className="mono val-gold">0.20</span></li>
                 </ul>
             </div>
             <div className="card">
-                <h3>Acoustic & Immersion Architecture</h3>
-                <span className="badge badge-blue">Audio & Controls Pipeline</span>
+                <h3>Samsung 65&quot; S95B QD-OLED &amp; Viewing Geometry</h3>
+                <span className="badge badge-gold">QD-OLED Reference &amp; THX FOV</span>
+                <ul style={{ marginTop: '1rem' }}>
+                    <li><strong>S95B Picture Mode:</strong> <span className="mono val-gold">Game Mode (HGIG Active)</span></li>
+                    <li><strong>S95B Peak Brightness &amp; Tone:</strong> <span className="mono val-green">High (800 Nits)</span> • <span className="mono">Warm 2</span> • Sharpness <span className="mono">0</span></li>
+                    <li><strong>Win 11 HDR Calibration Tool:</strong> Min <span className="mono">0.0000 nits</span> • Max <span className="mono val-gold">350 nits</span> (75A65K) / <span className="mono val-gold">800 nits</span> (S95B) • Saturation <span className="mono">20%</span></li>
+                    <li><strong>Optimal Viewing Distance (THX 36&deg;&ndash;40&deg;):</strong> <span className="mono val-green">7.5&ndash;8.5 ft</span> (75&quot; 4K) / <span className="mono val-green">6.5&ndash;7.5 ft</span> (65&quot; 4K)</li>
+                    <li><strong>Vertical Eye Alignment:</strong> Seated eye level aligned with the <strong>bottom 1/3 of the panel</strong> in a pitch-black bias-lit room.</li>
+                </ul>
+            </div>
+        </div>
+        <div className="grid-2">
+            <div className="card">
+                <h3>Acoustic &amp; Immersion Architecture</h3>
+                <span className="badge badge-blue">Audio &amp; Spatial Radar</span>
                 <ul style={{ marginTop: '1rem' }}>
                     <li><strong>Music Volume:</strong> <span className="mono val-red">0 (Disabled / Muted)</span></li>
                     <li><strong>Dynamic Range Preset:</strong> <span className="mono val-blue">Home Cinema</span></li>
                     <li><strong>Master / SFX / Voiceover Volume:</strong> <span className="mono val-green">100 / 100 / 100</span></li>
                     <li><strong>Adaptive Triggers:</strong> <span className="mono val-gold">On</span> (DualSense wired for tactile signs/crossbow) or <span className="mono val-dim">Off</span> (Ultra-responsive parries)</li>
                     <li><strong>Operational Logic:</strong> Complete zero-HUD spatial acoustic immersion. Silencing the music track reveals subtle environmental audio tells (blade clash resonance, incoming arrow whistles, enemy lunge footfalls, and parry impact timings) read directionally through the soundbar.</li>
+                </ul>
+            </div>
+            <div className="card">
+                <h3>8BitDo Pro 2 Bluetooth Controller Profile</h3>
+                <span className="badge badge-green">Tactical Paddle Mapping</span>
+                <ul style={{ marginTop: '1rem' }}>
+                    <li><strong>Hardware Mode Switch:</strong> <span className="mono val-green">X (X-Input Windows 10/11 Native)</span></li>
+                    <li><strong>Rear Paddle P1 (Right):</strong> <span className="mono val-gold">B (Combat Dodge / Sidestep)</span> — Enables simultaneous right-stick 360&deg; camera tracking while dodging without lifting your thumb.</li>
+                    <li><strong>Rear Paddle P2 (Left):</strong> <span className="mono">A (Roll / Sprint)</span> or <span className="mono">L3 (Call Roach)</span></li>
+                    <li><strong>Camera Y-Axis Inversion:</strong> <span className="mono val-green">Invert Y-Axis: On</span> (Flight-stick pitch geometry)</li>
+                    <li><strong>Win 11 Game Bar (<code>ms-gamingoverlay</code>) Fix:</strong> Run <code className="mono">winget install --id 9NZKPSTSNW4P</code> in PowerShell to restore Xbox Game Bar or disable the Guide button shortcut in <em>Settings &gt; Gaming &gt; Game Bar</em>.</li>
                 </ul>
             </div>
         </div>
@@ -176,37 +220,118 @@ export function OptimizationGuide() {
         </div>
 
         {/*  */}
-        <h2>5. Level 100 Endgame Build Architecture</h2>
+        <h2>5. Level 100 Endgame Build Architecture &amp; Weapon/Armor Matrices</h2>
         <div className="grid-2">
             <div className="card">
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                     <h3>Tank Titan Archetype</h3>
-                    <span className="badge badge-green">Survivability</span>
+                    <span className="badge badge-green">Survivability (80.75% DR)</span>
                 </div>
                 <ul style={{ marginTop: '0.75rem' }}>
-                    <li><strong>Vitality Pool:</strong> <span className="mono val-green">18,017 HP</span> (Base + 4 Greater Greens + Synergy 3/3 + Bear Techniques + Corvo Bianco Bed).</li>
-                    <li><strong>Damage Mitigation:</strong> <span className="mono val-green">-45.0% Flat</span> via Mutated Skin (Locked at 3 Adrenaline points).</li>
-                    <li><strong>Adrenaline Retention:</strong> Resolve (3/3) prevents 100% loss on hit; Attack Is the Best Defense (3/3) generates Adrenaline on dodges.</li>
-                    <li><strong>Dodge Security:</strong> Fleet-Footed (3/3) grants 100% invulnerability frames during evasion.</li>
-                    <li><strong>Active Toxicity:</strong> 150 / 214 cap (Troll, Katakan, Archgriffin decoctions) with 64-point potion buffer.</li>
+                    <li><strong>Vitality Pool:</strong> <span className="mono val-green">18,017 HP</span> (Base + 4 Greater Greens <span className="mono">+3,120 HP</span> with Synergy 3/3 + Bear Techniques +20% + Corvo Bianco Bed +1,000 HP).</li>
+                    <li><strong>Damage Mitigation:</strong> <span className="mono val-green">80.75% Effective vs. Monsters</span> (GM Ursine 45% + Protective Coating 25% + Mutated Skin 45% multiplicative at 3 Adrenaline points).</li>
+                    <li><strong>Adrenaline Retention:</strong> Resolve (3/3) prevents 100% loss on hit; Attack Is the Best Defense (3/3) generates +15% Adrenaline on dodges.</li>
+                    <li><strong>Dodge &amp; Revive Security:</strong> Fleet-Footed (3/3) grants 100% invulnerability frames during dodges; Undying (3/3) auto-revives to 100% HP on fatal hit.</li>
+                    <li><strong>Active Toxicity:</strong> <span className="mono val-gold">150 / 214 Cap</span> (Troll, Katakan, Archgriffin decoctions) leaving a <strong>64-point buffer</strong> for 3 concurrent Superior Potions.</li>
                 </ul>
             </div>
             <div className="card">
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                     <h3>Feline Glass Cannon Archetype</h3>
-                    <span className="badge badge-red">Burst DPS</span>
+                    <span className="badge badge-red">Burst DPS (9,077 Steel)</span>
                 </div>
                 <ul style={{ marginTop: '0.75rem' }}>
-                    <li><strong>Core Mutation:</strong> <span className="mono val-red">Euphoria</span> (+112.5% to +138% Attack Power scaling on Toxicity).</li>
-                    <li><strong>Primary Weapons:</strong> Toussaint Knight's Steel Sword (6,581 DPS, +100% Crit DMG, +20% Crit Chance) with Severance.</li>
+                    <li><strong>Core Mutation:</strong> <span className="mono val-red">Euphoria</span> (+0.75% Sword &amp; Sign DMG per Toxicity point; +112.5% at 150 Toxicity up to +138% max).</li>
+                    <li><strong>Primary Weapons:</strong> Toussaint Knight&apos;s Steel Sword (<span className="mono val-gold">6,581 Base DPS</span>, +100% Crit DMG, +20% Crit Chance, +300 Armor Pen) + Aerondight / Viper Silver with <strong>Severance</strong>.</li>
                     <li><strong>Gauntlet Specialization:</strong>
                         <ul style={{ marginLeft: '1rem', marginTop: '0.25rem' }}>
-                            <li><strong>Assassin's Gauntlets:</strong> Peak Silver DPS (<span className="mono val-gold">7,351</span>) vs. Monsters.</li>
-                            <li><strong>Nilfgaardian Guardsman's:</strong> Peak Steel DPS (<span className="mono val-gold">9,077</span>) vs. Humans.</li>
+                            <li><strong>Assassin&apos;s Gauntlets (+10% Crit Chance):</strong> Peak Silver DPS (<span className="mono val-gold">7,351</span>) vs. Monsters.</li>
+                            <li><strong>Nilfgaardian Guardsman&apos;s (+50% Crit DMG):</strong> Peak Steel DPS (<span className="mono val-gold">9,077</span>) vs. Humans.</li>
                         </ul>
                     </li>
-                    <li><strong>Combat Loop:</strong> Extended Whirl flurry via Severance Runeword with Water Hag Decoction (+50% DMG at full HP).</li>
+                    <li><strong>Combat Loop:</strong> Extended Whirl (+1.1m) &amp; Rend (+1.9m) flurry via Severance Runeword with Water Hag Decoction (+50% DMG at full HP).</li>
                 </ul>
+            </div>
+        </div>
+
+        <div className="grid-2">
+            <div className="card">
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.75rem' }}>
+                    <h3>Steel Sword &amp; Gauntlet Comparative Matrix</h3>
+                    <span className="badge badge-gold">Verified CSV Telemetry</span>
+                </div>
+                <div className="table-responsive">
+                    <table>
+                        <thead>
+                            <tr><th>Item / Variant</th><th>Key Affixes</th><th>Steel DPS</th><th>Silver DPS</th><th>Optimal Use Case</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Toussaint Knight&apos;s Steel Sword (Crafted)</strong></td>
+                                <td className="mono">+300 AP • +100% Crit DMG • +20% Crit • 15% Burn</td>
+                                <td className="mono val-green">6,581 &rarr; 9,077</td>
+                                <td className="mono">7,258</td>
+                                <td><strong>Undisputed #1 Primary Steel</strong> (Whirl &amp; Rend Champion)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Iris (Olgierd&apos;s Relic Saber)</strong></td>
+                                <td className="mono">Red Charge Heavy • Costs 15% HP • 0% Native Crit</td>
+                                <td className="mono val-dim">5,712</td>
+                                <td className="mono">7,258</td>
+                                <td>Niche Strong-Attack Shield Breaker (Breaks Water Hag buff)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Grandmaster Feline Gauntlets</strong></td>
+                                <td className="mono">+11% Attack Power • Light Armor</td>
+                                <td className="mono">8,901</td>
+                                <td className="mono">7,258</td>
+                                <td>Balanced All-Rounder &amp; 3/6 Set Bonus Enabler</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Assassin&apos;s Gauntlets</strong></td>
+                                <td className="mono">+10% Critical Hit Chance • Light Armor</td>
+                                <td className="mono">8,885</td>
+                                <td className="mono val-gold">7,351 (Peak)</td>
+                                <td><strong>Best vs. Boss Monsters</strong> (Maximizes Aerondight Crits)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Nilfgaardian Guardsman&apos;s Gauntlets</strong></td>
+                                <td className="mono">+50% Critical Hit Damage • Heavy (Use Levity)</td>
+                                <td className="mono val-gold">9,077 (Peak)</td>
+                                <td className="mono">7,210</td>
+                                <td><strong>Best vs. Humans/Hanse Bases</strong> (Compounds TKSS 20% Crit)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div className="card">
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.75rem' }}>
+                    <h3>Decoction &amp; Potion Matrix (214 Toxicity Cap)</h3>
+                    <span className="badge badge-green">150 Base + 64 Buffer</span>
+                </div>
+                <div className="table-responsive">
+                    <table>
+                        <thead>
+                            <tr><th>Slot / Type</th><th>Alchemy Item</th><th>Tox Cost</th><th>Combat Effect</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><span className="badge badge-green">Decoction 1</span></td><td><strong>Troll Decoction</strong></td><td className="mono">50</td><td>+20 HP/sec in combat (+100 HP/sec out of combat); offsets toxicity drain.</td></tr>
+                            <tr><td><span className="badge badge-green">Decoction 2</span></td><td><strong>Katakan Decoction</strong></td><td className="mono">50</td><td>+5% Critical Hit Chance across all sword strikes.</td></tr>
+                            <tr><td><span className="badge badge-green">Decoction 3</span></td><td><strong>Archgriffin / Ekhidna / Water Hag</strong></td><td className="mono">50</td><td><strong>Archgriffin:</strong> Strong attacks remove 5% enemy HP | <strong>Water Hag:</strong> +50% DMG at full HP.</td></tr>
+                            <tr><td><span className="badge badge-gold">Potion 1</span></td><td><strong>Superior Thunderbolt</strong></td><td className="mono">25</td><td>+35% Attack Power &amp; <strong>100% Critical Hit Chance</strong> during storms.</td></tr>
+                            <tr><td><span className="badge badge-gold">Potion 2</span></td><td><strong>Superior Swallow / White Raffard&apos;s</strong></td><td className="mono">20&ndash;25</td><td>+80 HP/s regeneration (uninterrupted on damage) or 100% instant heal + 3s immunity.</td></tr>
+                            <tr><td><span className="badge badge-gold">Potion 3</span></td><td><strong>Superior Tawny Owl / Maribor Forest</strong></td><td className="mono">15&ndash;20</td><td>+10% Stamina regen (never expires at night) or +1 Adrenaline point on sip.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', marginTop: '0.85rem' }}>
+                    <a href="./TW3R_Level_100_Tank_Titan_Skil_Tank_Titan_Build_Calculator.csv" download style={{ textDecoration: 'none' }}><span className="badge badge-green" style={{ cursor: 'pointer' }}>⬇ Tank Titan CSV</span></a>
+                    <a href="./TW3R_Level_100_Tank_Titan_Skil_Feline_Glass_Cannon_DPS.csv" download style={{ textDecoration: 'none' }}><span className="badge badge-red" style={{ cursor: 'pointer' }}>⬇ Feline Glass Cannon CSV</span></a>
+                    <a href="./TW3R_Level_100_Tank_Titan_Skil_Decoction_Potion_Matrix.csv" download style={{ textDecoration: 'none' }}><span className="badge badge-gold" style={{ cursor: 'pointer' }}>⬇ Decoction Matrix CSV</span></a>
+                    <a href="./TW3R_Level_100_Tank_Titan_Skil_General_Alchemy_Overhaul_v5_0.csv" download style={{ textDecoration: 'none' }}><span className="badge badge-blue" style={{ cursor: 'pointer' }}>⬇ v5.01 Mechanics Overhaul CSV</span></a>
+                </div>
             </div>
         </div>
 
@@ -700,6 +825,120 @@ export function OptimizationGuide() {
                         <li><span className="step-num">2</span> <strong>Kaer Morhen Igni Place of Power (+1 Ability Point):</strong> Fast-travel to <em>Iron Mine</em>, cross north of the lake above the Trial of the Grasses cavern, and draw from the undiscovered Igni Place of Power.</li>
                         <li><span className="step-num">3</span> <strong>Kaer Morhen Hidden Quests (<em>The Witchers&apos; Forge</em> &amp; <em>Greenhouse Effect</em>):</strong> Read <em>Monstrum, or a Portrayal of Witchers, Vol. 2</em> in Yennefer&apos;s bedroom tower to unlock the mine-shaft illusion (<em>The Witchers&apos; Forge</em>), and use the Eye of Nehaleni at the stone arch south of the keep (<em>Greenhouse Effect</em>).</li>
                         <li><span className="step-num">4</span> <strong>Auto-Complete 3 Scavenger Hunt Log Entries:</strong> Since all 385 diagrams are already in your Crafting menu, buying &amp; reading <em>Ibrahim Savi&apos;s First &amp; Third Maps</em> (Kaer Trolde Armorer) and <em>Hieronymus&apos; Notes</em> (Lindenvale Blacksmith) will log <em>Bear Upgrade Pt 1 &amp; 3</em> and <em>Wolf Upgrade Pt 3</em> into your Completed Quests tab (355 &rarr; 358+).</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        {/* Section 15: Next-Gen Engine Mechanics Overhaul (v4.0+ / v5.01) & Death March Difficulty Scaling */}
+        <h2>15. Next-Gen Engine Mechanics Overhaul (v4.0+ / v5.01) &amp; Death March Difficulty Scaling</h2>
+        <div className="grid-2">
+            <div className="card">
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.75rem' }}>
+                    <h3>Next-Gen v4.0+ / v5.01 Skill &amp; Gear Overhaul</h3>
+                    <span className="badge badge-gold">3-Rank Condensed System</span>
+                </div>
+                <div className="table-responsive">
+                    <table>
+                        <thead>
+                            <tr><th>Skill / Mechanic</th><th>Tree</th><th>Next-Gen v4.0+ / v5.01 Verified Effect</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Battle Frenzy (3/3)</strong></td>
+                                <td><span className="badge badge-gold">General</span></td>
+                                <td>Replaces legacy <em>Focus</em>: 3 Adrenaline points grant <strong>+27% Critical Hit Chance</strong> (+9% per point) instead of flat damage.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Attack Is the Best Defense (3/3)</strong></td>
+                                <td><span className="badge badge-gold">General</span></td>
+                                <td>Dodging an incoming strike generates <strong>+15% of an Adrenaline Point</strong>, passively sustaining <em>Mutated Skin</em> (-45% DR) and <em>Battle Frenzy</em>.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Potent Sting (3/3)</strong></td>
+                                <td><span className="badge badge-green">Alchemy</span></td>
+                                <td>Grants <strong>+15% Fast / +30% Strong Attack DMG</strong> strictly when matching <strong>Monster/Humanoid Oil</strong> is applied to the blade (not triggered by Morana runestones alone).</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Medium Armor Perk Stacking</strong></td>
+                                <td><span className="badge badge-gold">General</span></td>
+                                <td><em>Griffin</em> (+20% Stamina/Sign), <em>Manticore</em> (+20 Tox/+40% Crit DMG), and <em>Viper</em> (+40% Elem Res) can be slotted simultaneously on 4pc Medium Armor.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Anatomical Knowledge &amp; Crippling Shot</strong></td>
+                                <td><span className="badge badge-red">Combat</span></td>
+                                <td><em>Anatomical Knowledge (3/3)</em> adds <strong>+15% Crossbow Crit &amp; +10% Silver Sword DPS</strong>; <em>Crippling Shot</em> inflicts <strong>-25% enemy Attack Power</strong> for 15s.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Volatile Compound &amp; Adv. Pyrotechnics</strong></td>
+                                <td><span className="badge badge-green">Alch / Gen</span></td>
+                                <td><em>Volatile Compound (3/3)</em> boosts bomb damage by <strong>+64.2%</strong>; <em>Advanced Pyrotechnics (3/3)</em> grants <strong>100% self-damage immunity</strong> to your own bombs.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Glyphword: Ignition</strong></td>
+                                <td><span className="badge badge-blue">Runewright</span></td>
+                                <td>Enemies ignited by <em>Igni</em> have a <strong>25% chance to ignite other foes within 4 yards</strong>, creating chain-reaction crowd control.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div className="card">
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.75rem' }}>
+                    <h3>Death March! Difficulty Multipliers (<code>diff_abilities.xml</code>)</h3>
+                    <span className="badge badge-red">Engine Telemetry</span>
+                </div>
+                <div className="table-responsive">
+                    <table>
+                        <thead>
+                            <tr><th>Difficulty Setting</th><th>Enemy DMG</th><th>Enemy HP</th><th>Meditation Heal</th><th>XP Multiplier</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>1. Just the Story!</strong> (Easy)</td>
+                                <td className="mono val-green">1.00x (Base)</td>
+                                <td className="mono val-green">1.00x (Base)</td>
+                                <td className="mono val-green">100% Full Heal</td>
+                                <td className="mono">1.00x (100%)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>2. Story and Sword!</strong> (Normal)</td>
+                                <td className="mono val-blue">1.40x (+40%)</td>
+                                <td className="mono val-blue">1.10x (+10%)</td>
+                                <td className="mono val-green">100% Full Heal</td>
+                                <td className="mono">1.00x (100%)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>3. Blood and Broken Bones!</strong> (Hard)</td>
+                                <td className="mono val-gold">2.00x (+100%)</td>
+                                <td className="mono val-gold">1.20x (+20%)</td>
+                                <td className="mono val-red">Disabled</td>
+                                <td className="mono">0.90x (90%)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>4. Death March!</strong> (Next-Gen v4.0+/v5.01)</td>
+                                <td className="mono val-red">2.40x (+140%)</td>
+                                <td className="mono val-red">1.80x (+80%)</td>
+                                <td className="mono val-red">Disabled</td>
+                                <td className="mono val-gold">0.80x (80%)</td>
+                            </tr>
+                            <tr>
+                                <td><em>Legacy v1.32 Death March Reference</em></td>
+                                <td className="mono val-dim">3.30x (+230%)</td>
+                                <td className="mono val-dim">2.10x (+110%)</td>
+                                <td className="mono val-dim">Disabled</td>
+                                <td className="mono val-dim">0.80x (80%)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div className="callout callout-warn" style={{ marginTop: '0.85rem' }}>
+                    <strong>Non-Combat Mechanics &amp; Enemy Upscaling Traps on Death March:</strong>
+                    <ul style={{ marginTop: '0.4rem', marginBottom: 0 }}>
+                        <li><strong>Anti-Grind XP Compensation (<code>r4Game.ws</code>):</strong> Although Death March applies a <code>0.80x</code> XP modifier, the game&apos;s rubber-band over-level penalty (which drops quests &gt;5 levels below you to 1&ndash;5 XP) keeps a completionist playthrough at the exact same final level (<strong>Level 35&ndash;36 Base / Level 53&ndash;55 Blood and Wine / Level 100 NG+</strong>).</li>
+                        <li><strong>CC &amp; Sign Resistance (<code>resist_stats_mult</code>):</strong> Enemies gain higher threshold resistance to <em>Aard</em> knockdown, <em>Igni</em> burn, and <em>Axii</em> stun, making <em>Delusion (3/3)</em> and <em>Superior Petri&apos;s Philter</em> critical early on.</li>
+                        <li><strong>Enemy Upscaling Anomalies (Toggle Off for 2 Fights):</strong> Disable <em>Options &gt; Gameplay &gt; Enemy Upscaling</em> during the <strong>Sewer Rat swarms</strong> in <em>Now or Never</em> / <em>A Towerful of Mice</em> and <strong>The Djinn</strong> in <em>The Last Wish</em>—upscaling bugs their damage formulas on Death March without affecting the <em>Walked the Path</em> achievement!</li>
                     </ul>
                 </div>
             </div>

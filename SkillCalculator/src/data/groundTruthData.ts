@@ -3572,6 +3572,77 @@ export const PRESETS_DATA: Record<string, BuildPreset> = {
       "razor_focus", "undying", "deadly_precision",
       "three_strikes", "crushing_blows", "resolve", "flood_of_anger"
     ]
+  },
+
+  bear_tank_titan_csv: {
+    name: "Bear School Tank Titan (18,017 HP / 80.75% DR)",
+    subtitle: "18,017 HP | 80.75% Monster Mitigation | 4 Greater Greens + Mutated Skin",
+    mutation: "mutated_skin",
+    mutagenSockets: ["green", "green", "green", "green"],
+    combatAllocations: {
+      muscle_memory: 3,
+      strength_training: 3,
+      crushing_blows: 3,
+      rend: 3,
+      fleet_footed: 3,
+      resolve: 3,
+      undying: 3,
+      razor_focus: 3
+    },
+    alchemyAllocations: {
+      acquired_tolerance: 3,
+      high_tolerance: 3,
+      protective_coating: 3,
+      tissue_transmutation: 3,
+      endure_pain: 3,
+      refreshment: 3,
+      synergy: 3
+    },
+    generalAllocations: {
+      bear_school_techniques: 3,
+      attack_is_the_best_defense: 3,
+      battle_frenzy: 3,
+      metabolic_control: 3
+    },
+    slottedSkills: [
+      "protective_coating", "acquired_tolerance", "synergy",               // Quad 1 (Top Left) -> +780 Vitality
+      "tissue_transmutation", "endure_pain", "refreshment",                // Quad 2 (Top Right) -> +780 Vitality
+      "bear_school_techniques", "attack_is_the_best_defense", "battle_frenzy", // Quad 3 (Bottom Left) -> +195 Vitality
+      "resolve", "undying", "fleet_footed",                                // Quad 4 (Bottom Right) -> +195 Vitality
+      "muscle_memory", "strength_training", "crushing_blows", "rend"       // Mutation Bonus Slots (Combat/Alchemy)
+    ]
+  },
+
+  death_march_starter: {
+    name: "Level 8–15 Death March Starter",
+    subtitle: "Early-Game Velen/Novigrad Survival & Fast Attack Progression",
+    mutation: "euphoria",
+    mutagenSockets: ["red", "red", "blue", "green"],
+    combatAllocations: {
+      muscle_memory: 3,
+      strength_training: 3,
+      fleet_footed: 3,
+      resolve: 3
+    },
+    signsAllocations: {
+      delusion: 3,
+      exploding_shield: 3
+    },
+    alchemyAllocations: {
+      acquired_tolerance: 3,
+      refreshment: 3
+    },
+    generalAllocations: {
+      gourmand: 3,
+      cat_school_techniques: 3
+    },
+    slottedSkills: [
+      "muscle_memory", "strength_training", "fleet_footed",
+      "resolve", "cat_school_techniques", "gourmand",
+      "delusion", "exploding_shield", "acquired_tolerance",
+      "refreshment", "", "",
+      "", "", "", ""
+    ]
   }
 };
 

@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TW3R Master Project Folder Summary — The Witcher 3: Remastered</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-deep: #07090e;
+      --bg-surface: #0d121d;
+      --bg-card: rgba(16, 22, 36, 0.85);
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --border-gold: rgba(229, 184, 57, 0.4);
+      --gold: #e5b839;
+      --gold-light: #fbe285;
+      --red: #ef4444;
+      --green: #10b981;
+      --blue: #38bdf8;
+      --purple: #a855f7;
+      --text-main: #f1f5f9;
+      --text-muted: #94a3b8;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: var(--bg-deep);
+      background-image:
+        radial-gradient(circle at 15% 10%, rgba(229, 184, 57, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 85% 25%, rgba(56, 189, 248, 0.06) 0%, transparent 45%);
+      color: var(--text-main);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.6;
+      padding: 2rem 1.25rem 4rem;
+    }
+
+    .container { max-width: 1280px; margin: 0 auto; }
+
+    header {
+      background: linear-gradient(180deg, rgba(22, 31, 52, 0.9) 0%, rgba(12, 16, 26, 0.95) 100%);
+      border: 1px solid var(--border-gold);
+      border-radius: 14px;
+      padding: 2.25rem 2rem;
+      margin-bottom: 2rem;
+      text-align: center;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.6);
+    }
+
+    .badge {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid var(--border-gold);
+      background: rgba(229, 184, 57, 0.12);
+      color: var(--gold-light);
+      margin-bottom: 0.75rem;
+    }
+
+    h1 {
+      font-family: 'Cinzel', serif;
+      font-size: 2.25rem;
+      color: var(--gold-light);
+      margin-bottom: 0.5rem;
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      max-width: 800px;
+      margin: 0 auto 1.25rem;
+      font-size: 1rem;
+    }
+
+    .quick-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.75rem;
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .quick-links a {
+      color: var(--blue);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      background: rgba(56, 189, 248, 0.1);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      padding: 0.35rem 0.8rem;
+      border-radius: 6px;
+      transition: all 0.2s;
+    }
+
+    .quick-links a:hover {
+      background: rgba(56, 189, 248, 0.2);
+      color: #fff;
+    }
+
+    h2.section-title {
+      font-family: 'Cinzel', serif;
+      font-size: 1.45rem;
+      color: var(--gold);
+      margin: 2.25rem 0 1rem;
+      padding-bottom: 0.45rem;
+      border-bottom: 1px solid var(--border-gold);
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(520px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 1.4rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.35);
+    }
+
+    .card h3 {
+      font-size: 1.1rem;
+      color: #fff;
+      margin-bottom: 0.75rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--border-subtle);
+      padding-bottom: 0.5rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+      margin-top: 0.5rem;
+    }
+
+    th, td {
+      padding: 0.6rem 0.75rem;
+      text-align: left;
+      border-bottom: 1px solid var(--border-subtle);
+      vertical-align: top;
+    }
+
+    th {
+      color: var(--text-muted);
+      font-weight: 600;
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    ul { list-style: none; }
+    ul li {
+      position: relative;
+      padding-left: 1.15rem;
+      margin-bottom: 0.45rem;
+      font-size: 0.9rem;
+      color: #cbd5e1;
+    }
+    ul li::before {
+      content: "▸";
+      position: absolute;
+      left: 0;
+      color: var(--gold);
+    }
+
+    code, .mono {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.82rem;
+    }
+
+    code {
+      background: rgba(0, 0, 0, 0.45);
+      border: 1px solid var(--border-subtle);
+      padding: 0.12rem 0.4rem;
+      border-radius: 4px;
+      color: var(--blue);
+    }
+
+    .val-green { color: var(--green); font-weight: 600; }
+    .val-red { color: var(--red); font-weight: 600; }
+    .val-gold { color: var(--gold-light); font-weight: 600; }
+    .val-blue { color: var(--blue); font-weight: 600; }
+    .val-purple { color: var(--purple); font-weight: 600; }
+
+    .pill {
+      font-size: 0.7rem;
+      padding: 0.15rem 0.5rem;
+      border-radius: 4px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+    .pill-green { background: rgba(16, 185, 129, 0.18); color: #34d399; border: 1px solid #10b981; }
+    .pill-red { background: rgba(239, 68, 68, 0.18); color: #f87171; border: 1px solid #ef4444; }
+    .pill-blue { background: rgba(56, 189, 248, 0.18); color: #38bdf8; border: 1px solid #0284c7; }
+    .pill-gold { background: rgba(229, 184, 57, 0.18); color: #fbe285; border: 1px solid #d97706; }
+
+    footer {
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border-subtle);
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.82rem;
+    }
+
+    @media (max-width: 640px) {
+      .grid-2, .grid-3 { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <span class="badge">Master Directory &amp; Content Digest</span>
+      <h1>The Witcher 3: Remastered (TW3R) — Complete Project Summary</h1>
+      <p class="subtitle">
+        Consolidated summary of all guides, interactive web apps, Level 100 character build calculators, CSV data sheets, social media scripts, and 4K visual assets in <code>C:\projects\YouTube\Projects\TW3R</code>.
+      </p>
+      <div class="quick-links">
+        <a href="./index.html">Launch Skill Calculator &amp; Optimization SPA</a>
+        <a href="./quest_tracker.html">Interactive Quest Tracker</a>
+        <a href="./quest_tracker.html#ngplus">Level 100 NG+ Save Audit (355)</a>
+        <a href="./TW3R_Viewing_Experience_Optimizer.html">4K HDR Viewing Optimizer</a>
+        <a href="./TW3R_Complete_Optimization_Project_Report.html">Level 100 Build Report</a>
+        <a href="./TW3R_Skill_Calculator_Chat_Summary.html">Skill Calculator Architecture Log</a>
+        <a href="./Social_Media_Posts/01_Optimizing_Your_Viewing_Experience.md">Part 1 Social Media Post</a>
+      </div>
+    </header>
+
+    <!-- 1. DIRECTORY & FILE INVENTORY -->
+    <h2 class="section-title">1. Complete Project Folder Inventory</h2>
+    <div class="card">
+      <table>
+        <thead>
+          <tr>
+            <th>File / Folder</th>
+            <th>Type</th>
+            <th>Summary of Contents</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code><a href="./README.md" style="color:var(--gold-light)">README.md</a></code></td>
+            <td><span class="pill pill-gold">Markdown Hub</span></td>
+            <td>Master Production Hub &amp; Resumption Guide: Hardware benchmark table, project tree, web app overview, 4-part content roadmap, and CLI quick-reference commands.</td>
+          </tr>
+          <tr>
+            <td><code><a href="./index.html" style="color:var(--blue)">index.html</a></code> &amp; <code><a href="./TW3R_Viewing_Experience_Optimizer.html" style="color:var(--blue)">TW3R_Viewing_Experience_Optimizer.html</a></code></td>
+            <td><span class="pill pill-blue">Interactive App</span></td>
+            <td>Master Experience &amp; Hardware Calibration Hub: Dual-display stepper (Hisense 75" vs Samsung 65" S95B QD-OLED), HDR tone-mapping simulator, 8BitDo Pro 2 paddle layout, Zero-HUD acoustic radar, FOV calculator, and 4K screenshot lightbox.</td>
+          </tr>
+          <tr>
+            <td><code><a href="./TW3R_Complete_Optimization_Project_Report.html" style="color:var(--blue)">TW3R_Complete_Optimization_Project_Report.html</a></code></td>
+            <td><span class="pill pill-green">HTML Report</span></td>
+            <td>Level 100 Character Optimization Master Document: Deep-dive mathematical comparison of Bear School "Tank Titan" (18,017 HP) vs. Cat School "Glass Cannon DPS" (9,077 Steel DPS), sword/gauntlet evaluations, and Patch 4.0+ skill mechanics.</td>
+          </tr>
+          <tr>
+            <td><code><a href="./TW3R_Skill_Calculator_Chat_Summary.html" style="color:var(--blue)">TW3R_Skill_Calculator_Chat_Summary.html</a></code></td>
+            <td><span class="pill pill-blue">HTML Summary</span></td>
+            <td>Next-Gen Skill Calculator technical overview, architecture log, Patch 4.0+ 3-rank normalization math, Mutagen Synergy rules, and local/Vercel deployment instructions.</td>
+          </tr>
+          <tr>
+            <td><code>SkillCalculator/</code> (and <code>C:\projects\witcher3-skill-calculator</code>)</td>
+            <td><span class="pill pill-gold">React 19 + TS App</span></td>
+            <td>Interactive Next-Gen (Patch 4.0+) Character Build &amp; Mutation Calculator built with Vite, React 19, TypeScript, and Tailwind CSS v4. Includes 75 normalized skills, 16-slot loadout, 4 mutagen sockets, 12 Blood &amp; Wine mutations, URL build sharing, and <code>AGY_IDE_INSTRUCTIONS.md</code>.</td>
+          </tr>
+          <tr>
+            <td><code><a href="./Social_Media_Posts/01_Optimizing_Your_Viewing_Experience.md" style="color:var(--gold-light)">Social_Media_Posts/01_Optimizing_Your_Viewing_Experience.md</a></code></td>
+            <td><span class="pill pill-gold">Content Script</span></td>
+            <td>Completed Part 1 Deliverable: Quick-reference calibration cheat sheet, 5-part X/Twitter thread, comprehensive Reddit guide (<code>r/witcher</code>, <code>r/4kTV</code>), and YouTube Community post copy.</td>
+          </tr>
+          <tr>
+            <td><code>TW3R_Level_100_*.csv</code> (4 CSV Data Files)</td>
+            <td><span class="pill pill-green">CSV Spreadsheets</span></td>
+            <td>
+              1. <code>Tank_Titan_Build_Calculator.csv</code> (Core stats, 80.75% effective monster damage reduction, 10-slot skill mapping)<br>
+              2. <code>Feline_Glass_Cannon_DPS.csv</code> (Sword &amp; gauntlet DPS comparisons, Euphoria + Cat School multipliers)<br>
+              3. <code>Decoction_Potion_Matrix.csv</code> (Troll, Archgriffin, Katakan, Ekhidna, Fiend + Superior potions)<br>
+              4. <code>General_Alchemy_Overhaul_v5_0.csv</code> (30+ skills analyzed across General, Alchemy, and Marksmanship)
+            </td>
+          </tr>
+          <tr>
+            <td><code>screenshots/</code> (18 Native 4K Captures)</td>
+            <td><span class="pill pill-blue">4K Media</span></td>
+            <td>18 native 3840&times;2160 captures organized into 3 themed subdirectories (<code>01_Corvo_Bianco_Interiors_and_Portraits</code>, <code>02_Toussaint_Vistas_and_Weather</code>, <code>03_Beauclair_Rooftops_and_Atmosphere</code>) plus raw captures.</td>
+          </tr>
+          <tr>
+            <td><code><a href="./quest_tracker.html" style="color:var(--gold-light)">quest_tracker.html</a></code> &amp; <code><a href="./quest_tracker.html#ngplus" style="color:var(--green)">#ngplus</a></code></td>
+            <td><span class="pill pill-gold">Interactive App</span></td>
+            <td>Interactive Quest Tracker, Cutoff Risk Guide &amp; Level 100 NG+ Master Save Audit (355 Completed Quests, 0 Failed, 385 Crafting Diagrams, 124 Bestiary Entries, 651 Books, and 6-Region World Map POI Checklist).</td>
+          </tr>
+          <tr>
+            <td><code>TW3R_Personal_Guide/</code> (5 Ground-Truth Catalogs)</td>
+            <td><span class="pill pill-green">Markdown Catalogs</span></td>
+            <td><code>QUEST_TRACKER_GUIDE.md</code>, <code>NG_PLUS_COMPLETED_AUDIT.md</code> (355 quests), <code>NG_PLUS_BOOKS_CATALOG.md</code> (651 books), <code>NG_PLUS_CRAFTING_BESTIARY_ALCHEMY_CATALOG.md</code> (385 diagrams, 124 bestiary, 53 alchemy), and <code>NG_PLUS_INVENTORY_AND_WORLD_MAP_AUDIT.md</code>.</td>
+          </tr>
+          <tr>
+            <td><code>Snips/</code> &amp; <code>Calibrating_Audio_Visual/Windows11/</code></td>
+            <td><span class="pill pill-blue">Reference Media</span></td>
+            <td>15 hardware/software verification snips (8BitDo Ultimate Software P1&rarr;B &amp; Invert Y, Windows 11 4K 60Hz, NVIDIA Driver 617.14, Game Bar fix), 55 in-game skill UI captures in <code>Snips/NewSkillCalculator/</code>, and 18 Windows 11 HDR Calibration Tool captures.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- 2. HARDWARE, DISPLAY, CONTROLLER & ZERO-HUD AUDIO -->
+    <h2 class="section-title">2. Hardware Calibration, Controller Ergonomics &amp; Zero-HUD Audio</h2>
+    <div class="grid-2">
+      <div class="card">
+        <h3><span>4K HDR Display &amp; Tone-Mapping Pipeline</span> <span class="pill pill-blue">Visuals</span></h3>
+        <ul>
+          <li><strong>GPU &amp; Driver:</strong> NVIDIA GeForce RTX 3080 (10 GB) &bull; Driver <code>617.14</code> &bull; DLSS 4.5 &bull; DX12</li>
+          <li><strong>Primary Panel (Hisense 75" 75A65K):</strong> Picture Mode: <span class="val-blue">HDR Game</span> | HDMI: <span class="val-gold">Enhanced (4K@60Hz 10bpc)</span> | Backlight: <code>100</code> | Sharpness: <code>0</code> | Color Temp: <code>Warm 1/2</code> | Dynamic Backlight &amp; Motion Smoothing: <span class="val-red">OFF</span></li>
+          <li><strong>Reference Panel (Samsung 65" S95B QD-OLED):</strong> Game Mode (<span class="val-blue">HGIG</span>) | Sharpness: <code>0</code> | Color Tone: <code>Warm 2</code> | Peak Brightness: <code>High</code></li>
+          <li><strong>Viewing Geometry:</strong> <code>7.5–8.5 ft</code> (75") / <code>6.5–7.5 ft</code> (65") for THX/SMPTE 36°–40° FOV</li>
+          <li><strong>In-Game Next-Gen HDR Calibration:</strong>
+            <ul>
+              <li><strong>Paper White:</strong> <span class="val-gold">130</span> (prevents UI/subtitle glare in dark rooms)</li>
+              <li><strong>Max Brightness:</strong> <span class="val-gold">350 nits</span> (Hisense) / <span class="val-gold">800 nits</span> (Samsung OLED) — prevents specular highlight clipping on sun glints, armor reflections, and candle flames</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3><span>Zero-HUD Acoustic Radar &amp; 8BitDo Input Flow</span> <span class="pill pill-gold">Immersion</span></h3>
+        <ul>
+          <li><strong>Zero-HUD Audio Pipeline:</strong>
+            <ul>
+              <li><strong>Soundbar Placement:</strong> Ear-level centered directly beneath the 4K panel</li>
+              <li><strong>Audio Dynamic Range:</strong> <span class="val-blue">Home Cinema</span> (maximizes spatial separation)</li>
+              <li><strong>Dynamic Combat Music:</strong> <span class="val-red">0 (Disabled)</span> — turns directional audio into an acoustic radar to track enemy lunges, parry windows, footsteps, and arrows purely by ear</li>
+            </ul>
+          </li>
+          <li><strong>8BitDo Pro 2 Bluetooth Controller Setup:</strong>
+            <ul>
+              <li><strong>Mode:</strong> XInput (Mode X) synced to Onboard Profile 2</li>
+              <li><strong>Rear Paddle Remap:</strong> <span class="val-green">P1 Rear Paddle &rarr; B (Dodge)</span> for instant thumb-on-camera dodging</li>
+              <li><strong>Right Stick:</strong> <span class="val-gold">Invert Y-Axis</span> enabled in 8BitDo Ultimate Software</li>
+              <li><strong>Windows 11 Game Bar Fix:</strong> <code>winget install --id 9NZKPSTSNW4P</code></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 3. LEVEL 100 CHARACTER BUILD ARCHITECTURES -->
+    <h2 class="section-title">3. Level 100 Character Build Architectures (CSV &amp; Report Synthesis)</h2>
+    <div class="grid-2">
+      <div class="card">
+        <h3><span>Archetype A: "Tank Titan" (Bear School)</span> <span class="pill pill-green">18,017 Max HP</span></h3>
+        <table>
+          <tbody>
+            <tr>
+              <th>Vitality Pool</th>
+              <td><span class="val-green">18,017 HP</span> (or 15,948 HP pre-multiplier baseline: 11,123 Base + 3,581 Mutagen Synergy + 1,000 Corvo Bianco Bed + 24% Bear School Techniques)</td>
+            </tr>
+            <tr>
+              <th>Central Mutation</th>
+              <td><span class="val-purple">Mutated Skin</span> — 15% damage reduction per Adrenaline point (<span class="val-green">-45% flat mitigation</span> at 3 Adrenaline points)</td>
+            </tr>
+            <tr>
+              <th>Effective Monster Mitigation</th>
+              <td><span class="val-green">80.75% Total Reduction</span> (65% Base Monster Resistance + 15% Protective Coating + 45% Mutated Skin + 100% Adrenaline retention via <em>Resolve 3/3</em>)</td>
+            </tr>
+            <tr>
+              <th>Evasion &amp; Adrenaline Loop</th>
+              <td><em>Attack Is the Best Defense (3/3)</em> generates Adrenaline on parries/dodges; <em>Fleet-Footed (3/3)</em> grants 100% dodge invulnerability; <em>Undying (3/3)</em> revives on hit</td>
+            </tr>
+            <tr>
+              <th>Toxicity &amp; Decoctions</th>
+              <td><strong>150 / 214 Toxicity (70% SAFE)</strong> — 64-point buffer for potions. Active: <strong>Troll</strong> (101 HP/s regen), <strong>Archgriffin</strong> (5% HP shred), <strong>Katakan</strong> (+5% crit)</td>
+            </tr>
+            <tr>
+              <th>Sword Output</th>
+              <td><strong>4,358 Steel DPS</strong> / <strong>4,302 Silver DPS</strong> (<em>Iris</em> viable here due to massive HP pool &amp; Troll regen absorbing 15% HP recoil)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="card">
+        <h3><span>Archetype B: "Glass Cannon DPS" (Cat School)</span> <span class="pill pill-red">9,077 Steel DPS</span></h3>
+        <table>
+          <tbody>
+            <tr>
+              <th>Vitality Pool</th>
+              <td><span class="val-red">6,500 – 9,979 HP</span> (Relies on Quen, <em>Severance</em> range spacing, and <em>Fleet-Footed</em> evasion)</td>
+            </tr>
+            <tr>
+              <th>Central Mutation</th>
+              <td><span class="val-red">Euphoria</span> — +0.75% Sword Damage &amp; Sign Intensity per Toxicity point (<span class="val-gold">+112.5% at 150 Tox</span>, up to +138%)</td>
+            </tr>
+            <tr>
+              <th>Mutagen &amp; School Scaling</th>
+              <td>4 Greater Red Mutagens with 12 Red Combat skills (<span class="val-red">+160% to +210% Attack Power</span>) + <em>Cat School Techniques</em> (+100% Crit Damage, +20% Fast Attack Damage)</td>
+            </tr>
+            <tr>
+              <th>Peak DPS Benchmarks</th>
+              <td>
+                &bull; <strong>Nilfgaardian Guardsman's Gauntlets (Heavy, +50% Crit DMG):</strong> <span class="val-gold">9,077 Steel DPS</span> / 6,996 Silver DPS<br>
+                &bull; <strong>Assassin's Gauntlets (Light, +10% Crit Chance):</strong> <span class="val-green">8,752 Steel DPS / 7,351 Silver DPS</span> (Best All-Rounder)<br>
+                &bull; <strong>Grandmaster Feline Gauntlets (Light, +17% AP):</strong> 8,474 Steel DPS / 7,253 Silver DPS
+              </td>
+            </tr>
+            <tr>
+              <th>Optimal Steel Weapon</th>
+              <td><strong>Toussaint Knight's Steel Sword</strong> (6,581 sheet DPS, 25% Crit Chance, +100% Crit DMG, +300 Armor Piercing, +30% Quen, <em>Severance</em> Runeword) beats <em>Iris</em> (6,449 DPS, 5% Crit, fatal 15% HP recoil)</td>
+            </tr>
+            <tr>
+              <th>Active Decoctions (150 Tox)</th>
+              <td><strong>Water Hag</strong> (+50% damage at full HP), <strong>Katakan</strong> (+5% Crit Chance), <strong>Arachas / Ekhidna</strong></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- 4. NEXT-GEN ENGINE MECHANICS & SKILL CALCULATOR APP -->
+    <h2 class="section-title">4. Patch 4.0+ Engine Mechanics &amp; Skill Calculator Web App</h2>
+    <div class="grid-3">
+      <div class="card">
+        <h3><span>Key v4.0+ Skill Mechanics</span> <span class="pill pill-gold">Engine Math</span></h3>
+        <ul>
+          <li><strong>3-Rank Normalization:</strong> Combat, Signs, and Alchemy skills max out at <strong>3 ranks</strong> (down from 5), with tier gates at <code>0 / 6 / 12 / 18</code> points.</li>
+          <li><strong>Battle Frenzy (3/3):</strong> Grants <strong>+9% Crit Chance per Adrenaline point</strong> (+27% flat Crit Chance at 3 points) stacking additively with Adrenaline damage.</li>
+          <li><strong>Potent Sting (3/3):</strong> +15% damage with poisoned weapons, or <strong>+30% damage against poison-immune foes</strong> (requires active poison source).</li>
+          <li><strong>Medium Armor Perk Stacking:</strong> Equipping 4 Medium pieces (or <em>Balance</em> enchantment) simultaneously activates full 4-piece bonuses for <strong>Griffin, Manticore, and Viper School Techniques</strong>.</li>
+          <li><strong>Crossbow &amp; Bombs:</strong> <em>Anatomical Knowledge</em> adds 10% of Silver Sword DPS (+430.2 flat dmg); <em>Volatile Compound</em> adds +0.3% bomb dmg per Toxicity (+64.2% at 214 Tox); <em>Advanced Pyrotechnics</em> grants 100% self-bomb immunity.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3><span>Skill Calculator Web App</span> <span class="pill pill-blue">React 19 + Vite</span></h3>
+        <ul>
+          <li><strong>Locations:</strong> <code>Projects/TW3R/SkillCalculator</code> &amp; <code>C:\projects\witcher3-skill-calculator</code></li>
+          <li><strong>Database:</strong> All 75 Next-Gen skills across Combat (20), Signs (20), Alchemy (20), and General (15) + 12 Blood &amp; Wine Mutations.</li>
+          <li><strong>Loadout &amp; Synergy Engine:</strong> 12 outer skill slots + up to 4 center mutation slots, 4 Mutagen sockets with color-matching multiplier (up to 4x) and <em>Synergy</em> perk boost (+15%/+30%/+50%).</li>
+          <li><strong>Sharing &amp; Dev Server:</strong> Base64 URL hash build serialization; runs locally via <code>npm run dev</code> at <code>http://localhost:5173/</code>.</li>
+          <li><strong>Next Roadmap Features:</strong> Connect 55 authentic skill icons from <code>Snips/NewSkillCalculator/</code>, add 1-click Build Presets (Glass Cannon, Frost Archmage, Tank Titan), and Web Audio API sound effects.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3><span>Content Production Queue</span> <span class="pill pill-green">YouTube Series</span></h3>
+        <ul>
+          <li><span class="val-green">&#10004; Part 1 (Completed):</span> <strong>Viewing Experience &amp; Immersion Optimization</strong> — X thread, Reddit post, and YouTube Community script in <code>Social_Media_Posts/01_Optimizing_Your_Viewing_Experience.md</code>.</li>
+          <li><span class="val-gold">&#9675; Part 2 (Next Queue):</span> <strong>Controller Ergonomics &amp; Input Flow</strong> — 8BitDo Pro 2 P1&rarr;B dodge paddle, right stick Invert Y, and Windows Game Bar fix.</li>
+          <li><span class="val-gold">&#9675; Part 3 (Next Queue):</span> <strong>The Mathematics of Survival &amp; DPS</strong> — Level 100 Tank Titan (18,017 HP, -45% mitigation) vs. Euphoria Glass Cannon (9,077 Steel DPS).</li>
+          <li><span class="val-gold">&#9675; Part 4 (Next Queue):</span> <strong>Level 100 Relic Weapon Showdown</strong> — Toussaint Knight's Steel Sword vs. Iris kinetic blast recoil analysis.</li>
+        </ul>
+      </div>
+    </div>
+
+    <footer>
+      Generated for Keith &bull; Master Folder Summary for <code>C:\projects\YouTube\Projects\TW3R</code> &bull; October 30, 2026
+    </footer>
+  </div>
+</body>
+</html>
