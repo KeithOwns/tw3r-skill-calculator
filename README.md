@@ -49,15 +49,11 @@ A pixel-authentic, 1:1 interactive character development suite and build planner
 
 ## 🧭 Live Web Applications & Tools
 
-| Application / Deliverable | URL | Description |
+| Application | URL | Description |
 | :--- | :--- | :--- |
-| **Skill Calculator & Optimization SPA (React 19)** | [Launch App](https://keithowns.github.io/tw3r-skill-calculator/) | Primary 1:1 Witcher 3 HUD build planner, live combat telemetry dock, and 15-section Optimization Guide |
-| **Interactive Quest Tracker & Lvl 100 NG+ Audit** | [quest_tracker.html](https://keithowns.github.io/tw3r-skill-calculator/quest_tracker.html) | Persistent quest tracker, cutoff risk guide, and 355-quest Level 100 NG+ Master Save Audit (`#ngplus`) |
-| **Master Project Summary** | [TW3R_Master_Project_Summary.html](https://keithowns.github.io/tw3r-skill-calculator/TW3R_Master_Project_Summary.html) | Executive index of all reports, apps, CSV build calculators, 4K media, and social media scripts |
-| **Complete Optimization & Build Report** | [TW3R_Complete_Optimization_Project_Report.html](https://keithowns.github.io/tw3r-skill-calculator/TW3R_Complete_Optimization_Project_Report.html) | Deep-dive mathematical comparison of Bear School Tank Titan (18,017 HP / 80.75% DR) vs. Cat School Glass Cannon (9,077 Steel DPS) |
-| **Viewing Experience Optimizer** | [TW3R_Viewing_Experience_Optimizer.html](https://keithowns.github.io/tw3r-skill-calculator/TW3R_Viewing_Experience_Optimizer.html) | Dual-display calibration (Hisense 75A65K & Samsung 65" S95B QD-OLED), 8BitDo Pro 2 paddle map, FOV calculator, and 4K lightbox |
-| **Skill Calculator Architecture Summary** | [TW3R_Skill_Calculator_Chat_Summary.html](https://keithowns.github.io/tw3r-skill-calculator/TW3R_Skill_Calculator_Chat_Summary.html) | Next-Gen Patch 4.0+/v5.01 3-rank normalization math and Mutagen Synergy specification |
-| **Standalone Calculator Mirror** | [skill_calculator.html](https://keithowns.github.io/tw3r-skill-calculator/skill_calculator.html) | Zero-dependency vanilla JS mirror for lightweight environments |
+| **Skill Calculator & Optimization SPA (`index.html`)** | [Launch App](https://keithowns.github.io/tw3r-skill-calculator/) | Primary 1:1 Witcher 3 HUD build planner, live combat telemetry dock, and 15-section Master Optimization Guide |
+| **Game Quests Guide & Lvl 100 NG+ Audit (`quest_tracker.html`)** | [quest_tracker.html](https://keithowns.github.io/tw3r-skill-calculator/quest_tracker.html) | Interactive quest tracker, cutoff risk guide, and 355-quest Level 100 NG+ Master Save Audit (`#ngplus`) |
+| **4K HDR Viewing Experience Optimizer (`optimizer.html`)** | [optimizer.html](https://keithowns.github.io/tw3r-skill-calculator/optimizer.html) | Display calibration (Hisense 75A65K & Samsung 65" S95B QD-OLED), 8BitDo Pro 2 paddle map, FOV calculator, and 4K lightbox |
 
 ---
 
@@ -77,7 +73,7 @@ tw3r-skill-calculator/
 │   ├── fully_upgraded_clean.png # Master Combat tree backdrop
 │   ├── general_tree_bg.png      # High-res General tree backdrop
 │   └── signs_tree_bg.png        # High-res Signs tree backdrop
-├── skill_calculator.html        # Standalone vanilla JS mirror
+├── quest_tracker.html           # Interactive Game Quests Guide & Lvl 100 NG+ Save Audit
 ├── combat_skills_data.js        # Universal skill definitions & tooltip database
 ├── optimizer.html               # Calibration and viewing suite
 ├── HISTORY.md                   # Keep a Changelog formatted history

@@ -98,4 +98,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Corrected Potent Sting trigger documentation and tactical tips across `witcher3_and_gfn_chat_summary.html`, `groundTruthData.ts`, and `combat_skills_data.js`: empirical in-game testing proved Potent Sting's damage amplification activates strictly when monster oil is applied to the blade, refuting the prior assumption that Morana runestones or native weapon poison stats alone triggered the bonus.
 
 ### Removed
+- Consolidated root HTML files down to the 3 active applications (`index.html`, `quest_tracker.html`, and `optimizer.html`), removing 7 redundant static chat-summary exports and legacy HTML duplicates whose contents are fully integrated into `OptimizationGuide.tsx`.
 - Removed blurry background watermark images (`fully_upgraded_clean.png` and tree backdrops) from the skill tree canvas frame, eliminating duplicate ghost/shadow icon artifacts behind interactive nodes.

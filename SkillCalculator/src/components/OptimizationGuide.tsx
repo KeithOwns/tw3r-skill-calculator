@@ -9,23 +9,14 @@ export function OptimizationGuide() {
             <h1>The Witcher 3: Wild Hunt (Next-Gen)</h1>
             <p className="subtitle">Complete Technical Calibration, Display Setup, Driver Configuration &amp; Endgame Builds Master Record</p>
             <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '0.6rem', marginTop: '1.25rem' }}>
-                <a href="./TW3R_Master_Project_Summary.html" style={{ textDecoration: 'none' }}>
-                    <span className="badge badge-gold" style={{ cursor: 'pointer', padding: '0.4rem 0.75rem' }}>🏛️ Master Project Summary ↗</span>
-                </a>
-                <a href="./TW3R_Complete_Optimization_Project_Report.html" style={{ textDecoration: 'none' }}>
-                    <span className="badge badge-blue" style={{ cursor: 'pointer', padding: '0.4rem 0.75rem' }}>📊 Complete Optimization Report ↗</span>
-                </a>
-                <a href="./TW3R_Viewing_Experience_Optimizer.html" style={{ textDecoration: 'none' }}>
-                    <span className="badge badge-green" style={{ cursor: 'pointer', padding: '0.4rem 0.75rem' }}>🖥️ 4K HDR Viewing Optimizer &amp; Gallery ↗</span>
-                </a>
-                <a href="./TW3R_Skill_Calculator_Chat_Summary.html" style={{ textDecoration: 'none' }}>
-                    <span className="badge badge-blue" style={{ cursor: 'pointer', padding: '0.4rem 0.75rem' }}>⚙️ Calculator Architecture Log ↗</span>
-                </a>
                 <a href="./quest_tracker.html" style={{ textDecoration: 'none' }}>
-                    <span className="badge badge-gold" style={{ cursor: 'pointer', padding: '0.4rem 0.75rem' }}>📜 Interactive Quest Tracker ↗</span>
+                    <span className="badge badge-gold" style={{ cursor: 'pointer', padding: '0.4rem 0.75rem' }}>📜 Interactive Game Quests Guide &amp; Tracker ↗</span>
                 </a>
                 <a href="./quest_tracker.html#ngplus" style={{ textDecoration: 'none' }}>
-                    <span className="badge badge-green" style={{ cursor: 'pointer', padding: '0.4rem 0.75rem' }}>🏆 Lvl 100 NG+ Save Audit (355) ↗</span>
+                    <span className="badge badge-green" style={{ cursor: 'pointer', padding: '0.4rem 0.75rem' }}>🏆 Lvl 100 NG+ Save Audit (355 Quests) ↗</span>
+                </a>
+                <a href="./optimizer.html" style={{ textDecoration: 'none' }}>
+                    <span className="badge badge-blue" style={{ cursor: 'pointer', padding: '0.4rem 0.75rem' }}>🖥️ 4K HDR Viewing Optimizer &amp; Lightbox Gallery ↗</span>
                 </a>
             </div>
         </header>

@@ -1,0 +1,3572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Witcher 3: Remastered — Master Experience & Hardware Calibration Hub</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-deep: #07090e;
+      --bg-surface: #0c101a;
+      --bg-card: rgba(16, 22, 36, 0.78);
+      --bg-card-hover: rgba(22, 31, 52, 0.9);
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --border-accent: rgba(212, 175, 55, 0.35);
+      --gold-primary: #e5b839;
+      --gold-light: #fbe285;
+      --gold-glow: rgba(229, 184, 57, 0.25);
+      --red-wolf: #e63946;
+      --blue-cyber: #38bdf8;
+      --green-status: #10b981;
+      --purple-accent: #a855f7;
+      --text-main: #f1f5f9;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+      --transition-normal: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: var(--bg-deep);
+      background-image: 
+        radial-gradient(circle at 12% 8%, rgba(229, 184, 57, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 88% 25%, rgba(56, 189, 248, 0.06) 0%, transparent 45%),
+        radial-gradient(circle at 50% 85%, rgba(168, 85, 247, 0.04) 0%, transparent 50%),
+        linear-gradient(180deg, rgba(7, 9, 14, 0.85) 0%, #07090e 100%);
+      color: var(--text-main);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.6;
+      min-height: 100vh;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-track { background: var(--bg-deep); }
+    ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 4px; border: 1px solid var(--border-subtle); }
+    ::-webkit-scrollbar-thumb:hover { background: #334155; }
+
+    .container {
+      max-width: 1340px;
+      margin: 0 auto;
+      padding: 0 1.5rem 5rem;
+    }
+
+    /* Top Navigation */
+    header.hero-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      background: rgba(7, 9, 14, 0.85);
+      border-bottom: 1px solid var(--border-subtle);
+      padding: 0.9rem 0;
+      margin-bottom: 2rem;
+    }
+
+    .nav-inner {
+      max-width: 1340px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .brand-group {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+    }
+
+    .wolf-crest {
+      width: 44px;
+      height: 44px;
+      background: linear-gradient(135deg, #1e293b, #0f172a);
+      border: 1px solid var(--border-accent);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      box-shadow: 0 0 18px var(--gold-glow);
+    }
+
+    .brand-text h1 {
+      font-family: 'Cinzel', serif;
+      font-size: 1.25rem;
+      letter-spacing: 0.05em;
+      color: #ffffff;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .brand-text h1 span.remastered-badge {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      padding: 0.15rem 0.5rem;
+      border-radius: 4px;
+      background: rgba(229, 184, 57, 0.15);
+      color: var(--gold-primary);
+      border: 1px solid rgba(229, 184, 57, 0.35);
+      font-weight: 700;
+    }
+
+    .brand-text p {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .telemetry-pills {
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+      flex-wrap: wrap;
+    }
+
+    .pill {
+      font-size: 0.73rem;
+      font-weight: 600;
+      padding: 0.32rem 0.7rem;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border-subtle);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: var(--text-muted);
+    }
+
+    .pill.gold {
+      color: var(--gold-light);
+      background: rgba(229, 184, 57, 0.08);
+      border-color: rgba(229, 184, 57, 0.25);
+    }
+
+    .pill.green {
+      color: #4ade80;
+      background: rgba(34, 197, 94, 0.08);
+      border-color: rgba(34, 197, 94, 0.25);
+    }
+
+    .pill.cyan {
+      color: var(--blue-cyber);
+      background: rgba(56, 189, 248, 0.08);
+      border-color: rgba(56, 189, 248, 0.25);
+    }
+
+    .indicator-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: currentColor;
+      box-shadow: 0 0 8px currentColor;
+    }
+
+    /* Shared Multi-Page Site Navigation Bar */
+    .site-nav-bar {
+      max-width: 1340px;
+      margin: 0 auto 1.75rem auto;
+      padding: 0 1.5rem;
+    }
+
+    .site-nav-container {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(15, 23, 42, 0.75);
+      border: 1px solid var(--border-accent);
+      border-radius: var(--radius-md);
+      padding: 0.5rem;
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      overflow-x: auto;
+      box-shadow: 0 8px 25px -8px rgba(0, 0, 0, 0.6);
+    }
+
+    .site-nav-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      padding: 0.65rem 1.15rem;
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+      font-size: 0.84rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      transition: var(--transition-normal);
+      white-space: nowrap;
+      border: 1px solid transparent;
+    }
+
+    .site-nav-link:hover {
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.05);
+      border-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .site-nav-link.active {
+      color: var(--gold-light);
+      background: linear-gradient(135deg, rgba(229, 184, 57, 0.22), rgba(184, 134, 11, 0.32));
+      border: 1px solid rgba(229, 184, 57, 0.5);
+      box-shadow: 0 4px 14px rgba(229, 184, 57, 0.18);
+    }
+
+    .site-nav-badge {
+      font-size: 0.65rem;
+      padding: 0.15rem 0.45rem;
+      border-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-weight: 700;
+      background: rgba(229, 184, 57, 0.15);
+      color: var(--gold-primary);
+      border: 1px solid rgba(229, 184, 57, 0.3);
+    }
+
+    .site-nav-link:not(.active) .site-nav-badge {
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--text-dim);
+      border-color: var(--border-subtle);
+    }
+
+    /* Main Navigation Category Tabs */
+    .view-selector-tabs {
+      display: flex;
+      gap: 0.75rem;
+      margin-bottom: 2rem;
+      background: rgba(12, 16, 26, 0.7);
+      padding: 0.4rem;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-subtle);
+      overflow-x: auto;
+    }
+
+    .view-tab-btn {
+      flex: 1;
+      min-width: 170px;
+      padding: 0.75rem 1.1rem;
+      border-radius: var(--radius-sm);
+      border: none;
+      background: transparent;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.55rem;
+      transition: var(--transition-normal);
+      white-space: nowrap;
+    }
+
+    .view-tab-btn:hover {
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    .view-tab-btn.active {
+      background: linear-gradient(135deg, rgba(229, 184, 57, 0.18), rgba(184, 134, 11, 0.25));
+      color: var(--gold-light);
+      border: 1px solid rgba(229, 184, 57, 0.4);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    }
+
+    /* Hero Banner */
+    .hero-banner {
+      background: linear-gradient(135deg, rgba(20, 28, 48, 0.75) 0%, rgba(12, 17, 30, 0.9) 100%);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 2.2rem;
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 2.5rem;
+      box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.6);
+    }
+
+    .hero-banner::after {
+      content: "";
+      position: absolute;
+      top: -40%;
+      right: -8%;
+      width: 480px;
+      height: 480px;
+      background: radial-gradient(circle, rgba(229, 184, 57, 0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 2rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    @media (max-width: 950px) {
+      .hero-grid { grid-template-columns: 1fr; }
+    }
+
+    .hero-title-tag {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold-primary);
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .hero-title {
+      font-family: 'Cinzel', serif;
+      font-size: 2.2rem;
+      line-height: 1.2;
+      color: #ffffff;
+      margin-bottom: 1rem;
+      font-weight: 800;
+    }
+
+    .hero-desc {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      margin-bottom: 1.6rem;
+      max-width: 700px;
+    }
+
+    .hero-cta-row {
+      display: flex;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+    }
+
+    .hardware-scaffold-summary {
+      background: rgba(7, 9, 14, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.1rem;
+    }
+
+    .hw-metric-item { display: flex; flex-direction: column; }
+    .hw-metric-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-dim);
+      margin-bottom: 0.2rem;
+    }
+    .hw-metric-val {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+    .hw-metric-val.gold { color: var(--gold-primary); }
+    .hw-metric-val.cyan { color: var(--blue-cyber); }
+    .hw-metric-val.green { color: #34d399; }
+
+    /* Dashboard Section Grids */
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-bottom: 2.5rem;
+    }
+
+    @media (max-width: 1024px) {
+      .dashboard-grid { grid-template-columns: 1fr; }
+    }
+
+    .card {
+      background: var(--bg-card);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 1.75rem;
+      transition: var(--transition-normal);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .card:hover {
+      border-color: rgba(229, 184, 57, 0.28);
+      box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.55);
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.9rem;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .card-title-group h2 {
+      font-family: 'Cinzel', serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .card-title-group p {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 0.15rem;
+    }
+
+    .card-badge {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 0.25rem 0.6rem;
+      border-radius: 4px;
+      border: 1px solid var(--border-subtle);
+      color: var(--text-muted);
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    /* Stepper Checklist */
+    .stepper-list { display: flex; flex-direction: column; gap: 0.85rem; }
+    .step-item {
+      background: rgba(12, 16, 28, 0.85);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      transition: var(--transition-normal);
+    }
+    .step-item:hover {
+      border-color: rgba(229, 184, 57, 0.3);
+      background: rgba(18, 24, 42, 0.95);
+      transform: translateX(3px);
+    }
+    .step-left { display: flex; align-items: center; gap: 0.9rem; }
+    .step-check-icon {
+      width: 26px; height: 26px; border-radius: 50%;
+      background: rgba(16, 185, 129, 0.15); color: #10b981;
+      border: 1px solid rgba(16, 185, 129, 0.4);
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700; font-size: 0.8rem; flex-shrink: 0;
+    }
+    .step-meta h4 { font-size: 0.88rem; font-weight: 600; color: #ffffff; }
+    .step-meta p { font-size: 0.77rem; color: var(--text-muted); }
+    .step-val-tag {
+      font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; font-weight: 700;
+      color: var(--gold-light); background: rgba(229, 184, 57, 0.12);
+      border: 1px solid rgba(229, 184, 57, 0.3); padding: 0.25rem 0.6rem;
+      border-radius: 6px; white-space: nowrap;
+    }
+
+    /* 8BitDo Controller Section */
+    .controller-showcase-box {
+      background: rgba(10, 14, 24, 0.85);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .controller-diagram-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    @media (max-width: 768px) {
+      .controller-diagram-grid { grid-template-columns: 1fr; }
+    }
+
+    .controller-feature-card {
+      background: rgba(16, 22, 38, 0.75);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 1rem;
+      transition: var(--transition-normal);
+    }
+
+    .controller-feature-card:hover {
+      border-color: rgba(56, 189, 248, 0.35);
+      transform: translateY(-2px);
+    }
+
+    .controller-feature-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.4rem;
+    }
+
+    .controller-feature-title {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+    }
+
+    .controller-feature-badge {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 0.15rem 0.5rem;
+      border-radius: 4px;
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--blue-cyber);
+      border: 1px solid rgba(56, 189, 248, 0.35);
+    }
+
+    .controller-feature-desc {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      line-height: 1.45;
+    }
+
+    .code-snippet-box {
+      background: #05070c;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 0.8rem 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.8rem;
+    }
+
+    .code-snippet-box code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      color: #38bdf8;
+      word-break: break-all;
+    }
+
+    .btn-copy-code {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid var(--border-subtle);
+      color: #ffffff;
+      padding: 0.3rem 0.7rem;
+      border-radius: 4px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      cursor: pointer;
+      flex-shrink: 0;
+      transition: var(--transition-normal);
+    }
+
+    .btn-copy-code:hover {
+      background: var(--gold-primary);
+      color: #000;
+    }
+
+    /* Sliders & Visualizer */
+    .slider-box {
+      background: rgba(12, 16, 28, 0.85);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 1.1rem;
+    }
+    .slider-header {
+      display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.6rem;
+    }
+    .slider-title { font-size: 0.85rem; font-weight: 600; color: #ffffff; }
+    .slider-value-display {
+      font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 0.95rem; color: var(--gold-primary);
+    }
+
+    input[type=range] {
+      width: 100%; height: 6px; border-radius: 3px; background: #1e293b; outline: none; -webkit-appearance: none; cursor: pointer;
+    }
+    input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance: none; width: 18px; height: 18px; border-radius: 50%;
+      background: var(--gold-primary); box-shadow: 0 0 10px var(--gold-glow);
+      border: 2px solid #07090e; cursor: pointer; transition: transform 0.15s ease;
+    }
+    input[type=range]::-webkit-slider-thumb:hover { transform: scale(1.2); }
+
+    .visualizer-container {
+      background: #05070a; border: 1px solid var(--border-subtle); border-radius: var(--radius-sm);
+      padding: 1.25rem; display: flex; flex-direction: column; gap: 0.8rem;
+    }
+    .visualizer-screen {
+      height: 130px; border-radius: 6px; display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.1); transition: background 0.3s ease;
+    }
+    .clipping-alert {
+      padding: 0.6rem 0.9rem; border-radius: 6px; font-size: 0.78rem; font-weight: 600; display: flex; align-items: center; gap: 0.5rem;
+    }
+    .clipping-alert.safe { background: rgba(16, 185, 129, 0.12); border: 1px solid rgba(16, 185, 129, 0.3); color: #34d399; }
+    .clipping-alert.danger { background: rgba(230, 57, 70, 0.15); border: 1px solid rgba(230, 57, 70, 0.4); color: #f87171; }
+
+    /* Acoustic Radar */
+    .radar-wrapper { display: flex; flex-direction: column; align-items: center; gap: 1.4rem; }
+    .radar-canvas-box {
+      width: 230px; height: 230px; position: relative; border-radius: 50%;
+      border: 2px dashed rgba(229, 184, 57, 0.3);
+      background: radial-gradient(circle, rgba(14, 20, 34, 0.8) 0%, #07090e 90%);
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.8), inset 0 0 25px rgba(229, 184, 57, 0.05);
+    }
+    .radar-ring { position: absolute; border-radius: 50%; border: 1px solid rgba(255, 255, 255, 0.05); pointer-events: none; }
+    .ring-1 { width: 75px; height: 75px; }
+    .ring-2 { width: 145px; height: 145px; }
+    .radar-listener {
+      width: 24px; height: 24px; background: var(--gold-primary); border-radius: 50%;
+      box-shadow: 0 0 15px var(--gold-glow); display: flex; align-items: center; justify-content: center;
+      font-size: 0.65rem; color: #000; font-weight: 900; z-index: 10;
+    }
+    .sound-blip {
+      position: absolute; width: 14px; height: 14px; border-radius: 50%;
+      animation: pulse-blip 2s infinite ease-out; display: flex; align-items: center; justify-content: center;
+      font-size: 0.65rem; cursor: pointer;
+    }
+    .blip-parry { top: 35px; right: 40px; background: #38bdf8; box-shadow: 0 0 12px #38bdf8; }
+    .blip-bow { bottom: 40px; left: 35px; background: #f87171; box-shadow: 0 0 12px #f87171; }
+    .blip-footsteps { top: 38px; left: 50px; background: #34d399; box-shadow: 0 0 12px #34d399; }
+    @keyframes pulse-blip {
+      0% { transform: scale(0.9); opacity: 0.6; }
+      50% { transform: scale(1.25); opacity: 1; }
+      100% { transform: scale(0.9); opacity: 0.6; }
+    }
+
+    .toggle-group {
+      display: flex; background: #0f172a; border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); padding: 0.3rem; width: 100%;
+    }
+    .toggle-btn {
+      flex: 1; padding: 0.5rem 0.8rem; border: none; background: transparent; color: var(--text-muted);
+      font-size: 0.78rem; font-weight: 600; border-radius: 6px; cursor: pointer; transition: var(--transition-normal);
+    }
+    .toggle-btn.active {
+      background: var(--gold-primary); color: #000; font-weight: 700; box-shadow: 0 2px 10px var(--gold-glow);
+    }
+
+    /* FOV Calculator */
+    .fov-calc-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 1.2rem; }
+    .calc-stat-box {
+      background: rgba(12, 16, 28, 0.85); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm);
+      padding: 0.9rem; text-align: center;
+    }
+    .calc-stat-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-dim); margin-bottom: 0.3rem; }
+    .calc-stat-number { font-family: 'JetBrains Mono', monospace; font-size: 1.35rem; font-weight: 800; color: #ffffff; }
+    .calc-stat-sub { font-size: 0.7rem; color: var(--gold-primary); margin-top: 0.2rem; }
+
+    /* Gallery Tabs & Cards */
+    .gallery-filter-tabs { display: flex; gap: 0.6rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+    .filter-tab {
+      padding: 0.45rem 1rem; border-radius: 999px; font-size: 0.78rem; font-weight: 600;
+      border: 1px solid var(--border-subtle); background: rgba(255, 255, 255, 0.03); color: var(--text-muted);
+      cursor: pointer; transition: var(--transition-normal);
+    }
+    .filter-tab:hover { border-color: rgba(229, 184, 57, 0.3); color: #ffffff; }
+    .filter-tab.active {
+      background: var(--gold-primary); color: #000; border-color: var(--gold-primary); font-weight: 700; box-shadow: 0 2px 12px var(--gold-glow);
+    }
+
+    .gallery-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem;
+    }
+    .gallery-card {
+      background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-md);
+      overflow: hidden; transition: var(--transition-normal); display: flex; flex-direction: column; cursor: pointer;
+    }
+    .gallery-card:hover {
+      transform: translateY(-5px); border-color: rgba(229, 184, 57, 0.4); box-shadow: 0 16px 35px -10px rgba(0, 0, 0, 0.7);
+    }
+    .gallery-thumb-container { position: relative; height: 210px; background: #07090e; overflow: hidden; }
+    .gallery-thumb { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
+    .gallery-card:hover .gallery-thumb { transform: scale(1.04); }
+    .gallery-badge {
+      position: absolute; top: 10px; left: 10px; font-size: 0.68rem; font-weight: 700;
+      text-transform: uppercase; padding: 0.2rem 0.55rem; border-radius: 4px;
+      background: rgba(0, 0, 0, 0.75); border: 1px solid rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(8px); color: #ffffff;
+    }
+    .gallery-info { padding: 1rem; display: flex; flex-direction: column; gap: 0.3rem; }
+    .gallery-title { font-size: 0.9rem; font-weight: 700; color: #ffffff; }
+    .gallery-tech-note { font-size: 0.76rem; color: var(--text-muted); line-height: 1.4; }
+
+    /* Buttons & Toast */
+    .btn-gold {
+      background: linear-gradient(135deg, #d4af37, #b8860b); color: #07090e; font-weight: 700;
+      font-size: 0.83rem; padding: 0.65rem 1.25rem; border-radius: var(--radius-sm); border: none;
+      cursor: pointer; display: inline-flex; align-items: center; gap: 0.5rem; transition: var(--transition-normal);
+      box-shadow: 0 4px 15px rgba(212, 175, 55, 0.25);
+    }
+    .btn-gold:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4); }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.05); color: #ffffff; font-weight: 600;
+      font-size: 0.83rem; padding: 0.65rem 1.1rem; border-radius: var(--radius-sm);
+      border: 1px solid var(--border-subtle); cursor: pointer; display: inline-flex;
+      align-items: center; gap: 0.5rem; transition: var(--transition-normal);
+    }
+    .btn-secondary:hover { background: rgba(255, 255, 255, 0.1); border-color: rgba(255, 255, 255, 0.2); }
+
+    .toast {
+      position: fixed; bottom: 30px; right: 30px; background: #1e293b; border: 1px solid var(--gold-primary);
+      color: #ffffff; padding: 0.8rem 1.4rem; border-radius: var(--radius-sm); box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+      font-size: 0.85rem; font-weight: 600; display: none; align-items: center; gap: 0.6rem; z-index: 2000;
+    }
+
+    /* Modal */
+    #imageModal {
+      position: fixed; inset: 0; background: rgba(0, 0, 0, 0.88); backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px); z-index: 1000; display: none; align-items: center; justify-content: center; padding: 2rem;
+    }
+    .modal-box { max-width: 1100px; width: 100%; display: flex; flex-direction: column; gap: 1rem; position: relative; }
+    .modal-img-wrap {
+      max-height: 75vh; border-radius: var(--radius-sm); overflow: hidden; border: 1px solid var(--border-subtle);
+      background: #000; display: flex; justify-content: center;
+    }
+    .modal-img-wrap img { max-width: 100%; max-height: 75vh; object-fit: contain; }
+    .modal-close-btn {
+      position: absolute; top: -45px; right: 0; background: transparent; border: none; color: #ffffff; font-size: 2rem; cursor: pointer;
+    }
+
+    /* Next-Gen Combat Calculator Styles */
+    :root {
+      --combat-red-deep: #2a0808;
+      --combat-red-base: #5c0f14;
+      --combat-red-bright: #b91c1c;
+      --combat-red-glow: #ef4444;
+      --combat-red-border: #871419;
+      --line-inactive: #2b2e36;
+      --line-active: #d32f2f;
+      --line-glow: rgba(239, 68, 68, 0.6);
+    }
+
+    .badge-fcr3 {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      padding: 0.18rem 0.6rem;
+      border-radius: 4px;
+      background: rgba(220, 38, 38, 0.18);
+      color: #f87171;
+      border: 1px solid rgba(220, 38, 38, 0.45);
+      font-weight: 700;
+    }
+
+    .economy-bar {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      background: rgba(12, 16, 26, 0.85);
+      border: 1px solid var(--border-subtle);
+      padding: 0.75rem 1.2rem;
+      border-radius: var(--radius-md);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+      margin-bottom: 1.5rem;
+    }
+
+    .econ-stat {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0 0.6rem;
+    }
+
+    .econ-stat-label {
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-dim);
+    }
+
+    .econ-stat-value {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: #ffffff;
+    }
+
+    .econ-stat-value.gold { color: var(--gold-primary); }
+    .econ-stat-value.red { color: #f87171; }
+    .econ-stat-value.green { color: #4ade80; }
+
+    .econ-controls {
+      display: flex;
+      gap: 0.6rem;
+      border-left: 1px solid var(--border-subtle);
+      padding-left: 1rem;
+      margin-left: auto;
+    }
+
+    .btn-action {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-main);
+      padding: 0.45rem 0.9rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.78rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: var(--transition-normal);
+    }
+
+    .btn-action:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.25);
+    }
+
+    .btn-action.red-glow:hover {
+      background: rgba(220, 38, 38, 0.2);
+      border-color: #ef4444;
+      color: #ffffff;
+      box-shadow: 0 0 15px rgba(239, 68, 68, 0.4);
+    }
+
+    .calc-layout {
+      display: grid;
+      grid-template-columns: 820px 1fr;
+      gap: 2rem;
+      align-items: start;
+    }
+
+    @media (max-width: 1360px) {
+      .calc-layout { grid-template-columns: 1fr; }
+    }
+
+    .tree-viewport-card {
+      background: linear-gradient(180deg, #100607 0%, #0a0405 100%);
+      border: 2px solid #3d0c0e;
+      border-radius: var(--radius-lg);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), inset 0 0 80px rgba(185, 28, 28, 0.08);
+      position: relative;
+      overflow: hidden;
+      padding: 1.5rem 1rem 2rem;
+    }
+
+    .tree-header-banner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 1rem 1rem;
+      border-bottom: 1px solid rgba(220, 38, 38, 0.2);
+      margin-bottom: 1rem;
+    }
+
+    .tree-discipline-title {
+      font-family: 'Cinzel', serif;
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: 0.1em;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .tree-discipline-title::before {
+      content: "";
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      background: #ef4444;
+      box-shadow: 0 0 10px #ef4444;
+      border-radius: 2px;
+      transform: rotate(45deg);
+    }
+
+    .tree-instruction {
+      font-size: 0.75rem;
+      color: var(--text-dim);
+    }
+
+    .tree-instruction kbd {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid var(--border-subtle);
+      border-radius: 3px;
+      padding: 0.1rem 0.4rem;
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--gold-light);
+    }
+
+    .tree-canvas-wrapper {
+      position: relative;
+      width: 810px;
+      height: 940px;
+      margin: 0 auto;
+      user-select: none;
+    }
+
+    .tree-bg-watermark {
+      position: absolute;
+      inset: 0;
+      background-image: url('fully_upgraded_clean.png');
+      background-size: cover;
+      opacity: 0.12;
+      filter: saturate(0.2) contrast(1.2);
+      pointer-events: none;
+    }
+
+    svg.tree-lines-svg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 810px;
+      height: 940px;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .tree-connector-line {
+      stroke: var(--line-inactive);
+      stroke-width: 2.5;
+      stroke-linecap: round;
+      transition: stroke 0.3s ease, filter 0.3s ease;
+    }
+
+    .tree-connector-line.unlocked {
+      stroke: #e2e8f0;
+      stroke-width: 2.5;
+      filter: drop-shadow(0 0 4px rgba(226, 232, 240, 0.6));
+    }
+
+    .tree-connector-line.active {
+      stroke: var(--line-active);
+      stroke-width: 3.5;
+      filter: drop-shadow(0 0 4px var(--line-glow));
+    }
+
+    .skill-node {
+      position: absolute;
+      width: 82px;
+      height: 82px;
+      transform: translate(-50%, -50%);
+      z-index: 10;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: transform 0.18s ease, filter 0.2s ease;
+    }
+
+    .skill-node:hover {
+      transform: translate(-50%, -50%) scale(1.08);
+      z-index: 20;
+    }
+
+    .node-box {
+      width: 78px;
+      height: 78px;
+      position: relative;
+      border: 2px solid #3e4451;
+      border-radius: 4px;
+      background: #0d0f14;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.7);
+      transition: border-color 0.25s, box-shadow 0.25s;
+    }
+
+    .node-icon-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(100%) brightness(0.4) contrast(1.1);
+      transition: filter 0.3s ease;
+    }
+
+    .skill-node.unlocked .node-box {
+      border: 2px solid #e2e8f0;
+      box-shadow: 0 0 12px rgba(226, 232, 240, 0.5);
+    }
+    .skill-node.unlocked .node-icon-img {
+      filter: grayscale(15%) brightness(0.95);
+    }
+
+    .skill-node.active .node-box {
+      border-color: #ef4444;
+      box-shadow: 0 0 18px rgba(239, 68, 68, 0.55), inset 0 0 8px rgba(239, 68, 68, 0.3);
+    }
+    .skill-node.active .node-icon-img {
+      filter: grayscale(0%) brightness(1.05) saturate(1.1);
+    }
+
+    .skill-node.maxed .node-box {
+      border-color: #f87171;
+      box-shadow: 0 0 24px rgba(248, 113, 113, 0.8), inset 0 0 12px rgba(239, 68, 68, 0.5);
+    }
+
+    .node-box::before {
+      content: "";
+      position: absolute;
+      top: -2px; left: -2px;
+      width: 6px; height: 6px;
+      border-top: 2px solid #e2e8f0;
+      border-left: 2px solid #e2e8f0;
+      z-index: 5;
+    }
+    .node-box::after {
+      content: "";
+      position: absolute;
+      top: -2px; right: -2px;
+      width: 6px; height: 6px;
+      border-top: 2px solid #e2e8f0;
+      border-right: 2px solid #e2e8f0;
+      z-index: 5;
+    }
+
+    .rank-diamonds-bar {
+      display: flex;
+      gap: 6px;
+      margin-top: -3px;
+      z-index: 12;
+      background: rgba(10, 4, 5, 0.95);
+      padding: 2px 7px 3px;
+      border-radius: 3px;
+      border: 1px solid rgba(220, 38, 38, 0.4);
+    }
+
+    .diamond {
+      width: 7px;
+      height: 7px;
+      background: #2b2e36;
+      border: 1px solid #4a5568;
+      transform: rotate(45deg);
+      transition: all 0.2s ease;
+    }
+
+    .diamond.filled {
+      background: #f1f5f9;
+      border-color: #ffffff;
+      box-shadow: 0 0 8px rgba(255, 255, 255, 0.9);
+    }
+
+    #floatingTooltip {
+      position: absolute;
+      z-index: 1000;
+      pointer-events: none;
+      width: 380px;
+      background: rgba(11, 13, 18, 0.96);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid #871419;
+      border-radius: var(--radius-sm);
+      padding: 1rem;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.85), 0 0 15px rgba(185, 28, 28, 0.35);
+      display: none;
+      transition: opacity 0.15s ease;
+    }
+
+    .tt-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      border-bottom: 1px solid rgba(220, 38, 38, 0.3);
+      padding-bottom: 0.4rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .tt-name {
+      font-family: 'Cinzel', serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #ffffff;
+      letter-spacing: 0.05em;
+    }
+
+    .tt-rank {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--gold-light);
+    }
+
+    .tt-section-title {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-dim);
+      margin-top: 0.5rem;
+      margin-bottom: 0.2rem;
+    }
+
+    .tt-current-desc {
+      font-size: 0.82rem;
+      color: #fef08a;
+      line-height: 1.45;
+    }
+
+    .tt-next-desc {
+      font-size: 0.8rem;
+      color: #cbd5e1;
+      line-height: 1.4;
+    }
+
+    .tt-bonus {
+      font-size: 0.78rem;
+      color: #f87171;
+      margin-top: 0.6rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-weight: 600;
+    }
+
+    .tt-tip {
+      margin-top: 0.7rem;
+      padding-top: 0.5rem;
+      border-top: 1px dashed var(--border-subtle);
+      font-size: 0.73rem;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    .sidebar-panel {
+      display: flex;
+      flex-direction: column;
+      gap: 1.6rem;
+    }
+
+    .deck-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+    }
+
+    .deck-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.2rem;
+      padding-bottom: 0.6rem;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .deck-title {
+      font-family: 'Cinzel', serif;
+      font-size: 1.1rem;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .attack-power-pill {
+      background: linear-gradient(135deg, rgba(220, 38, 38, 0.25), rgba(185, 28, 28, 0.4));
+      border: 1px solid #ef4444;
+      color: #ffffff;
+      padding: 0.35rem 0.85rem;
+      border-radius: 999px;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 800;
+      font-size: 0.85rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      box-shadow: 0 0 12px rgba(239, 68, 68, 0.4);
+    }
+
+    .slots-cluster-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .quadrant-box {
+      background: rgba(8, 11, 18, 0.8);
+      border: 1px solid #2d1215;
+      border-radius: var(--radius-md);
+      padding: 0.9rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      position: relative;
+    }
+
+    .quadrant-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .quadrant-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-dim);
+      font-weight: 700;
+    }
+
+    .quadrant-bonus {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: #f87171;
+    }
+
+    .quadrant-slots-row {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .ability-slot {
+      width: 54px;
+      height: 54px;
+      background: #080a0f;
+      border: 1.5px dashed #334155;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      position: relative;
+      transition: var(--transition-normal);
+      overflow: hidden;
+    }
+
+    .ability-slot:hover {
+      border-color: var(--gold-primary);
+      transform: translateY(-2px);
+    }
+
+    .ability-slot.filled {
+      border-style: solid;
+      border-color: #ef4444;
+      box-shadow: 0 0 10px rgba(239, 68, 68, 0.4);
+    }
+
+    .ability-slot-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .slot-remove-btn {
+      position: absolute;
+      top: 2px;
+      right: 2px;
+      width: 16px;
+      height: 16px;
+      background: rgba(0, 0, 0, 0.7);
+      color: #ffffff;
+      border-radius: 50%;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+    }
+
+    .ability-slot:hover .slot-remove-btn {
+      display: flex;
+    }
+
+    .mutagen-slot {
+      width: 58px;
+      height: 58px;
+      background: radial-gradient(circle, #3d0c0e 0%, #120304 100%);
+      border: 2px solid #ef4444;
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 14px rgba(239, 68, 68, 0.5);
+      margin-left: auto;
+      text-align: center;
+    }
+
+    .mutagen-icon {
+      font-size: 1.3rem;
+    }
+
+    .mutagen-label {
+      font-size: 0.58rem;
+      font-weight: 800;
+      color: #fca5a5;
+      letter-spacing: 0.04em;
+    }
+
+    .mutations-center-bar {
+      background: linear-gradient(135deg, rgba(20, 26, 42, 0.9), rgba(12, 16, 26, 0.95));
+      border: 1px solid var(--border-accent);
+      border-radius: var(--radius-md);
+      padding: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .mutation-active-info {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .mutation-orb {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #f59e0b 0%, #78350f 100%);
+      border: 2px solid var(--gold-light);
+      box-shadow: 0 0 15px var(--gold-glow);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+    }
+
+    .mutation-text h4 {
+      font-family: 'Cinzel', serif;
+      font-size: 0.95rem;
+      color: #ffffff;
+    }
+
+    .mutation-text p {
+      font-size: 0.74rem;
+      color: var(--text-muted);
+    }
+
+    .mutation-slots-strip {
+      display: flex;
+      gap: 0.6rem;
+    }
+
+    .mutation-extra-slot {
+      width: 48px;
+      height: 48px;
+      border-radius: var(--radius-sm);
+      border: 1.5px dashed var(--gold-primary);
+      background: rgba(229, 184, 57, 0.05);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      transition: var(--transition-normal);
+    }
+
+    .mutation-extra-slot:hover {
+      background: rgba(229, 184, 57, 0.15);
+      border-style: solid;
+    }
+
+    .mutation-extra-slot.filled {
+      border-style: solid;
+      border-color: var(--gold-light);
+      box-shadow: 0 0 12px var(--gold-glow);
+    }
+
+    .presets-container {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .preset-card {
+      background: rgba(14, 18, 28, 0.7);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 0.75rem 1rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: var(--transition-normal);
+    }
+
+    .preset-card:hover {
+      border-color: var(--gold-primary);
+      background: rgba(229, 184, 57, 0.08);
+      transform: translateX(4px);
+    }
+
+    .preset-title {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #ffffff;
+    }
+
+    .preset-desc {
+      font-size: 0.73rem;
+      color: var(--text-dim);
+    }
+
+    .preset-badge {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--gold-primary);
+    }
+
+    .inspector-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+    }
+
+    .inspector-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+      padding-bottom: 0.8rem;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .inspector-icon {
+      width: 58px;
+      height: 58px;
+      border-radius: var(--radius-sm);
+      border: 2px solid #ef4444;
+      background: #000;
+      overflow: hidden;
+      box-shadow: 0 0 15px rgba(239, 68, 68, 0.4);
+    }
+
+    .inspector-icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .inspector-title h3 {
+      font-family: 'Cinzel', serif;
+      font-size: 1.15rem;
+      color: #ffffff;
+    }
+
+    .inspector-title span {
+      font-size: 0.75rem;
+      color: #f87171;
+      font-weight: 600;
+    }
+
+    .ranks-stepper-row {
+      display: flex;
+      gap: 0.5rem;
+      margin: 1rem 0;
+    }
+
+    .rank-step-box {
+      flex: 1;
+      background: rgba(10, 13, 20, 0.8);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 0.7rem;
+      transition: var(--transition-normal);
+    }
+
+    .rank-step-box.current {
+      border-color: #ef4444;
+      background: rgba(220, 38, 38, 0.1);
+      box-shadow: 0 0 12px rgba(239, 68, 68, 0.25);
+    }
+
+    .rank-step-num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--gold-light);
+      margin-bottom: 0.25rem;
+    }
+
+    .rank-step-text {
+      font-size: 0.74rem;
+      color: var(--text-muted);
+      line-height: 1.35;
+    }
+
+    .rank-step-box.current .rank-step-text {
+      color: #ffffff;
+      font-weight: 500;
+    }
+
+    #slotModal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(12px);
+      z-index: 2000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .slot-modal-box {
+      background: #0e121c;
+      border: 1px solid var(--border-accent);
+      border-radius: var(--radius-lg);
+      max-width: 600px;
+      width: 100%;
+      padding: 1.8rem;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.9);
+      position: relative;
+    }
+
+    .slot-modal-title {
+      font-family: 'Cinzel', serif;
+      font-size: 1.2rem;
+      color: #ffffff;
+      margin-bottom: 0.4rem;
+    }
+
+    .slot-modal-sub {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 1.2rem;
+    }
+
+    .slot-modal-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+      gap: 0.8rem;
+      max-height: 380px;
+      overflow-y: auto;
+      padding: 0.5rem;
+    }
+
+    .slot-modal-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.3rem;
+      cursor: pointer;
+      padding: 0.4rem;
+      border-radius: var(--radius-sm);
+      border: 1px solid transparent;
+      transition: var(--transition-normal);
+    }
+
+    .slot-modal-item:hover {
+      background: rgba(220, 38, 38, 0.15);
+      border-color: #ef4444;
+      transform: scale(1.05);
+    }
+
+    .slot-modal-item img {
+      width: 54px;
+      height: 54px;
+      border-radius: 4px;
+      border: 1px solid #871419;
+    }
+
+    .slot-modal-item span {
+      font-size: 0.65rem;
+      color: #ffffff;
+      text-align: center;
+      max-width: 70px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .btn-close-modal {
+      position: absolute;
+      top: 15px;
+      right: 18px;
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-size: 1.4rem;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation & Telemetry -->
+  <header class="hero-nav">
+    <div class="nav-inner">
+      <div class="brand-group">
+        <div class="wolf-crest">🐺</div>
+        <div class="brand-text">
+          <h1>The Witcher 3 <span class="remastered-badge">Next-Gen Remastered</span></h1>
+          <p>4K HDR Display, 8BitDo Controller & Zero-HUD Immersion Architecture</p>
+        </div>
+      </div>
+      <div class="telemetry-pills">
+        <div class="pill gold">
+          <span class="indicator-dot"></span>
+          Hisense 75A65K & S95B OLED
+        </div>
+        <div class="pill cyan">
+          <span class="indicator-dot"></span>
+          8BitDo Pro 2 (P1→B Dodge)
+        </div>
+        <div class="pill green">
+          <span class="indicator-dot"></span>
+          RTX 3080 (Driver 617.14)
+        </div>
+        <a href="skill_calculator.html" class="pill gold" style="text-decoration:none; color:var(--gold-light); border-color:var(--gold-primary); font-weight:700;" title="Launch Full In-Game Skill Tree Calculator">
+          <span class="indicator-dot"></span>
+          ⚔️ In-Game Skill Tree Calculator
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Global Multi-Page Companion Guide Navigation -->
+  <nav class="site-nav-bar" aria-label="Companion Guide Navigation">
+    <div class="site-nav-container">
+      <a href="index.html" class="site-nav-link active">
+        <span>🏰 Hub & Calibration</span>
+        <span class="site-nav-badge">Current</span>
+      </a>
+      <a href="skill_calculator.html" class="site-nav-link">
+        <span>⚡ Skill Tree (1:1 Mirror)</span>
+        <span class="site-nav-badge">In-Game HUD</span>
+      </a>
+      <a href="calculator.html" class="site-nav-link">
+        <span>🧙‍♂️ Next-Gen React Calc</span>
+        <span class="site-nav-badge">Vite App</span>
+      </a>
+      <a href="TW3R_Complete_Optimization_Project_Report.html" class="site-nav-link">
+        <span>📊 Optimization Report</span>
+        <span class="site-nav-badge">Deep Dive</span>
+      </a>
+      <a href="builds.html" class="site-nav-link">
+        <span>⚔️ Level 100 Builds</span>
+        <span class="site-nav-badge">Tank & DPS</span>
+      </a>
+      <a href="gear.html" class="site-nav-link">
+        <span>🛡️ Witcher Gear & Relics</span>
+        <span class="site-nav-badge">Grandmaster</span>
+      </a>
+      <a href="bestiary.html" class="site-nav-link">
+        <span>🐺 Bestiary & Tactics</span>
+        <span class="site-nav-badge">Weaknesses</span>
+      </a>
+      <a href="alchemy.html" class="site-nav-link">
+        <span>🧪 Alchemy & Decoctions</span>
+        <span class="site-nav-badge">Toxicity</span>
+      </a>
+    </div>
+  </nav>
+
+  <div class="container">
+
+    <!-- View Switcher Tabs -->
+    <div class="view-selector-tabs">
+      <button class="view-tab-btn active" onclick="switchMainView('display')">
+        📺 Display & Tone-Mapping
+      </button>
+      <button class="view-tab-btn" onclick="switchMainView('controller')">
+        🎮 8BitDo Controller & Input
+      </button>
+      <button class="view-tab-btn" onclick="switchMainView('audio')">
+        🎧 Zero-HUD Acoustic Radar
+      </button>
+      <button class="view-tab-btn" id="tab-calculator" onclick="switchMainView('calculator')">
+        ⚔️ Next-Gen Skill Calculator
+      </button>
+      <button class="view-tab-btn" onclick="switchMainView('gallery')">
+        🖼️ 4K Captures & Setup Snips
+      </button>
+    </div>
+
+    <!-- Hero / Hardware Baseline Scaffold -->
+    <section class="hero-banner">
+      <div class="hero-grid">
+        <div>
+          <div class="hero-title-tag">
+            <span>⚔️ Complete System Calibration Suite</span>
+          </div>
+          <h2 class="hero-title">Engineering the Ultimate TW3R Setup</h2>
+          <p class="hero-desc">
+            Optimizing <em>The Witcher 3 Next-Gen</em> requires calibrating three interconnected layers: matching in-game engine tone-mapping to the physical peak luminance of your 4K display, mapping fluid evasive dodging to the rear paddles of your <strong>8BitDo Pro 2 controller</strong>, and silencing combat music so incoming strikes are tracked by ear.
+          </p>
+          <div class="hero-cta-row">
+            <button class="btn-gold" onclick="copyFullCheatSheet()">
+              📋 Copy Master Calibration Cheat Sheet
+            </button>
+            <button class="btn-secondary" onclick="switchMainView('controller')">
+              🎮 View 8BitDo Controller Profile
+            </button>
+          </div>
+        </div>
+        <div class="hardware-scaffold-summary">
+          <div class="hw-metric-item">
+            <span class="hw-metric-label">Primary Television</span>
+            <span class="hw-metric-val gold">Hisense 75A65K (4K HDR)</span>
+          </div>
+          <div class="hw-metric-item">
+            <span class="hw-metric-label">Secondary / Reference</span>
+            <span class="hw-metric-val cyan">Samsung 65" S95B OLED</span>
+          </div>
+          <div class="hw-metric-item">
+            <span class="hw-metric-label">Controller Hardware</span>
+            <span class="hw-metric-val gold">8BitDo Pro 2 (XInput)</span>
+          </div>
+          <div class="hw-metric-item">
+            <span class="hw-metric-label">Evasion Remap</span>
+            <span class="hw-metric-val cyan">Rear P1 Paddle → B (Dodge)</span>
+          </div>
+          <div class="hw-metric-item">
+            <span class="hw-metric-label">In-Game Tone-Mapping</span>
+            <span class="hw-metric-val green">Paper 130 | Max 350 Nits</span>
+          </div>
+          <div class="hw-metric-item">
+            <span class="hw-metric-label">Combat Audio</span>
+            <span class="hw-metric-val green">Dynamic Music: 0 (Zero-HUD)</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: DISPLAY & TONE-MAPPING VIEW -->
+    <div id="view-display" class="main-view-panel">
+      
+      <!-- Display Selection Sub-Bar -->
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.25rem; flex-wrap:wrap; gap:0.8rem;">
+        <h3 style="font-family:'Cinzel', serif; font-size:1.15rem; color:#ffffff;">Select Display Hardware Preset:</h3>
+        <div class="toggle-group" style="max-width:440px;">
+          <button class="toggle-btn active" id="tvHisenseBtn" onclick="switchTvPreset('hisense')">
+            Hisense 75" (75A65K Google TV)
+          </button>
+          <button class="toggle-btn" id="tvSamsungBtn" onclick="switchTvPreset('samsung')">
+            Samsung 65" (S95B QD-OLED)
+          </button>
+        </div>
+      </div>
+
+      <div class="dashboard-grid">
+        <!-- Display Stepper Card -->
+        <section class="card">
+          <div class="card-header">
+            <div class="card-title-group">
+              <h2 id="tvCardTitle">Hisense 75A65K Display Calibration</h2>
+              <p id="tvCardSub">Optimized 4K HDR low-latency video pipeline</p>
+            </div>
+            <span class="card-badge" id="tvBadge">Hisense 4K</span>
+          </div>
+
+          <div class="stepper-list" id="tvStepperList">
+            <!-- Dynamically populated via JS -->
+          </div>
+        </section>
+
+        <!-- In-Game Tone-Mapping Lab Card -->
+        <section class="card">
+          <div class="card-header">
+            <div class="card-title-group">
+              <h2>HDR Tone-Mapping Lab</h2>
+              <p>In-game engine luminance tuning & clipping simulation</p>
+            </div>
+            <span class="card-badge">Game Engine</span>
+          </div>
+
+          <div class="lab-controls">
+            <div class="slider-box">
+              <div class="slider-header">
+                <span class="slider-title">Paper White Luminance (UI & Diffuse)</span>
+                <span class="slider-value-display" id="paperWhiteVal">130</span>
+              </div>
+              <input type="range" id="paperWhiteSlider" min="80" max="250" value="130" oninput="updateToneMapping()">
+              <p style="font-size:0.75rem; color:var(--text-dim); margin-top:0.4rem;">
+                Target: <strong>130</strong>. Normalizes HUD text, dialogue subtitles, and neutral surface exposure. Prevents eye glare in dark rooms.
+              </p>
+            </div>
+
+            <div class="slider-box">
+              <div class="slider-header">
+                <span class="slider-title">Max Brightness (Specular Highlights)</span>
+                <span class="slider-value-display" id="maxBrightnessVal">350 nits</span>
+              </div>
+              <input type="range" id="maxBrightnessSlider" min="200" max="1000" step="25" value="350" oninput="updateToneMapping()">
+              <p style="font-size:0.75rem; color:var(--text-dim); margin-top:0.4rem;">
+                Target: <strong id="targetNitsLabel">350 nits</strong>. Matches the display panel's real-world peak brightness ceiling.
+              </p>
+            </div>
+          </div>
+
+          <div class="visualizer-container">
+            <div class="visualizer-screen" id="simScreen">
+              <div id="simText" style="font-family:'Cinzel', serif; font-size:1.05rem; text-shadow:0 2px 10px rgba(0,0,0,0.85);">
+                Toussaint Golden Sun & Candlelight
+              </div>
+            </div>
+            <div class="clipping-alert safe" id="clippingStatus">
+              <span>🛡️ Calibrated: Highlights preserved; zero specular blowouts.</span>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- Immersion & Distance Calculator -->
+      <section class="card" style="margin-bottom:2.5rem;">
+        <div class="card-header">
+          <div class="card-title-group">
+            <h2>Immersion & Viewing Distance Geometry</h2>
+            <p>Calculates Field of View (FOV) and cinema immersion angles</p>
+          </div>
+          <span class="card-badge">THX / SMPTE Math</span>
+        </div>
+
+        <div style="display:grid; grid-template-columns:1fr 1.5fr; gap:2rem; align-items:center;">
+          <div>
+            <div class="slider-box">
+              <div class="slider-header">
+                <span class="slider-title">Eye-to-Screen Distance</span>
+                <span class="slider-value-display" id="distVal">8.0 Feet</span>
+              </div>
+              <input type="range" id="distSlider" min="5.0" max="13.0" step="0.5" value="8.0" oninput="updateDistanceCalc()">
+              <p style="font-size:0.75rem; color:var(--text-dim); margin-top:0.4rem;">
+                75" Sweet Spot: <strong>7.5 – 8.5 ft</strong> | 65" Sweet Spot: <strong>6.5 – 7.5 ft</strong>
+              </p>
+            </div>
+          </div>
+
+          <div class="fov-calc-grid" style="margin-top:0;">
+            <div class="calc-stat-box">
+              <div class="calc-stat-label">Field of View</div>
+              <div class="calc-stat-number" id="fovNumber">38.2°</div>
+              <div class="calc-stat-sub" id="fovRating">Ideal THX Cinema (36°-40°)</div>
+            </div>
+            <div class="calc-stat-box">
+              <div class="calc-stat-label">Resolution Acuity</div>
+              <div class="calc-stat-number" style="color:#34d399;">100%</div>
+              <div class="calc-stat-sub">Full 4K Pixel Acuity</div>
+            </div>
+            <div class="calc-stat-box">
+              <div class="calc-stat-label">Peripheral Class</div>
+              <div class="calc-stat-number" style="color:var(--gold-primary);">Tier 1</div>
+              <div class="calc-stat-sub">Complete Visual Immersion</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- SECTION: 8BITDO CONTROLLER VIEW -->
+    <div id="view-controller" class="main-view-panel" style="display:none;">
+      <div class="dashboard-grid">
+        
+        <!-- Controller Mapping Overview -->
+        <section class="card">
+          <div class="card-header">
+            <div class="card-title-group">
+              <h2>8BitDo Pro 2 Controller Calibration</h2>
+              <p>Custom Ultimate Software profile & ergonomics</p>
+            </div>
+            <span class="card-badge" style="color:var(--blue-cyber); border-color:rgba(56,189,248,0.3);">XInput Hardware</span>
+          </div>
+
+          <div class="controller-showcase-box">
+            <div class="controller-diagram-grid">
+              
+              <!-- Feature 1: P1 Paddle to B -->
+              <div class="controller-feature-card">
+                <div class="controller-feature-header">
+                  <span class="controller-feature-title">⚡ Rear P1 Paddle</span>
+                  <span class="controller-feature-badge">Mapped to [B]</span>
+                </div>
+                <p class="controller-feature-desc">
+                  <strong>The Evasion Engine:</strong> In TW3R, <strong>[B]</strong> executes dodges and rolls. Mapping it to the rear P1 paddle ensures your right thumb never leaves the right camera stick, allowing uninterrupted 360° camera orbit during intense Death March encounters.
+                </p>
+              </div>
+
+              <!-- Feature 2: Right Stick Invert Y -->
+              <div class="controller-feature-card">
+                <div class="controller-feature-header">
+                  <span class="controller-feature-title">🕹️ Right Stick Pitch</span>
+                  <span class="controller-feature-badge">Invert Y Enabled</span>
+                </div>
+                <p class="controller-feature-desc">
+                  Configured directly in 8BitDo Ultimate Software stick tuning. Provides natural vertical camera tracking when surveying Gothic palace spires in Beauclair and cliffsides in Velen.
+                </p>
+              </div>
+
+              <!-- Feature 3: Hardware Mode Selector -->
+              <div class="controller-feature-card">
+                <div class="controller-feature-header">
+                  <span class="controller-feature-title">🎚️ Physical Mode Switch</span>
+                  <span class="controller-feature-badge">X (XInput Mode)</span>
+                </div>
+                <p class="controller-feature-desc">
+                  Rear hardware toggle set to <strong>X</strong> for direct Windows 11 DirectX/XInput detection and full Xbox ABXY mapping protocol.
+                </p>
+              </div>
+
+              <!-- Feature 4: Profile Storage -->
+              <div class="controller-feature-card">
+                <div class="controller-feature-header">
+                  <span class="controller-feature-title">💾 Onboard Memory</span>
+                  <span class="controller-feature-badge">Profile 2 Synced</span>
+                </div>
+                <p class="controller-feature-desc">
+                  Stored directly into the Pro 2 onboard flash memory so custom paddle bindings persist across PC reboots and GeForce NOW streaming sessions.
+                </p>
+              </div>
+
+            </div>
+
+            <!-- Windows Game Bar Fix Box -->
+            <div style="background:rgba(8,11,18,0.7); border:1px solid rgba(255,255,255,0.08); border-radius:var(--radius-sm); padding:1.1rem;">
+              <h4 style="font-size:0.85rem; font-weight:700; color:#ffffff; margin-bottom:0.4rem; display:flex; align-items:center; gap:0.4rem;">
+                🛠️ Windows 11 Game Bar Handler Fix
+              </h4>
+              <p style="font-size:0.78rem; color:var(--text-muted); margin-bottom:0.7rem;">
+                Resolves the persistent <code>ms-gamebar:</code> missing association error when connecting Bluetooth controllers:
+              </p>
+              <div class="code-snippet-box">
+                <code>winget install --id 9NZKPSTSNW4P --accept-package-agreements --accept-source-agreements</code>
+                <button class="btn-copy-code" onclick="copyCode('winget install --id 9NZKPSTSNW4P --accept-package-agreements --accept-source-agreements')">Copy</button>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- Controller Tactical Visualizer -->
+        <section class="card">
+          <div class="card-header">
+            <div class="card-title-group">
+              <h2>Combat Ergonomics & Input Flow</h2>
+              <p>Why rear paddle dodging transforms Death March combat</p>
+            </div>
+            <span class="card-badge" style="color:var(--gold-primary);">Input Tactics</span>
+          </div>
+
+          <div style="display:flex; flex-direction:column; gap:1.2rem;">
+            
+            <div style="background:rgba(12,16,28,0.9); border:1px solid var(--border-subtle); border-radius:var(--radius-sm); padding:1.2rem;">
+              <h4 style="color:var(--gold-light); font-size:0.9rem; margin-bottom:0.5rem;">The Standard Controller Dilemma</h4>
+              <p style="font-size:0.8rem; color:var(--text-muted); line-height:1.5;">
+                In the standard controller layout, dodging requires shifting your right thumb from the right camera stick to the face button <strong>[B]</strong>. During those fractions of a second, camera tracking stops—leaving you blind to flanking wolves, charging foglets, or off-screen archers.
+              </p>
+            </div>
+
+            <div style="background:rgba(12,16,28,0.9); border:1px solid rgba(56,189,248,0.3); border-radius:var(--radius-sm); padding:1.2rem;">
+              <h4 style="color:var(--blue-cyber); font-size:0.9rem; margin-bottom:0.5rem;">The 8BitDo P1 Paddle Advantage</h4>
+              <p style="font-size:0.8rem; color:var(--text-muted); line-height:1.5;">
+                By binding <strong>P1</strong> on the back of the grip to <strong>B</strong>, your middle finger handles dodge execution while both thumbs remain permanently welded to the analog sticks. You track enemies continuously through evasions and parries without losing situational awareness.
+              </p>
+            </div>
+
+            <!-- Controller Reference Snip Quickview -->
+            <div style="background:rgba(5,7,12,0.8); border:1px solid var(--border-subtle); border-radius:var(--radius-sm); padding:1rem; display:flex; align-items:center; justify-content:space-between; cursor:pointer;" onclick="openModal('Snips/Screenshot 2026-09-30 001636.png', '8BitDo Ultimate Software Button Mapping — P1 Paddle Mapped to B (Dodge)')">
+              <div style="display:flex; align-items:center; gap:0.8rem;">
+                <span style="font-size:1.4rem;">📷</span>
+                <div>
+                  <h5 style="font-size:0.82rem; color:#ffffff;">Inspect Software Mapping Snip</h5>
+                  <p style="font-size:0.73rem; color:var(--text-muted);">View the verified 8BitDo Ultimate Software profile screenshot</p>
+                </div>
+              </div>
+              <span style="font-size:0.75rem; color:var(--blue-cyber); font-weight:700;">View Snip ↗</span>
+            </div>
+
+          </div>
+        </section>
+
+      </div>
+    </div>
+
+    <!-- SECTION: ZERO-HUD ACOUSTIC RADAR VIEW -->
+    <div id="view-audio" class="main-view-panel" style="display:none;">
+      <div class="dashboard-grid">
+        
+        <!-- Radar Interactive Card -->
+        <section class="card">
+          <div class="card-header">
+            <div class="card-title-group">
+              <h2>Zero-HUD Acoustic Radar</h2>
+              <p>Ear-level directional sound staging</p>
+            </div>
+            <span class="card-badge" style="color:var(--green-status); border-color:rgba(16,185,129,0.3);">Spatial Audio</span>
+          </div>
+
+          <div class="radar-wrapper">
+            <div class="toggle-group">
+              <button class="toggle-btn active" id="musicOffBtn" onclick="setCombatMusic(false)">
+                Dynamic Music: 0 (Zero-HUD Radar)
+              </button>
+              <button class="toggle-btn" id="musicOnBtn" onclick="setCombatMusic(true)">
+                Dynamic Music: 100 (Default)
+              </button>
+            </div>
+
+            <div class="radar-canvas-box" id="radarBox">
+              <div class="radar-ring ring-1"></div>
+              <div class="radar-ring ring-2"></div>
+              <div class="radar-listener">🎧</div>
+
+              <div class="sound-blip blip-parry" id="blipParry" title="Incoming Strike Parry Window">⚔️</div>
+              <div class="sound-blip blip-bow" id="blipBow" title="Archer Bowstring Release">🏹</div>
+              <div class="sound-blip blip-footsteps" id="blipWolf" title="Flanking Beast Footfalls">🐺</div>
+            </div>
+
+            <p id="radarNote" style="font-size:0.8rem; color:var(--text-muted); text-align:center; max-width:440px;">
+              <strong style="color:var(--gold-primary);">Zero-HUD Mode Active:</strong> Silencing dynamic combat music reveals subtle environmental audio tells (blade clash resonance, parry timings, and arrow whistles) tracked entirely by ear.
+            </p>
+          </div>
+        </section>
+
+        <!-- Audio Staging Specifications -->
+        <section class="card">
+          <div class="card-header">
+            <div class="card-title-group">
+              <h2>Acoustic Staging Calibration</h2>
+              <p>Hardware placement and game engine sound sliders</p>
+            </div>
+            <span class="card-badge">Soundbar Alignment</span>
+          </div>
+
+          <div class="stepper-list">
+            <div class="step-item">
+              <div class="step-left">
+                <div class="step-check-icon">✓</div>
+                <div class="step-meta">
+                  <h4>Soundbar Positioning</h4>
+                  <p>Ear-level aligned directly beneath the 75" display</p>
+                </div>
+              </div>
+              <span class="step-val-tag">Ear-Level Centered</span>
+            </div>
+
+            <div class="step-item">
+              <div class="step-left">
+                <div class="step-check-icon">✓</div>
+                <div class="step-meta">
+                  <h4>Audio Dynamic Range</h4>
+                  <p>Wider dynamic range separating ambient wind and sword clinks</p>
+                </div>
+              </div>
+              <span class="step-val-tag">Home Cinema</span>
+            </div>
+
+            <div class="step-item">
+              <div class="step-left">
+                <div class="step-check-icon">✓</div>
+                <div class="step-meta">
+                  <h4>Dynamic Combat Music</h4>
+                  <p>Muted to prevent musical horns masking acoustic radar</p>
+                </div>
+              </div>
+              <span class="step-val-tag">0 (Muted)</span>
+            </div>
+
+            <div class="step-item">
+              <div class="step-left">
+                <div class="step-check-icon">✓</div>
+                <div class="step-meta">
+                  <h4>Signal Path</h4>
+                  <p>Lossless digital audio passed over HDMI</p>
+                </div>
+              </div>
+              <span class="step-val-tag">NVIDIA HD Audio (HDMI)</span>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </div>
+
+    <!-- SECTION: 4K CAPTURES & SETUP SNIPS GALLERY -->
+    <div id="view-gallery" class="main-view-panel" style="display:none;">
+      <section class="gallery-section">
+        <div class="card-header" style="margin-bottom: 1.5rem;">
+          <div class="card-title-group">
+            <h2>Visual Proof & Reference Snips Library</h2>
+            <p>Verified 4K in-game captures and hardware calibration snips</p>
+          </div>
+          <span class="card-badge">Asset Library</span>
+        </div>
+
+        <div class="gallery-filter-tabs">
+          <button class="filter-tab active" onclick="filterGallery('all')">All Items (33)</button>
+          <button class="filter-tab" onclick="filterGallery('corvo')">Corvo Bianco Interiors (8)</button>
+          <button class="filter-tab" onclick="filterGallery('toussaint')">Toussaint Vistas (5)</button>
+          <button class="filter-tab" onclick="filterGallery('beauclair')">Beauclair Skyline (5)</button>
+          <button class="filter-tab" onclick="filterGallery('snips')">Calibration Snips (15)</button>
+        </div>
+
+        <div class="gallery-grid" id="galleryGrid">
+          
+          <!-- Corvo Bianco 01 -->
+          <div class="gallery-card" data-cat="corvo" onclick="openModal('screenshots/01_Corvo_Bianco_Interiors_and_Portraits/01_Geralt_Portrait_Candlelight_CatEyes.png', 'Geralt Candlelight Portrait — Subsurface scattering, glowing feline irises, and diffuse candle warmth.')">
+            <div class="gallery-thumb-container">
+              <img src="screenshots/01_Corvo_Bianco_Interiors_and_Portraits/01_Geralt_Portrait_Candlelight_CatEyes.png" alt="Geralt Portrait" class="gallery-thumb" onerror="this.src='screenshots/screenshot_21745.png'">
+              <span class="gallery-badge">Corvo Bianco</span>
+            </div>
+            <div class="gallery-info">
+              <div class="gallery-title">01. Geralt Portrait (Candlelight)</div>
+              <p class="gallery-tech-note">Demonstrates RTGI point-light bounce on Geralt's scarred visage and glowing feline iris reflection.</p>
+            </div>
+          </div>
+
+          <!-- Corvo Bianco 02 -->
+          <div class="gallery-card" data-cat="corvo" onclick="openModal('screenshots/01_Corvo_Bianco_Interiors_and_Portraits/02_Geralt_LaurelWreath_MasterArmor.png', 'Grandmaster Armor & Laurel Wreath — Specular metallic armor highlights and cloth micro-weave.')">
+            <div class="gallery-thumb-container">
+              <img src="screenshots/01_Corvo_Bianco_Interiors_and_Portraits/02_Geralt_LaurelWreath_MasterArmor.png" alt="Grandmaster Armor Portrait" class="gallery-thumb" onerror="this.src='screenshots/screenshot_21552.png'">
+              <span class="gallery-badge">Corvo Bianco</span>
+            </div>
+            <div class="gallery-info">
+              <div class="gallery-title">02. Grandmaster Armor & Wreath</div>
+              <p class="gallery-tech-note">High-frequency chainmail weave, leather buckle specular maps, and tournament wreath detail.</p>
+            </div>
+          </div>
+
+          <!-- Corvo Bianco 03 -->
+          <div class="gallery-card" data-cat="corvo" onclick="openModal('screenshots/01_Corvo_Bianco_Interiors_and_Portraits/03_CorvoBianco_GoldenHour_LatticeWindows_1.png', 'Corvo Bianco Golden Hour — Warm sunset rays streaming through diamond lattice glass.')">
+            <div class="gallery-thumb-container">
+              <img src="screenshots/01_Corvo_Bianco_Interiors_and_Portraits/03_CorvoBianco_GoldenHour_LatticeWindows_1.png" alt="Corvo Bianco Golden Hour 1" class="gallery-thumb" onerror="this.src='screenshots/screenshot_21759.png'">
+              <span class="gallery-badge">Corvo Bianco</span>
+            </div>
+            <div class="gallery-info">
+              <div class="gallery-title">03. Golden Hour Lattice Windows I</div>
+              <p class="gallery-tech-note">Zero light-bleed on interior oak furniture; diffuse volumetric rays preserved by 350-nit max brightness.</p>
+            </div>
+          </div>
+
+          <!-- Corvo Bianco 04 -->
+          <div class="gallery-card" data-cat="corvo" onclick="openModal('screenshots/01_Corvo_Bianco_Interiors_and_Portraits/04_CorvoBianco_GoldenHour_LatticeWindows_2.png', 'Corvo Bianco Golden Hour II — Indirect light bounce on plaster and oak furnishings.')">
+            <div class="gallery-thumb-container">
+              <img src="screenshots/01_Corvo_Bianco_Interiors_and_Portraits/04_CorvoBianco_GoldenHour_LatticeWindows_2.png" alt="Corvo Bianco Golden Hour 2" class="gallery-thumb" onerror="this.src='screenshots/screenshot_2182.png'">
+              <span class="gallery-badge">Corvo Bianco</span>
+            </div>
+            <div class="gallery-info">
+              <div class="gallery-title">04. Golden Hour Lattice Windows II</div>
+              <p class="gallery-tech-note">Physically accurate radiosity bouncing sunlight off plaster masonry into darker room corners.</p>
+            </div>
+          </div>
+
+          <!-- Corvo Bianco 05 -->
+          <div class="gallery-card" data-cat="corvo" onclick="openModal('screenshots/01_Corvo_Bianco_Interiors_and_Portraits/05_CorvoBianco_Candlelight_Hallway_1.png', 'Corvo Bianco Hallway I — Lantern and sconce illumination along stone archways.')">
+            <div class="gallery-thumb-container">
+              <img src="screenshots/01_Corvo_Bianco_Interiors_and_Portraits/05_CorvoBianco_Candlelight_Hallway_1.png" alt="Candlelight Hallway 1" class="gallery-thumb" onerror="this.src='screenshots/screenshot_21818.png'">
+              <span class="gallery-badge">Corvo Bianco</span>
+            </div>
+            <div class="gallery-info">
+              <div class="gallery-title">05. Candlelight Stone Hallway I</div>
+              <p class="gallery-tech-note">Deep contrast levels and natural penumbra shadows from wall sconces without rasterized stair-stepping.</p>
+            </div>
+          </div>
+
+          <!-- Corvo Bianco 06 -->
+          <div class="gallery-card" data-cat="corvo" onclick="openModal('screenshots/01_Corvo_Bianco_Interiors_and_Portraits/06_CorvoBianco_Candlelight_Hallway_2.png', 'Corvo Bianco Hallway II — Wine cellar corridor shadows and specular stone floor.')">
+            <div class="gallery-thumb-container">
+              <img src="screenshots/01_Corvo_Bianco_Interiors_and_Portraits/06_CorvoBianco_Candlelight_Hallway_2.png" alt="Candlelight Hallway 2" class="gallery-thumb" onerror="this.src='screenshots/screenshot_21821.png'">
+              <span class="gallery-badge">Corvo Bianco</span>
+            </div>
+            <div class="gallery-info">
+              <div class="gallery-title">06. Candlelight Stone Hallway II</div>
+              <p class="gallery-tech-note">Soft indirect illumination falling on stacked oak barrels and wine racks in the villa basement.</p>
+            </div>
+          </div>
+
+          <!-- Corvo Bianco 07 -->
+          <div class="gallery-card" data-cat="corvo" onclick="openModal('screenshots/01_Corvo_Bianco_Interiors_and_Portraits/07_Geralt_BackStudy_Scars_and_HairLighting.png', 'Geralt Back Study — HairWorks lighting, medallion chain, and shoulder scars.')">
+            <div class="gallery-thumb-container">
+              <img src="screenshots/01_Corvo_Bianco_Interiors_and_Portraits/07_Geralt_BackStudy_Scars_and_HairLighting.png" alt="Geralt Back Study" class="gallery-thumb" onerror="this.src='screenshots/screenshot_21926.png'">
+              <span class="gallery-badge">Corvo Bianco</span>
+            </div>
+            <div class="gallery-info">
+              <div class="gallery-title">07. HairWorks & Medallion Shading</div>
+              <p class="gallery-tech-note">Specular hair strand highlights, silver chain geometry, and physical light interaction across scars.</p>
+            </div>
+          </div>
+
+          <!-- Corvo Bianco 08 -->
+          <div class="gallery-card" data-cat="corvo" onclick="openModal('screenshots/01_Corvo_Bianco_Interiors_and_Portraits/08_CorvoBianco_FramedPortrait_OldManGeralt.png', 'Old Man Geralt Framed Portrait — High-resolution oil canvas texture on masonry wall.')">
+            <div class="gallery-thumb-container">
+              <img src="screenshots/01_Corvo_Bianco_Interiors_and_Portraits/08_CorvoBianco_FramedPortrait_OldManGeralt.png" alt="Old Man Geralt Portrait" class="gallery-thumb" onerror="this.src='screenshots/screenshot_15524.png'">
+              <span class="gallery-badge">Corvo Bianco</span>
+            </div>
+            <div class="gallery-info">
+              <div class="gallery-title">08. Framed Oil Portrait of Aging Geralt</div>
+              <p class="gallery-tech-note">High-res oil painting canvas texture rendered with subtle normal mapping under warm interior light.</p>
+            </div>
+          </div>
+
+          <!-- Toussaint Vista 01 -->
+          <div class="gallery-card" data-cat="toussaint" onclick="openModal('screenshots/02_Toussaint_Vistas_and_Weather/01_RusticForge_GlowingFireplace_Night.png', 'Rustic Forge Night — Radiosity from burning embers and forge hearth.')">
+            <div class="gallery-thumb-container">
+              <img src="screenshots/02_Toussaint_Vistas_and_Weather/01_RusticForge_GlowingFireplace_Night.png" alt="Rustic Forge" class="gallery-thumb" onerror="this.src='screenshots/screenshot_02533.png'">
+              <span class="gallery-badge">Toussaint Vistas</span>
+            </div>
+            <div class="gallery-info">
+              <div class="gallery-title">09. Nighttime Blacksmith Forge Hearth</div>
+              <p class="gallery-tech-note">Dynamic radiosity from glowing coals illuminating workshop tools, anvil, and wooden beams.</p>
+            </div>
+          </div>
+
+          <!-- Toussaint Vista 02 -->
+          <div class="gallery-card" data-cat="toussaint" onclick="openModal('screenshots/02_Toussaint_Vistas_and_Weather/02_Toussaint_Aerial_BirdEye_Vineyards.png', 'Toussaint Aerial Vineyards — Bird\'s eye view across rolling wine country with Ultra+ foliage.')">
+            <div class="gallery-thumb-container">
+              <img src="screenshots/02_Toussaint_Vistas_and_Weather/02_Toussaint_Aerial_BirdEye_Vineyards.png" alt="Toussaint Vineyards" class="gallery-thumb" onerror="this.src='screenshots/screenshot_13242.png'">
+              <span class="gallery-badge">Toussaint Vistas</span>
+            </div>
+            <div class="gallery-info">
+              <div class="gallery-title">10. Aerial Bird's Eye Vineyard Vista</div>
+              <p class="gallery-tech-note">Maximum foliage draw distance (Ultra+) with atmospheric perspective across the valley.</p>
+            </div>
+          </div>
+
+          <!-- Toussaint Vista 03 -->
+          <div class="gallery-card" data-cat="toussaint" onclick="openModal('screenshots/02_Toussaint_Vistas_and_Weather/03_Toussaint_Aerial_Storm_Rain_1.png', 'Toussaint Aerial Storm — Volumetric gathering clouds, rain sheets, and distant mountain vistas.')">
+            <div class="gallery-thumb-container">
+              <img src="screenshots/02_Toussaint_Vistas_and_Weather/03_Toussaint_Aerial_Storm_Rain_1.png" alt="Toussaint Storm 1" class="gallery-thumb" onerror="this.src='screenshots/screenshot_13317.png'">
+              <span class="gallery-badge">Toussaint Vistas</span>
+            </div>
+            <div class="gallery-info">
+              <div class="gallery-title">11. Volumetric Storm Panorama I</div>
+              <p class="gallery-tech-note">Dynamic cloud depth transitions; highlights in lightning and cloud edges avoid crushing under HDR10.</p>
+            </div>
+          </div>
+
+          <!-- Toussaint Vista 04 -->
+          <div class="gallery-card" data-cat="toussaint" onclick="openModal('screenshots/02_Toussaint_Vistas_and_Weather/04_Toussaint_Aerial_Storm_Rain_2.png', 'Toussaint Aerial Storm II — Approaching thunderhead and rain simulation across the hills.')">
+            <div class="gallery-thumb-container">
+              <img src="screenshots/02_Toussaint_Vistas_and_Weather/04_Toussaint_Aerial_Storm_Rain_2.png" alt="Toussaint Storm 2" class="gallery-thumb" onerror="this.src='screenshots/screenshot_13320.png'">
+              <span class="gallery-badge">Toussaint Vistas</span>
+            </div>
+            <div class="gallery-info">
+              <div class="gallery-title">12. Volumetric Storm Panorama II</div>
+              <p class="gallery-tech-note">Rain particle simulation blended with distant mountain fog and dynamic wind physics.</p>
+            </div>
+          </div>
+
+          <!-- Toussaint Vista 05 -->
+          <div class="gallery-card" data-cat="toussaint" onclick="openModal('screenshots/02_Toussaint_Vistas_and_Weather/05_Geralt_Overlooking_Stormy_Valley.png', 'Geralt Overlooking Valley — Third-person view of Geralt taking in the approaching thunderstorm.')">
+            <div class="gallery-thumb-container">
+              <img src="screenshots/02_Toussaint_Vistas_and_Weather/05_Geralt_Overlooking_Stormy_Valley.png" alt="Geralt Storm Valley" class="gallery-thumb" onerror="this.src='screenshots/screenshot_13339.png'">
+              <span class="gallery-badge">Toussaint Vistas</span>
+            </div>
+            <div class="gallery-info">
+              <div class="gallery-title">13. Geralt Surveying Approaching Front</div>
+              <p class="gallery-tech-note">Dramatic silhouette of Geralt overlooking the expanse of Toussaint under rolling storm clouds.</p>
+            </div>
+          </div>
+
+          <!-- Beauclair 01 -->
+          <div class="gallery-card" data-cat="beauclair" onclick="openModal('screenshots/03_Beauclair_Rooftops_and_Atmosphere/01_Beauclair_Rooftop_Sprint_1.png', 'Beauclair Rooftop Sprint I — Terra cotta tiles, brick chimneys, and palace ramparts.')">
+            <div class="gallery-thumb-container">
+              <img src="screenshots/03_Beauclair_Rooftops_and_Atmosphere/01_Beauclair_Rooftop_Sprint_1.png" alt="Beauclair Rooftop 1" class="gallery-thumb" onerror="this.src='screenshots/screenshot_1341.png'">
+              <span class="gallery-badge">Beauclair Skyline</span>
+            </div>
+            <div class="gallery-info">
+              <div class="gallery-title">14. Beauclair Rooftops Sprint I</div>
+              <p class="gallery-tech-note">Complex geometry mesh of Mediterranean terra cotta roof tiles and distant castle ramparts.</p>
+            </div>
+          </div>
+
+          <!-- Beauclair 02 -->
+          <div class="gallery-card" data-cat="beauclair" onclick="openModal('screenshots/03_Beauclair_Rooftops_and_Atmosphere/02_Beauclair_Rooftop_Sprint_2.png', 'Beauclair Rooftop Sprint II — Palace towers from rooftop parkour view.')">
+            <div class="gallery-thumb-container">
+              <img src="screenshots/03_Beauclair_Rooftops_and_Atmosphere/02_Beauclair_Rooftop_Sprint_2.png" alt="Beauclair Rooftop 2" class="gallery-thumb" onerror="this.src='screenshots/screenshot_1344.png'">
+              <span class="gallery-badge">Beauclair Skyline</span>
+            </div>
+            <div class="gallery-info">
+              <div class="gallery-title">15. Beauclair Rooftops Sprint II</div>
+              <p class="gallery-tech-note">Dynamic camera perspective showcasing fairy-tale spires framed against misty valley horizon.</p>
+            </div>
+          </div>
+
+          <!-- Beauclair 03 -->
+          <div class="gallery-card" data-cat="beauclair" onclick="openModal('screenshots/03_Beauclair_Rooftops_and_Atmosphere/03_Beauclair_Gothic_Skyline_Rain_1.png', 'Beauclair Gothic Skyline — Wet stone specular reflections, palace ramparts, and rain particles.')">
+            <div class="gallery-thumb-container">
+              <img src="screenshots/03_Beauclair_Rooftops_and_Atmosphere/03_Beauclair_Gothic_Skyline_Rain_1.png" alt="Beauclair Palace Rain 1" class="gallery-thumb" onerror="this.src='screenshots/screenshot_1355.png'">
+              <span class="gallery-badge">Beauclair Skyline</span>
+            </div>
+            <div class="gallery-info">
+              <div class="gallery-title">16. Gothic Palace Rain Reflections I</div>
+              <p class="gallery-tech-note">Fairytale architectural ramparts showing specular puddle highlights and graded atmospheric mist.</p>
+            </div>
+          </div>
+
+          <!-- Beauclair 04 -->
+          <div class="gallery-card" data-cat="beauclair" onclick="openModal('screenshots/03_Beauclair_Rooftops_and_Atmosphere/04_Beauclair_Gothic_Skyline_Rain_2.png', 'Beauclair Palace In Storm — Weathered limestone and copper turrets under dark storm skies.')">
+            <div class="gallery-thumb-container">
+              <img src="screenshots/03_Beauclair_Rooftops_and_Atmosphere/04_Beauclair_Gothic_Skyline_Rain_2.png" alt="Beauclair Palace Rain 2" class="gallery-thumb" onerror="this.src='screenshots/screenshot_1358.png'">
+              <span class="gallery-badge">Beauclair Skyline</span>
+            </div>
+            <div class="gallery-info">
+              <div class="gallery-title">17. Gothic Palace Rain Reflections II</div>
+              <p class="gallery-tech-note">Volumetric fog wrapping castle turrets and specular light sheen across wet masonry stairs.</p>
+            </div>
+          </div>
+
+          <!-- Beauclair 05 -->
+          <div class="gallery-card" data-cat="beauclair" onclick="openModal('screenshots/03_Beauclair_Rooftops_and_Atmosphere/05_Geralt_Cliffside_Silhouette_MistySun.png', 'Geralt Cliffside Silhouette — Dramatic sunrise backlight with valley mist.')">
+            <div class="gallery-thumb-container">
+              <img src="screenshots/03_Beauclair_Rooftops_and_Atmosphere/05_Geralt_Cliffside_Silhouette_MistySun.png" alt="Cliffside Silhouette" class="gallery-thumb" onerror="this.src='screenshots/screenshot_13559.png'">
+              <span class="gallery-badge">Beauclair Skyline</span>
+            </div>
+            <div class="gallery-info">
+              <div class="gallery-title">18. Geralt Cliffside Silhouette</div>
+              <p class="gallery-tech-note">Stunning HDR backlight through morning valley mist with high dynamic range preserved without banding.</p>
+            </div>
+          </div>
+
+          <!-- Snip 1: NVIDIA App 617.14 Notes -->
+          <div class="gallery-card" data-cat="snips" onclick="openModal('Snips/Screenshot 2026-09-29 222905.png', 'NVIDIA App — Game Ready Driver 617.14 release notes with DLSS 4.5 support for TW3R.')">
+            <div class="gallery-thumb-container">
+              <img src="Snips/Screenshot 2026-09-29 222905.png" alt="Driver 617.14 Release Notes" class="gallery-thumb">
+              <span class="gallery-badge" style="background:#16a34a;">NVIDIA App</span>
+            </div>
+            <div class="gallery-info">
+              <div class="gallery-title">19. Driver 617.14 & DLSS 4.5 Notes</div>
+              <p class="gallery-tech-note">Official release notes validating TW3R next-gen optimizations and DLSS support.</p>
+            </div>
+          </div>
+
+          <!-- Snip 2: ms-gamebar Error -->
+          <div class="gallery-card" data-cat="snips" onclick="openModal('Snips/Screenshot 2026-09-29 225027.png', 'Windows 11 ms-gamebar prompt — Initial error popup upon connecting controller.')">
+            <div class="gallery-thumb-container">
+              <img src="Snips/Screenshot 2026-09-29 225027.png" alt="Game Bar Error" class="gallery-thumb">
+              <span class="gallery-badge" style="background:#dc2626;">Error Diagnostic</span>
+            </div>
+            <div class="gallery-info">
+              <div class="gallery-title">20. Initial ms-gamebar Error Popup</div>
+              <p class="gallery-tech-note">Diagnostic capture of missing protocol handler prior to the winget overlay installation.</p>
+            </div>
+          </div>
+
+          <!-- Snip 3: Driver 617.14 Completed -->
+          <div class="gallery-card" data-cat="snips" onclick="openModal('Snips/Screenshot 2026-09-29 225052.png', 'NVIDIA App — Game Ready Driver 617.14 verified installation.')">
+            <div class="gallery-thumb-container">
+              <img src="Snips/Screenshot 2026-09-29 225052.png" alt="NVIDIA Driver Snip" class="gallery-thumb">
+              <span class="gallery-badge" style="background:#16a34a;">NVIDIA Driver</span>
+            </div>
+            <div class="gallery-info">
+              <div class="gallery-title">21. Driver 617.14 Installed</div>
+              <p class="gallery-tech-note">Installation confirmation of the latest Game Ready driver branch for RTX 3080.</p>
+            </div>
+          </div>
+
+          <!-- Snip 4: Game Bar + HISENSE Audio -->
+          <div class="gallery-card" data-cat="snips" onclick="openModal('Snips/Screenshot 2026-09-29 235124.png', 'Windows Start Menu — Xbox Game Bar installed alongside HISENSE HDMI Audio device.')">
+            <div class="gallery-thumb-container">
+              <img src="Snips/Screenshot 2026-09-29 235124.png" alt="Game Bar & Sound" class="gallery-thumb">
+              <span class="gallery-badge" style="background:#0284c7;">Windows System</span>
+            </div>
+            <div class="gallery-info">
+              <div class="gallery-title">22. Game Bar & Audio Device</div>
+              <p class="gallery-tech-note">Start menu confirmation of successful overlay provisioning and HDMI sound routing.</p>
+            </div>
+          </div>
+
+          <!-- Snip 5: Windows Sound Settings -->
+          <div class="gallery-card" data-cat="snips" onclick="openModal('Snips/Screenshot 2026-09-29 235302.png', 'Windows Sound Settings — Default output set to HISENSE (NVIDIA High Definition Audio).')">
+            <div class="gallery-thumb-container">
+              <img src="Snips/Screenshot 2026-09-29 235302.png" alt="Sound Settings" class="gallery-thumb">
+              <span class="gallery-badge" style="background:#0284c7;">Audio Config</span>
+            </div>
+            <div class="gallery-info">
+              <div class="gallery-title">23. HISENSE Audio Passthrough</div>
+              <p class="gallery-tech-note">Windows control panel confirming lossless multi-channel soundbar HDMI pipeline.</p>
+            </div>
+          </div>
+
+          <!-- Snip 6: Screenshot Directory in Explorer -->
+          <div class="gallery-card" data-cat="snips" onclick="openModal('Snips/Screenshot 2026-09-29 235953.png', 'File Explorer — Directory organization of native 4K screenshot assets.')">
+            <div class="gallery-thumb-container">
+              <img src="Snips/Screenshot 2026-09-29 235953.png" alt="Explorer Catalog" class="gallery-thumb">
+              <span class="gallery-badge" style="background:#475569;">File Management</span>
+            </div>
+            <div class="gallery-info">
+              <div class="gallery-title">24. 4K Asset Directory Ingest</div>
+              <p class="gallery-tech-note">Cataloging and staging raw capture files prior to metadata restructuring.</p>
+            </div>
+          </div>
+
+          <!-- Snip 7: Explorer Toolbar Setup -->
+          <div class="gallery-card" data-cat="snips" onclick="openModal('Snips/Screenshot 2026-09-30 000008.png', 'File Explorer — Windows path and navigation verification.')">
+            <div class="gallery-thumb-container">
+              <img src="Snips/Screenshot 2026-09-30 000008.png" alt="Path Verification" class="gallery-thumb">
+              <span class="gallery-badge" style="background:#475569;">Workspace Setup</span>
+            </div>
+            <div class="gallery-info">
+              <div class="gallery-title">25. Working Directory Verification</div>
+              <p class="gallery-tech-note">Path confirmation for project asset ingestion and mirror staging.</p>
+            </div>
+          </div>
+
+          <!-- Snip 8: 8BitDo Support Portal -->
+          <div class="gallery-card" data-cat="snips" onclick="openModal('Snips/Screenshot 2026-09-30 000842.png', '8BitDo Support — Official web portal for controller firmware and Ultimate Software.')">
+            <div class="gallery-thumb-container">
+              <img src="Snips/Screenshot 2026-09-30 000842.png" alt="8BitDo Portal" class="gallery-thumb">
+              <span class="gallery-badge" style="background:#7c3aed;">Controller Tools</span>
+            </div>
+            <div class="gallery-info">
+              <div class="gallery-title">26. 8BitDo Official Support Portal</div>
+              <p class="gallery-tech-note">Retrieving Ultimate Software suite for Pro 2 hardware firmware calibration.</p>
+            </div>
+          </div>
+
+          <!-- Snip 9: 8BitDo Bluetooth Paired -->
+          <div class="gallery-card" data-cat="snips" onclick="openModal('Snips/Screenshot 2026-09-30 000920.png', 'Windows Bluetooth Settings — 8BitDo Pro 2 controller paired successfully.')">
+            <div class="gallery-thumb-container">
+              <img src="Snips/Screenshot 2026-09-30 000920.png" alt="Bluetooth Paired" class="gallery-thumb">
+              <span class="gallery-badge" style="background:#0284c7;">Hardware Link</span>
+            </div>
+            <div class="gallery-info">
+              <div class="gallery-title">27. 8BitDo Pro 2 Bluetooth Pairing</div>
+              <p class="gallery-tech-note">Confirmed wireless pairing with zero ms-gamebar launch interruptions.</p>
+            </div>
+          </div>
+
+          <!-- Snip 10: 8BitDo Web Model Select -->
+          <div class="gallery-card" data-cat="snips" onclick="openModal('Snips/Screenshot 2026-09-30 001001.png', '8BitDo Web App — Selecting Pro 2 Bluetooth gamepad configuration profile.')">
+            <div class="gallery-thumb-container">
+              <img src="Snips/Screenshot 2026-09-30 001001.png" alt="8BitDo Model" class="gallery-thumb">
+              <span class="gallery-badge" style="background:#7c3aed;">Software Config</span>
+            </div>
+            <div class="gallery-info">
+              <div class="gallery-title">28. Pro 2 Controller Model Selection</div>
+              <p class="gallery-tech-note">Matching hardware firmware revisions to the correct Ultimate Software branch.</p>
+            </div>
+          </div>
+
+          <!-- Snip 11: Ultimate Software Extraction -->
+          <div class="gallery-card" data-cat="snips" onclick="openModal('Snips/Screenshot 2026-09-30 001032.png', 'Archive Extraction — Unpacking 8BitDo Ultimate Software application files.')">
+            <div class="gallery-thumb-container">
+              <img src="Snips/Screenshot 2026-09-30 001032.png" alt="Software Unpack" class="gallery-thumb">
+              <span class="gallery-badge" style="background:#475569;">Utility Deployment</span>
+            </div>
+            <div class="gallery-info">
+              <div class="gallery-title">29. 8BitDo Software Archive Extract</div>
+              <p class="gallery-tech-note">Staging standalone tuning binaries for rapid profile flashing.</p>
+            </div>
+          </div>
+
+          <!-- Snip 12: Ultimate Software Startup -->
+          <div class="gallery-card" data-cat="snips" onclick="openModal('Snips/Screenshot 2026-09-30 001109.png', '8BitDo Startup Screen — Ready to connect Pro 2 controller.')">
+            <div class="gallery-thumb-container">
+              <img src="Snips/Screenshot 2026-09-30 001109.png" alt="Software Startup" class="gallery-thumb">
+              <span class="gallery-badge" style="background:#7c3aed;">Software Config</span>
+            </div>
+            <div class="gallery-info">
+              <div class="gallery-title">30. 8BitDo Software Boot & Handshake</div>
+              <p class="gallery-tech-note">Initial UI synchronization with the active physical controller profile.</p>
+            </div>
+          </div>
+
+          <!-- Snip 13: Windows 4K Display Resolution -->
+          <div class="gallery-card" data-cat="snips" onclick="openModal('Snips/Screenshot 2026-09-30 001532.png', 'Windows 11 Display Settings — 3840 × 2160 UHD @ 60Hz HDR.')">
+            <div class="gallery-thumb-container">
+              <img src="Snips/Screenshot 2026-09-30 001532.png" alt="Windows Display Snip" class="gallery-thumb">
+              <span class="gallery-badge" style="background:#7c3aed;">Display Signal</span>
+            </div>
+            <div class="gallery-info">
+              <div class="gallery-title">31. Windows 4K UHD Calibration</div>
+              <p class="gallery-tech-note">Desktop display settings confirming native 3840 × 2160 output @ 60 Hz over HDMI.</p>
+            </div>
+          </div>
+
+          <!-- Snip 14: 8BitDo Button Mapping (P1 -> B) -->
+          <div class="gallery-card" data-cat="snips" onclick="openModal('Snips/Screenshot 2026-09-30 001636.png', '8BitDo Ultimate Software — Button Mapping confirming P1 paddle mapped to B for fluid dodging.')">
+            <div class="gallery-thumb-container">
+              <img src="Snips/Screenshot 2026-09-30 001636.png" alt="8BitDo Mapping Snip" class="gallery-thumb">
+              <span class="gallery-badge" style="background:#0284c7;">8BitDo Mapping</span>
+            </div>
+            <div class="gallery-info">
+              <div class="gallery-title">32. P1 Paddle Mapped to B (Dodge)</div>
+              <p class="gallery-tech-note">Verified screenshot showing rear P1 paddle bound to the B button for thumb-free dodging.</p>
+            </div>
+          </div>
+
+          <!-- Snip 15: 8BitDo Stick Invert Y -->
+          <div class="gallery-card" data-cat="snips" onclick="openModal('Snips/Screenshot 2026-09-30 001839.png', '8BitDo Ultimate Software — Stick Tuning confirming Right Stick Invert Y enabled.')">
+            <div class="gallery-thumb-container">
+              <img src="Snips/Screenshot 2026-09-30 001839.png" alt="8BitDo Stick Snip" class="gallery-thumb">
+              <span class="gallery-badge" style="background:#0284c7;">8BitDo Stick</span>
+            </div>
+            <div class="gallery-info">
+              <div class="gallery-title">33. Right Stick Invert Y Axis Active</div>
+              <p class="gallery-tech-note">Verified screenshot showing right analog camera stick vertical inversion calibration.</p>
+            </div>
+          </div>
+
+        </div>
+      </section>
+    </div>
+
+    <!-- NEXT-GEN COMBAT SKILL CALCULATOR VIEW PANEL -->
+    <div id="view-calculator" class="main-view-panel" style="display:none; margin-bottom: 2.5rem;">
+      
+      <!-- Economy Bar -->
+      <div class="economy-bar">
+        <div class="econ-stat">
+          <span class="econ-stat-label">Level</span>
+          <span class="econ-stat-value gold" id="heroLevelVal">100</span>
+        </div>
+        <div class="econ-stat">
+          <span class="econ-stat-label">Combat Points</span>
+          <span class="econ-stat-value red" id="combatPointsSpent">0 / 60</span>
+        </div>
+        <div class="econ-stat">
+          <span class="econ-stat-label">Points Remaining</span>
+          <span class="econ-stat-value green" id="pointsRemaining">116</span>
+        </div>
+        <div class="econ-controls">
+          <button class="btn-action red-glow" onclick="maxOutCombatTree()">
+            ⚡ Max Combat (60 pts)
+          </button>
+          <button class="btn-action" onclick="resetCombatTree()">
+            🔄 Reset
+          </button>
+        </div>
+      </div>
+
+      <!-- Main 2-Column Grid -->
+      <div class="calc-layout">
+
+        <!-- LEFT: In-Game Combat Tree -->
+        <div class="tree-viewport-card">
+          <div class="tree-header-banner">
+            <div class="tree-discipline-title">COMBAT ABILITY TREE</div>
+            <div class="tree-instruction">
+              <kbd>Left-Click</kbd> Upgrade &bull; <kbd>Right-Click</kbd> Downgrade &bull; <kbd>Hover</kbd> Inspect
+            </div>
+          </div>
+
+          <div class="tree-canvas-wrapper" id="treeCanvasWrapper">
+            <div class="tree-bg-watermark"></div>
+            
+            <!-- SVG Connector Lines -->
+            <svg class="tree-lines-svg" id="treeSvgLines" viewBox="0 0 810 940"></svg>
+
+            <!-- Interactive 20 Skill Nodes Container -->
+            <div id="nodesContainer"></div>
+
+            <!-- Floating Tooltip Card -->
+            <div id="floatingTooltip">
+              <div class="tt-header">
+                <span class="tt-name" id="ttName">Muscle Memory</span>
+                <span class="tt-rank" id="ttRank">0/3</span>
+              </div>
+              <div id="ttCurrentBlock">
+                <div class="tt-section-title">Current Level:</div>
+                <div class="tt-current-desc" id="ttCurrentDesc"></div>
+              </div>
+              <div id="ttNextBlock">
+                <div class="tt-section-title">Next Level:</div>
+                <div class="tt-next-desc" id="ttNextDesc"></div>
+              </div>
+              <div class="tt-bonus" id="ttBonus">
+                <span>⚡</span> <span id="ttBonusText">Adrenaline Point gain: +1%</span>
+              </div>
+              <div class="tt-tip" id="ttTip"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT: Active Ability Slots & Build Inspector -->
+        <div class="sidebar-panel">
+
+          <!-- Active Ability Slots Deck (16 slots) -->
+          <div class="deck-card">
+            <div class="deck-header">
+              <div class="deck-title">
+                <span>🛡️ Active Ability Slots</span>
+              </div>
+              <div class="attack-power-pill" id="totalAttackPowerBadge">
+                ⚔️ Attack Power +40%
+              </div>
+            </div>
+
+            <!-- 4 Quadrants Grid -->
+            <div class="slots-cluster-grid">
+              
+              <!-- Quadrant 1 (Top Left) -->
+              <div class="quadrant-box" id="quad-1">
+                <div class="quadrant-header">
+                  <span class="quadrant-label">Quadrant 1</span>
+                  <span class="quadrant-bonus" id="quad-1-bonus">+10% AP</span>
+                </div>
+                <div class="quadrant-slots-row">
+                  <div class="ability-slot" data-slot="0" onclick="openSlotPicker(0)"></div>
+                  <div class="ability-slot" data-slot="1" onclick="openSlotPicker(1)"></div>
+                  <div class="ability-slot" data-slot="2" onclick="openSlotPicker(2)"></div>
+                  <div class="mutagen-slot" title="Greater Red Mutagen (+10% base + 10% per Combat skill)">
+                    <span class="mutagen-icon">🩸</span>
+                    <span class="mutagen-label">RED</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Quadrant 2 (Top Right) -->
+              <div class="quadrant-box" id="quad-2">
+                <div class="quadrant-header">
+                  <span class="quadrant-label">Quadrant 2</span>
+                  <span class="quadrant-bonus" id="quad-2-bonus">+10% AP</span>
+                </div>
+                <div class="quadrant-slots-row">
+                  <div class="ability-slot" data-slot="3" onclick="openSlotPicker(3)"></div>
+                  <div class="ability-slot" data-slot="4" onclick="openSlotPicker(4)"></div>
+                  <div class="ability-slot" data-slot="5" onclick="openSlotPicker(5)"></div>
+                  <div class="mutagen-slot" title="Greater Red Mutagen (+10% base + 10% per Combat skill)">
+                    <span class="mutagen-icon">🩸</span>
+                    <span class="mutagen-label">RED</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Quadrant 3 (Bottom Left) -->
+              <div class="quadrant-box" id="quad-3">
+                <div class="quadrant-header">
+                  <span class="quadrant-label">Quadrant 3</span>
+                  <span class="quadrant-bonus" id="quad-3-bonus">+10% AP</span>
+                </div>
+                <div class="quadrant-slots-row">
+                  <div class="ability-slot" data-slot="6" onclick="openSlotPicker(6)"></div>
+                  <div class="ability-slot" data-slot="7" onclick="openSlotPicker(7)"></div>
+                  <div class="ability-slot" data-slot="8" onclick="openSlotPicker(8)"></div>
+                  <div class="mutagen-slot" title="Greater Red Mutagen (+10% base + 10% per Combat skill)">
+                    <span class="mutagen-icon">🩸</span>
+                    <span class="mutagen-label">RED</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Quadrant 4 (Bottom Right) -->
+              <div class="quadrant-box" id="quad-4">
+                <div class="quadrant-header">
+                  <span class="quadrant-label">Quadrant 4</span>
+                  <span class="quadrant-bonus" id="quad-4-bonus">+10% AP</span>
+                </div>
+                <div class="quadrant-slots-row">
+                  <div class="ability-slot" data-slot="9" onclick="openSlotPicker(9)"></div>
+                  <div class="ability-slot" data-slot="10" onclick="openSlotPicker(10)"></div>
+                  <div class="ability-slot" data-slot="11" onclick="openSlotPicker(11)"></div>
+                  <div class="mutagen-slot" title="Greater Red Mutagen (+10% base + 10% per Combat skill)">
+                    <span class="mutagen-icon">🩸</span>
+                    <span class="mutagen-label">RED</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Central Mutation (Blood & Wine 4-Slot Hub) -->
+            <div class="mutations-center-bar">
+              <div class="mutation-active-info">
+                <div class="mutation-orb">🔮</div>
+                <div class="mutation-text">
+                  <h4 id="activeMutationName">Metamorphosis (Snips Reference)</h4>
+                  <p>Crits trigger random decoction for 120s with 0 Toxicity (Max 5)</p>
+                </div>
+              </div>
+              
+              <div class="mutation-slots-strip">
+                <div class="mutation-extra-slot" data-slot="12" onclick="openSlotPicker(12)" title="Mutation Slot 1"></div>
+                <div class="mutation-extra-slot" data-slot="13" onclick="openSlotPicker(13)" title="Mutation Slot 2"></div>
+                <div class="mutation-extra-slot" data-slot="14" onclick="openSlotPicker(14)" title="Mutation Slot 3"></div>
+                <div class="mutation-extra-slot" data-slot="15" onclick="openSlotPicker(15)" title="Mutation Slot 4"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Selected Skill Deep Inspector -->
+          <div class="inspector-card" id="inspectorCard">
+            <div class="inspector-header">
+              <div class="inspector-icon">
+                <img id="inspIcon" src="assets/icons/combat/muscle_memory.png" alt="Skill Icon">
+              </div>
+              <div class="inspector-title">
+                <h3 id="inspName">Muscle Memory</h3>
+                <span id="inspBranch">FAST ATTACK &bull; TIER 1</span>
+              </div>
+              <div style="margin-left: auto;">
+                <button class="btn-action red-glow" id="inspSlotBtn" onclick="equipInspectedSkill()">
+                  ➕ Equip to Slot
+                </button>
+              </div>
+            </div>
+
+            <p id="inspTactical" style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 0.8rem;"></p>
+
+            <div class="ranks-stepper-row" id="inspRanksStepper"></div>
+          </div>
+
+          <!-- Curated Build Presets -->
+          <div class="deck-card">
+            <div class="deck-header">
+              <div class="deck-title">🎯 Curated Next-Gen Presets</div>
+            </div>
+            <div class="presets-container">
+              <div class="preset-card" onclick="loadPreset('snips_titan')">
+                <div>
+                  <div class="preset-title">Level 100 Tank Titan (Snips Reference)</div>
+                  <div class="preset-desc">Fully mastered combat tree, Metamorphosis, +160% AP</div>
+                </div>
+                <div class="preset-badge">60 PTS</div>
+              </div>
+
+              <div class="preset-card" onclick="loadPreset('feline_dps')">
+                <div>
+                  <div class="preset-title">Feline Fast-Attack Glass Cannon</div>
+                  <div class="preset-desc">Muscle Memory, Whirl, Crippling Strikes, Razor Focus</div>
+                </div>
+                <div class="preset-badge">36 PTS</div>
+              </div>
+
+              <div class="preset-card" onclick="loadPreset('bear_rend')">
+                <div>
+                  <div class="preset-title">Bear Ursine Heavy Rend Juggernaut</div>
+                  <div class="preset-desc">Strength Training, Crushing Blows, Rend, Sunder Armor, Undying</div>
+                </div>
+                <div class="preset-badge">39 PTS</div>
+              </div>
+
+              <div class="preset-card" onclick="loadPreset('duelist_parry')">
+                <div>
+                  <div class="preset-title">Death March Parrying Duelist</div>
+                  <div class="preset-desc">Arrow Deflection, Counterattack, Fleet-Footed, Deadly Precision</div>
+                </div>
+                <div class="preset-badge">33 PTS</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <p>The Witcher 3: Wild Hunt — Next-Gen Master Optimization Hub | Engineered for Keith Tibbitts</p>
+      <p style="margin-top: 0.35rem; font-size: 0.75rem;">Hardware Stack: RTX 3080 10GB • Hisense 75A65K & Samsung S95B OLED • 8BitDo Pro 2 Controller • Ear-Level Soundbar</p>
+    </footer>
+
+  </div>
+
+  <!-- Modal Lightbox -->
+  <div id="imageModal">
+    <div class="modal-box">
+      <button class="modal-close-btn" onclick="closeModal()">&times;</button>
+      <div class="modal-img-wrap">
+        <img id="modalImg" src="" alt="Enlarged Visual Asset">
+      </div>
+      <p id="modalCaption" style="color:var(--gold-light); font-size:0.9rem; text-align:center; font-weight:500;"></p>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="toast" id="toast">
+    <span>📋</span>
+    <span id="toastMsg">Master calibration notes copied to clipboard!</span>
+  </div>
+
+  <script>
+    // Data Presets for Televisions
+    const tvPresets = {
+      hisense: {
+        title: "Hisense 75A65K Display Calibration",
+        sub: "Optimized 4K HDR low-latency video pipeline",
+        badge: "Hisense 75\" 4K",
+        maxNits: 350,
+        items: [
+          { name: "Picture Mode", desc: "Bypasses input latency post-processing", val: "HDR Game" },
+          { name: "HDMI Format", desc: "Enables full 18 Gbps 4K @ 60Hz 10-bit bandwidth", val: "Enhanced" },
+          { name: "Backlight & Luminance", desc: "Maximum dynamic range output for HDR10/Dolby", val: "100 (Max)" },
+          { name: "Motion & Dynamic Backlight", desc: "Eliminates ghosting, soap-opera judder, and lag", val: "OFF" },
+          { name: "Color Temperature", desc: "Targets industry standard 6500K (D65) white point", val: "Warm 1 / Warm 2" },
+          { name: "Sharpness", desc: "Prevents edge halos around foliage and hair", val: "0 (Neutral)" }
+        ]
+      },
+      samsung: {
+        title: "Samsung 65\" S95B QD-OLED Calibration",
+        sub: "Per-pixel self-lit deep contrast reference settings",
+        badge: "Samsung S95B OLED",
+        maxNits: 800,
+        items: [
+          { name: "Picture Mode", desc: "Zero-lag Game Bar mode with HGIG tone-mapping", val: "Game Mode (HGIG)" },
+          { name: "Sharpness", desc: "Essential for 4K to eliminate edge ringing and aliasing", val: "0 (Crucial)" },
+          { name: "Color Tone", desc: "Accurate cinematic color tracking", val: "Warm 2" },
+          { name: "Peak Brightness", desc: "Allows specular highlight peaks up to ~1000 nits", val: "High" },
+          { name: "Remote Pairing Shortcut", desc: "Hold Back + Play/Pause for 3–5 seconds near TV", val: "Back + Play/Pause" },
+          { name: "Browser Speed Test", desc: "Run fast.com via Tizen browser for latency test", val: "Fast.com (Tizen)" }
+        ]
+      }
+    };
+
+    let activeTv = 'hisense';
+
+    function renderTvStepper() {
+      const data = tvPresets[activeTv];
+      document.getElementById('tvCardTitle').innerText = data.title;
+      document.getElementById('tvCardSub').innerText = data.sub;
+      document.getElementById('tvBadge').innerText = data.badge;
+      document.getElementById('targetNitsLabel').innerText = data.maxNits + ' nits';
+
+      const list = document.getElementById('tvStepperList');
+      list.innerHTML = '';
+      data.items.forEach(item => {
+        const div = document.createElement('div');
+        div.className = 'step-item';
+        div.innerHTML = `
+          <div class="step-left">
+            <div class="step-check-icon">✓</div>
+            <div class="step-meta">
+              <h4>${item.name}</h4>
+              <p>${item.desc}</p>
+            </div>
+          </div>
+          <span class="step-val-tag">${item.val}</span>
+        `;
+        list.appendChild(div);
+      });
+
+      // Update max brightness slider target
+      const maxSlider = document.getElementById('maxBrightnessSlider');
+      if (activeTv === 'hisense') {
+        maxSlider.value = 350;
+      } else {
+        maxSlider.value = 800;
+      }
+      updateToneMapping();
+    }
+
+    function switchTvPreset(tv) {
+      activeTv = tv;
+      if (tv === 'hisense') {
+        document.getElementById('tvHisenseBtn').classList.add('active');
+        document.getElementById('tvSamsungBtn').classList.remove('active');
+      } else {
+        document.getElementById('tvSamsungBtn').classList.add('active');
+        document.getElementById('tvHisenseBtn').classList.remove('active');
+      }
+      renderTvStepper();
+    }
+
+    // Main Navigation View Switcher
+    function switchMainView(view) {
+      document.querySelectorAll('.view-tab-btn').forEach(btn => {
+        btn.classList.remove('active');
+        if (btn.getAttribute('onclick') && btn.getAttribute('onclick').includes(view)) {
+          btn.classList.add('active');
+        }
+      });
+
+      document.querySelectorAll('.main-view-panel').forEach(panel => panel.style.display = 'none');
+      const targetPanel = document.getElementById('view-' + view);
+      if (targetPanel) {
+        targetPanel.style.display = 'block';
+      }
+
+      if (view === 'calculator' && typeof updateAllUI === 'function') {
+        updateAllUI();
+      }
+    }
+
+    // Tone-Mapping Lab Simulation
+    function updateToneMapping() {
+      const pw = document.getElementById('paperWhiteSlider').value;
+      const mb = parseInt(document.getElementById('maxBrightnessSlider').value);
+      
+      document.getElementById('paperWhiteVal').innerText = pw;
+      document.getElementById('maxBrightnessVal').innerText = mb + ' nits';
+
+      const screen = document.getElementById('simScreen');
+      const alertBox = document.getElementById('clippingStatus');
+      const simText = document.getElementById('simText');
+      const panelCap = tvPresets[activeTv].maxNits;
+
+      if (mb > panelCap) {
+        const overage = mb - panelCap;
+        const washOpacity = Math.min(0.65, overage / 400);
+        screen.style.background = `linear-gradient(135deg, rgba(255,255,255,${washOpacity}) 0%, #d4af37 40%, #e63946 100%)`;
+        simText.style.color = '#ffffff';
+        alertBox.className = 'clipping-alert danger';
+        alertBox.innerHTML = `⚠️ <strong>Highlight Clipping Detected (+${overage} nits):</strong> Exceeds your ${panelCap}-nit ceiling. Specular sun rays and torches blow out into flat white blocks.`;
+      } else {
+        screen.style.background = `linear-gradient(135deg, #1e293b 0%, #b45309 50%, #450a0a 100%)`;
+        simText.style.color = '#fef08a';
+        alertBox.className = 'clipping-alert safe';
+        alertBox.innerHTML = `🛡️ <strong>Calibrated:</strong> Highlights preserved; zero specular blowouts on ${panelCap}-nit display.`;
+      }
+    }
+
+    // Immersion & Distance Calculator
+    function updateDistanceCalc() {
+      const dist = parseFloat(document.getElementById('distSlider').value);
+      document.getElementById('distVal').innerText = dist.toFixed(1) + ' Feet';
+
+      const screenWidthInches = activeTv === 'hisense' ? 65.3 : 56.7; // 75" vs 65"
+      const distanceInches = dist * 12;
+
+      const fovRad = 2 * Math.atan(screenWidthInches / (2 * distanceInches));
+      const fovDeg = (fovRad * (180 / Math.PI)).toFixed(1);
+
+      document.getElementById('fovNumber').innerText = fovDeg + '°';
+
+      const ratingBox = document.getElementById('fovRating');
+      if (fovDeg >= 36 && fovDeg <= 42) {
+        ratingBox.innerText = 'Ideal THX Cinema (36°-40°)';
+        ratingBox.style.color = 'var(--gold-primary)';
+      } else if (fovDeg > 42) {
+        ratingBox.innerText = 'Ultra-Immersive (Extreme Close)';
+        ratingBox.style.color = '#38bdf8';
+      } else {
+        ratingBox.innerText = 'Relaxed / Distant Viewing';
+        ratingBox.style.color = 'var(--text-dim)';
+      }
+    }
+
+    // Acoustic Radar Logic
+    function setCombatMusic(enabled) {
+      const offBtn = document.getElementById('musicOffBtn');
+      const onBtn = document.getElementById('musicOnBtn');
+      const radarBox = document.getElementById('radarBox');
+      const radarNote = document.getElementById('radarNote');
+      const blips = document.querySelectorAll('.sound-blip');
+
+      if (!enabled) {
+        offBtn.classList.add('active');
+        onBtn.classList.remove('active');
+        radarBox.style.opacity = '1';
+        radarBox.style.filter = 'none';
+        blips.forEach(b => b.style.display = 'flex');
+        radarNote.innerHTML = '<strong style="color:var(--gold-primary);">Zero-HUD Mode Active:</strong> Silencing dynamic combat music reveals subtle environmental audio tells (blade clash resonance, parry timings, and arrow whistles) tracked entirely by ear.';
+      } else {
+        onBtn.classList.add('active');
+        offBtn.classList.remove('active');
+        radarBox.style.opacity = '0.35';
+        radarBox.style.filter = 'grayscale(80%)';
+        blips.forEach(b => b.style.display = 'none');
+        radarNote.innerHTML = '<strong style="color:#f87171;">Music Masking Cues:</strong> High-energy combat tracks mask spatial sound cues, making parry timing and projectile evasion much harder without visual HUD bars.';
+      }
+    }
+
+    // Gallery Filtering
+    function filterGallery(cat) {
+      document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+      event.target.classList.add('active');
+
+      const cards = document.querySelectorAll('.gallery-card');
+      cards.forEach(card => {
+        if (cat === 'all' || card.getAttribute('data-cat') === cat) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    // Modal Lightbox
+    function openModal(src, caption) {
+      const modal = document.getElementById('imageModal');
+      document.getElementById('modalImg').src = src;
+      document.getElementById('modalCaption').innerText = caption;
+      modal.style.display = 'flex';
+    }
+
+    function closeModal() {
+      document.getElementById('imageModal').style.display = 'none';
+    }
+
+    document.getElementById('imageModal').addEventListener('click', function(e) {
+      if (e.target === this) closeModal();
+    });
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeModal();
+    });
+
+    // Copy Utilities
+    function copyCode(text) {
+      navigator.clipboard.writeText(text).then(() => {
+        showToast("PowerShell command copied to clipboard!");
+      });
+    }
+
+    function copyFullCheatSheet() {
+      const text = `The Witcher 3: Remastered — Master Hardware & Experience Calibration Cheat Sheet:
+
+1. DISPLAY SETTINGS:
+• Primary: Hisense 75" (75A65K) -> HDR Game, Enhanced HDMI, Backlight 100, Sharpness 0, Warm 1/2
+• Reference: Samsung 65" S95B QD-OLED -> Game Mode (HGIG), Sharpness 0, Warm 2
+• Viewing Distance: 7.5 – 8.5 ft (75") / 6.5 – 7.5 ft (65")
+
+2. IN-GAME ENGINE TONE-MAPPING:
+• Paper White: 130 nits (prevents text/menu eye strain)
+• Max Brightness: 350 nits (Hisense) / 800 nits (Samsung OLED)
+
+3. 8BITDO PRO 2 CONTROLLER (XINPUT):
+• Rear P1 Paddle -> Mapped to B (Dodge / Evade) [Thumbs remain on camera stick]
+• Right Stick Invert Y -> Enabled (Flight-style vertical camera tracking)
+• Stored to Onboard Memory Profile 2
+• Windows Game Bar Fix: winget install --id 9NZKPSTSNW4P --accept-package-agreements --accept-source-agreements
+
+4. ZERO-HUD ACOUSTIC RADAR:
+• Ear-Level Soundbar directly beneath 4K panel
+• Dynamic Range: Home Cinema via NVIDIA HDMI Audio
+• Dynamic Combat Music: 0 (Muted for directional parry & projectile tells)`;
+
+      navigator.clipboard.writeText(text).then(() => {
+        showToast("Master calibration notes copied to clipboard!");
+      });
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      document.getElementById('toastMsg').innerText = msg;
+      toast.style.display = 'flex';
+      setTimeout(() => { toast.style.display = 'none'; }, 3200);
+    }
+
+    // Init
+    renderTvStepper();
+    updateDistanceCalc();
+  </script>
+
+  <!-- Slot Picker Modal -->
+  <div id="slotModal">
+    <div class="slot-modal-box">
+      <button class="btn-close-modal" onclick="closeSlotPicker()">&times;</button>
+      <div class="slot-modal-title">Equip Skill to Slot</div>
+      <div class="slot-modal-sub">Choose any unlocked combat skill with at least 1 point invested:</div>
+      <div class="slot-modal-grid" id="slotModalGrid"></div>
+    </div>
+  </div>
+
+  <!-- Include Combat Skills Data -->
+  <script src="combat_skills_data.js"></script>
+
+  <!-- Interactive Calculator Engine -->
+  <script>
+    const calcState = {
+      level: 100,
+      placesOfPower: 16,
+      totalPoints: 116,
+      pointsSpent: 0,
+      skillAllocations: {},
+      slottedSkills: new Array(16).fill(null),
+      inspectedSkillId: "muscle_memory",
+      activePickerSlotIndex: null
+    };
+
+    if (typeof COMBAT_SKILLS_DATA !== 'undefined') {
+      for (const id in COMBAT_SKILLS_DATA) {
+        calcState.skillAllocations[id] = 0;
+      }
+    }
+
+    function renderTreeLines() {
+      const svg = document.getElementById("treeSvgLines");
+      if (!svg || typeof COMBAT_TREE_CONNECTIONS === 'undefined') return;
+      svg.innerHTML = "";
+
+      COMBAT_TREE_CONNECTIONS.forEach(([fromId, toId]) => {
+        const fromSkill = COMBAT_SKILLS_DATA[fromId];
+        const toSkill = COMBAT_SKILLS_DATA[toId];
+        if (!fromSkill || !toSkill) return;
+
+        const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+        line.setAttribute("x1", fromSkill.x);
+        line.setAttribute("y1", fromSkill.y);
+        line.setAttribute("x2", toSkill.x);
+        line.setAttribute("y2", toSkill.y);
+        line.setAttribute("class", "tree-connector-line");
+        line.setAttribute("id", `line-${fromId}-${toId}`);
+
+        const isParentInvested = calcState.skillAllocations[fromId] > 0;
+        const isChildInvested = calcState.skillAllocations[toId] > 0;
+        if (isParentInvested && isChildInvested) {
+          line.classList.add("active");
+        } else if (isParentInvested) {
+          line.classList.add("unlocked");
+        }
+
+        svg.appendChild(line);
+      });
+    }
+
+    function isSkillUnlocked(skillId) {
+      if (typeof COMBAT_SKILLS_DATA === 'undefined') return false;
+      const skill = COMBAT_SKILLS_DATA[skillId];
+      if (!skill) return false;
+
+      if (skill.parents.length === 0) return true;
+      if (skill.minPointsInTree && calcState.pointsSpent < skill.minPointsInTree) return false;
+
+      if (skill.requiresAnyParent) {
+        return skill.parents.some(parentId => calcState.skillAllocations[parentId] > 0);
+      } else {
+        return skill.parents.every(parentId => calcState.skillAllocations[parentId] > 0);
+      }
+    }
+
+    function renderTreeNodes() {
+      const container = document.getElementById("nodesContainer");
+      if (!container || typeof COMBAT_SKILLS_DATA === 'undefined') return;
+      container.innerHTML = "";
+
+      for (const id in COMBAT_SKILLS_DATA) {
+        const skill = COMBAT_SKILLS_DATA[id];
+        const rank = calcState.skillAllocations[id];
+        const unlocked = isSkillUnlocked(id);
+
+        const node = document.createElement("div");
+        node.className = `skill-node ${unlocked ? 'unlocked' : ''} ${rank > 0 ? 'active' : ''} ${rank === 3 ? 'maxed' : ''}`;
+        node.id = `node-${id}`;
+        node.style.left = `${skill.x}px`;
+        node.style.top = `${skill.y}px`;
+
+        const box = document.createElement("div");
+        box.className = "node-box";
+
+        const img = document.createElement("img");
+        img.className = "node-icon-img";
+        img.src = skill.icon;
+        img.alt = skill.name;
+        box.appendChild(img);
+        node.appendChild(box);
+
+        const diamondsBar = document.createElement("div");
+        diamondsBar.className = "rank-diamonds-bar";
+        for (let i = 1; i <= 3; i++) {
+          const dia = document.createElement("div");
+          dia.className = `diamond ${rank >= i ? 'filled' : ''}`;
+          diamondsBar.appendChild(dia);
+        }
+        node.appendChild(diamondsBar);
+
+        node.addEventListener("click", (e) => {
+          e.preventDefault();
+          investSkill(id, 1);
+        });
+
+        node.addEventListener("contextmenu", (e) => {
+          e.preventDefault();
+          investSkill(id, -1);
+        });
+
+        node.addEventListener("mouseenter", (e) => {
+          showFloatingTooltip(id, e);
+          inspectSkill(id);
+        });
+
+        node.addEventListener("mousemove", (e) => {
+          updateFloatingTooltipPosition(e);
+        });
+
+        node.addEventListener("mouseleave", () => {
+          hideFloatingTooltip();
+        });
+
+        container.appendChild(node);
+      }
+    }
+
+    function investSkill(id, delta) {
+      const currentRank = calcState.skillAllocations[id];
+      const newRank = currentRank + delta;
+
+      if (delta > 0) {
+        if (currentRank >= 3) return;
+        if (!isSkillUnlocked(id)) return;
+        if (calcState.totalPoints - calcState.pointsSpent <= 0) return;
+
+        calcState.skillAllocations[id] = newRank;
+        calcState.pointsSpent += 1;
+      } else if (delta < 0) {
+        if (currentRank <= 0) return;
+
+        calcState.skillAllocations[id] = newRank;
+        calcState.pointsSpent -= 1;
+
+        let invalidDownstream = false;
+        for (const childId in COMBAT_SKILLS_DATA) {
+          if (calcState.skillAllocations[childId] > 0 && !isSkillUnlocked(childId)) {
+            invalidDownstream = true;
+            break;
+          }
+        }
+
+        if (invalidDownstream) {
+          calcState.skillAllocations[id] = currentRank;
+          calcState.pointsSpent += 1;
+          alert("Cannot refund point: Downstream skills depend on this prerequisite!");
+          return;
+        }
+
+        if (newRank === 0) {
+          for (let i = 0; i < calcState.slottedSkills.length; i++) {
+            if (calcState.slottedSkills[i] === id) {
+              calcState.slottedSkills[i] = null;
+            }
+          }
+        }
+      }
+
+      updateAllUI();
+      inspectSkill(id);
+    }
+
+    function showFloatingTooltip(id, event) {
+      const skill = COMBAT_SKILLS_DATA[id];
+      if (!skill) return;
+
+      const rank = calcState.skillAllocations[id];
+      document.getElementById("ttName").innerText = skill.name;
+      document.getElementById("ttRank").innerText = `${rank}/3`;
+
+      const currentBlock = document.getElementById("ttCurrentBlock");
+      const nextBlock = document.getElementById("ttNextBlock");
+
+      if (rank === 0) {
+        currentBlock.style.display = "none";
+        nextBlock.style.display = "block";
+        document.getElementById("ttNextDesc").innerText = skill.ranks[0].desc;
+        document.getElementById("ttBonusText").innerText = skill.ranks[0].bonus;
+      } else if (rank === 3) {
+        currentBlock.style.display = "block";
+        nextBlock.style.display = "none";
+        document.getElementById("ttCurrentDesc").innerText = skill.ranks[2].desc;
+        document.getElementById("ttBonusText").innerText = skill.ranks[2].bonus;
+      } else {
+        currentBlock.style.display = "block";
+        nextBlock.style.display = "block";
+        document.getElementById("ttCurrentDesc").innerText = skill.ranks[rank - 1].desc;
+        document.getElementById("ttNextDesc").innerText = skill.ranks[rank].desc;
+        document.getElementById("ttBonusText").innerText = skill.ranks[rank - 1].bonus;
+      }
+
+      document.getElementById("ttTip").innerText = skill.tacticalTip || "";
+
+      const tooltip = document.getElementById("floatingTooltip");
+      tooltip.style.display = "block";
+      updateFloatingTooltipPosition(event);
+    }
+
+    function updateFloatingTooltipPosition(event) {
+      const tooltip = document.getElementById("floatingTooltip");
+      const wrapper = document.getElementById("treeCanvasWrapper");
+      if (!tooltip || !wrapper) return;
+      const rect = wrapper.getBoundingClientRect();
+
+      let left = event.clientX - rect.left + 20;
+      let top = event.clientY - rect.top + 20;
+
+      if (left + 390 > rect.width) {
+        left = event.clientX - rect.left - 400;
+      }
+      if (top + 260 > rect.height) {
+        top = rect.height - 270;
+      }
+
+      tooltip.style.left = `${Math.max(10, left)}px`;
+      tooltip.style.top = `${Math.max(10, top)}px`;
+    }
+
+    function hideFloatingTooltip() {
+      const tooltip = document.getElementById("floatingTooltip");
+      if (tooltip) tooltip.style.display = "none";
+    }
+
+    function inspectSkill(id) {
+      if (typeof COMBAT_SKILLS_DATA === 'undefined') return;
+      const skill = COMBAT_SKILLS_DATA[id];
+      if (!skill) return;
+
+      calcState.inspectedSkillId = id;
+      const rank = calcState.skillAllocations[id];
+
+      document.getElementById("inspIcon").src = skill.icon;
+      document.getElementById("inspName").innerText = skill.name;
+      document.getElementById("inspBranch").innerText = `${skill.branch.toUpperCase()} DISCIPLINE • RANK ${rank}/3`;
+      document.getElementById("inspTactical").innerText = skill.tacticalTip;
+
+      const stepper = document.getElementById("inspRanksStepper");
+      stepper.innerHTML = "";
+
+      skill.ranks.forEach(r => {
+        const box = document.createElement("div");
+        box.className = `rank-step-box ${rank === r.level ? 'current' : ''}`;
+        box.innerHTML = `
+          <div class="rank-step-num">RANK ${r.level}/3</div>
+          <div class="rank-step-text">${r.highlight}</div>
+        `;
+        stepper.appendChild(box);
+      });
+    }
+
+    function updateSlotsAndMutagens() {
+      if (typeof COMBAT_SKILLS_DATA === 'undefined') return;
+      let totalAttackPower = 0;
+
+      for (let q = 1; q <= 4; q++) {
+        const startIndex = (q - 1) * 3;
+        let combatSkillsInQuad = 0;
+
+        for (let i = 0; i < 3; i++) {
+          const slotIdx = startIndex + i;
+          const slotEl = document.querySelector(`.ability-slot[data-slot="${slotIdx}"]`);
+          const slottedId = calcState.slottedSkills[slotIdx];
+
+          if (slotEl) {
+            if (slottedId && calcState.skillAllocations[slottedId] > 0) {
+              slotEl.classList.add("filled");
+              slotEl.innerHTML = `
+                <img class="ability-slot-img" src="${COMBAT_SKILLS_DATA[slottedId].icon}">
+                <div class="slot-remove-btn" onclick="removeSlottedSkill(${slotIdx}, event)">&times;</div>
+              `;
+              combatSkillsInQuad++;
+            } else {
+              slotEl.classList.remove("filled");
+              slotEl.innerHTML = `<span style="color:#475569; font-size:1.1rem;">+</span>`;
+              calcState.slottedSkills[slotIdx] = null;
+            }
+          }
+        }
+
+        const quadBonus = 10 + (combatSkillsInQuad * 10);
+        totalAttackPower += quadBonus;
+        const qBonusEl = document.getElementById(`quad-${q}-bonus`);
+        if (qBonusEl) qBonusEl.innerText = `+${quadBonus}% AP`;
+      }
+
+      for (let i = 12; i <= 15; i++) {
+        const slotEl = document.querySelector(`.mutation-extra-slot[data-slot="${i}"]`);
+        const slottedId = calcState.slottedSkills[i];
+
+        if (slotEl) {
+          if (slottedId && calcState.skillAllocations[slottedId] > 0) {
+            slotEl.classList.add("filled");
+            slotEl.innerHTML = `
+              <img class="ability-slot-img" src="${COMBAT_SKILLS_DATA[slottedId].icon}">
+              <div class="slot-remove-btn" onclick="removeSlottedSkill(${i}, event)">&times;</div>
+            `;
+          } else {
+            slotEl.classList.remove("filled");
+            slotEl.innerHTML = `<span style="color:#d97706; font-size:1rem;">✦</span>`;
+            calcState.slottedSkills[i] = null;
+          }
+        }
+      }
+
+      const totalBadge = document.getElementById("totalAttackPowerBadge");
+      if (totalBadge) totalBadge.innerText = `⚔️ Attack Power +${totalAttackPower}%`;
+    }
+
+    function openSlotPicker(slotIndex) {
+      calcState.activePickerSlotIndex = slotIndex;
+      const modal = document.getElementById("slotModal");
+      const grid = document.getElementById("slotModalGrid");
+      grid.innerHTML = "";
+
+      const availableSkills = Object.keys(COMBAT_SKILLS_DATA).filter(id => calcState.skillAllocations[id] > 0);
+
+      if (availableSkills.length === 0) {
+        grid.innerHTML = `<div style="grid-column: 1/-1; color:#94a3b8; padding:1.5rem; text-align:center;">No combat skills invested yet! Allocate points in the tree to equip them.</div>`;
+      } else {
+        availableSkills.forEach(id => {
+          const skill = COMBAT_SKILLS_DATA[id];
+          const isAlreadySlotted = calcState.slottedSkills.includes(id);
+
+          const item = document.createElement("div");
+          item.className = "slot-modal-item";
+          item.style.opacity = isAlreadySlotted ? "0.45" : "1";
+          item.innerHTML = `
+            <img src="${skill.icon}" alt="${skill.name}">
+            <span>${skill.name}</span>
+          `;
+          item.addEventListener("click", () => {
+            equipSkillToSlot(id, calcState.activePickerSlotIndex);
+            closeSlotPicker();
+          });
+          grid.appendChild(item);
+        });
+      }
+
+      modal.style.display = "flex";
+    }
+
+    function closeSlotPicker() {
+      const modal = document.getElementById("slotModal");
+      if (modal) modal.style.display = "none";
+    }
+
+    function equipSkillToSlot(skillId, slotIndex) {
+      for (let i = 0; i < calcState.slottedSkills.length; i++) {
+        if (calcState.slottedSkills[i] === skillId) {
+          calcState.slottedSkills[i] = null;
+        }
+      }
+      calcState.slottedSkills[slotIndex] = skillId;
+      updateSlotsAndMutagens();
+    }
+
+    function removeSlottedSkill(slotIndex, event) {
+      if (event) event.stopPropagation();
+      calcState.slottedSkills[slotIndex] = null;
+      updateSlotsAndMutagens();
+    }
+
+    function equipInspectedSkill() {
+      const id = calcState.inspectedSkillId;
+      if (calcState.skillAllocations[id] <= 0) {
+        alert("Invest at least 1 point in this skill to equip it!");
+        return;
+      }
+
+      const emptyIdx = calcState.slottedSkills.findIndex(s => s === null);
+      if (emptyIdx === -1) {
+        alert("All 16 slots are full! Click any slot to replace it.");
+        return;
+      }
+
+      equipSkillToSlot(id, emptyIdx);
+    }
+
+    function loadPreset(presetKey) {
+      resetCombatTree();
+
+      if (presetKey === "snips_titan") {
+        for (const id in COMBAT_SKILLS_DATA) {
+          calcState.skillAllocations[id] = 3;
+        }
+        calcState.pointsSpent = 60;
+
+        const top16 = [
+          "muscle_memory", "whirl", "crippling_strikes",
+          "strength_training", "rend", "sunder_armor",
+          "arrow_deflection", "fleet_footed", "counterattack",
+          "razor_focus", "undying", "deadly_precision",
+          "three_strikes", "crushing_blows", "resolve", "flood_of_anger"
+        ];
+        top16.forEach((id, idx) => calcState.slottedSkills[idx] = id);
+
+      } else if (presetKey === "feline_dps") {
+        const felineBuild = {
+          muscle_memory: 3, crushing_blows: 3, strength_training: 3,
+          three_strikes: 3, whirl: 3, rend: 3, fleet_footed: 3,
+          counterattack: 3, razor_focus: 3, crippling_strikes: 3,
+          deadly_precision: 3, arrow_deflection: 3
+        };
+        for (const id in felineBuild) {
+          calcState.skillAllocations[id] = felineBuild[id];
+          calcState.pointsSpent += felineBuild[id];
+        }
+        calcState.slottedSkills[0] = "muscle_memory";
+        calcState.slottedSkills[1] = "whirl";
+        calcState.slottedSkills[2] = "crippling_strikes";
+        calcState.slottedSkills[3] = "razor_focus";
+        calcState.slottedSkills[4] = "deadly_precision";
+        calcState.slottedSkills[5] = "three_strikes";
+        calcState.slottedSkills[6] = "fleet_footed";
+        calcState.slottedSkills[7] = "counterattack";
+
+      } else if (presetKey === "bear_rend") {
+        const bearBuild = {
+          muscle_memory: 3, strength_training: 3, crushing_blows: 3,
+          three_strikes: 3, whirl: 3, rend: 3, fleet_footed: 3,
+          counterattack: 3, razor_focus: 3, undying: 3,
+          sunder_armor: 3, deadly_precision: 3, resolve: 3
+        };
+        for (const id in bearBuild) {
+          calcState.skillAllocations[id] = bearBuild[id];
+          calcState.pointsSpent += bearBuild[id];
+        }
+        calcState.slottedSkills[0] = "strength_training";
+        calcState.slottedSkills[1] = "crushing_blows";
+        calcState.slottedSkills[2] = "rend";
+        calcState.slottedSkills[3] = "sunder_armor";
+        calcState.slottedSkills[4] = "undying";
+        calcState.slottedSkills[5] = "razor_focus";
+        calcState.slottedSkills[6] = "three_strikes";
+
+      } else if (presetKey === "duelist_parry") {
+        const duelistBuild = {
+          arrow_deflection: 3, cold_blood: 3, muscle_memory: 3,
+          strength_training: 3, three_strikes: 3, fleet_footed: 3,
+          counterattack: 3, razor_focus: 3, resolve: 3,
+          deadly_precision: 3, crippling_strikes: 3
+        };
+        for (const id in duelistBuild) {
+          calcState.skillAllocations[id] = duelistBuild[id];
+          calcState.pointsSpent += duelistBuild[id];
+        }
+        calcState.slottedSkills[0] = "arrow_deflection";
+        calcState.slottedSkills[1] = "counterattack";
+        calcState.slottedSkills[2] = "fleet_footed";
+        calcState.slottedSkills[3] = "deadly_precision";
+      }
+
+      updateAllUI();
+    }
+
+    function maxOutCombatTree() {
+      for (const id in COMBAT_SKILLS_DATA) {
+        calcState.skillAllocations[id] = 3;
+      }
+      calcState.pointsSpent = 60;
+      updateAllUI();
+    }
+
+    function resetCombatTree() {
+      for (const id in COMBAT_SKILLS_DATA) {
+        calcState.skillAllocations[id] = 0;
+      }
+      calcState.pointsSpent = 0;
+      calcState.slottedSkills.fill(null);
+      updateAllUI();
+    }
+
+    function updateAllUI() {
+      const spentEl = document.getElementById("combatPointsSpent");
+      const remEl = document.getElementById("pointsRemaining");
+      if (spentEl) spentEl.innerText = `${calcState.pointsSpent} / 60`;
+      if (remEl) remEl.innerText = `${calcState.totalPoints - calcState.pointsSpent}`;
+
+      renderTreeLines();
+      renderTreeNodes();
+      updateSlotsAndMutagens();
+      inspectSkill(calcState.inspectedSkillId);
+    }
+
+    // Auto-init calculator on load: Starts completely empty
+    window.addEventListener("DOMContentLoaded", () => {
+      if (typeof COMBAT_SKILLS_DATA !== 'undefined') {
+        renderTreeLines();
+        renderTreeNodes();
+        updateSlotsAndMutagens();
+        inspectSkill("muscle_memory");
+        resetCombatTree();
+      }
+    });
+  </script>
+</body>
+</html>
