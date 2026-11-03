@@ -77,6 +77,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Social media Open Graph preview cards and branding meta tags in index headers.
 
 ### Changed
+- Organized `TW3R_Personal_Guide/` into a clean hierarchy: active playthrough & CROW mechanics guides at root (`README.md`, `CAT_SCHOOL_LEVEL_PROGRESSION_GUIDE.md`, `TW3R-Guide_Outline.txt`, `QUEST_TRACKER_GUIDE.md`, `witcher3_501c_crow_guide.html`), Level 100 NG+ Master Save Audit catalogs under `NG_Plus_Audit/`, screenshots grouped under `Screenshots/Lvl_08_Quest_Log/` (13 captures) and `Screenshots/Lvl_100_NG_Plus_Audit/` (8 captures), `.mp4` videos under `ScreenRecordings/`, and removed the temporary `nppBackup/` directory.
 - Updated `OptimizationGuide` container in `App.tsx` to enable natural window scrolling without viewport locking.
 - Aligned top HUD indicators to exact in-game screenshot values: Level 100, 0/2000 XP, 197,501 Crowns, and 85/170 Inventory Weight.
 - Reconstructed slotted abilities matrix into the authentic 7-column symmetrical Blood and Wine layout with quad-specific mutagen placement and conduits (mutagens on the outer edges flanking the central Euphoria nexus).
