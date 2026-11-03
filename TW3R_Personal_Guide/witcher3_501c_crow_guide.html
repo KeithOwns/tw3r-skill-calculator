@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Witcher 3: Remastered (5.01c) & CROW Combat Overhaul Guide</title>
+    <style>
+        :root {
+            --bg-dark: #121316;
+            --bg-card: #1c1e24;
+            --bg-table-alt: #23262e;
+            --accent-gold: #c8a253;
+            --accent-red: #b8372b;
+            --text-main: #e2e4e9;
+            --text-muted: #9aa0ac;
+            --border-color: #2f333d;
+        }
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+            margin: 0;
+            padding: 30px 15px;
+        }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        header {
+            border-bottom: 2px solid var(--accent-gold);
+            padding-bottom: 18px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        h1 {
+            color: var(--accent-gold);
+            font-size: 2.1rem;
+            margin: 0 0 8px 0;
+            letter-spacing: 0.5px;
+        }
+        header p {
+            color: var(--text-muted);
+            margin: 0;
+            font-size: 1.05rem;
+        }
+        .section-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-left: 4px solid var(--accent-gold);
+            border-radius: 6px;
+            padding: 22px 26px;
+            margin-bottom: 24px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+        }
+        h2 {
+            color: var(--accent-gold);
+            margin-top: 0;
+            font-size: 1.4rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 8px;
+        }
+        h3 {
+            color: #f0d59c;
+            font-size: 1.12rem;
+            margin: 18px 0 8px 0;
+        }
+        ul, ol {
+            margin: 8px 0 12px 0;
+            padding-left: 22px;
+        }
+        li {
+            margin-bottom: 6px;
+        }
+        code, pre {
+            font-family: Consolas, 'Courier New', monospace;
+            background-color: #0d0e11;
+            color: #8be9fd;
+            border-radius: 4px;
+        }
+        code {
+            padding: 2px 6px;
+            font-size: 0.92em;
+        }
+        pre {
+            padding: 12px 16px;
+            overflow-x: auto;
+            border: 1px solid var(--border-color);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 14px 0;
+            font-size: 0.94rem;
+        }
+        th, td {
+            border: 1px solid var(--border-color);
+            padding: 10px 12px;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background-color: #272a34;
+            color: var(--accent-gold);
+            font-weight: 600;
+        }
+        tr:nth-child(even) {
+            background-color: var(--bg-table-alt);
+        }
+        .badge {
+            display: inline-block;
+            padding: 2px 8px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            border-radius: 4px;
+            background-color: var(--accent-red);
+            color: #fff;
+            margin-right: 6px;
+        }
+        .formula {
+            background-color: #0d0e11;
+            border-left: 3px solid var(--accent-red);
+            padding: 10px 14px;
+            font-family: Consolas, monospace;
+            margin: 12px 0;
+            color: #f8f8f2;
+        }
+        footer {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.88rem;
+            margin-top: 36px;
+            padding-top: 16px;
+            border-top: 1px solid var(--border-color);
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1>The Witcher 3: Remastered (v5.01c) &amp; CROW Combat Overhaul</h1>
+        <p>Complete Session Reference: Controls, Mechanics, Runestones, Skill Synergies, &amp; Farming Locations</p>
+    </header>
+
+    <!-- 1. Laptop Controls & Debug Console -->
+    <section class="section-card">
+        <h2>1. Laptop Controls, Keybinds &amp; Debug Console</h2>
+        <h3>Middle Mouse Button ("Use Quick Access Item") Alternatives</h3>
+        <ul>
+            <li><strong>In-Game Secondary Keybind (Recommended):</strong> Go to <code>Options &rarr; Key Bindings &rarr; Use Quick Access Item</code> and bind the blank secondary slot to an accessible key like <code>G</code>, <code>Caps Lock</code>, or <code>~</code>.</li>
+            <li><strong>Windows Precision Trackpad:</strong> A <strong>Three-Finger Tap</strong> emulates Middle Click (configure under <em>Windows Settings &rarr; Bluetooth &amp; devices &rarr; Touchpad &rarr; Three-finger gestures</em>).</li>
+            <li><strong>Windows Mouse Keys:</strong> Press <code>Left Alt + Left Shift + NumLock</code>, press Numpad <code>-</code> to select Middle Click, and use Numpad <code>5</code> (click) or <code>0</code> (hold).</li>
+        </ul>
+
+        <h3>Activating "Whirl" Smoothly on a Laptop</h3>
+        <ul>
+            <li><strong>Trigger:</strong> Press and hold your <strong>Fast Attack</strong> button in combat while the <em>Whirl</em> skill is slotted and you have Stamina.</li>
+            <li><strong>Avoid Trackpad Palm Rejection:</strong> Bind the secondary slot for <strong>Fast Attack</strong> in <code>Options &rarr; Key Bindings &rarr; Combat</code> to a keyboard key (e.g., <code>J</code> or <code>F</code>) so you can hold it down effortlessly while steering with <code>WASD</code>.</li>
+        </ul>
+
+        <h3>Enabling the In-Game Debug Console</h3>
+        <p>Open <code>bin\configase\general.ini</code> in your game folder (and <code>Documents\The Witcher 3\dx12user.settings</code> if on DX12) and add:</p>
+        <pre>[General]
+ConfigVersion=5
+DBGConsoleOn=true</pre>
+        <p>Press <code>~</code> (Tilde) in-game to open. Key commands: <code>additem('Beast Oil 1')</code>, <code>additem('Troll mutagen', 1)</code>, <code>addmoney(5000)</code>, <code>healme</code>, <code>god</code>, <code>ShowAllFT(1)</code>.</p>
+    </section>
+
+    <!-- 2. Armor Piercing & Manticore Silver Sword -->
+    <section class="section-card">
+        <h2>2. Armor Piercing Mechanics &amp; Hard Caps</h2>
+        <div class="formula">Effective Enemy Armor = max(0, Enemy Flat Armor - Weapon Armor Piercing)</div>
+        <ul>
+            <li><strong>Why Manticore Silver Sword Has +250 AP:</strong>
+                <ol>
+                    <li>Many monsters have high flat <code>Armor</code> values representing carapace or stone skin (Giant Centipedes, Shaelmaars, Earth Elementals, Gargoyles, Rock Trolls).</li>
+                    <li>Manticore builds rely on Fast Attacks + Crits + Alchemy rather than Strong Attacks (which naturally bypass armor).</li>
+                    <li>Manticore Steel and Silver swords share an identical stat template (+250 AP, +50% Crit Damage, +5% Crit Chance, +10% Bleed).</li>
+                    <li>Global active weapon stats apply to Bombs via the 3-piece Manticore bonus.</li>
+                </ol>
+            </li>
+            <li><strong>Hard Caps (Zero Return Above Enemy Armor):</strong>
+                <ul>
+                    <li><strong>Unarmored Monsters &amp; Shirtless Bandits:</strong> 0 Armor (0 AP cap).</li>
+                    <li><strong>Armored Knights &amp; Humans:</strong> 30–65 Armor (65 AP cap).</li>
+                    <li><strong>Insectoids &amp; Draconids:</strong> 30–100 Armor (100 AP cap).</li>
+                    <li><strong>Heavy Elementa, Wild Hunt Warriors &amp; Rock Trolls:</strong> 100–180 Armor (180–200 AP absolute cap).</li>
+                </ul>
+            </li>
+            <li><strong>Takeaway:</strong> +250 AP on a Manticore sword already exceeds every enemy in the game. Never socket <em>Svarog</em> (+AP) runestones into high-AP swords.</li>
+        </ul>
+    </section>
+
+    <!-- 3. Bleeding, Grindstone & Status Chances -->
+    <section class="section-card">
+        <h2>3. Remastered 5.01c Bleeding, Grindstones &amp; Status Chances</h2>
+        <h3>Grindstone &amp; Armorer's Table</h3>
+        <ul>
+            <li><strong>Grindstone (Enhanced Weapons):</strong> Grants <strong>+20% weapon damage</strong> to both Steel and Silver swords for 15 minutes (permanent with the <em>Preservation</em> Runeword). Does not repair weapon durability.</li>
+            <li><strong>Armorer's Table (Enhanced Armor):</strong> Grants <strong>+20% base armor rating</strong> for 15 minutes.</li>
+        </ul>
+
+        <h3>Bleeding in Patch 5.01c Remastered</h3>
+        <ul>
+            <li><strong><em>Crippling Strikes</em> Rework:</strong> No longer applies flat-damage bleeding. In 5.01c, Critical Hits from Fast Attacks "Cripple" enemies, increasing all damage they take by <strong>10% / 20% / 30%</strong> (Ranks 1/2/3).</li>
+            <li><strong>True Bleeding Sources:</strong> Triggered only by weapon innate <code>% Bleed</code>, <strong>Devana Runestones</strong> (+2%/+3%/+5%), or <strong>Broadhead Bolts</strong> (100% proc).</li>
+            <li><strong>Scaling:</strong> Deals <strong>1%–3.5% of Target's Max HP per second</strong> over 5 seconds. Cannot bypass innate bleed immunities (Wraiths, Elementa, Wild Hunt).</li>
+            <li><strong>Grandmaster Wolven Synergy:</strong> 3-piece adds +1% sword damage per worn piece per bleed stack; 6-piece allows up to 4 simultaneous bleed stacks (1 base + 1 per Adrenaline Point).</li>
+        </ul>
+
+        <h3>Runestones &amp; Status Effect Reference</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Runestone / Source</th>
+                    <th>Effect Type</th>
+                    <th>Lesser / Standard / Greater</th>
+                    <th>Combat Behavior &amp; CROW Synergy</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Triglav Runestone</strong></td>
+                    <td>Chance to Stun</td>
+                    <td>+2% / +3% / +5%</td>
+                    <td>Dazes enemies for 2–3s (like Axii), opening humans to instant finishers or unblocked Heavy Attacks to build CROW Stamina stacks.</td>
+                </tr>
+                <tr>
+                    <td><strong>Veles Runestone</strong></td>
+                    <td>Sign Intensity</td>
+                    <td>+2% / +3% / +5%</td>
+                    <td>Boosts Sign Intensity (and Sign status chances like Igni Burn or Aard Knockdown) while that sword is drawn.</td>
+                </tr>
+                <tr>
+                    <td><strong>Svarog Runestone</strong></td>
+                    <td>Armor Piercing</td>
+                    <td>+10 / +20 / +30</td>
+                    <td>Reduces flat enemy armor on Fast Attacks. Useful on early 0-AP swords; wasted on high-AP swords.</td>
+                </tr>
+                <tr>
+                    <td><strong>Devana Runestone</strong></td>
+                    <td>Chance to Bleed</td>
+                    <td>+2% / +3% / +5%</td>
+                    <td>Inflicts % Max HP Bleeding for 5s. Essential for Wolven sets in 5.01c.</td>
+                </tr>
+                <tr>
+                    <td><strong>Morana + Poisoned Blades</strong></td>
+                    <td>Chance to Poison</td>
+                    <td>+2% / +3% / +5% (+15% skill)</td>
+                    <td>Inflicts % Max HP Poison for 5s; stacks alongside Bleeding on Viper swords.</td>
+                </tr>
+                <tr>
+                    <td><strong>Dazhbog / Igni</strong></td>
+                    <td>Chance to Burn</td>
+                    <td>+2% / +3% / +5% (Up to 100% w/ Igni)</td>
+                    <td>Deals 2%–4% Max HP/sec for 4s and locks enemies in a panic stun animation.</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- 4. CROW Combat Modules & Defense Tree Synergy -->
+    <section class="section-card">
+        <h2>4. CROW Combat System Changes &amp; 5.01c Defense Synergies</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>CROW Module</th>
+                    <th>System / Mechanic</th>
+                    <th>Vanilla Behavior</th>
+                    <th>CROW Mod Change</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Combat Stamina</strong></td>
+                    <td>Passive vs. On-Hit Regen</td>
+                    <td>Fast passive regeneration.</td>
+                    <td>Drastically reduced passive regen; landing hits grants stacking stamina regen buffs (Heavy Attacks grant the largest stacks).</td>
+                </tr>
+                <tr>
+                    <td><strong>Combat Stamina</strong></td>
+                    <td>HUD XP Bar Meter</td>
+                    <td>Shows level XP only.</td>
+                    <td>Displays active stacked Stamina Regen % in the top-left XP bar during combat.</td>
+                </tr>
+                <tr>
+                    <td><strong>Combat Defence</strong></td>
+                    <td>Dodge Speed &amp; I-Frames</td>
+                    <td>Normal speed; full i-frames.</td>
+                    <td>Dodge speed increased to <strong>135%</strong>, invincibility frames cut by <strong>50%</strong>, and dodging costs flat Stamina.</td>
+                </tr>
+                <tr>
+                    <td><strong>Combat Defence</strong></td>
+                    <td>Parry / Counter Extension</td>
+                    <td>Drains stamina; no buff extension.</td>
+                    <td>Successful parries/counters (including reflected arrows) <strong>extend all Stamina Regen stacks by +1 second</strong>.</td>
+                </tr>
+                <tr>
+                    <td><strong>Aggression</strong></td>
+                    <td>Enemy Attack &amp; Rage</td>
+                    <td>Enemies take turns; easy to stunlock.</td>
+                    <td>Simultaneous group attacks; taking consecutive hits grants enemies "Rage" stamina bursts to counterattack.</td>
+                </tr>
+                <tr>
+                    <td><strong>Regeneration</strong></td>
+                    <td>Food &amp; Healing Potions</td>
+                    <td>Short single food buff; burst potions.</td>
+                    <td>Food lasts 20 minutes and stacks; <em>Swallow</em> &amp; <em>White Raffard's</em> become sustained heal-over-time effects.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Arrow Deflection &amp; Best 5.01c Defense Column Path</h3>
+        <ul>
+            <li><strong>Arrow Deflection Scope:</strong> Works against all bows and crossbows (<code>W3ArrowProjectile</code>). Rank 1 reflects arrows for 100% damage with a 15% instant-kill chance (up to +100% bonus damage &amp; 45% instant-kill at Rank 3). Does <em>not</em> block monster spit, webs, boulders, or magic (use alternate <strong>Yrden Magic Trap</strong> or <strong>Aard Sweep</strong> for those).</li>
+            <li><strong>Why CROW Makes Parrying Arrows Easier:</strong> 135% faster dodge recovery lets you snap into a block immediately, and reflecting an arrow extends all active CROW Stamina Regen stacks by +1s. Time your parry to the bowstring <em>twang</em> or the red flash on the archer's health bar.</li>
+            <li><strong>Optimal 5.01c Defense Skill Path for CROW:</strong>
+                <ol>
+                    <li><strong>Arrow Deflection (1/3):</strong> Immediate arrow reflection + +1s CROW stamina stack extension.</li>
+                    <li><strong>Resolve (1/3):</strong> Stepping stone that prevents Adrenaline loss on hit.</li>
+                    <li><strong>Fleet-Footed (3/3):</strong> Grants 100% damage reduction while dodging—completely negating CROW's 50% dodge i-frame penalty while keeping 135% dodge speed.</li>
+                    <li><strong>Undying (1/3):</strong> Automatic second life using Adrenaline (crucial since CROW removes instant healing from White Raffard's).</li>
+                    <li><strong>Counterattack (3/3):</strong> Grants <strong>+100% damage</strong> on your next attack after <em>either</em> a parry OR a dodge.</li>
+                    <li><strong>Support Perks:</strong> Pair with <em>Attack is the Best Defense</em> (General) and 1 point in <em>Frenzy</em> (Alchemy slow-motion cue on enemy counterattacks).</li>
+                </ol>
+            </li>
+        </ul>
+    </section>
+
+    <!-- 5. Overlooked 5.01c Remastered Mechanics & Cintra Mod Compatibility -->
+    <section class="section-card">
+        <h2>5. Overlooked 5.01c Mechanics &amp; Mod Compatibility</h2>
+        <ul>
+            <li><strong>Combat Disengage Shortcut:</strong> Hold <strong>Dodge (<code>Left Alt</code>) + Sprint (<code>Left Shift</code>)</strong> in combat to immediately unlock from enemies and break into a full out-of-combat sprint.</li>
+            <li><strong>Built-In Game Modifiers (<code>Options &rarr; Gameplay</code>):</strong> Native toggles for <em>Ignore Item Weight</em>, <em>Unlimited Item Durability</em>, <em>Faster Boats</em>, and <em>Grouped Nearby Loot</em>.</li>
+            <li><strong>Reforge (Transmog) Unlocks via Diagrams:</strong> Picking up any crafting diagram automatically unlocks that gear's visual appearance at Yoana or Hattori without needing to craft it.</li>
+            <li><strong>5.01c Alchemy Changes:</strong> Toxicity damage starts at <strong>50% Toxicity</strong> without <em>Heightened Tolerance</em>. <em>Delayed Recovery</em> now adds +5 seconds to all active potions whenever you drink a potion at high toxicity.</li>
+            <li><strong>Crossbow Dodge-Cancel Reload:</strong> Tap <strong>Dodge (<code>Alt</code>)</strong> the instant a bolt leaves the crossbow to skip the reload animation completely.</li>
+            <li><strong><em>Tales of the Witcher: Cintra (1.0b)</em> + CROW Compatibility:</strong> Both use non-conflicting <code>@wrapMethod</code> script annotations and work together cleanly inside Cintra's campaign (with a minor HUD flash when the top-left XP bar updates mid-fight). However, because Cintra is a standalone campaign replacement that overrides global economy and blueprint tables, disable <code>modTalesOfTheWitcher</code> and <code>dlcTalesOfTheWitcher</code> when playing your main Velen save.</li>
+        </ul>
+    </section>
+
+    <!-- 6. World Locations: Beast Oil, Bears, Cyclops & Early Axii Checks -->
+    <section class="section-card">
+        <h2>6. Locations: Beast Oil, Bears, Skellige Cyclops &amp; Early Axii</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Target / Resource</th>
+                    <th>Best Locations &amp; Details</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Beast Oil Manuscripts</strong></td>
+                    <td>
+                        • <strong>Base (+10%):</strong> Starting recipe (1x Dog Tallow, 1x Wolf's Liver), or sold by Keira Metz, The Pellar, and Electors' Square Alchemist.<br>
+                        • <strong>Enhanced (+25%):</strong> Electors' Square Alchemist (Novigrad), Herbalist NE of Oxenfurt, Jonna in Rannvaig (Skellige).<br>
+                        • <strong>Superior (+50%):</strong> Gremist (Skellige), Lornruk subterranean cave chest (NW Velen), Grottos cave (Skellige).
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>Bears (Velen &amp; White Orchard)</strong></td>
+                    <td>
+                        • <strong>Velen:</strong> Woods immediately south/southwest of <strong>The Pellar's Hut</strong> (Level 6 Bear + Guarded Treasure); forest west of <strong>Inn at the Crossroads</strong>; grove south of <strong>Mulbrydale</strong>.<br>
+                        • <strong>White Orchard (Fast Respawns):</strong> Behind the <strong>White Orchard Cemetery</strong> crypt (north of Mill signpost), SE of <strong>Nilfgaardian Garrison</strong>, and south of <strong>Broken Bridge</strong>.
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>Respawning Level 30 Cyclops (Skellige)</strong></td>
+                    <td>
+                        • <strong>Location:</strong> Ruined coastal fortress on the <strong>eastern shore of Ard Skellig</strong>, halfway between the <strong>Whale Graveyard</strong> and <strong>Redgill</strong> signposts.<br>
+                        • <strong>Rewards &amp; Respawn:</strong> Guards a Quen Place of Power and the <strong>Mastercrafted Griffin Armor diagrams</strong>. Step up to the second-floor ledge and meditate for 1 hour to respawn him infinitely.
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>Earliest Axii (Delusion) Conversation Checks</strong></td>
+                    <td>
+                        • <strong>Base / Level 1 (White Orchard):</strong> Inside the White Orchard Inn on the defensive peasants during <em>Lilac and Gooseberries</em> (+25 XP), outside the inn on the 3 bandits (+25 XP), and on Napp during <em>Twisted Firestarter</em>.<br>
+                        • <strong>Strict Delusion Level 1 (Early Velen):</strong> Baron's men at the Inn at the Crossroads (<em>The Nilfgaardian Connection</em>) and the Shady Merchant's pass at Border Post (<em>Fake Papers</em>).<br>
+                        • <strong>Strict Delusion Level 2 (Early Velen):</strong> Midcopse villager behind the well (<em>Hunting a Witch</em>) and Nilfgaardian Quartermaster (<em>Blood Ties</em>).
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <footer>
+        Generated Summary &bull; The Witcher 3: Wild Hunt — Remastered (v5.01c) &amp; CROW Combat Overhaul
+    </footer>
+</div>
+</body>
+</html>

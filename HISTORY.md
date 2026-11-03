@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- Created the concise, level-sorted Cat School Path Quest & Event Guide (`TW3R_Personal_Guide/TW3R-Guide_Outline.txt` and `TW3R_Personal_Guide/CAT_SCHOOL_LEVEL_PROGRESSION_GUIDE.md`) and added an interactive `🐱 Cat School New Start (Lvl 1→50+)` tab (`#catschool`) to `quest_tracker.html` / `SkillCalculator/public/quest_tracker.html`, covering `'A New Beginning'` (`(Cat School) Path` on `Blood and Broken Bones!`), CROW v4.1.2 consumable/skill progression (`Melt Armor` -> `Delusion` -> CROW Defense Core), and every `[quest_reward]` / `[unmarked_reward]` and `(story)` / `(gear)` milestone from White Orchard through Toussaint (`Father Knows Worst` Hugo Monnart crossbow bolt vendor).
 - Integrated all deliverables, reports, CSV spreadsheets, presets, and 4K reference media from the `C:\Users\admin\Documents\TW3R_Guide` profile into the unified repository and React SPA:
   - Added `TW3R_Master_Project_Summary.html`, `TW3R_Complete_Optimization_Project_Report.html`, `TW3R_Viewing_Experience_Optimizer.html`, and `TW3R_Skill_Calculator_Chat_Summary.html` to root and `SkillCalculator/public/` (with external browser-extension script tags stripped).
   - Added all 4 Level 100 analytical CSV spreadsheets (`TW3R_Level_100_Tank_Titan_Skil_Tank_Titan_Build_Calculator.csv`, `Feline_Glass_Cannon_DPS.csv`, `Decoction_Potion_Matrix.csv`, and `General_Alchemy_Overhaul_v5_0.csv`) to root and `SkillCalculator/public/`.

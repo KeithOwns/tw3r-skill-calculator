@@ -521,6 +521,7 @@
     <div class="controls-bar">
       <div class="tab-group">
         <button class="tab-btn active" onclick="filterSection('all', this)">All Sections</button>
+        <button class="tab-btn" id="tab-catschool" onclick="filterSection('catschool', this)" style="border-color:#38bdf8;color:#38bdf8;">🐱 Cat School New Start (Lvl 1→50+)</button>
         <button class="tab-btn" onclick="filterSection('roadmap', this)">Lvl 8→12 Roadmap</button>
         <button class="tab-btn" onclick="filterSection('at-risk', this)">⚠️ At-Risk Active (13)</button>
         <button class="tab-btn" onclick="filterSection('missing-triggers', this)">❗ Missing Velen/Novigrad `!` (24)</button>
@@ -532,6 +533,246 @@
         <input type="text" id="questSearch" class="search-input" placeholder="Search quest, region, NPC, mutagen..." oninput="filterRows()" />
       </div>
     </div>
+
+
+    <!-- SECTION 0: CAT SCHOOL NEW START LEVEL-SORTED GUIDE -->
+    <section class="section-block" data-section="catschool">
+      <div class="section-header">
+        <h2>0. Cat School Path — Concise Level-Sorted Quest &amp; Event Guide (Lvl 1 → 50+)</h2>
+        <div style="display:flex;gap:0.5rem;flex-wrap:wrap;">
+          <span class="badge badge-mod">[quest_reward] / [unmarked_reward]</span>
+          <span class="badge badge-high">(story) / (gear)</span>
+          <span class="badge badge-safe">Blood and Broken Bones! • CROW v4.1.2</span>
+        </div>
+      </div>
+
+      <div class="roadmap-grid" style="margin-bottom:1.25rem;">
+        <div class="step-card">
+          <h3>Mod Start: 'A New Beginning' → (Cat School) Path</h3>
+          <ul>
+            <li><input type="checkbox" class="quest-check" data-id="cs-01" /> <span><code>[quest_reward] (story) (gear)</code> Select <strong>(Cat School) Path</strong> in <em>A New Beginning</em> (Blood and Broken Bones! difficulty).</span></li>
+            <li><input type="checkbox" class="quest-check" data-id="cs-02" /> <span><strong>Consumables &amp; Pockets:</strong> Equip <strong>Food &amp; Drink</strong> (20m CROW stacking regen), <strong>Tawny Owl</strong> potion, &amp; <strong>Torch</strong> in pocket slot.</span></li>
+          </ul>
+        </div>
+        <div class="step-card">
+          <h3>Opening Skill Order (Levels 1 → 6)</h3>
+          <ul>
+            <li><input type="checkbox" class="quest-check" data-id="cs-03" /> <span><strong>Skill #0 (0-Pt Passive):</strong> Slot <strong>Cat School Techniques</strong> (+25% Crit DMG &amp; +5% Fast DMG per Light Armor piece).</span></li>
+            <li><input type="checkbox" class="quest-check" data-id="cs-04" /> <span><strong>1st Skill:</strong> <strong>Melt Armor</strong> (Igni weakens enemy armor up to 75%) → <strong>2nd Skill:</strong> <strong>Delusion</strong> (Axii Rank 1–2 for all early dialogue checks).</span></li>
+            <li><input type="checkbox" class="quest-check" data-id="cs-05" /> <span><strong>CROW Defense Core:</strong> <strong>Muscle Memory (3/3)</strong> → <strong>Arrow Deflection (1/3)</strong> → <strong>Resolve (1/3)</strong> → <strong>Fleet-Footed (3/3)</strong> → <strong>Undying (1/3)</strong> → <strong>Counterattack (3/3)</strong>.</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table class="searchable-table">
+          <thead>
+            <tr>
+              <th style="width:42px;">Done</th>
+              <th style="width:70px;">Lvl</th>
+              <th style="width:145px;">Region / Phase</th>
+              <th style="width:155px;">Event &amp; Reward Tags</th>
+              <th>Quest / Event Name</th>
+              <th>Exact Action, Cutoff &amp; Reward Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- WHITE ORCHARD -->
+            <tr>
+              <td class="check-cell"><input type="checkbox" class="quest-check" data-id="cs-wo-1" /></td>
+              <td class="lvl-cell">1</td>
+              <td>White Orchard</td>
+              <td><code>[unmarked_reward]</code><br/><span class="badge badge-mod">(story)</span></td>
+              <td><strong>Yennefer's Crystal Bird Skull</strong></td>
+              <td>Use Witcher Senses at starting campsite brush south of Woesong Bridge. Unlocks extra cutscene with Yennefer; <strong>expires when leaving White Orchard!</strong></td>
+            </tr>
+            <tr>
+              <td class="check-cell"><input type="checkbox" class="quest-check" data-id="cs-wo-2" /></td>
+              <td class="lvl-cell">1</td>
+              <td>White Orchard</td>
+              <td><code>[quest_reward]</code><br/><span class="badge badge-mod">(story)</span></td>
+              <td><strong>Lilac and Gooseberries (Axii Checks)</strong></td>
+              <td>Use <strong>Delusion (Rank 1)</strong> on the peasants inside White Orchard Inn (+25 XP) and the 3 bandits outside (+25 XP).</td>
+            </tr>
+            <tr>
+              <td class="check-cell"><input type="checkbox" class="quest-check" data-id="cs-wo-3" /></td>
+              <td class="lvl-cell">1</td>
+              <td>White Orchard</td>
+              <td><code>[unmarked_reward]</code><br/><span class="badge badge-safe">(gear)</span></td>
+              <td><strong>Aldert Geert &amp; Elsa Gwent Cards + 6 Places of Power</strong></td>
+              <td>Win <em>Zoltan Chivay</em> from Aldert Geert, buy all 4 Gwent cards (<em>Decoy</em>, <em>Foltest</em>) from Elsa before the tavern brawl, and draw from all <strong>6 Places of Power (+6 Skill Pts)</strong>.</td>
+            </tr>
+            <tr>
+              <td class="check-cell"><input type="checkbox" class="quest-check" data-id="cs-wo-4" /></td>
+              <td class="lvl-cell">1–2</td>
+              <td>White Orchard</td>
+              <td><code>[quest_reward]</code><br/><span class="badge badge-high">(story) (gear)</span></td>
+              <td><strong>5 White Orchard Cutoff Side Quests</strong><br/>(<em>Frying Pan, Twisted Firestarter, On Death's Bed, Missing in Action, Precious Cargo</em>)</td>
+              <td>Clear all 5 before speaking to Vesemir in the tavern! Cast <em>Delusion</em> on Napp (<em>Twisted Firestarter</em>), brew <em>Swallow</em> for Lena (<em>On Death's Bed</em> → Velen Garrison follow-up), and spare Rordrik (<em>Missing in Action</em>).</td>
+            </tr>
+            <tr>
+              <td class="check-cell"><input type="checkbox" class="quest-check" data-id="cs-wo-5" /></td>
+              <td class="lvl-cell">2–4</td>
+              <td>White Orchard</td>
+              <td><code>[quest_reward]</code><br/><span class="badge badge-high">(story) (gear)</span></td>
+              <td><strong>Viper School Swords, Devil by the Well, Dirty Funds, Deserter Gold &amp; Temerian Valuables</strong></td>
+              <td>Craft both <strong>Viper Venomous Swords</strong> at the Garrison Quartermaster; read the <em>Yellowed Diary</em> + pull the well rope before jumping into the well (<em>Devil by the Well</em>); slay the Royal Griffin (Lvl 3).</td>
+            </tr>
+            <!-- VIZIMA -->
+            <tr>
+              <td class="check-cell"><input type="checkbox" class="quest-check" data-id="cs-vz-1" /></td>
+              <td class="lvl-cell">4</td>
+              <td>Vizima</td>
+              <td><code>[quest_reward]</code><br/><span class="badge badge-high">(story) (gear)</span></td>
+              <td><strong>Imperial Audience + Courtyard Secret Stash &amp; Nobleman Gwent</strong></td>
+              <td>Tell Morvran Voorhis <strong>"I spared Letho"</strong> so Letho spawns in Velen (<em>Ghosts of the Past</em>)! Press the hidden brick switch in the courtyard corner room and win <em>Foltest: The Siegemaster</em> in Gwent.</td>
+            </tr>
+            <!-- VELEN -->
+            <tr>
+              <td class="check-cell"><input type="checkbox" class="quest-check" data-id="cs-ve-1" /></td>
+              <td class="lvl-cell">3–5</td>
+              <td>Velen</td>
+              <td><code>[quest_reward]</code><br/><span class="badge badge-high">(story) (gear)</span></td>
+              <td><strong>Funeral Pyres (Lvl 3), Nilfgaardian Connection &amp; Bloody Baron (Lvl 5)</strong></td>
+              <td>Clear <em>Funeral Pyres</em> early (before Lvl 9 XP cutoff); use <em>Delusion</em>/drinks at Crossroads Inn for peaceful Crow's Perch entry; beat the Baron at Gwent early for <em>Sigismund Dijkstra</em>.</td>
+            </tr>
+            <tr>
+              <td class="check-cell"><input type="checkbox" class="quest-check" data-id="cs-ve-2" /></td>
+              <td class="lvl-cell">5–6</td>
+              <td>Velen</td>
+              <td><code>[quest_reward]</code><br/><span class="badge badge-high">(story) (gear)</span></td>
+              <td><strong>Hunting a Witch, Wandering in the Dark &amp; Magic Lamp</strong></td>
+              <td>Use <em>Delusion (Rank 2)</em> on the Midcopse well villager; light the 4 braziers in <em>Magic Lamp</em> (<strong>3rd → 2nd → 4th → 1st</strong>) and draw from the Elven Ruins Place of Power.</td>
+            </tr>
+            <tr>
+              <td class="check-cell"><input type="checkbox" class="quest-check" data-id="cs-ve-3" /></td>
+              <td class="lvl-cell">6</td>
+              <td>Velen</td>
+              <td><code>[quest_reward]</code><br/><span class="badge badge-critical">(story) (gear)</span></td>
+              <td><strong>House of Reardon → Ghosts of the Past (Letho Recruitment)</strong></td>
+              <td>Enter the Reardon barn <strong>without breaking the tripwires</strong>, climb the ladder to the loft, help Letho against the bounty hunters, and send him to <strong>Kaer Morhen</strong>!</td>
+            </tr>
+            <tr>
+              <td class="check-cell"><input type="checkbox" class="quest-check" data-id="cs-ve-4" /></td>
+              <td class="lvl-cell">6–7</td>
+              <td>Velen</td>
+              <td><code>[quest_reward]</code><br/><span class="badge badge-critical">(story) (gear)</span></td>
+              <td><strong>Lynch Mob (Lvl 7) → Keira Metz 4-Quest Chain → Forefathers' Eve (Lvl 7)</strong></td>
+              <td>⚠️ Complete <strong>Lynch Mob</strong> at Hanged Man's Alley <strong>BEFORE</strong> starting Keira's <em>A Favor for a Friend</em>! Trigger <strong>Forefathers' Eve</strong> with the Pellar after <em>Towerful of Mice</em>; send Keira to <strong>Kaer Morhen</strong> in <em>Advancement of Learning</em>.</td>
+            </tr>
+            <tr>
+              <td class="check-cell"><input type="checkbox" class="quest-check" data-id="cs-ve-5" /></td>
+              <td class="lvl-cell">6–9</td>
+              <td>Velen</td>
+              <td><code>[unmarked_reward]</code><br/><span class="badge badge-high">(story) (gear)</span></td>
+              <td><strong>Velen Roadside `!` Proximity Events</strong><br/>(<em>Harassing a Troll, Fake Papers, Thou Shalt Not Pass, Hazardous Goods, Death By Fire, At the Mercy of Strangers, Bitter Harvest, A Dog's Life, Caravan Attack</em>)</td>
+              <td>Engage immediately whenever a yellow <code>!</code> spawns on your minimap—riding past lets the NPCs die permanently. Save Boris the Troll (NW of Crossroads), the elf woman in the burning barn (NE of Oreton), John Verdun (W of Boatmakers' Hut), and the dog near Drudge.</td>
+            </tr>
+            <tr>
+              <td class="check-cell"><input type="checkbox" class="quest-check" data-id="cs-ve-6" /></td>
+              <td class="lvl-cell">7–10</td>
+              <td>Velen</td>
+              <td><code>[quest_reward]</code><br/><span class="badge badge-high">(story) (gear)</span></td>
+              <td><strong>Wild at Heart, A Greedy God, Truth is in the Stars, Barnful of Trouble, Ciri's Room, Family Matters, Return to Crookback Bog, Fools' Gold &amp; Defender of the Faith</strong></td>
+              <td>⚠️ Complete <strong>Ciri's Room</strong> and <strong>Return to Crookback Bog</strong> (Lvl 9) before <em>Ugly Baby</em>! Clear <strong>Of Dairy and Darkness</strong> (Lvl 9) for the <em>Emmentaler</em> sword &amp; portal Place of Power.</td>
+            </tr>
+            <tr>
+              <td class="check-cell"><input type="checkbox" class="quest-check" data-id="cs-ve-7" /></td>
+              <td class="lvl-cell">11</td>
+              <td>Velen</td>
+              <td><code>[quest_reward]</code><br/><span class="badge badge-safe">(gear)</span></td>
+              <td><strong>Scavenger Hunt: Griffin School Gear (Basic) + Superior Beast Oil</strong></td>
+              <td>Loot Basic Griffin diagrams at Dragonslayer's Grotto &amp; Lornruk, plus the <strong>Superior Beast Oil</strong> chest in the underwater cave below Lornruk lighthouse.</td>
+            </tr>
+            <!-- NOVIGRAD -->
+            <tr>
+              <td class="check-cell"><input type="checkbox" class="quest-check" data-id="cs-nv-1" /></td>
+              <td class="lvl-cell">10–11</td>
+              <td>Novigrad</td>
+              <td><code>[quest_reward]</code><br/><span class="badge badge-critical">(story) (gear)</span></td>
+              <td><strong>Pyres of Novigrad, Novigrad Dreaming, Broken Flowers, Get Junior, Gangs of Novigrad &amp; Honor Among Thieves</strong></td>
+              <td><strong>(1)</strong> Buy <em>Message from an Old Friend</em> at Hierarch Square bookstore. <strong>(2)</strong> Play <strong>Olivier</strong> at Kingfisher Inn before <em>Now or Never</em>. <strong>(3)</strong> Speak to <strong>Cleaver</strong> first in <em>Get Junior</em> and raid Casino &amp; Arena with his dwarves. <strong>(4)</strong> Free <strong>Rico</strong> in Casino basement for <em>Honor Among Thieves</em>. <strong>(5)</strong> Clear <em>Empty Coop</em> &amp; <em>A Walk on the Waterfront</em>.</td>
+            </tr>
+            <tr>
+              <td class="check-cell"><input type="checkbox" class="quest-check" data-id="cs-nv-2" /></td>
+              <td class="lvl-cell">12–14</td>
+              <td>Novigrad</td>
+              <td><code>[quest_reward]</code><br/><span class="badge badge-critical">(story) (gear)</span></td>
+              <td><strong>An Eye for an Eye, A Dangerous Game, The Palio, Both Jade Statuettes → Now or Never → A Deadly Plot</strong></td>
+              <td>Protect <strong>Ves</strong> in Mulbrydale; loot <strong>The Soldier Statuette</strong> in Caesar Bilzen's upstairs room &amp; choose the <strong>3 Gwent Cards</strong> in <em>A Dangerous Game</em>; accept the dwarf's invite after Vegelbud Derby for <strong>The Palio</strong>; decompress <strong>both statuettes</strong> &amp; show Philippa's crystal to Triss <strong>BEFORE</strong> <em>Now or Never</em>!</td>
+            </tr>
+            <tr>
+              <td class="check-cell"><input type="checkbox" class="quest-check" data-id="cs-nv-3" /></td>
+              <td class="lvl-cell">13–16</td>
+              <td>Novigrad / Velen</td>
+              <td><code>[quest_reward]</code><br/><span class="badge badge-high">(story) (gear)</span></td>
+              <td><strong>A Tome Entombed, Spooked Mare, Cabaret → Carnal Sins, Little Red, Last Rites &amp; In the Eternal Fire's Shadow</strong></td>
+              <td>Interrogate Nathaniel Pastodi in <em>Carnal Sins</em> to expose Coroner Hubert Rejk (+<em>Poker</em> sword); cross Blackbough Cemetery bridge at Midnight for <em>Last Rites</em>; clear <em>In the Eternal Fire's Shadow</em> at Devil's Pit.</td>
+            </tr>
+            <tr>
+              <td class="check-cell"><input type="checkbox" class="quest-check" data-id="cs-nv-4" /></td>
+              <td class="lvl-cell">17</td>
+              <td>Novigrad / Velen</td>
+              <td><code>[quest_reward]</code><br/><span class="badge badge-safe">(gear)</span></td>
+              <td><strong>★ Scavenger Hunt: Cat School Gear (Basic — 7/7 Diagrams) ★</strong></td>
+              <td><strong>Core Cat School Path Milestone!</strong> Loot all 7 diagrams (Temple Isle underground, Flying Stag wreck, Est Tayiar, Drahim Castle) and craft the full Feline Light Armor &amp; Sword set.</td>
+            </tr>
+            <!-- SKELLIGE -->
+            <tr>
+              <td class="check-cell"><input type="checkbox" class="quest-check" data-id="cs-sk-1" /></td>
+              <td class="lvl-cell">13–16</td>
+              <td>Skellige</td>
+              <td><code>[quest_reward]</code><br/><span class="badge badge-critical">(story) (gear)</span></td>
+              <td><strong>Destination: Skellige, Flesh for Sale, Taken as a Lass, Black Pearl, In Wolf's Clothing &amp; The Last Wish</strong></td>
+              <td>Loot your <strong>1,000 Crowns</strong> back from Captain Wolverstone's corpse behind the lifeboat; complete <strong>Flesh for Sale</strong> on Faroe <strong>BEFORE</strong> advancing Lambert's <em>Following the Thread</em>; trigger <strong>Taken as a Lass</strong> before <em>Nameless</em>; protect Nidas in <em>Black Pearl</em>; toggle <em>Enemy Upscaling → Off</em> vs. the Djinn.</td>
+            </tr>
+            <tr>
+              <td class="check-cell"><input type="checkbox" class="quest-check" data-id="cs-sk-2" /></td>
+              <td class="lvl-cell">17–25</td>
+              <td>Skellige / Velen</td>
+              <td><code>[quest_reward]</code><br/><span class="badge badge-critical">(story) (gear)</span></td>
+              <td><strong>Possession, Lord of Undvik, Cave of Dreams → King's Gambit (Cerys), Enhanced Cat Gear (Lvl 23), Hattori/Yoana (Lvl 24) &amp; Beast of Honorton / Where the Cat and Wolf Play (Lvl 25)</strong></td>
+              <td>Complete <strong>The Cave of Dreams</strong> before <em>King's Gambit</em>; side with <strong>Cerys</strong> for the exclusive Kaer Trolde cellar Place of Power (+1 Skill Pt); take <em>Contract: The Beast of Honorton</em> from the board first, then spare Cat School Witcher <strong>Gaetan</strong> for his stash &amp; <em>Teigr</em> sword!</td>
+            </tr>
+            <!-- KAER MORHEN & ACT II/III -->
+            <tr>
+              <td class="check-cell"><input type="checkbox" class="quest-check" data-id="cs-km-1" /></td>
+              <td class="lvl-cell">19–34</td>
+              <td>Kaer Morhen / Act III</td>
+              <td><code>[quest_reward]</code><br/><span class="badge badge-high">(story) (gear)</span></td>
+              <td><strong>Ugly Baby, Berengar's Blade, The Witchers' Forge, Greenhouse Effect, Superior (Lvl 29) &amp; Mastercrafted Cat Gear (Lvl 34) → Reason of State</strong></td>
+              <td>Complete <em>Berengar's Blade</em> before <em>Isle of Mists</em>; read <em>Monstrum Vol. 2</em> in Yennefer's bedroom to unlock <strong>The Witchers' Forge</strong> (free Mastercrafted Wolven Armor); draw from the Igni PoP north of the lake; side with Roche/Ves/Thaler in <em>Reason of State</em>.</td>
+            </tr>
+            <!-- HEARTS OF STONE -->
+            <tr>
+              <td class="check-cell"><input type="checkbox" class="quest-check" data-id="cs-hos-1" /></td>
+              <td class="lvl-cell">32–39</td>
+              <td>Hearts of Stone</td>
+              <td><code>[quest_reward]</code><br/><span class="badge badge-high">(story) (gear)</span></td>
+              <td><strong>Open Sesame! (Viper Gear + Avid Collector + A Dark Legacy), Scenes From a Marriage, Whatsoever a Man Soweth &amp; Sins of the Student</strong></td>
+              <td>At the Borsodi Auction: buy all 4 <strong>Viper Armor diagrams</strong> + Eagle Figurine from Countess Mignole, and buy the Van Rogh painting to sell to Marcus Hodgson (<strong>Avid Collector</strong>). Loot the <strong>Viper Steel diagram</strong> in the vault and pull the <strong>Viper Silver Sword</strong> from the rock in O'Dimm's Riddle World!</td>
+            </tr>
+            <!-- TOUSSAINT -->
+            <tr>
+              <td class="check-cell"><input type="checkbox" class="quest-check" data-id="cs-bw-1" /></td>
+              <td class="lvl-cell">34–37</td>
+              <td>Toussaint</td>
+              <td><code>[quest_reward]</code><br/><span class="badge badge-critical">(story) (gear)</span></td>
+              <td><strong>Corvo Bianco, Turn and Face the Strange (Mutations) &amp; ★ Father Knows Worst ("Brothers Quest" — Crossbow Bolt Vendor!) ★</strong></td>
+              <td>⚠️ In <strong>Father Knows Worst</strong> (Lvl 37), choose <strong>"No one dies today"</strong> outside Albertus Cavern so Hugo reconciles with his brothers! <strong>Hugo Monnart</strong> opens his shop at <strong>The Clever Clogs Tavern</strong> and becomes the <strong>only vendor in the game who buys Crossbow Bolts at 100% full price</strong>!</td>
+            </tr>
+            <tr>
+              <td class="check-cell"><input type="checkbox" class="quest-check" data-id="cs-bw-2" /></td>
+              <td class="lvl-cell">37–49</td>
+              <td>Toussaint</td>
+              <td><code>[quest_reward]</code><br/><span class="badge badge-high">(story) (gear)</span></td>
+              <td><strong>There Can Be Only One (Aerondight), Grandmaster Feline Gear (Lvl 40), Toussaint Knight's Steel Sword &amp; Beyond Hill and Dale...</strong></td>
+              <td>Claim <strong>Aerondight</strong> at Lac Célavy; craft <strong>Grandmaster Feline Gear</strong>; loot the <strong>Crafted Toussaint Knight's Steel Sword diagram</strong> at Arthach Palace Hanse Base; win the <strong>Ribbon</strong> from the Little Flint Girl in the Land of a Thousand Fables!</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
 
     <!-- SECTION 1: OPTIMAL ROADMAP -->
     <section class="section-block" data-section="roadmap">
@@ -1586,6 +1827,9 @@
       if (window.location.hash === '#ngplus') {
         const ngBtn = document.getElementById('tab-ngplus');
         if (ngBtn) filterSection('ngplus', ngBtn);
+      } else if (window.location.hash === '#catschool') {
+        const csBtn = document.getElementById('tab-catschool');
+        if (csBtn) filterSection('catschool', csBtn);
       }
     });
   </script>

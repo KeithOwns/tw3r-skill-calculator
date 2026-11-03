@@ -1,0 +1,325 @@
+================================================================================
+THE WITCHER 3: REMASTERED (v5.01c) — CONCISE LEVEL-SORTED QUEST & EVENT GUIDE
+Playthrough Profile: 'A New Beginning' Mod -> (Cat School) Path | CROW v4.1.2
+Difficulty: Blood and Broken Bones! (2.00x Enemy DMG | 1.20x HP | No Med Heal)
+================================================================================
+
+--KEY--
+Types of events:
+  [quest_reward]     = Journal Quest (Main, Secondary, Contract, or Treasure Hunt)
+  [unmarked_reward]  = Unmarked Encounter, Roadside '!', Secret Stash, or PoP
+
+Types of rewards:
+  (story)            = Cutscene, branching narrative, ally recruitment, or world state
+  (gear)             = Equippable gear, Witcher diagram, Gwent card, Vendor, or +1 Skill Pt
+
+================================================================================
+0. NEW START MOD: 'A NEW BEGINNING' — STARTING AREA (LEVEL 1)
+================================================================================
+Mods: {quest-'A New Beginning', CROW Combat Modules v4.1.2, No Inventory During Combat v5.01, Hurt Animation, Viper Set Bonus, Crossbow Rework, Larger White Orchard, Fast Travel Pack, The Spider and The Wolf, Sins of the Student}
+New Game -> Blood and Broken Bones!
+
+* [quest_reward] (story) (gear) — Quest: 'A New Beginning' -> Select (Cat School) Path
+  - Unlocks Feline light armor starting kit & fast-attack/crit orientation.
+  - Note: In Remastered v5.01c, 'Cat School Techniques' (General Tree) is unlocked at 0 points invested (+25% Crit DMG & +5% Fast Attack DMG per Light Armor piece).
+
+* Pre-Combat Loadout & Consumables Checklist:
+  - Equip Consumables: {Food & Drink — with CROW Regeneration module, food lasts 20m and stacks; TAWNY OWL potion (+Stamina Regen); Beast/Specter Oils}
+  - Equip Pockets: {Torch} (Pairs with 'Ladder with Torch' mod for caves/crypts)
+  - Skill #0 (Free 0-Pt Passive): Slot 'Cat School Techniques' (General)
+  - First Skill Purchased (Lvl 1): 'Melt Armor' (Signs — Igni Tier 1: Weakens enemy armor up to 75% so Cat School Fast Attacks shred armored foes)
+  - Second Skill Purchased (Lvl 2): 'Delusion' (Signs — Axii Tier 1: Rank 1-2 unlocks all early White Orchard & Velen conversation checks +40 XP each)
+  - Next CROW Core Skills (Lvls 2-6): 'Muscle Memory (3/3)' -> 'Arrow Deflection (1/3)' -> 'Resolve (1/3)' -> 'Fleet-Footed (3/3)' -> 'Undying (1/3)' -> 'Counterattack (3/3)' + 'Attack Is the Best Defense'
+
+================================================================================
+1. - Arrive_White Orchard - (LEVELS 1 – 4)
+⚠️ CUTOFF RULE: Complete ALL White Orchard side quests & Gwent before talking to Vesemir inside the tavern at the end of 'The Beast of White Orchard'.
+================================================================================
+[Lvl 1] [unmarked_reward] (story) — Yennefer's Crystal Bird Skull
+  - Location: Starting campsite brush directly south of Woesong Bridge.
+  - Action: Use Witcher Senses immediately to loot the skull; unlocks a bonus dialogue/cutscene with Yennefer later. Expires if you leave White Orchard!
+
+[Lvl 1] [quest_reward] (story) — Lilac and Gooseberries (Axii Conversation Checks)
+  - Location: White Orchard Inn.
+  - Action: Use 'Delusion' (Rank 1) on the defensive peasants inside the inn (+25 XP) and on the 3 bandits outside (+25 XP).
+
+[Lvl 1] [unmarked_reward] (gear) — Scholar Aldert Geert & Innkeep Elsa (Missable Gwent Cards)
+  - Location: White Orchard Inn.
+  - Action: Beat Aldert Geert at Gwent for 'Zoltan Chivay' card, and buy all 4 Gwent cards (including 'Decoy' & 'Foltest: Lord Commander') from Elsa BEFORE departing White Orchard.
+
+[Lvl 1] [unmarked_reward] (gear) — All 6 White Orchard Places of Power (+6 Ability Points)
+  - Locations: (1) South of Woesong Bridge (Quen), (2) North of Ransacked Village (Aard), (3) South of Mill in ghoul swamp (Igni), (4) Ford near Broken Bridge guarded by Level 6 Bear (Yrden), (5) White Orchard Cemetery crypt door (Axii), (6) Abandoned Site near Sawmill (Quen).
+
+[Lvl 1] [quest_reward] (story) (gear) — A Frying Pan, Spick and Span
+  - Location: Old woman by Riverside Hut (West of Woesong Bridge).
+  - Action: Find Thaler's scorched monocle inside the locked hut (burn the barred door with Igni). Cutoff: Leaving White Orchard.
+
+[Lvl 1] [quest_reward] (gear) — Dirty Funds & Deserter Gold (Treasure Hunts)
+  - Location: Bandit Camp NE of Sawmill -> Spy's Shanty N of Mill.
+  - Action: Read the journal in the chest to unlock both treasure hunts for early relic swords & Crowns.
+
+[Lvl 2] [quest_reward] (story) (gear) — Twisted Firestarter
+  - Location: Willis (Dwarven Blacksmith in White Orchard village).
+  - Action: Track the arsonist Napp down by the river behind the inn, use 'Delusion' (Rank 1) on him, and march him back to Willis for Crowns & smith access. Cutoff: Leaving White Orchard.
+
+[Lvl 2] [quest_reward] (story) (gear) — On Death's Bed
+  - Location: Tomira's Herbalist Hut (East of Sawmill).
+  - Action: Brew 'Swallow' (1x Drowner Brain, 5x Celandine, 1x Dwarven Spirit) to save Lena. Unlocks a follow-up scene at the Nilfgaardian Garrison in Velen. Cutoff: Leaving White Orchard.
+
+[Lvl 2] [quest_reward] (story) — Missing in Action
+  - Location: White Orchard Notice Board / Dune Vildenvert at Ransacked Village.
+  - Action: Search the battlefield with Dune and His Dog (Hussar); convince Dune to spare the Nilfgaardian deserter Rordrik so both survive and settle at the Sawmill. Cutoff: Leaving White Orchard.
+
+[Lvl 2] [quest_reward] (story) (gear) — Precious Cargo
+  - Location: Merchant sitting by the campfire north of the Sawmill swamp road.
+  - Action: Inspect the cart tracks/arrows to expose the fake merchant as a Temerian guerrilla; chase him down on Roach. Cutoff: Leaving White Orchard.
+
+[Lvl 2] [quest_reward] (gear) — Scavenger Hunt: Viper School Gear
+  - Location: White Orchard Cemetery Crypt (guarded by Level 7 Wraith) & Ransacked Village Bandit Ruins.
+  - Action: Loot both Serpent Steel & Silver Sword diagrams and craft both Viper Swords at the Nilfgaardian Garrison Quartermaster before leaving White Orchard!
+
+[Lvl 2] [quest_reward] (story) (gear) — Contract: Devil by the Well
+  - Location: White Orchard Notice Board -> Odolan -> Abandoned Village.
+  - Action: Read 'Yellowed Diary' in the house AND pull the well rope BEFORE jumping into the well for extra story dialogue with Odolan & Tomira. Rewards Noonwraith Trophy + Mutagen.
+
+[Lvl 3] [quest_reward] (story) (gear) — The Beast of White Orchard & The Incident at White Orchard
+  - Location: Nilfgaardian Garrison (Peter Saar Gwynleve) -> Mislav -> Buckthorn -> Royal Griffin.
+  - Action: Slay the Royal Griffin (+Griffin Mutagen & Vesemir's Crossbow). Refuse or accept Emhyr's coin later in Vizima.
+
+[Lvl 4] [quest_reward] (gear) — Temerian Valuables (Treasure Hunt)
+  - Location: Underwater beneath the northern bridge to the Nilfgaardian Garrison -> Mill cellar.
+
+================================================================================
+2. - Arrive_Vizima - (LEVEL 4)
+================================================================================
+[Lvl 4] [quest_reward] (story) — Imperial Audience (Witcher 2 World-State Interrogation)
+  - Location: Royal Palace in Vizima (Morvran Voorhis).
+  - Action: Choose "I spared Letho" so Letho of Gulet spawns in Velen ('Ghosts of the Past') and joins you at Kaer Morhen! Also choose "I saved Síle" and "Went with Roche/Iorveth".
+
+[Lvl 4] [unmarked_reward] (gear) — Vizima Courtyard Secret Stash & Nobleman Gwent Card
+  - Location: Vizima Garden Courtyard.
+  - Action: Press the hidden torch/brick switch in the corner room for Yennefer's letter/loot, and beat the Nilfgaardian Nobleman in Gwent for 'Foltest: The Siegemaster'.
+
+================================================================================
+3. - Arrive_Velen (No Man's Land) - (LEVELS 4 – 11)
+⚠️ PROXIMITY RULE: Never ride past a yellow '!' marker in Velen; engage immediately or the NPC dies/despawns permanently.
+================================================================================
+[Lvl 3] [quest_reward] (story) (gear) — Funeral Pyres
+  - Location: Priest of the Eternal Fire West of Border Post / North of Mulbrydale.
+  - Action: Clear early before Level 9 so XP doesn't grey out; save Timmon at the 3rd pit and confront the corrupt priest.
+
+[Lvl 4] [unmarked_reward] (gear) — Looters & Highwaymen's Booty (Roadside '!' Events)
+  - Location: Battlefield West of Inn at the Crossroads & Crossroads East of Crow's Perch.
+
+[Lvl 5] [quest_reward] (story) (gear) — The Nilfgaardian Connection & Bloody Baron
+  - Location: Inn at the Crossroads -> Hendrick's Hut (Heatherton) -> Crow's Perch.
+  - Action: Use 'Delusion' (Rank 1) or offer a drink to the Baron's men at the Inn to avoid bloodshed (unlocks peaceful pass into Crow's Perch instead of swimming the well). Beat the Bloody Baron at Gwent early for 'Sigismund Dijkstra'!
+
+[Lvl 5] [quest_reward] (story) (gear) — Hunting a Witch & Wandering in the Dark
+  - Location: Midcopse (use 'Delusion' Rank 2 on the villager behind the well) -> Keira Metz's Hut -> Elven Ruins.
+  - Action: Equip Torch/Cat Potion & Tawny Owl; help Keira defeat Nithral (Wild Hunt Warrior).
+
+[Lvl 6] [quest_reward] (story) (gear) — Magic Lamp
+  - Location: Immediately inside the Elven Ruins at the end of 'Wandering in the Dark'.
+  - Action: Agree to help Keira find the lamp! Puzzle order: Light the 4 braziers (3rd -> 2nd -> 4th -> 1st). Loot the Place of Power & Golem guarding treasures inside before leaving.
+
+[Lvl 6] [quest_reward] (story) (gear) — An Invitation from Keira Metz -> A Towerful of Mice -> A Favor for a Friend -> For the Advancement of Learning
+  - Location: Keira's Hut -> Fyke Isle.
+  - ⚠️ CUTOFF ORDER: Complete 'Lynch Mob' (Lvl 7, Hanged Man's Alley) BEFORE starting 'A Favor for a Friend'!
+  - Action: At the end of 'For the Advancement of Learning' on Fyke Isle, convince Keira to go to Kaer Morhen (take Alexander's notes peacefully; never let her go to Radovid or fight her!).
+
+[Lvl 6] [quest_reward] (story) (gear) — Forefathers' Eve
+  - Location: Dock outside Fyke Isle (The Pellar approaches you immediately after finishing 'A Towerful of Mice').
+  - Action: Meet the Pellar at the Fyke Isle stone circle at Midnight; protect the ritual from Witch Hunters, then defeat the restless ghost of the Pellar's father in the swamps.
+
+[Lvl 6] [quest_reward] (story) (gear) — The Fall of the House of Reardon & Ghosts of the Past (Letho Recruitment!)
+  - Location: Lindenvale (Dolores Reardon) -> Reardon Manor.
+  - Action: Enter the large barn WITHOUT breaking the tripwires, climb the ladder to the loft, and trigger 'Ghosts of the Past'. Help Letho fake his death against the bounty hunters and send him to Kaer Morhen! Also loot Dolores's lockbox inside the cellar ('unmarked_reward').
+
+[Lvl 6] [unmarked_reward] (gear) — Harassing a Troll (Friendly Rock Troll Boris)
+  - Location: Riverbank NW of Inn at the Crossroads.
+  - Action: Slay the Nekkers attacking Boris before he dies; he rewards you with an Alchemy/Crafting diagram.
+
+[Lvl 6] [unmarked_reward] (story) (gear) — Fake Papers & Thou Shalt Not Pass
+  - Location: Border Post (Shady Merchant & Redanian Bridge Guard).
+  - Action: Speak to the bridge guard first to log 'Thou Shalt Not Pass', then buy the pass from the Shady Merchant using 'Delusion' (Rank 1) and complete 'Bitter Harvest' (Lvl 9 — keep Alghouls off the scavengers!).
+
+[Lvl 6] [unmarked_reward] (story) — Hazardous Goods (Proximity '!')
+  - Location: Road between Inn at the Crossroads & Blackbough (or NW of Lindenvale).
+  - Action: Help Gert Borel burn the plague-infected corpses with Igni immediately when the '!' spawns.
+
+[Lvl 6] [quest_reward] (gear) — Contract: Woodland Beast
+  - Location: Notice Board at Border Post -> Bridge to Graden.
+  - Action: Let Vernossiel's Scoia'tael commandos keep the supplies for a free Transit Pass (or fight them for elf loot).
+
+[Lvl 6] [quest_reward] (story) (gear) — Ladies of the Wood, The Whispering Hillock & Ciri's Room
+  - Location: Crookback Bog -> Downwarren -> Whispering Hillock -> Crow's Perch.
+  - Action: Loot 'The Ladies of the Wood' book in Ciri's Room at Crow's Perch (cutoff: Ugly Baby).
+
+[Lvl 7] [quest_reward] (story) — Lynch Mob (Proximity '!' Cutoff)
+  - Location: Fast Travel to Hanged Man's Alley.
+  - Action: Intervene to save the Nilfgaardian deserter from the peasants BEFORE starting Keira's 'A Favor for a Friend'.
+
+[Lvl 7] [unmarked_reward] (story) (gear) — Death By Fire & At the Mercy of Strangers (Proximity '!')
+  - Location: Burning barn NE of Oreton (save the elf woman from bandits -> unlocks hidden chest under the tree!) & Riverbank West of Boatmakers' Hut (save John Verdun from drowners).
+
+[Lvl 7] [quest_reward] (story) (gear) — Wild at Heart, A Greedy God & The Truth is in the Stars
+  - Locations: Blackbough (Niellen the Werewolf), Ruins NW of Wastrel Manor (Sylvan 'Allgod' cellar illusion), and Benek (Old Sage — give him Dragonroot from the cave & play Gwent!).
+
+[Lvl 7] [quest_reward] (story) — A Barnful of Trouble (Proximity '!')
+  - Location: Carsten (Village NE of Oxenfurt).
+  - Action: Slay the ghouls inside the locked barn before they kill the villagers.
+
+[Lvl 7-8] [quest_reward] (gear) — Contract: Patrol Gone Missing (Lvl 7) & Contract: Shrieker (Lvl 8)
+  - Locations: Army Group 'Center' Camp (Wyvern) & Crow's Perch (Cockatrice).
+
+[Lvl 9] [quest_reward] (story) (gear) — Family Matters & Return to Crookback Bog
+  - Location: Crow's Perch -> Oxenfurt -> Downwarren -> Crookback Bog.
+  - ⚠️ CUTOFF: 'Return to Crookback Bog' permanently fails if you start 'Ugly Baby'! Complete it right at Level 9.
+
+[Lvl 9] [unmarked_reward] (story) (gear) — A Dog's Life & Caravan Attack (Proximity '!')
+  - Locations: Road East of Drudge (save the dog from wolves immediately!) & Southern Road near Frischlow.
+
+[Lvl 9] [quest_reward] (gear) — Of Dairy and Darkness
+  - Location: Novigrad Shopkeeper (Gildorf) -> Aeramas' Abandoned Manor (East of Oxenfurt).
+  - Action: Navigate the cheese labyrinth to loot the 'Emmentaler' relic sword and unlock the portal leading to the hidden Place of Power (+1 Skill Point)!
+
+[Lvl 10] [quest_reward] (story) (gear) — Fools' Gold, Defender of the Faith & Love's Cruel Snares
+  - Locations: Lurtch (save Yontek & the pig villagers), Velen Shrines (don't walk away from the vandal students at the 3rd shrine!), and Forest SW of Condyle.
+
+[Lvl 10] [quest_reward] (gear) — Contract: Jenny o' the Woods (Midcopse) & Contract: The Merry Widow (Lindenvale)
+  - Action: Rewards Nightwraith Mutagen & Grave Hag Mutagen.
+
+[Lvl 11] [quest_reward] (gear) — Scavenger Hunt: Griffin School Gear (Basic)
+  - Location: Dragonslayer's Grotto (West of Downwarren) & Lornruk Lighthouse (NW Velen).
+  - Action:Also loot the 'Superior Beast Oil' chest deep in the Lornruk underwater cave!
+
+================================================================================
+4. - Arrive_Novigrad & Oxenfurt - (LEVELS 10 – 17)
+⚠️ NOVIGRAD CUTOFFS:
+  1. Decompress 'The Nobleman Statuette' & 'The Soldier Statuette' with Triss BEFORE 'Now or Never'!
+  2. Play Olivier at the Kingfisher Inn ('Gwent: Playing Innkeeps') BEFORE 'Now or Never' (he dies during the evacuation)!
+  3. Talk to Cleaver FIRST during 'Get Junior' to avoid auto-failing 'The Gangs of Novigrad'!
+================================================================================
+[Lvl 10] [quest_reward] (story) (gear) — Pyres of Novigrad & Novigrad Dreaming
+  - Location: Hierarch Square -> Putrid Grove -> Triss's House -> Corinne Tilly's Haunted House (keep Sarah the Godling in the attic!).
+  - [unmarked_reward] (story) (gear): Buy 'Message from an Old Friend' (Jacques de Aldersberg's secret Witcher 1 book/sword) at the Hierarch Square Bookstore!
+  - [unmarked_reward] (story): Clear 'Empty Coop' (outside Glory Gate) and 'A Walk on the Waterfront' (Western Novigrad Docks — protect the merchant from thugs immediately!).
+
+[Lvl 11] [quest_reward] (story) (gear) — Broken Flowers & Get Junior (+ Gangs of Novigrad & Honor Among Thieves)
+  - Location: Rosemary and Thyme -> Vegelbud Residence -> Whoreson Junior's Casino & Arena -> Oxenfurt Hideout.
+  - Action:
+    1. Speak to Cleaver immediately upon starting 'Get Junior' and raid BOTH the Casino and Arena with his dwarves so 'The Gangs of Novigrad' succeeds!
+    2. Free Rico Meiersdorf in the Casino cellar and visit the King of Beggars BEFORE finishing 'Get Junior' to complete 'Honor Among Thieves' (+Relic Sword)!
+
+[Lvl 11] [quest_reward] (story) (gear) — Following the Thread (Lambert's Questline)
+  - Location: Novigrad Notice Board -> Seven Cats Inn -> Faroe (Skellige) -> Novigrad.
+  - ⚠️ MUTUAL EXCLUSION WARNING: Do NOT advance 'Following the Thread' to the Faroe step until AFTER you first sail to Skellige and complete 'Flesh for Sale' in Trottheim! Also complete 'Following the Thread' BEFORE 'Ugly Baby'.
+
+[Lvl 12] [quest_reward] (story) (gear) — Count Reuven's Treasure, A Favor for Radovid & Redania's Most Wanted
+  - Location: Dijkstra's Bathhouse -> Menge's Garrison -> Radovid's Ship -> Philippa Eilhart's Hideout.
+  - Action: Show Philippa's Megascope Crystal to Triss BEFORE turning in 'Redania's Most Wanted' and BEFORE starting 'Now or Never'.
+
+[Lvl 12] [quest_reward] (story) — An Eye for an Eye (Vernon Roche & Ves)
+  - Location: Temerian Partisan Camp -> Hangman's Alley / Mulbrydale.
+  - Action: Rush the Nilfgaardian crossbowmen first so Ves does NOT die! Keeps Roche & Ves alive for Kaer Morhen and 'Reason of State'.
+
+[Lvl 12] [quest_reward] (story) (gear) — A Poet Under Pressure -> A Dangerous Game (Zoltan)
+  - Location: Temple Isle Ambush -> Rosemary and Thyme -> Caesar Bilzen's House.
+  - Action:
+    1. Loot 'The Soldier Statuette' (`[unmarked_reward] (gear)`) from Caesar Bilzen's upstairs secret trophy room!
+    2. At the end of 'A Dangerous Game', choose the 3 unique Gwent cards (Isengrim, John Natalis, Fringilla Vigo) over the gold!
+    3. Win 'The Great Erasmus Vegelbud Memorial Derby' and immediately accept the dwarf's invitation outside the track to complete 'The Palio' (`[unmarked_reward] (gear)` — Cleaver's secret race)!
+
+[Lvl 12] [unmarked_reward] (story) — Spooked Mare (Proximity '!') & Blood Ties (Lvl 12, Velen)
+  - Location: Woods North of Oxenfurt (calm the grey mare with Axii and ride her to the Scoia'tael camp).
+
+[Lvl 13] [quest_reward] (story) (gear) — A Tome Entombed & The Volunteer
+  - Locations: Northern Temple Isle Sewers (break brick wall with Aard to wake the Higher Vampire) & White Eagle Fort East of Oxenfurt (buy Redanian paint for Trollololo).
+
+[Lvl 13-15] [quest_reward] (gear) — Novigrad Contracts: An Elusive Thief (Lvl 13 — Doppler Mutagen), The Apiarian Phantom (Lvl 14), Deadly Delights (Lvl 15 — Succubus Mutagen) & Last Rites (Lvl 15, Blackbough Bridge at Midnight)
+
+[Lvl 14] [quest_reward] (story) (gear) — The Nobleman Statuette, The Soldier Statuette, A Matter of Life and Death -> Now or Never -> A Deadly Plot
+  - Location: Triss's Hideout in The Bits -> Vegelbud Estate (beat all 3 Gwent players at the masquerade party for 'Dandelion'!) -> Novigrad Sewers -> Docks -> Passiflora.
+  - ⚠️ RAT SWARM TIP: Toggle 'Enemy Upscaling -> Off' in the sewers during 'Now or Never' if rat swarms deal bugged damage.
+  - Action: Complete 'A Deadly Plot' (rescue Thaler from the trolls in Velen) immediately after 'Now or Never' to unlock 'Reason of State' later!
+
+[Lvl 14-16] [quest_reward] (story) (gear) — Cabaret -> Carnal Sins (Dandelion & Priscilla)
+  - Location: Chameleon (Rosemary and Thyme) -> Morgue -> Crippled Kate's.
+  - Action: In 'Carnal Sins', DO NOT attack Nathaniel Pastodi immediately—interrogate him first to expose the real Higher Vampire killer (Coroner Hubert Rejk) and loot the 'Poker' relic steel sword!
+
+[Lvl 15] [unmarked_reward] (story) (gear) — In the Eternal Fire's Shadow (Next-Gen Quest) & Little Red (Yantra)
+  - Location: Devil's Pit Quarry in Velen (Deacon of the Eternal Fire) & Yantra Village NE of Novigrad.
+  - Action: Complete 'In the Eternal Fire's Shadow' with Reinald to unlock the 'Forgotten Wolf School Gear' diagrams at Kaer Morhen!
+
+[Lvl 17] [quest_reward] (gear) — ★ CORE MILESTONE: Scavenger Hunt: Cat School Gear (Basic — 7/7 Diagrams) ★
+  - Location: Buy Adalbert Kermith's 1st Map (Blackbough Merchant) -> Temple Isle Underground Passage (Feline Armor Set), Flying Stag Shipwreck (Feline Steel Sword), Est Tayiar Ruins (Feline Silver Sword), and Drahim Castle (Feline Crossbow).
+  - Action: Craft the full Basic Feline Light Armor Set (+50% Attack Power across 4 pieces + +100% Crit DMG & +20% Fast Attack DMG from 'Cat School Techniques')!
+
+================================================================================
+5. - Arrive_Skellige - (LEVELS 14 – 25)
+⚠️ SKELLIGE ORDERING RULES:
+  1. Complete 'Flesh for Sale' on Faroe (Trottheim) BEFORE advancing Lambert's 'Following the Thread'!
+  2. Complete 'Taken as a Lass' BEFORE completing 'Nameless' on Hindarsfjall!
+  3. Complete 'The Cave of Dreams' (Lugos's ship on southern Ard Skellig) BEFORE completing 'King's Gambit'!
+================================================================================
+[Lvl 13-16] [quest_reward] (story) (gear) — Destination: Skellige, The King is Dead - Long Live the King & Echoes of the Past
+  - Location: Port of Novigrad (Captain Wolverstone) -> Kaer Trolde Wake -> Ermion's Forest.
+  - [unmarked_reward] (gear): Loot your 1,000 Crown fare back from Captain Wolverstone's corpse hidden behind the lifeboat on the shipwreck beach!
+  - [quest_reward] (story): Meet Nidas at the bridge near Arinbjorn for 'Black Pearl' (Lvl 13) and stay right on the shoreline to slay the drowners immediately so Nidas survives!
+
+[Lvl 12-15] [unmarked_reward] (story) (gear) — Flesh for Sale (Faroe) & Taken as a Lass (Spikeroog/Hindarsfjall)
+  - Action: Sail to Trottheim on Faroe FIRST to free the slaves from pirates ('Flesh for Sale'), and speak to the warrior on Spikeroog coast ('Taken as a Lass') before starting 'Nameless'.
+
+[Lvl 14-16] [quest_reward] (story) (gear) — Nameless, In Wolf's Clothing (Morkvarg) & The Last Wish (Yennefer)
+  - Location: Lofoten / Freya's Garden -> Larvik.
+  - Action: Cure Morkvarg with his own wolf meat OR lift the curse with Einar's fang to double-dip both rewards; toggle 'Enemy Upscaling -> Off' against the Djinn on the mountaintop ship in 'The Last Wish'.
+
+[Lvl 17-18] [quest_reward] (story) (gear) — Possession (Cerys) -> The Lord of Undvik (Hjalmar) -> The Cave of Dreams (Blueboy Lugos) -> King's Gambit -> Coronation
+  - Action: Save Folan and Vigi the Loon on Undvik so both join Hjalmar at Kaer Morhen; complete 'The Cave of Dreams' at the southern Ard Skellig beach BEFORE investigating the bears in 'King's Gambit'; back Cerys to crown her Queen of Skellige (+1 Place of Power inside Kaer Trolde cellar ONLY accessible via Cerys's path!).
+
+[Lvl 20-24] [quest_reward] (gear) — Bear School Gear (Lvl 20), Enhanced Cat Gear (Lvl 23), Practicum in Advanced Alchemy (Lvl 24 — Gremist), Of Swords and Dumplings (Lvl 24 — Hattori) & Master Armorers (Lvl 24 — Yoana)
+  - [quest_reward] (story) (gear): Complete 'Contract: The Beast of Honorton' (Lvl 25, Velen Notice Board FIRST) -> triggers 'Where the Cat and Wolf Play...' with fellow Cat School Witcher Gaetan (spare Gaetan for his secret stash location & the 'Teigr' Cat School steel sword!).
+
+================================================================================
+6. - Arrive_Kaer Morhen & Final Acts (Act II & III) - (LEVELS 19 – 34)
+================================================================================
+[Lvl 19] [quest_reward] (story) (gear) — Ugly Baby, Disturbance, The Final Trial, To Bait a Forktail... & No Place Like Home
+  - Location: Kaer Morhen Keep & Valley.
+  - [quest_reward] (gear): Complete 'Berengar's Blade' (talk to Vesemir / inspect cavern chest) BEFORE leaving for The Isle of Mists!
+  - [unmarked_reward] (gear): Read 'Monstrum, or a Portrayal of Witchers, Vol. 2' in Yennefer's bedroom tower to trigger 'The Witchers' Forge' in the keep's mine shaft -> rewards a free Mastercrafted Wolven Chest Armor!
+  - [unmarked_reward] (story) (gear): Complete 'Greenhouse Effect' (Eye of Nehaleni arch south of keep) and draw from the Igni Place of Power north of the lake!
+
+[Lvl 22-30] [quest_reward] (story) (gear) — Brothers in Arms -> The Isle of Mists -> The Battle of Kaer Morhen -> Bald Mountain -> Final Preparations -> Reason of State -> On Thin Ice -> Something Ends, Something Begins
+  - Action: Complete 'Superior Cat School Gear' (Lvl 29) & 'Mastercrafted Cat School Gear' (Lvl 34); side with Roche/Ves/Thaler in 'Reason of State' and make positive Ciri parenting choices to unlock the Witcheress or Empress Ciri ending!
+
+================================================================================
+7. - Arrive_Hearts of Stone (Velen / Novigrad NE) - (LEVELS 32 – 39)
+================================================================================
+[Lvl 32-36] [quest_reward] (story) (gear) — Evil's Soft First Touches -> Dead Man's Party -> Open Sesame! -> Scenes From a Marriage -> Whatsoever a Man Soweth...
+  - [unmarked_reward] (gear) — At the Borsodi Auction House ('Open Sesame!'):
+    1. Buy ALL 4 Viper Venomous Armor diagrams from Countess Mignole + the Eagle Figurine ('A Dark Legacy').
+    2. Buy the Van Rogh painting ('Starry Night Over the Pontar') for 20 Crowns and sell it to Marcus Hodgson in Hierarch Square ('Avid Collector')!
+    3. Loot the 'Viper Venomous Steel Sword' diagram inside the Borsodi Vault!
+  - [quest_reward] (story) (gear) — In 'Scenes From a Marriage', decide whether to take 'Iris' (if letting O'Dimm take Olgierd) OR intervene to save Olgierd in 'Whatsoever a Man Soweth...' and loot the 'Viper Venomous Silver Sword' from the stone rock inside Gaunter's Riddle World (`[unmarked_reward] (gear)`)!
+  - [quest_reward] (story) (gear) — Complete the modded questline 'Sins of the Student' ('Tenure' & 'Class Dismissed') with Shani in Novigrad/Oxenfurt!
+
+================================================================================
+8. - Arrive_Toussaint (Blood and Wine) - (LEVELS 34 – 50+)
+================================================================================
+[Lvl 34-35] [quest_reward] (story) (gear) — Envoys, Wineboys -> The Beast of Toussaint -> Blood Run -> No Place Like Home (Corvo Bianco) -> Turn and Face the Strange
+  - Action: Unlock the Corvo Bianco Vineyard Estate (+1,000 HP Bed buff, Armor/Weapon displays) and complete 'Turn and Face the Strange' immediately to unlock the Blood and Wine Mutation Chamber ('Euphoria' / 'Cat Eyes' / 'Mutated Skin' + 4 Bonus Skill Slots)!
+
+[Lvl 37] [quest_reward] (story) (gear) — ★ Father Knows Worst ('Brothers Quest' — Crossbow Bolt Vendor Unlock!) ★
+  - Location: Notice Board -> The Clever Clogs Tavern (North of Lebioda's Gate) -> Albertus Cavern.
+  - ⚠️ CRITICAL CHOICE: When Hugo's two brothers confront you outside Albertus Cavern after you rescue Hugo, select **"No one dies today"** so the three brothers reconcile peacefully!
+  - Reward: **Hugo Monnart** opens his shop at **The Clever Clogs Tavern** and becomes the **ONLY vendor in the entire game who buys Crossbow Bolts** (plus Monster Trophies and Junk) at **100% full item value**! (If you let Hugo fight his brothers, the tavern business collapses and he never becomes a merchant.)
+
+[Lvl 37-40] [quest_reward] (story) (gear) — Warble of a Smitten Knight, There Can Be Only One (Aerondight) & Scavenger Hunt: Grandmaster Feline Gear (Lvl 40)
+  - Action:
+    1. Prove all 5 Chivalric Virtues (Generosity, Honor, Compassion, Valor, Wisdom) to claim **Aerondight** from the Lady of the Lake (`[quest_reward] (gear)`).
+    2. Craft the **Grandmaster Feline Set** (Lvl 40) at Lazare Lafargue in Beauclair (`[quest_reward] (gear)`).
+    3. Clear the Arthach Palace Ruins Hanse Base (NE Toussaint) to loot the **Crafted Toussaint Knight's Steel Sword** diagram (`[unmarked_reward] (gear)` — #1 Steel Sword in the game: +300 AP, +100% Crit DMG, +20% Crit Chance)!
+
+[Lvl 40-49] [quest_reward] (story) (gear) — Capture the Castle -> The Night of Long Fangs -> Beyond Hill and Dale... -> Tesham Mutna -> Pomp and Strange Circumstance -> Be It Ever So Humble...
+  - Action: Choose 'Beyond Hill and Dale...' (Land of a Thousand Fables) to rescue Syanna, buy the Ribbon from the Little Flint Girl, and read all 5 entries in the Nursery Governess's diary before speaking to Syanna in 'Pomp and Strange Circumstance' to achieve the best Toussaint reconciliation ending!
